@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
 import DevTools from 'mobx-react-devtools';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import pages from './pages';
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -66,6 +70,9 @@ class App extends Component {
           <button onClick={() => counter.increment()}> + </button>
           <button onClick={() => counter.decrement()}> - </button>
         </p>
+        <MuiThemeProvider>
+          <pages.MyAwesomeReactComponent />
+        </MuiThemeProvider>
         <DevTools />
       </div>
     );
