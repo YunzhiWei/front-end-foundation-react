@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
 import DevTools from 'mobx-react-devtools';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -10,6 +14,13 @@ import logo from './logo.svg';
 import './App.css';
 
 import * as firebase from 'firebase';
+
+const AppRoutes = () =>
+  <switch>
+    <Route path="/about" component={pages.AboutPage}/>
+    <Route path="/home" component={pages.HomePage}/>
+    <Route exact path="/" component={pages.HomePage}/>
+  </switch>
 
 @inject("timer", "counter") @observer
 class App extends Component {
@@ -70,6 +81,9 @@ class App extends Component {
           <button onClick={() => counter.increment()}> + </button>
           <button onClick={() => counter.decrement()}> - </button>
         </p>
+        <Router>
+          <AppRoutes />
+        </Router>
         <MuiThemeProvider>
           <pages.MyAwesomeReactComponent />
         </MuiThemeProvider>
