@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import { Provider } from 'mobx-react';
+
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
+import stores from './stores';
 
 import * as firebase from 'firebase';
 
@@ -17,5 +21,11 @@ var config = {
 };
 firebase.initializeApp(config);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider {...stores}>
+    <App />
+  </Provider>
+  ,
+  document.getElementById('root')
+);
 registerServiceWorker();

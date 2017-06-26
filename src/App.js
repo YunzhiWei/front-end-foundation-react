@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react'
+import DevTools from 'mobx-react-devtools';
+
 import logo from './logo.svg';
 import './App.css';
 
 import * as firebase from 'firebase';
 
+@inject("timer", "counter") @observer
 class App extends Component {
   constructor() {
     super();
@@ -30,6 +34,8 @@ class App extends Component {
   }
 
   render() {
+    const {timer, counter} = this.props;
+
     return (
       <div className="App">
         <div className="App-header">
@@ -44,6 +50,23 @@ class App extends Component {
           <br />
           <input onKeyPress= {(e) => this.onSpeedInputKeyPress(e)} />
         </div>
+        <p>
+          Seconds passed: {timer.timer}
+          <button onClick={() => timer.resetTimer()}>
+            Reset Timer
+          </button>
+        </p>
+        <p>
+          Counter:
+          <span className={counter.isOdd ? 'Counter-odd' : 'Counter-even'}>
+            {counter.count}
+          </span>
+        </p>
+        <p>
+          <button onClick={() => counter.increment()}> + </button>
+          <button onClick={() => counter.decrement()}> - </button>
+        </p>
+        <DevTools />
       </div>
     );
   }
