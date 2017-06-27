@@ -3,12 +3,31 @@ import { Link } from 'react-router-dom';
 
 import IconChart from 'material-ui/svg-icons/editor/insert-chart';
 import IconArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
+import IconMoreVert from 'material-ui/svg-icons/navigation/more-vert';
+
 import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
 import Avatar from 'material-ui/Avatar';
 import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 
 import MenuItem from 'material-ui/MenuItem';
+
+const Logged = (props) => (
+  <IconMenu
+    {...props}
+    iconButtonElement={
+      <IconButton><IconMoreVert /></IconButton>
+    }
+    targetOrigin={{horizontal: 'right', vertical: 'top'}}
+    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+  >
+    <MenuItem primaryText="Home" containerElement={ <Link to="/home" /> } />
+    <MenuItem primaryText="About" containerElement={ <Link to="/about" /> } />
+    <MenuItem primaryText="Sign out" />
+  </IconMenu>
+);
 
 class Layout extends Component {
   constructor(props) {
@@ -26,7 +45,7 @@ class Layout extends Component {
       <div>
         <AppBar
           title="Title"
-          iconClassNameRight="muidocs-icon-navigation-expand-more"
+          iconElementRight={<Logged />}
           onLeftIconButtonTouchTap={this.handleToggle}
         />
         <RaisedButton label="Toggle" onTouchTap={this.handleToggle} />
@@ -40,16 +59,16 @@ class Layout extends Component {
             src="https://yt3.ggpht.com/-m2q3GRTJ36E/AAAAAAAAAAI/AAAAAAAAAAA/bvrX-yV_EDQ/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
           />
           <MenuItem
-            containerElement={ <Link to={`${layoutmatch.url}/dashboard`} /> }
             primaryText="Dashboard"
             leftIcon={<IconChart />}
             rightIcon={<IconArrowDropRight />}
+            containerElement={ <Link to={`${layoutmatch.url}/dashboard`} /> }
           />
           <MenuItem
-            containerElement={ <Link to={`${layoutmatch.url}/account`} /> }
             primaryText="Account"
             leftIcon={<IconChart />}
             rightIcon={<IconArrowDropRight />}
+            containerElement={ <Link to={`${layoutmatch.url}/account`} /> }
           />
         </Drawer>
       </div>
