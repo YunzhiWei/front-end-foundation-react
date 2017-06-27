@@ -1,10 +1,12 @@
 import './pages.css';
-import HomePage from './Home';
 import AboutPage from './About';
-import AppLayout from './LayoutApp';
+import AdminPage from './Admin';
+import HomePage from './Home';
+import RootPage from './Root';
 
 export default {
-  HomePage,
   AboutPage,
-  AppLayout
+  AdminPage,
+  HomePage,
+  RootPage
 };
