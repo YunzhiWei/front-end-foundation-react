@@ -8,6 +8,7 @@ const Routes = () =>
     <Route path="/about" component={pages.AboutPage} />
     <Route path="/admin" component={pages.AdminPage} />
     <Route path="/home" component={pages.HomePage} />
+    <Route path="/bigdata" component={pages.BigData} />
   </switch>
 
 export default Routes;
