@@ -4,11 +4,11 @@ import ReactEcharts from './lib';
 class RadarChart extends Component {
     render() {
         const { seriesData, radarIndicator } = this.props;
-        const legendData = seriesData[0].data.map((item) => {
+        seriesData.type = 'radar';
+        const legendData = seriesData.data.map((item) => {
             return item.name;
         });
         const option = {
-            tooltip: {},
             legend: {
                 data: legendData,
                 textStyle: { color: '#fff' },

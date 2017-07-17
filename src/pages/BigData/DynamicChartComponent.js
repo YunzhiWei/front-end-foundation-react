@@ -9,10 +9,10 @@ function extendObject(target, source) {
 }
 function fetchNewDate () {
     let axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
-    let option = this.state.option;
+    let option = Object.assign({}, this.state.option);
     option.series.map((item, i)=>{
         item.data.shift();
-        item.data.push(item.type === 'line' ? (Math.random() * 10) : (Math.random() * 10 + 5).toFixed(1) - 0)
+        item.data.push(item.type === 'line' ? Math.round(Math.random() * 10) : (Math.random() * 10 + 5).toFixed(1) - 0)
         return item.data 
     })
     option.xAxis[0].data.shift();
