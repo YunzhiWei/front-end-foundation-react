@@ -7,15 +7,15 @@ require("echarts/map/js/province/zhejiang.js");
 
 class SalesVolume extends Component {
   render() {
-    const {geoMapName, visualMin, visualMax, visualLabel, seriesData} = this.props;
+    const {geoMapName, visualMin, visualMax, visualLabel, mapDataSeries} = this.props.BlockAreaData;
     // console.log("min max:", visualMin, visualMax);
 
-    const legendData = seriesData.map((item) => {
+    const legendData = mapDataSeries.map((item) => {
       return item.name;
     });
     console.log("legendData: ", legendData);
 
-    seriesData.forEach((item) => {
+    mapDataSeries.forEach((item) => {
       item.type = "map";
       item.mapType = geoMapName,
       item.label = {
@@ -25,7 +25,7 @@ class SalesVolume extends Component {
         }
       };
     });
-    console.log("seriesData: ", seriesData);
+    console.log("seriesData: ", mapDataSeries);
 
     const option = {
       backgroundColor: '#122E41',
@@ -57,7 +57,7 @@ class SalesVolume extends Component {
         }
       },
       // 给地图上的属性和数据赋值
-      series: seriesData
+      series: mapDataSeries
     };
 
     return (

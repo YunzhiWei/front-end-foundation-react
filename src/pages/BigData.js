@@ -10,9 +10,9 @@ import LineAndHistogram from './BigData/LineAndHistogram';
 import DynamicChartComponent from './BigData/DynamicChartComponent';
 import ChartComponent from './BigData/ChartComponent'
 
-import blockAreaData from './BigData/data/MapExampleBlockArea';
-import fromtoLinesData from './BigData/data/MapExampleFromToLines';
-import barLinesData from './BigData/data/ChartExampleBarLines';
+import BlockAreaDataArray from './BigData/data/MapExampleBlockArea';
+import FromToLinesDataArray from './BigData/data/MapExampleFromToLines';
+import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 
 class BigData extends Component {
  	render() {
@@ -24,38 +24,22 @@ class BigData extends Component {
 				    		<tr>
 								<td style={tdStyle}>
 									<CardProvider className="cardProvider" title="折线图和柱状图" style={cardStyles}>
-										<LineAndHistogram
-											yAxisConfig={barLinesData.yAxisConfig}
-											LegendData={barLinesData.legendData}
-											xAxisData={barLinesData.xAxisData}
-											seriesData={barLinesData.seriesData}
-										/>
+										<LineAndHistogram	BarLinesData={BarLinesDataArray[2]}	/>
 									</CardProvider>
 								</td>
 								<td style={tdStyle}>
 									<CardProvider className="cardProvider" title="江西省年均降雨量" style={cardStyles}>
-										<SalesVolume
-											geoMapName={blockAreaData.geoMapName}
-											visualMin={blockAreaData.visualMin}
-											visualMax={blockAreaData.visualMax}
-											visualLabel={blockAreaData.visualLabel}
-											seriesData={blockAreaData.mapDataSeries}
-										/>
+										<SalesVolume BlockAreaData={BlockAreaDataArray[1]} />
 									</CardProvider>
 								</td>
 								<td style={tdStyle}>
 									<CardProvider className="cardProvider" title="国内游客去向" style={cardStyles}>
-										<AirportCoordComponent
-											geoMapName = {fromtoLinesData.geoMapName}
-											directionOut = {fromtoLinesData.directionOut}
-											fromtoLines = {fromtoLinesData.fromtoLines}
-											iconPath = {fromtoLinesData.iconPath}
-										/>
+										<AirportCoordComponent FromToLinesData={FromToLinesDataArray[1]} />
 									</CardProvider>
 								</td>
 				    		</tr>
 				    		<tr>
-				    			<td colSpan="2" > 
+				    			<td colSpan="2" >
 				    				<CardProvider className="cardProvider" title="动态折线柱状图" style={cardStyles}>
 					    				<DynamicChartComponent />
 				    				</CardProvider>
@@ -107,4 +91,3 @@ const tdStyle = {
 
 
 export default BigData;
-

@@ -236,7 +236,7 @@ function convertTargetName2Marker(dataItem) {
 
 class AirportCoordComponent extends Component{
     render() {
-      const {geoMapName, directionOut, fromtoLines, iconPath} = this.props;
+      const {geoMapName, directionOut, fromtoLines, iconPath} = this.props.FromToLinesData;
 
       const series = [];
       fromtoLines.forEach((item, i) => {
