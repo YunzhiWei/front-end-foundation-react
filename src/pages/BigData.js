@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import CardProvider from './BigData/mui/CardProvider';
+
 import SalesVolume from './BigData/SalesVolume';
 import AirportCoordComponent from './BigData/AirportCoord';
 import LineAndHistogram from './BigData/LineAndHistogram';
@@ -15,14 +16,12 @@ import barLinesData from './BigData/data/ChartExampleBarLines';
 import radarChartData from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
 
-console.log(dynamicChart);
-
 class BigData extends Component {
  	render() {
  		return (
 			<MuiThemeProvider>
 				<div style={{background: '#071B29'}}>
-				    <table>
+				    <table style={{width: '100%'}}>
 				    	<tbody>
 				    		<tr>
 								<td style={tdStyle}>
@@ -59,7 +58,7 @@ class BigData extends Component {
 				    		</tr>
 				    		<tr>
 				    			<td colSpan="2" > 
-				    				<CardProvider className="cardProvider" title="动态折线柱状图" style={cardStyles}>
+				    				<CardProvider className="cardProvider" title="游客与游船数量" style={cardStyles}>
 					    				<DynamicChartComponent 
 					    					dynamicSeries={dynamicChart.dynamicSeries}
 					    					dynamicXAxis={dynamicChart.dynamicXAxis}
@@ -101,15 +100,6 @@ const cardStyles = {
     	position: 'relative',
     }
 };
-
-const echartsStyle = {
-	canvas: {
-		width: '400px',
-		height: '500px',
-		margin: '0 0 0 -50%',
-		left: '50%'
-	}
-}
 
 const tdStyle = {
 	width: '33%',
