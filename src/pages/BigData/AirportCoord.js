@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactEcharts from './lib';
 
-require("echarts/map/js/china.js");
-require("echarts/map/js/province/jiangxi.js");
+require('./data/MapExampleFromToLines(Map)').default.map((item)=>{ require("echarts/map/js/"+(item === 'china' ? 'china' : 'province/'+item)+".js") })
 
 var geoCoordMap = {};
 

@@ -13,7 +13,7 @@ import RadarChart from './BigData/RadarChart';
 import CoverageArea from './BigData/CoverageArea';
 
 import BlockAreaDataArray from './BigData/data/MapExampleBlockArea';
-import FromToLinesDataArray from './BigData/data/MapExampleFromToLines';
+import { FromToLinesDataArray } from './BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
@@ -41,7 +41,9 @@ class BigData extends Component {
   								</td>
   								<td style={tdStyle}>
   									<CardProvider className="cardProvider" title="国内游客去向" style={cardStyles}>
-  										<AirportCoord FromToLinesData={FromToLinesDataArray[0]} geoCoordMap={geoCoordMap} />
+  										<AirportCoord 
+  											FromToLinesData={FromToLinesDataArray[0]}
+  											geoCoordMap={geoCoordMap} />
   									</CardProvider>
   								</td>
 				    		</tr>
@@ -64,7 +66,9 @@ class BigData extends Component {
 				    		<tr>
 				    			<td colSpan="3">
     				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-    				                	<CoverageArea coverageAreaData={coverageAreaData} geoCoordMap={geoCoordMap} />
+    				                	<CoverageArea 
+    				                		coverageAreaData={coverageAreaData}
+    				                		geoCoordMap={geoCoordMap} />
     								</CardProvider>
 				    			</td>
 				    		</tr>
