@@ -10,6 +10,7 @@ import LineAndHistogram from './BigData/LineAndHistogram';
 import DynamicChart from './BigData/DynamicChart';
 import RadarChart from './BigData/RadarChart';
 import CoverageArea from './BigData/CoverageArea';
+import BarAndPie from './BigData/BarAndPie';
 
 import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
 import { FromToLinesDataArray } from './BigData/data/MapExampleFromToLines';
@@ -69,6 +70,35 @@ class BigData extends Component {
     				                		coverageAreaData={coverageAreaData}
     				                		geoCoordMap={geoCoordMap} />
     								</CardProvider>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td colSpan="2">
+    				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
+					    				<BarAndPie />
+				    				</CardProvider>
+				    			</td>
+				    			<td>
+    				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
+
+				    				</CardProvider>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td>
+    				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
+
+				    				</CardProvider>
+				    			</td>
+				    			<td>
+				    				<CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
+
+				    				</CardProvider>
+				    			</td>
+				    			<td>
+				    				<CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
+
+				    				</CardProvider>
 				    			</td>
 				    		</tr>
 				    	</tbody>
