@@ -3,18 +3,22 @@ import ReactDOM from "react-dom";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+
+
 import CardProvider from './BigData/mui/CardProvider';
 import SalesVolume from './BigData/SalesVolume';
 import AirportCoordComponent from './BigData/AirportCoord';
 import LineAndHistogram from './BigData/LineAndHistogram';
 import DynamicChartComponent from './BigData/DynamicChartComponent';
 import RadarChart from './BigData/RadarChart';
+import CoverageArea from './BigData/CoverageArea';
 
 import BlockAreaDataArray from './BigData/data/MapExampleBlockArea';
 import FromToLinesDataArray from './BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
+import CoverageAreaData from './BigData/data/CoverageAreaData';
 
 class BigData extends Component {
  	render() {
@@ -54,6 +58,18 @@ class BigData extends Component {
 				                    <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
 				                    	<RadarChart radarData={radarDataArray[0]} />
 				    				</CardProvider>
+				    			</td>
+				    		</tr>
+				    		<tr>
+				    			<td colSpan="2">
+    				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
+    				                	<CoverageArea CoverageAreaData={CoverageAreaData} />
+    								</CardProvider>
+				    			</td>
+				    			<td>
+	    			                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
+
+	    							</CardProvider>
 				    			</td>
 				    		</tr>
 				    	</tbody>

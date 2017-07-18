@@ -1,6 +1,5 @@
 import React,{ Component } from 'react';
 import ReactEcharts from './lib';
-import echarts from 'echarts';
 
 class LineAndHistogram extends Component {
     render() {

@@ -13,7 +13,6 @@ class SalesVolume extends Component {
     const legendData = mapDataSeries.map((item) => {
       return item.name;
     });
-    console.log("legendData: ", legendData);
 
     mapDataSeries.forEach((item) => {
       item.type = "map";
@@ -25,7 +24,6 @@ class SalesVolume extends Component {
         }
       };
     });
-    console.log("seriesData: ", mapDataSeries);
 
     const option = {
       backgroundColor: '#122E41',
