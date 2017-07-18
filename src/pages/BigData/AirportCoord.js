@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactEcharts from './lib';
 
-require('./data/MapExampleFromToLines(Map)').airportCoordMap.map((item)=>{ return require("echarts/map/js/"+(item === 'china' ? 'china' : 'province/'+item)+".js") })
+require('./data/mapLib').airportCoordMap.map((item)=>{ return require("echarts/map/js/"+(item === 'china' ? 'china' : 'province/'+item)+".js") })
 
 var geoCoordMap = {};
 

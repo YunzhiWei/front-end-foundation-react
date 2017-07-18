@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactEcharts from './lib';
 
-require('./data/MapExampleFromToLines(Map)').blockAreaMap.map((item)=>{ return require("echarts/map/js/"+(item === 'china' ? 'china' : 'province/'+item)+".js") })
+require('./data/mapLib').blockAreaMap.map((item)=>{ return require("echarts/map/js/"+(item === 'china' ? 'china' : 'province/'+item)+".js") })
 
 class SalesVolume extends Component {
   render() {
