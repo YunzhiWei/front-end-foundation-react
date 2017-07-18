@@ -3,9 +3,9 @@ import ReactEcharts from './lib';
 
 class RadarChart extends Component {
     render() {
-        const { seriesData, radarIndicator } = this.props;
-        seriesData.type = 'radar';
-        const legendData = seriesData.data.map((item) => {
+        const { radarSeries, radarIndicator } = this.props.radarData;
+        radarSeries.type = 'radar';
+        const legendData = radarSeries.data.map((item) => {
             return item.name;
         });
         const option = {
@@ -14,9 +14,9 @@ class RadarChart extends Component {
                 textStyle: { color: '#fff' },
             },
             radar: radarIndicator,
-            series: seriesData
+            series: radarSeries
         };
-    
+
         return (
             <div className='examples'>
                 <div className='parent' style={{position: 'relative'}}>

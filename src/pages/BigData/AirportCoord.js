@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import ReactEcharts from './lib';
+import echarts from 'echarts';
 
 require("echarts/map/js/china.js");
 require("echarts/map/js/province/jiangxi.js");
 
 const geoCoordMap = {
+    '南昌': [115.89,28.68],
     '新建': [115.8,28.69],
     '景德镇': [117.22,29.3],
     '萍乡': [113.85,27.6],
@@ -234,7 +236,7 @@ function convertTargetName2Marker(dataItem) {
 
 class AirportCoordComponent extends Component{
     render() {
-      const {geoMapName, directionOut, fromtoLines, iconPath} = this.props;
+      const {geoMapName, directionOut, fromtoLines, iconPath} = this.props.FromToLinesData;
 
       const series = [];
       fromtoLines.forEach((item, i) => {
@@ -280,7 +282,7 @@ class AirportCoordComponent extends Component{
           },
           data: item.data.map(convertName2Coor)
         };
-        if((iconPath !== undefined) && (iconPath !== null)) {
+        if((iconPath != undefined) && (iconPath != null)) {
           dynamiclines.effect = {
             show: true,
             period: 6,

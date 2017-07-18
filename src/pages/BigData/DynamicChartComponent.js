@@ -13,7 +13,7 @@ function fetchNewDate () {
     option.series.map((item, i)=>{
         item.data.shift();
         item.data.push(item.type === 'line' ? Math.round(Math.random() * 10) : (Math.random() * 10 + 5).toFixed(1) - 0)
-        return item.data 
+        return item.data
     })
     option.xAxis[0].data.shift();
     option.xAxis[0].data.push(axisData);
@@ -29,7 +29,7 @@ class DynamicChartComponent extends Component {
         const { dynamicSeries, dynamicXAxis, dynamicYAxis } = this.props;
         var series = [];
         const seriesBar = {
-            itemStyle: { 
+            itemStyle: {
                 normal: { barBorderRadius: 4, opacity: '0.8' },
                 emphasis: { opacity: '1' }
             },

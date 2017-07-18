@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card, CardText, CardHeader } from 'material-ui/Card';
 
 const CardProvider = (props) => (

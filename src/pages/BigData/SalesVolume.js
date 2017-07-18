@@ -7,13 +7,15 @@ require("echarts/map/js/province/zhejiang.js");
 
 class SalesVolume extends Component {
   render() {
-    const {geoMapName, visualMin, visualMax, visualLabel, seriesData} = this.props;
+    const {geoMapName, visualMin, visualMax, visualLabel, mapDataSeries} = this.props.BlockAreaData;
+    // console.log("min max:", visualMin, visualMax);
 
-    const legendData = seriesData.map((item) => {
+    const legendData = mapDataSeries.map((item) => {
       return item.name;
     });
+    console.log("legendData: ", legendData);
 
-    seriesData.forEach((item) => {
+    mapDataSeries.forEach((item) => {
       item.type = "map";
       item.mapType = geoMapName,
       item.label = {
@@ -23,16 +25,20 @@ class SalesVolume extends Component {
         }
       };
     });
+    console.log("seriesData: ", mapDataSeries);
 
     const option = {
       backgroundColor: '#122E41',
+      // 单个市hover产生的悬浮框
       tooltip: { trigger: 'item' },
+      // 左侧年份选项
       legend: {
         top: 'top',
         orient: 'horizontal',
         textStyle: { color: '#FF' },
         data: legendData,
       },
+      // 图例度量尺
       visualMap: {
         min: visualMin,
         max: visualMax,
@@ -42,6 +48,7 @@ class SalesVolume extends Component {
         calculable: true,
         textStyle: { color: '#BFDAED' },
       },
+      // 匹配地图属性
       geo: {
         type: 'map',
         map: geoMapName,
@@ -49,7 +56,8 @@ class SalesVolume extends Component {
           normal: { color: '#323C47' }
         }
       },
-      series: seriesData
+      // 给地图上的属性和数据赋值
+      series: mapDataSeries
     };
 
     return (

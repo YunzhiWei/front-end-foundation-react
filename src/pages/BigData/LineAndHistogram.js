@@ -1,9 +1,10 @@
 import React,{ Component } from 'react';
 import ReactEcharts from './lib';
+import echarts from 'echarts';
 
 class LineAndHistogram extends Component {
     render() {
-      const {yAxisConfig, legendData, xAxisData, seriesData} = this.props;
+      const {yAxisConfig, legendData, xAxisData, seriesData} = this.props.BarLinesData;
 
       yAxisConfig.forEach((item) => {
         item.type = 'value';
