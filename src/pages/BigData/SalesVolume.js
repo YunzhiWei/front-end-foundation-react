@@ -8,7 +8,6 @@ require("echarts/map/js/province/zhejiang.js");
 class SalesVolume extends Component {
   render() {
     const {geoMapName, visualMin, visualMax, visualLabel, seriesData} = this.props;
-    // console.log("min max:", visualMin, visualMax);
 
     const legendData = seriesData.map((item) => {
       return item.name;
