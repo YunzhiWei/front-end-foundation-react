@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import ReactEcharts from './lib';
 import echarts from 'echarts';
 
-import geoCoordMap from './data/geoCoordMap';
+var convertedData = [];
+var geoCoordMap = {};
+var coverageAreaData = [];
 
 function convertData(data) {
     var res = [];
@@ -17,9 +19,6 @@ function convertData(data) {
     }
     return res;
 };
-
-var convertedData = [];
-
 
 const option = {
     animation: true,
@@ -67,10 +66,10 @@ const option = {
         trigger: 'item'
     },
     grid: {
-        right: 40,
+        left: '60%',
         top: 100,
         bottom: 40,
-        width: '30%'
+        width: '35%'
     },
     xAxis: {
         type: 'value',
@@ -84,8 +83,12 @@ const option = {
     },
     yAxis: {
         type: 'category',
-        name: 'TOP 20',
-        nameGap: 16,
+        nameGap: 26,
+        nameTextStyle: {
+        	fontSize: 14,
+        	fontStyle: 'italic',
+        	fontWeight: 100
+        },
         axisLine: {show: false, lineStyle: {color: '#ddd'}},
         axisTick: {show: false, lineStyle: {color: '#ddd'}},
         axisLabel: {interval: 0, textStyle: {color: '#ddd'}},
@@ -93,7 +96,6 @@ const option = {
     },
     series : [
         {
-            name: 'pm2.5',
             type: 'scatter',
             coordinateSystem: 'geo',
             data: convertedData[0],
@@ -117,7 +119,6 @@ const option = {
             }
         },
         {
-            name: 'Top 5',
             type: 'effectScatter',
             coordinateSystem: 'geo',
             data: convertedData[1],
@@ -166,7 +167,7 @@ function renderBrushed(params) {
     var selectedItems = [];
     var categoryData = [];
     var barData = [];
-    var maxBar = 30;
+    var maxBar = 20;
     var sum = 0;
     var count = 0;
 
@@ -192,6 +193,7 @@ function renderBrushed(params) {
 
     this.setOption({
         yAxis: {
+        	name: '最多只显示前 '+maxBar+' 名：',
             data: categoryData
         },
         xAxis: {
@@ -199,7 +201,10 @@ function renderBrushed(params) {
         },
         title: {
             id: 'statistic',
-            text: count ? '平均: ' + (sum / count).toFixed(4) : ''
+            text: count ? '平均: ' + (sum / count).toFixed(4) : '',
+            textStyle: {
+            	color: '#ddb926'
+            }
         },
         series: {
             id: 'bar',
@@ -217,10 +222,11 @@ class CoverageArea extends Component{
 	}
 
 	componentWillMount() {
-		const data = this.props.CoverageAreaData;
+		coverageAreaData = this.props.coverageAreaData;
+		geoCoordMap = this.props.geoCoordMap;
 		convertedData = [
-		    convertData(data),
-		    convertData(data.sort(function (a, b) {
+		    convertData(coverageAreaData),
+		    convertData(coverageAreaData.sort(function (a, b) {
 		        return b.value - a.value;
 		    }).slice(0, 6))
 		];
@@ -255,7 +261,7 @@ class CoverageArea extends Component{
 		    	<div className='parent' style={{position: 'relative'}}>
 		      		<ReactEcharts
 		        		option={this.state.option}
-		        		style={{width: '800px',height: '400px',margin: '0 0 0 -50%',left: '50%'}}
+		        		style={{width: '1280px',height: '400px',margin: '0 0 0 -50%',left: '50%'}}
 		        		className='react_for_echarts CoverageArea'
 		      		/>
 		    	</div>

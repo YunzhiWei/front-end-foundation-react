@@ -1,4 +1,4 @@
-const CoverageAreaData = [
+const coverageAreaData = [
     {name: "海门", value: 9},
     {name: "鄂尔多斯", value: 12},
     {name: "招远", value: 12},
@@ -191,4 +191,4 @@ const CoverageAreaData = [
     {name: "大庆", value: 279}
 ];
 
-export default CoverageAreaData;
+export default coverageAreaData;

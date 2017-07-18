@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactEcharts from './lib';
-import geoCoordMap from './data/geoCoordMap';
 
 require("echarts/map/js/china.js");
 require("echarts/map/js/province/jiangxi.js");
 
+var geoCoordMap = {};
 
 function convertName2Coor(dataItem) {
   const toCoord = geoCoordMap[dataItem.to];
@@ -33,9 +33,10 @@ function convertTargetName2Marker(dataItem) {
   };
 };
 
-class AirportCoordComponent extends Component{
+class AirportCoord extends Component{
     render() {
       const {geoMapName, directionOut, fromtoLines, iconPath} = this.props.FromToLinesData;
+      geoCoordMap = this.props.geoCoordMap;
 
       const series = [];
       fromtoLines.forEach((item, i) => {
@@ -152,4 +153,4 @@ class AirportCoordComponent extends Component{
     }
 };
 
-export default AirportCoordComponent;
+export default AirportCoord;

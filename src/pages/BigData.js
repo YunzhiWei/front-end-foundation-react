@@ -3,13 +3,12 @@ import ReactDOM from "react-dom";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-
-
 import CardProvider from './BigData/mui/CardProvider';
+
 import SalesVolume from './BigData/SalesVolume';
-import AirportCoordComponent from './BigData/AirportCoord';
+import AirportCoord from './BigData/AirportCoord';
 import LineAndHistogram from './BigData/LineAndHistogram';
-import DynamicChartComponent from './BigData/DynamicChartComponent';
+import DynamicChart from './BigData/DynamicChart';
 import RadarChart from './BigData/RadarChart';
 import CoverageArea from './BigData/CoverageArea';
 
@@ -18,7 +17,9 @@ import FromToLinesDataArray from './BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
-import CoverageAreaData from './BigData/data/CoverageAreaData';
+import coverageAreaData from './BigData/data/CoverageAreaData';
+
+import geoCoordMap from './BigData/data/geoCoordMap';
 
 class BigData extends Component {
  	render() {
@@ -40,14 +41,14 @@ class BigData extends Component {
   								</td>
   								<td style={tdStyle}>
   									<CardProvider className="cardProvider" title="国内游客去向" style={cardStyles}>
-  										<AirportCoordComponent FromToLinesData={FromToLinesDataArray[0]} />
+  										<AirportCoord FromToLinesData={FromToLinesDataArray[0]} geoCoordMap={geoCoordMap} />
   									</CardProvider>
   								</td>
 				    		</tr>
 				    		<tr>
 				    			<td colSpan="2" >
 				                    <CardProvider className="cardProvider" title="游客与游船数量" style={cardStyles}>
-					    				<DynamicChartComponent
+					    				<DynamicChart
 					    					dynamicSeries={dynamicChart.dynamicSeries}
 					    					dynamicXAxis={dynamicChart.dynamicXAxis}
 					    					dynamicYAxis={dynamicChart.dynamicYAxis}
@@ -61,15 +62,10 @@ class BigData extends Component {
 				    			</td>
 				    		</tr>
 				    		<tr>
-				    			<td colSpan="2">
+				    			<td colSpan="3">
     				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-    				                	<CoverageArea CoverageAreaData={CoverageAreaData} />
+    				                	<CoverageArea coverageAreaData={coverageAreaData} geoCoordMap={geoCoordMap} />
     								</CardProvider>
-				    			</td>
-				    			<td>
-	    			                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-
-	    							</CardProvider>
 				    			</td>
 				    		</tr>
 				    	</tbody>

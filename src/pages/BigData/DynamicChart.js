@@ -20,7 +20,7 @@ function fetchNewDate () {
     this.setState({option: option});
 }
 
-class DynamicChartComponent extends Component {
+class DynamicChart extends Component {
     constructor(props) {
         super(props)
         this.state = { option: {}, timeTicket: null }
@@ -88,4 +88,4 @@ class DynamicChartComponent extends Component {
     }
 };
 
-export default DynamicChartComponent;
+export default DynamicChart;
