@@ -1,77 +1,31 @@
-const series = [
+const barAndPieArray = [
 	{
-        type: 'bar',
-        stack: 'chart',
-        z: 3,
-        label: {
-            normal: {
-                position: 'right',
-                show: true
-            }
-        },
-        data: Object.keys(builderJson.charts).map(function (key) {
-            return builderJson.charts[key];
-        })
-    }, {
-        type: 'bar',
-        stack: 'chart',
-        silent: true,
-        itemStyle: {
-            normal: {
-                color: '#eee'
-            }
-        },
-        data: Object.keys(builderJson.charts).map(function (key) {
-            return builderJson.all - builderJson.charts[key];
-        })
-    }, {
-        type: 'bar',
-        stack: 'component',
-        xAxisIndex: 1,
-        yAxisIndex: 1,
-        z: 3,
-        label: {
-            normal: {
-                position: 'right',
-                show: true
-            }
-        },
-        data: Object.keys(builderJson.components).map(function (key) {
-            return builderJson.components[key];
-        })
-    }, {
-        type: 'bar',
-        stack: 'component',
-        silent: true,
-        xAxisIndex: 1,
-        yAxisIndex: 1,
-        itemStyle: {
-            normal: {
-                color: '#eee'
-            }
-        },
-        data: Object.keys(builderJson.components).map(function (key) {
-            return builderJson.all - builderJson.components[key];
-        })
-    }, {
-        type: 'pie',
-        radius: [0, '30%'],
-        center: ['75%', '25%'],
-        data: Object.keys(downloadJson).map(function (key) {
-            return {
-                name: key.replace('.js', ''),
-                value: downloadJson[key]
-            }
-        })
-    }, {
-        type: 'pie',
-        radius: [0, '30%'],
-        center: ['75%', '75%'],
-        data: Object.keys(themeJson).map(function (key) {
-            return {
-                name: key.replace('.js', ''),
-                value: themeJson[key]
-            }
-        })
-    }
-]
+		barJson: {
+			name: "在线构建工具",
+		  	all: 10000,
+		  	data: {
+		        "map": 3237,
+		        "lines": 2164,
+		        "bar": 7561,
+		        "line": 7778,
+		        "pie": 7355,
+		        "scatter": 2405,
+		        "candlestick": 1842,
+		        "radar": 2090,
+		        "heatmap": 1762,
+		        "treemap": 1593
+		 	}
+		},
+		pieJson: {
+			name: "各版本下载",
+			data: {
+				"echarts.min.js": 17365,
+				"echarts.simple.min.js": 4079,
+				"echarts.common.min.js": 6929,
+				"echarts.js": 14890
+			}
+		}
+	}
+];
+
+export default barAndPieArray;

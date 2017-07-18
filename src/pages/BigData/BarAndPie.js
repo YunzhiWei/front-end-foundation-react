@@ -3,49 +3,28 @@ import ReactEcharts from './lib';
 
 class BarAndPie extends Component {
     render() {
-
-        var builderJson = {
-                  "all": 10887,
-                  "charts": {
-                    "map": 3237,
-                    "lines": 2164,
-                    "bar": 7561,
-                    "line": 7778,
-                    "pie": 7355,
-                    "scatter": 2405,
-                    "candlestick": 1842,
-                    "radar": 2090,
-                    "heatmap": 1762,
-                    "treemap": 1593
-                  }
-                };
-
-                var downloadJson = {
-                  "echarts.min.js": 17365,
-                  "echarts.simple.min.js": 4079,
-                  "echarts.common.min.js": 6929,
-                  "echarts.js": 14890
-                };
+        const { barJson, pieJson } = this.props.barAndPieArray;
 
         const option = {
-            tooltip: {},
             title: [{
-                text: '在线构建',
+                text: barJson.name,
                 textStyle: {
                     color: '#9FDAFF'
                 },
-                subtext: '总计 ' + builderJson.all,
+                subtext: '总计 ' + Object.keys(barJson.data).reduce(function (all, key) {
+                    return all + barJson.data[key];
+                }, 0),
                 x: '25%',
                 textAlign: 'center'
             }, {
-                text: '各版本下载',
+                text: pieJson.name,
                 textStyle: {
                     color: '#9FDAFF'
                 },
-                subtext: '总计 ' + Object.keys(downloadJson).reduce(function (all, key) {
-                    return all + downloadJson[key];
+                subtext: '总计 ' + Object.keys(pieJson.data).reduce(function (all, key) {
+                    return all + pieJson.data[key];
                 }, 0),
-                x: '80%',
+                x: '75%',
                 textAlign: 'center'
             }],
             grid: [{
@@ -65,14 +44,14 @@ class BarAndPie extends Component {
             }],
             xAxis: [{
                 type: 'value',
-                max: builderJson.all,
+                max: barJson.all,
                 splitLine: { show: false },
                 axisLine: {show: false },
                 axisLabel: {interval: 0, textStyle: {color: '#ddd'}}
             }],
             yAxis: [{
                 type: 'category',
-                data: Object.keys(builderJson.charts),
+                data: Object.keys(barJson.data),
                 splitLine: { show: false },
                 axisLine: {show: false  },
                 axisLabel: {interval: 0, rotate: 30, textStyle: {color: '#ddd'}}
@@ -88,8 +67,8 @@ class BarAndPie extends Component {
                             show: true
                         }
                     },
-                    data: Object.keys(builderJson.charts).map(function (key) {
-                        return builderJson.charts[key];
+                    data: Object.keys(barJson.data).map(function (key) {
+                        return barJson.data[key];
                     })
                 }, {
                     type: 'bar',
@@ -100,17 +79,18 @@ class BarAndPie extends Component {
                             color: '#eee'
                         }
                     },
-                    data: Object.keys(builderJson.charts).map(function (key) {
-                        return builderJson.all - builderJson.charts[key];
+                    data: Object.keys(barJson.data).map(function (key) {
+                        return barJson.all - barJson.data[key];
                     })
                 }, {
                     type: 'pie',
                     radius: [0, '40%'],
-                    center: ['80%', '50%'],
-                    data: Object.keys(downloadJson).map(function (key) {
+                    center: ['75%', '50%'],
+                    data: Object.keys(pieJson.data).map(function (key) {
+                        console.log(key);
                         return {
                             name: key.replace('.js', ''),
-                            value: downloadJson[key]
+                            value: pieJson.data[key]
                         }
                     })
                 }

@@ -18,6 +18,7 @@ import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
 import coverageAreaData from './BigData/data/CoverageAreaData';
+import barAndPieArray from './BigData/data/BarAndPieData';
 
 import geoCoordMap from './BigData/data/geoCoordMap';
 
@@ -75,7 +76,7 @@ class BigData extends Component {
 				    		<tr>
 				    			<td colSpan="2">
     				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-					    				<BarAndPie />
+					    				<BarAndPie barAndPieArray={barAndPieArray[0]} />
 				    				</CardProvider>
 				    			</td>
 				    			<td>
