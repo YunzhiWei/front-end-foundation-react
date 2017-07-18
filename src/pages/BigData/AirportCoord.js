@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactEcharts from './lib';
 
-require('./data/MapExampleFromToLines(Map)').default.map((item)=>{ require("echarts/map/js/"+(item === 'china' ? 'china' : 'province/'+item)+".js") })
+require('./data/MapExampleFromToLines(Map)').airportCoordMap.map((item)=>{ return require("echarts/map/js/"+(item === 'china' ? 'china' : 'province/'+item)+".js") })
 
 var geoCoordMap = {};
 
@@ -81,7 +81,7 @@ class AirportCoord extends Component{
           },
           data: item.data.map(convertName2Coor)
         };
-        if((iconPath != undefined) && (iconPath != null)) {
+        if((iconPath !== undefined) && (iconPath !== null)) {
           dynamiclines.effect = {
             show: true,
             period: 6,

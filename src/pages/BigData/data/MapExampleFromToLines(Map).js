@@ -1,1 +1,3 @@
-export default require('./MapExampleFromToLines').map;
+var airportCoordMap =  require('./MapExampleFromToLines').map;
+var blockAreaMap = require('./MapExampleBlockArea').map
+module.exports = { airportCoordMap, blockAreaMap };

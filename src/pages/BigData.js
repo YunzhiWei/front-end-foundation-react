@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -12,7 +11,7 @@ import DynamicChart from './BigData/DynamicChart';
 import RadarChart from './BigData/RadarChart';
 import CoverageArea from './BigData/CoverageArea';
 
-import BlockAreaDataArray from './BigData/data/MapExampleBlockArea';
+import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
 import { FromToLinesDataArray } from './BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
@@ -98,18 +97,8 @@ const cardStyles = {
     }
 };
 
-const echartsStyle = {
-	canvas: {
-		width: '400px',
-		height: '500px',
-		margin: '0 0 0 -50%',
-		left: '50%'
-	}
-}
-
 const tdStyle = {
 	width: '33%',
 }
-
 
 export default BigData;

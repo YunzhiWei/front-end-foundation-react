@@ -171,7 +171,7 @@ function renderBrushed(params) {
     var sum = 0;
     var count = 0;
 
-    for (var i = 0; i < mainSeries.dataIndex.length; i++) {
+    for (let i = 0; i < mainSeries.dataIndex.length; i++) {
         var rawIndex = mainSeries.dataIndex[i];
         var dataItem = convertedData[0][rawIndex];
         var pmValue = dataItem.value[2];
@@ -186,7 +186,7 @@ function renderBrushed(params) {
         return a.value[2] - b.value[2];
     });
 
-    for (var i = 0; i < Math.min(selectedItems.length, maxBar); i++) {
+    for (let i = 0; i < Math.min(selectedItems.length, maxBar); i++) {
         categoryData.push(selectedItems[i].name);
         barData.push(selectedItems[i].value[2]);
     }
