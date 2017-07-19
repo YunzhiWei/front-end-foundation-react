@@ -85,23 +85,6 @@ class BigData extends Component {
 				    				</CardProvider>
 				    			</td>
 				    		</tr>
-				    		<tr>
-				    			<td>
-    				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-
-				    				</CardProvider>
-				    			</td>
-				    			<td>
-				    				<CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-
-				    				</CardProvider>
-				    			</td>
-				    			<td>
-				    				<CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-
-				    				</CardProvider>
-				    			</td>
-				    		</tr>
 				    	</tbody>
 				    </table>
 			    </div>
