@@ -4,7 +4,11 @@ import echarts from 'echarts';
 
 class LineAndHistogram extends Component {
     render() {
-      const {yAxisConfig, legendData, xAxisData, seriesData} = this.props.BarLinesData;
+      const {yAxisConfig, xAxisData, seriesData} = this.props.BarLinesData;
+
+      const legendData = seriesData.map((item) => {
+          return item.name;
+      });
 
       yAxisConfig.forEach((item) => {
         item.type = 'value';

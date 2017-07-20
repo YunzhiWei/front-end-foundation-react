@@ -8,7 +8,6 @@ const BarLinesDataArray = [
       }
     ],
     xAxisData: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-    legendData: ['收入'],
     seriesData: [
       {
         name:'收入',
@@ -26,7 +25,6 @@ const BarLinesDataArray = [
       }
     ],
     xAxisData: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-    legendData: ['收入', '支出'],
     seriesData: [
       {
         name:'收入',
@@ -54,7 +52,6 @@ const BarLinesDataArray = [
       }
     ],
     xAxisData: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-    legendData: ['蒸发量', '降水量', '温度', '湿度'],
     seriesData: [
       {
         name:'蒸发量',
