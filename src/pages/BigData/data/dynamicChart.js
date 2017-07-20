@@ -37,8 +37,7 @@ const dynamicXAxis = [
 	            now = new Date(now - 2000);
 	        }
 	        return res;
-	    })(),
-	    axisLabel: { textStyle: { color: '#fff' } }
+	    })()
 	}
 ]
 
@@ -47,7 +46,7 @@ const dynamicYAxis = [
 	{ name: '游船数量', max:12, min:0 }
 ]
 
-export default { 
+export default {
 	dynamicSeries,
 	dynamicXAxis,
 	dynamicYAxis

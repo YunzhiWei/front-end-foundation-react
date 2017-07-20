@@ -1,12 +1,6 @@
 import React,{ Component } from 'react';
 import ReactEcharts from './lib';
 
-function extendObject(target, source) {
-    var newObj = {};
-    for (let obj in target) newObj[obj] = target[obj];
-    for (let obj in source) newObj[obj] = source[obj];
-    return newObj;
-}
 function fetchNewDate () {
     let axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
     let option = Object.assign({}, this.state.option);
@@ -27,19 +21,6 @@ class DynamicChartComponent extends Component {
     }
     componentWillMount() {
         const { dynamicSeries, dynamicXAxis, dynamicYAxis } = this.props;
-        var series = [];
-        const seriesBar = {
-            itemStyle: {
-                normal: { barBorderRadius: 4, opacity: '0.8' },
-                emphasis: { opacity: '1' }
-            },
-            animationEasing: 'elasticOut',
-            animationDelay: function (idx) { return idx * 10 },
-            animationDelayUpdate: function (idx) { return idx * 10 }
-        };
-        const seriesLine = {
-            // itemStyle: { normal: { color: '#ffe729' } }
-        }
         const yAixsConf = dynamicYAxis.map((item) => {
             item.type = 'value';
             item.scale = true;
@@ -55,8 +36,18 @@ class DynamicChartComponent extends Component {
             return item;
         });
         const legendData = dynamicSeries.map((item, i) => {
-            series[i] = extendObject(item.type === 'bar' ? seriesBar : seriesLine, item);
             return item.name;
+        });
+        dynamicSeries.forEach((item) => {
+            if (item.type === 'bar') {
+              item.itemStyle = {
+                  normal: { barBorderRadius: 4, opacity: '0.8' },
+                  emphasis: { opacity: '1' }
+              };
+              item.animationEasing = 'elasticOut';
+              item.animationDelay = function (idx) { return idx * 10 };
+              item.animationDelayUpdate = function (idx) { return idx * 10 };
+            }
         });
         const option = {
             tooltip: { trigger: 'axis' },
@@ -64,7 +55,7 @@ class DynamicChartComponent extends Component {
             grid: { top: 60, left: 30, right: 60, bottom:30 },
             xAxis: xAixsConf,
             yAxis: yAixsConf,
-            series: series
+            series: dynamicSeries
         };
         this.setState({ option: option });
     }
