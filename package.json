@@ -14,7 +14,8 @@
     "react-dom": "^15.6.1",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-tap-event-plugin": "^2.0.1"
+    "react-tap-event-plugin": "^2.0.1",
+    "wilddog": "^2.5.10"
   },
   "devDependencies": {
     "axios": "^0.16.2",

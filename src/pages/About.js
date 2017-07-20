@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
 import DevTools from 'mobx-react-devtools';
 
-import * as firebase from 'firebase';
+import * as wilddog from 'wilddog';
 
 @inject("timer", "counter") @observer
 class AboutPage extends Component {
   constructor() {
     super();
     this.state = {
-      speed: 60
+      speed: ''
     }
   }
 
   componentDidMount() {
-    const rootRef = firebase.database().ref().child('react');
-    const speedRef = rootRef.child('speed');
-    speedRef.on('value', snap => {
+    const rootRef = wilddog.sync().ref().child('test');
+      console.log(rootRef);
+    var speedRef = rootRef.child('speed');
+    speedRef.on('value', snap => { 
       console.log("sync up")
       this.setState({speed: snap.val()});
     });
@@ -24,8 +25,8 @@ class AboutPage extends Component {
 
   onSpeedInputKeyPress(e) {
     if (e.which === 13) {
-      const rootRef = firebase.database().ref().child('react');
-      rootRef.set({ speed: e.target.value });
+      const rootRef = wilddog.sync().ref().child('test');
+      rootRef.set({ 'speed': e.target.value });
       e.target.value = "";
     }
   }
