@@ -4,7 +4,7 @@ import echarts from 'echarts';
 
 class LineAndHistogram extends Component {
     render() {
-      console.log("LineAndHistogram render +");
+      // console.log("LineAndHistogram render +");
 
       const {yAxisConfig, xAxisData, seriesData} = this.props.BarLinesData;
 
@@ -64,7 +64,7 @@ class LineAndHistogram extends Component {
         series: seriesData
       };
 
-      console.log("Histogram option: ", option);
+      // console.log("Histogram option: ", option);
 
       return (
         <div className='examples'>

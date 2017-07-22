@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -16,25 +16,7 @@ import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
 
-function TimerFunction() {
-  console.log("TimerFunction: ", this.state.chartIndex);
-  if (this.state.chartIndex == 0) this.setState({ chartIndex: 1 });
-  else if (this.state.chartIndex == 1) this.setState({ chartIndex: 2 });
-  else this.setState({ chartIndex: 0 });
-}
-
 class BigData extends Component {
-  constructor(props) {
-      super(props)
-      this.state = { chartIndex: 0, timeTicket: null }
-  }
-  componentDidMount() {
-      this.state.timeTicket && clearInterval(this.state.timeTicket);
-      this.setState({ timeTicket: setInterval(TimerFunction.bind(this), 5000) });
-  }
-  componentWillUnmount() {
-      this.state.timeTicket && clearInterval(this.state.timeTicket);
-  }
  	render() {
  		return (
 			<MuiThemeProvider>
@@ -44,7 +26,7 @@ class BigData extends Component {
 				    		<tr>
   								<td style={tdStyle}>
   									<CardProvider className="cardProvider" title="折线图和柱状图" style={cardStyles}>
-  										<LineAndHistogram	BarLinesData={BarLinesDataArray[this.state.chartIndex]}	/>
+  										<LineAndHistogram	BarLinesData={BarLinesDataArray[2]}	/>
   									</CardProvider>
   								</td>
   								<td style={tdStyle}>
@@ -100,14 +82,14 @@ const cardStyles = {
     }
 };
 
-const echartsStyle = {
-	canvas: {
-		width: '400px',
-		height: '500px',
-		margin: '0 0 0 -50%',
-		left: '50%'
-	}
-}
+// const echartsStyle = {
+// 	canvas: {
+// 		width: '400px',
+// 		height: '500px',
+// 		margin: '0 0 0 -50%',
+// 		left: '50%'
+// 	}
+// }
 
 const tdStyle = {
 	width: '33%',
