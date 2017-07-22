@@ -57,6 +57,9 @@ class DynamicChartComponent extends Component {
             yAxis: yAixsConf,
             series: dynamicSeries
         };
+
+        console.log("dynamic option: ", option);
+
         this.setState({ option: option });
     }
     componentDidMount() {

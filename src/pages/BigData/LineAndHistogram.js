@@ -4,6 +4,8 @@ import echarts from 'echarts';
 
 class LineAndHistogram extends Component {
     render() {
+      console.log("LineAndHistogram render +");
+
       const {yAxisConfig, xAxisData, seriesData} = this.props.BarLinesData;
 
       const legendData = seriesData.map((item) => {
@@ -12,9 +14,23 @@ class LineAndHistogram extends Component {
 
       yAxisConfig.forEach((item) => {
         item.type = 'value';
+        item.scale = true;
+        item.boundaryGap = [0, 0];
         item.nameTextStyle = { color: '#BFDAED' };
         item.axisLabel.textStyle = { color: '#fff' }
       });
+
+      seriesData.forEach((item) => {
+        if (item.type === 'bar') {
+          item.itemStyle = {
+              normal: { barBorderRadius: 4, opacity: '0.8' },
+              emphasis: { opacity: '1' }
+          };
+          item.animationEasing = 'elasticOut';
+          item.animationDelay = function (idx) { return idx * 10 };
+          item.animationDelayUpdate = function (idx) { return idx * 10 };
+        }
+      })
 
       const option = {
         animation: true,
@@ -33,9 +49,11 @@ class LineAndHistogram extends Component {
           data: legendData,
           textStyle: { color: '#BFDAED' },
         },
+        grid: { top: 60, left: 30, right: 60, bottom:30 },
         xAxis: [
           {
             type: 'category',
+            boundaryGap: true,
             data: xAxisData,
             nameTextStyle: { color: '#BFDAED' },
             axisPointer: { type: 'shadow' },
@@ -45,6 +63,8 @@ class LineAndHistogram extends Component {
         yAxis: yAxisConfig,
         series: seriesData
       };
+
+      console.log("Histogram option: ", option);
 
       return (
         <div className='examples'>
