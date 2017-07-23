@@ -23,7 +23,7 @@ class ChartData {
     setInterval(() => {
       this.chartdata.seriesData[0].data.shift();
       this.chartdata.seriesData[0].data.push(Math.round(Math.random() * 50000));
-    }, 1000);
+    }, 5000);
   }
 }
 
