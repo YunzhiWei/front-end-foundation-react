@@ -11,6 +11,7 @@ import DynamicChart from './BigData/DynamicChart';
 import RadarChart from './BigData/RadarChart';
 import CoverageArea from './BigData/CoverageArea';
 import BarAndPie from './BigData/BarAndPie';
+import WeiboData from './BigData/WeiboData'
 
 import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
 import { FromToLinesDataArray } from './BigData/data/MapExampleFromToLines';
@@ -80,8 +81,8 @@ class BigData extends Component {
 				    				</CardProvider>
 				    			</td>
 				    			<td>
-    				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-
+    				                <CardProvider className="cardProvider" title="微博签到点亮中国" style={cardStyles}>
+    				                	<WeiboData />
 				    				</CardProvider>
 				    			</td>
 				    		</tr>
