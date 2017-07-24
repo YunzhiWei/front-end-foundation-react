@@ -7,6 +7,7 @@ import LineAndHistogram from './BigData/LineAndHistogram';
 
 
 
+// chart data
 
 const dynamicSeries = [
 	{
@@ -21,10 +22,6 @@ const dynamicSeries = [
   }
 ];
 
-const legendData = dynamicSeries.map((item, i) => {
-    return item.name;
-});
-
 const dynamicXAxisConfig = [
 	{
     data: [1,2,3,4,5,6]
@@ -36,28 +33,27 @@ const dynamicYAxisConfig = [
 	{ name: '游船数量', max:12, min:0 }
 ]
 
+// chart view
+
 const dynamicOption = {
     tooltip: { trigger: 'axis' },
-    legend: { data: legendData, textStyle: { color: '#fff' } },
+    legend: { textStyle: { color: '#f' } },
     grid: { top: 60, left: 30, right: 60, bottom:30 },
-    xAxis: dynamicXAxisConfig,
-    yAxis: dynamicYAxisConfig,
-    series: dynamicSeries
 };
 
 function PrepareDynamicOption() {
   dynamicYAxisConfig.forEach((item) => {
     item.type = 'value';
     item.scale = true;
-    item.nameTextStyle = { color: '#BFDAED' };
+    item.nameTextStyle = { color: '#BF' };
     item.boundaryGap = [0.2, 0.2];
-    item.axisLabel = { textStyle : { color: '#fff' } };
+    item.axisLabel = { textStyle : { color: '#f' } };
   });
 
   dynamicXAxisConfig.forEach((item) => {
     item.type = 'category';
     item.boundaryGap = true;
-    item.axisLabel = { textStyle : { color: '#fff' } };
+    item.axisLabel = { textStyle : { color: '#ff' } };
   });
 
   dynamicSeries.forEach((item) => {
@@ -71,35 +67,52 @@ function PrepareDynamicOption() {
       item.animationDelayUpdate = function (idx) { return idx * 10 };
     }
   });
+
+	const legendData = dynamicSeries.map((item, i) => {
+	    return item.name;
+	});
+	dynamicOption.legend.data = legendData;
+	dynamicOption.xAxis       = dynamicXAxisConfig;
+	dynamicOption.yAxis       = dynamicYAxisConfig;
+	dynamicOption.series      = dynamicSeries;
+
+
 }
 
 
 @inject("chartdata") @observer
 class TestPage extends Component {
   constructor(props) {
-      super(props)
+      super(props);
+			PrepareDynamicOption();
   }
 
   render() {
     const {chartdata} = this.props;
 
-    const bardata = toJS(chartdata.chartdata);
+    // const bardata = toJS(chartdata.chartdata);
 
-    PrepareDynamicOption();
+		const newOption = {...dynamicOption};
+		newOption.series.forEach((s, id) => {
+			s.data.shift();
+			s.data.push(chartdata.newdata[id]);
+		});
+		// newOption.series[0].data.shift();
+		// newOption.series[0].data.push(chartdata.newdata);
 
     return (
       <div className="AboutPage">
         <h2>This is the Test Page</h2>
         <p>
           income:
-          <span> {chartdata.income} </span>
+          {/* <span> {chartdata.income} </span> */}
         </p>
         <div>
-          <LineAndHistogram	BarLinesData={bardata}	/>
+          {/* <LineAndHistogram	BarLinesData={bardata}	/> */}
         </div>
         <div className='parent' style={{position: 'relative'}}>
           <ReactEcharts ref='echarts_react'
-            option={dynamicOption}
+            option={newOption}
             style={{height: 400,width: 850,margin: '0 0 0 -50%',left: '50%'}}
           />
         </div>

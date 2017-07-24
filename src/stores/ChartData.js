@@ -1,6 +1,7 @@
 import { observable } from 'mobx';
 
 class ChartData {
+  @observable newdata = 0;
   @observable chartdata = {
     yAxisConfig: [
       {
@@ -21,8 +22,9 @@ class ChartData {
 
   constructor() {
     setInterval(() => {
-      this.chartdata.seriesData[0].data.shift();
-      this.chartdata.seriesData[0].data.push(Math.round(Math.random() * 50000));
+      // this.chartdata.seriesData[0].data.shift();
+      // this.chartdata.seriesData[0].data.push(Math.round(Math.random() * 50000));
+      this.newdata = [Math.round(Math.random() * 10), Math.round(Math.random() * 10)]
     }, 5000);
   }
 }
