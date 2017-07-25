@@ -76,7 +76,6 @@ function PrepareDynamicOption() {
 	dynamicOption.yAxis       = dynamicYAxisConfig;
 	dynamicOption.series      = dynamicSeries;
 
-
 }
 
 
@@ -99,6 +98,11 @@ class TestPage extends Component {
 		});
 		// newOption.series[0].data.shift();
 		// newOption.series[0].data.push(chartdata.newdata);
+
+		let axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+		newOption.xAxis[0].data.shift();
+		newOption.xAxis[0].data.push(axisData);
+
 
     return (
       <div className="AboutPage">
