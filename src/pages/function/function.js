@@ -72,6 +72,9 @@ function airportCoord(arg) {
 
 }
 
+
+
+
 function echartsOption(arg) {
 	return blockArea(arg);
 }
