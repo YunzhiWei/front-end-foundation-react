@@ -1,28 +1,22 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import CardProvider from './BigData/mui/CardProvider';
-
 import SalesVolume from './BigData/SalesVolume';
 import AirportCoordComponent from './BigData/AirportCoord';
 import LineAndHistogram from './BigData/LineAndHistogram';
 import DynamicChartComponent from './BigData/DynamicChartComponent';
 import RadarChart from './BigData/RadarChart';
-import CoverageArea from './BigData/CoverageArea';
-import BarAndPie from './BigData/BarAndPie';
-import WeiboData from './BigData/WeiboData';
 
 import BlockAreaDataArray from './BigData/data/MapExampleBlockArea';
 import FromToLinesDataArray from './BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
-import coverageAreaData from './BigData/data/CoverageAreaData';
-import barAndPieArray from './BigData/data/BarAndPieData';
-import weiboData from './BigData/data/weibo';
 
-import geoCoordMap from './BigData/data/geoCoordMap';
+import './function/function'
 
 function TimerFunction() {
   console.log("TimerFunction: ", this.state.chartIndex);
@@ -62,9 +56,7 @@ class BigData extends Component {
   								</td>
   								<td style={tdStyle}>
   									<CardProvider className="cardProvider" title="国内游客去向" style={cardStyles}>
-  										<AirportCoordComponent 
-                        geoCoordMap={geoCoordMap}
-                        FromToLinesData={FromToLinesDataArray[1]} />
+  										<AirportCoordComponent FromToLinesData={FromToLinesDataArray[1]} />
   									</CardProvider>
   								</td>
 				    		</tr>
@@ -84,27 +76,6 @@ class BigData extends Component {
 				    				</CardProvider>
 				    			</td>
 				    		</tr>
-                  <tr>
-                    <td colSpan="3">
-                      <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-                        <CoverageArea 
-                          coverageAreaData={coverageAreaData}
-                          geoCoordMap={geoCoordMap} />
-                      </CardProvider>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan="2">
-                      <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-                        <BarAndPie barAndPieArray={barAndPieArray[0]} />
-                      </CardProvider>
-                    </td>
-                    <td>
-                      <CardProvider className="cardProvider" title="微博签到点亮中国" style={cardStyles}>
-                        <WeiboData weiboData={weiboData} />
-                      </CardProvider>
-                    </td>
-                  </tr>
 				    	</tbody>
 				    </table>
 			    </div>
