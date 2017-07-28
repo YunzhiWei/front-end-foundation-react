@@ -10,8 +10,6 @@ import LineAndHistogram from './BigData/LineAndHistogram';
 import DynamicChartComponent from './BigData/DynamicChartComponent';
 import RadarChart from './BigData/RadarChart';
 
-import BlockAreaDataArray from './BigData/data/MapExampleBlockArea';
-import FromToLinesDataArray from './BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
