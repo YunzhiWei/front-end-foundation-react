@@ -78,6 +78,20 @@ function PrepareDynamicOption() {
 
 }
 
+async function fetchAll() {
+	console.log("componentDidMount +");
+	const response = await fetch('http://localhost:3000/api/v1/stickers')
+	const status = await response.status;
+
+	if (status === 200) {
+		const body = await response.json();
+		console.log("body json: ", body);
+	}
+	else {
+		console.log("Status is not 200");
+	}
+	console.log("componentDidMount -");
+}
 
 @inject("chartdata") @observer
 class TestPage extends Component {
@@ -85,6 +99,10 @@ class TestPage extends Component {
       super(props);
 			PrepareDynamicOption();
   }
+
+	componentDidMount() {
+		fetchAll();
+	}
 
   render() {
     const {chartdata} = this.props;
