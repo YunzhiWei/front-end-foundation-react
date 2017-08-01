@@ -17,7 +17,6 @@ class AboutPage extends Component {
     const rootRef = firebase.database().ref().child('react');
     const speedRef = rootRef.child('speed');
     speedRef.on('value', snap => {
-      console.log("sync up")
       this.setState({speed: snap.val()});
     });
   }

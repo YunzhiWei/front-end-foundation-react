@@ -1,42 +1,8 @@
 import geoCoordMap from '../BigData/data/geoCoordMap';
 
-
-// 背景色
-const backgroundColor = 'transparent';
-
-// hover提示框
-const tooltip = { trigger: 'item' };
-
-const legend = {
-	orient: 'horizontal',
-	top: 'top',
-	textStyle: { color: '#f' },
-	// data: legendData
-};
-
-const visualMap = {
-	// min: visualMin,
-	// max: visualMax,
-	right: 'right',
-	top: 'bottom',
-	// text: 'visualLabel',
-	calculabel: true,
-	textStyle: { color: '#bfdaed' }
-};
-
-const geo = { 
-	roam: false,
-	type: 'map',
-	map: '',
-	itemStyle: { 
-		normal: { color: '#323c47', borderColor: '#122E41' },
-        emphasis: { areaColor: '#2a333d' }
-    }
-};
-
 // 原SalesVolume
 function blockArea(arg) {
-	const {geoMapName, map, visualMin, visualMax, visualLabel, mapDataSeries} = arg;
+	const {geoMapName, visualMin, visualMax, visualLabel, mapDataSeries} = arg;
     mapDataSeries.forEach((item) => {
         item.type = "map";
         item.mapType = geoMapName,
@@ -49,25 +15,42 @@ function blockArea(arg) {
             }
         };
     });
-    const legendData = mapDataSeries.map((item) => {
-        return item.name;
-    });
+    const legendData = mapDataSeries.map((item) => { return item.name });
 	const option = {
-		backgroundColor,
-		tooltip,
-		legend,
-		visualMap,
-		geo,
+		backgroundColor: 'transparent',
+		tooltip: { trigger: 'item' },
+		legend: { 
+            orient: 'horizontal',
+            top: 'top',
+            textStyle: { color: '#f' },
+        },
+		visualMap: {
+            right: 'right',
+            top: 'bottom',
+            calculable: true,
+            textStyle: { color: '#BFDAED' },
+        },
+		geo: { 
+            roam: false,
+            type: 'map',
+            map: '',
+            itemStyle: { 
+                normal: { color: '#48d8fd', borderColor: '#122E41' },
+                emphasis: { areaColor: '#2a333d' }
+            }
+        },
+        color: ['#48d8fd', '#ff0', '#27f'],
 		series: mapDataSeries
 	}
 	option.legend.data = legendData;
 	option.visualMap.min = visualMin;
 	option.visualMap.max = visualMax;
-	option.text = visualLabel;
+	option.visualMap.text = visualLabel;
 	option.geo.map = geoMapName;
 	return option;
 }
 
+// 飞机线
 function airportCoord(arg) {
 	const {geoMapName, directionOut, fromtoLines, iconPath} = arg;
     function convertName2Coor(dataItem) {
@@ -93,7 +76,7 @@ function airportCoord(arg) {
             value: geoCoordMap[dataItem.to].concat([dataItem.value])
         };
     };
-    const series = { series: [] };
+    const series = [];
     fromtoLines.forEach((item, i) => {
         const staticlines = {
             name: item.legendName,
@@ -137,7 +120,7 @@ function airportCoord(arg) {
             },
             data: item.data.map(convertName2Coor)
         };
-        if ((iconPath != undefined) && (iconPath != null)) {
+        if ((iconPath !== undefined) && (iconPath !== null)) {
             dynamiclines.effect = {
                 show: true,
                 period: 6,
@@ -174,31 +157,211 @@ function airportCoord(arg) {
             },
             data: item.data.map(directionOut ? convertTargetName2Marker : convertSourceName2Marker)
         };
-        series.series.push(staticlines, dynamiclines, markers);
+        series.push(staticlines, dynamiclines, markers);
     });
     const option = {
-    	backgroundColor,
-    	tooltip,
-    	legend,
-    	geo,
-    	series,
+    	backgroundColor: 'transparent',
+        tooltip: { trigger: 'item' },
+    	legend: { 
+            orient: 'horizontal',
+            top: 'top',
+            textStyle: { color: '#f' },
+        },
+    	geo: { 
+            roam: false,
+            type: 'map',
+            map: '',
+            itemStyle: { 
+                normal: { color: '#323c47', borderColor: '#122E41' },
+                emphasis: { areaColor: '#2a333d' }
+            }
+        },
+    	series
     }
     option.legend.data = fromtoLines.map((item) => { return item.legendName; });
     option.geo.roam = true;
+    option.geo.map = geoMapName;
+    return option;
 }
 
 // 原LineAndHistogram
 function barLines(arg) {
-	// body...
+	
+	const { yAxisConfig, xAxisData, seriesData } = arg;
+
+    yAxisConfig.forEach((item) => {
+        item.type = 'value';
+        item.scale = true;
+        item.boundaryGap = [0, 0];
+        item.nameTextStyle = {
+            color: '#BFDAED'
+        };
+        item.axisLabel.textStyle = {
+            color: '#fff'
+        }
+    });
+
+    seriesData.forEach((item) => {
+        if (item.type === 'bar') {
+            item.itemStyle = {
+                normal: {
+                    barBorderRadius: 4,
+                    opacity: '0.8'
+                },
+                emphasis: {
+                    opacity: '1'
+                }
+            };
+            item.animationEasing = 'elasticOut';
+            item.animationDelay = function(idx) {
+                return idx * 10
+            };
+            item.animationDelayUpdate = function(idx) {
+                return idx * 10
+            };
+        }
+    })
+
+	const legendData = seriesData.map((item) => { return item.name });
+
+    const option = {
+        animation: true,
+        animationDuration: 1000,
+        animationEasing: 'cubicInOut',
+        animationDurationUpdate: 1000,
+        animationEasingUpdate: 'cubicInOut',
+        backgroundColor: 'transparent',
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                crossStyle: {
+                    color: '#999'
+                }
+            }
+        },
+        legend: {
+            data: legendData,
+            textStyle: {
+                color: '#BFDAED'
+            },
+        },
+        grid: {
+            top: 60,
+            left: 30,
+            right: 60,
+            bottom: 30
+        },
+        xAxis: [{
+            type: 'category',
+            boundaryGap: true,
+            data: xAxisData,
+            nameTextStyle: {
+                color: '#BFDAED'
+            },
+            axisPointer: {
+                type: 'shadow'
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#fff'
+                }
+            }
+        }],
+        yAxis: yAxisConfig,
+        series: seriesData
+    };
+    return option;
+}
+
+// 动态折柱线
+function dynamicChart(arg) {
+	function fetchNewDate () {
+	    let axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+	    let newOption = Object.assign({}, option);
+	    newOption.series.map((item, i)=>{
+	        item.data.shift();
+	        item.data.push(item.type === 'line' ? Math.round(Math.random() * 10) : (Math.random() * 10 + 5).toFixed(1) - 0)
+	        return item.data
+	    })
+	    newOption.xAxis[0].data.shift();
+	    newOption.xAxis[0].data.push(axisData);
+	}
+	const { dynamicSeries, dynamicXAxis, dynamicYAxis } = arg;
+	const yAixsConf = dynamicYAxis.map((item) => {
+	    item.type = 'value';
+	    item.scale = true;
+	    item.nameTextStyle = { color: '#BFDAED' };
+	    item.boundaryGap = [0.2, 0.2];
+	    item.axisLabel = { textStyle : { color: '#fff' } };
+	    return item;
+	});
+	const xAixsConf = dynamicXAxis.map((item) => {
+	    item.type = 'category';
+	    item.boundaryGap = true;
+	    item.axisLabel = { textStyle : { color: '#fff' } };
+	    return item;
+	});
+	const legendData = dynamicSeries.map((item, i) => { return item.name });
+	dynamicSeries.forEach((item) => {
+	    if (item.type === 'bar') {
+	      item.itemStyle = {
+	          normal: { barBorderRadius: 4, opacity: '0.8' },
+	          emphasis: { opacity: '1' }
+	      };
+	      item.animationEasing = 'elasticOut';
+	      item.animationDelay = function (idx) { return idx * 10 };
+	      item.animationDelayUpdate = function (idx) { return idx * 10 };
+	    }
+	});
+	const option = {
+	    tooltip: { trigger: 'axis' },
+	    legend: { data: legendData, textStyle: { color: '#fff' } },
+	    grid: { top: 60, left: 30, right: 60, bottom:30 },
+	    xAxis: xAixsConf,
+	    yAxis: yAixsConf,
+	    series: dynamicSeries
+	};
+	setInterval(fetchNewDate(), 3000);
+	return option;
+}
+
+// 雷达图
+function radarChart(arg) {
+	const { radarSeries, radarIndicator } = arg;
+	radarSeries.type = 'radar';
+	const legendData = radarSeries.data.map((item) => { return item.name });
+	const option = {
+	    legend: {
+	        data: legendData,
+	        textStyle: { color: '#fff' },
+	    },
+	    radar: radarIndicator,
+	    series: radarSeries
+	};
+	return option;
 }
 
 
 
-
-
-
-function echartsOption(arg) {
-	return blockArea(arg);
+function echartsOption(data, name) {
+	switch(name) {
+		case 'SalesVolume':
+			return blockArea(data);
+			break;
+		case 'AirportCoordComponent':
+			return airportCoord(data);
+			break;
+		case 'BarLines':
+			return barLines(data);
+			break;
+		case 'DynamicChart':
+			return dynamicChart(data);
+			break;
+		case 'RadarChart':
+			return radarChart(data);
+			break;
+	}
 }
 
 export default echartsOption;

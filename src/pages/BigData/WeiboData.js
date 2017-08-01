@@ -78,8 +78,6 @@ class WeiboData extends Component {
 	render() {
         const weiboData = this.props.weiboData;
 		weiboData.map(function (serieData, idx) {
-		    console.log(serieData[0])
-		    console.log(serieData[1])
 		    var px = serieData[0] / 1000;
 		    var py = serieData[1] / 1000;
 		    var res = [[px, py]];

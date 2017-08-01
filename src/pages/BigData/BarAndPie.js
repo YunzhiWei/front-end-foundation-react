@@ -88,7 +88,6 @@ class BarAndPie extends Component {
                     radius: [0, '40%'],
                     center: ['75%', '50%'],
                     data: Object.keys(pieJson.data).map(function (key) {
-                        console.log(key);
                         return {
                             name: key.replace('.js', ''),
                             value: pieJson.data[key]
