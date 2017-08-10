@@ -1,6 +1,4 @@
-import React, {
-    Component
-} from "react";
+import React, { Component } from "react";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -8,12 +6,8 @@ import ReactEcharts from './BigData/lib';
 import CardProvider from './BigData/mui/CardProvider';
 import echartsOption from './function/function';
 
-import {
-    BlockAreaDataArray
-} from './BigData/data/MapExampleBlockArea';
-import {
-    FromToLinesDataArray
-} from './BigData/data/MapExampleFromToLines';
+import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
+import { FromToLinesDataArray } from './BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
@@ -58,7 +52,7 @@ class BigData extends Component {
     render() {
         return (
             <MuiThemeProvider>
-  				<div>
+  				<div className="large-screen">
       				<CardProvider className="col-md-6 col-lg-4" title="折线图和柱状图" color="light-green">
       					<ReactEcharts ref='echarts_react' option={echartsOption(BarLinesDataArray[this.state.chartIndex], 'BarLines')} />
       				</CardProvider>

@@ -3,7 +3,7 @@ import './css/base.css';
 import './css/large-screen.css';
 
 const CardProvider = (props) => (
-    <div className={props.className} style={{margin: '15px auto'}}>
+    <div className={props.className} style={{margin: '1em auto'}}>
           <div className={"echart-list "+props.color} >
               <div className="border-line standard top-line"></div>
               <div className="border-line vertical right-line"></div>
@@ -38,7 +38,7 @@ const CardProvider = (props) => (
                       </span>
                   </div>
               </div>
-              <div className="content" id="echarts-content1" style={{position: 'relative', height: '400px'}}>
+              <div className="content" id="echarts-content1">
                   {props.children}
               </div>
           </div>
