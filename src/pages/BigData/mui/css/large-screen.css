@@ -94,6 +94,7 @@
   border-bottom-left-radius: 4px;
 }
 .echart-list .title-box {
+  height: 4em;
   text-align: center;
 }
 .echart-list .title-box .title-mess {
@@ -195,7 +196,7 @@
 }
 .echart-list .content {
   width: 100%;
-  height: 325px;
+  height: calc(100% - 4em);
 }
 .echart-list .content img {
   width: 100%;
