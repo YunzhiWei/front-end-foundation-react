@@ -96,15 +96,11 @@ class WeiboData extends Component {
 		    return res;
 		});
 		return (
-			<div className='examples'>
-			  <div className='parent' style={{position: 'relative'}}>
 			    <ReactEcharts
-			      option={option}
-			      style={{width: '400px',height: '400px',margin: '0 0 0 -50%',left: '50%'}}
-			      className='react_for_echarts'
+			        option={option}
+                    style={{width: '100%', height: '100%'}}
+			        className='react_for_echarts'
 			    />
-			  </div>
-			</div>
 		)
 	}
 }

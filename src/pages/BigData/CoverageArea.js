@@ -242,15 +242,11 @@ class CoverageArea extends Component{
         option.series[1].data = convertedData[1];
 
 		return (
-		  	<div className='examples'>
-		    	<div className='parent' style={{position: 'relative'}}>
-		      		<ReactEcharts
-		        		option={option}
-		        		style={{width: '1280px',height: '400px',margin: '0 0 0 -50%',left: '50%'}}
-		        		className='react_for_echarts CoverageArea'
-		      		/>
-		    	</div>
-		  	</div>
+      		<ReactEcharts
+        		option={option}
+                style={{width: '100%', height: '100%'}}
+        		className='react_for_echarts CoverageArea'
+      		/>
 		);
 	}
 }

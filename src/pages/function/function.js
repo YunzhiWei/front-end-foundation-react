@@ -5,7 +5,7 @@ function blockArea(arg) {
 	const {geoMapName, visualMin, visualMax, visualLabel, mapDataSeries} = arg;
     mapDataSeries.forEach((item) => {
         item.type = "map";
-        item.mapType = geoMapName,
+        item.mapType = geoMapName;
         item.label = {
             normal: {
                 show: true,
@@ -248,8 +248,8 @@ function barLines(arg) {
         },
         grid: {
             top: 60,
-            left: 30,
-            right: 60,
+            left: 50,
+            right: 50,
             bottom: 30
         },
         xAxis: [{
@@ -317,7 +317,7 @@ function dynamicChart(arg) {
 	const option = {
 	    tooltip: { trigger: 'axis' },
 	    legend: { data: legendData, textStyle: { color: '#fff' } },
-	    grid: { top: 60, left: 30, right: 60, bottom:30 },
+	    grid: { top: 60, left: 50, right: 50, bottom:30 },
 	    xAxis: xAixsConf,
 	    yAxis: yAixsConf,
 	    series: dynamicSeries
@@ -339,6 +339,7 @@ function radarChart(arg) {
 	    radar: radarIndicator,
 	    series: radarSeries
 	};
+    option.radar.center = ['50%', '65%'];
 	return option;
 }
 
@@ -348,19 +349,16 @@ function echartsOption(data, name) {
 	switch(name) {
 		case 'SalesVolume':
 			return blockArea(data);
-			break;
 		case 'AirportCoordComponent':
 			return airportCoord(data);
-			break;
 		case 'BarLines':
 			return barLines(data);
-			break;
 		case 'DynamicChart':
 			return dynamicChart(data);
-			break;
 		case 'RadarChart':
 			return radarChart(data);
-			break;
+        default :
+            return;
 	}
 }
 
