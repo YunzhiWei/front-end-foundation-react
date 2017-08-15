@@ -98,13 +98,11 @@ class BarAndPie extends Component {
         }
 
         return (
-            <div className='examples'>
-                <div className='parent' style={{position: 'relative'}}>
-                    <ReactEcharts
-                        option={option}
-                        style={{height: 400,width: 800,margin: '0 0 0 -50%',left: '50%'}} />
-                </div>
-            </div>
+            <ReactEcharts
+              option={option}
+              style={{width: '100%',height: '100%'}}
+              className='react_for_echarts'
+            />
         );
     }
 };
