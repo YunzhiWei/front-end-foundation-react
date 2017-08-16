@@ -10,7 +10,7 @@ class AirportCoordComponent extends Component{
         return (
             <ReactEcharts
               option={option}
-              style={{width: '100%',height: '100%'}}
+              style={{width: '100%', height: '100%'}} 
               className='react_for_echarts'
             />
         );

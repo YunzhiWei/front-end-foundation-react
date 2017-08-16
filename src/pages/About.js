@@ -4,7 +4,7 @@ import DevTools from 'mobx-react-devtools';
 
 import * as firebase from 'firebase';
 
-@inject("timer", "counter") @observer
+@inject("timer", "counter", "dynamicChartStore") @observer
 class AboutPage extends Component {
   constructor() {
     super();
