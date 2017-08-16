@@ -222,7 +222,7 @@ class CoverageArea extends Component{
                     symbol: 'none',
                     itemStyle: {
                         normal: {
-                            color: '#ddb926'
+                            color: '#47D8FD'
                         }
                     },
                     data: []

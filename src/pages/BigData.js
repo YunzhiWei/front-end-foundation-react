@@ -44,23 +44,23 @@ function TimerFunction() {
 }
 
 class BigData extends Component {
-    constructor(props) {
-        super(props)
-        this.state = { chartIndex: 0, timeTicket: null }
-    }
-    componentDidMount() {
-        this.state.timeTicket && clearInterval(this.state.timeTicket);
-        this.setState({ timeTicket: setInterval(TimerFunction.bind(this), 5000) });
-    }
-    componentWillUnmount() {
-        this.state.timeTicket && clearInterval(this.state.timeTicket);
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = { chartIndex: 0, timeTicket: null }
+    // }
+    // componentDidMount() {
+    //     this.state.timeTicket && clearInterval(this.state.timeTicket);
+    //     this.setState({ timeTicket: setInterval(TimerFunction.bind(this), 5000) });
+    // }
+    // componentWillUnmount() {
+    //     this.state.timeTicket && clearInterval(this.state.timeTicket);
+    // }
     render() {
         return (
             <MuiThemeProvider>
   				    <div className="large-screen">
           				<CardProvider className="col-md-3 col-lg-3" title="折线图和柱状图" color="light-green">
-          					  <ReactEcharts ref='echarts_react' option={echartsOption(BarLinesDataArray[this.state.chartIndex], 'BarLines')} style={{width: '100%', height: '100%'}} />
+          					  <ReactEcharts ref='echarts_react' option={echartsOption(BarLinesDataArray[1], 'BarLines')} style={{width: '100%', height: '100%'}} />
           				</CardProvider>
           				<CardProvider className="col-md-3 col-lg-3" title="江西省年均降雨量" color="bright-white">
                       <ReactEcharts ref='echarts_react' option={echartsOption(BlockAreaDataArray[1], 'SalesVolume')} style={{width: '100%', height: '100%'}} />
