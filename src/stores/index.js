@@ -1,11 +1,11 @@
 import Timer from './Timer';
 import Counter from './Counter';
-import DynamicChartStore from './DynamicChartStore';
+import EchartsData from './EchartsData';
 
 const stores = {
   timer: new Timer(),
   counter: new Counter(),
-  dynamicChartStore: new DynamicChartStore()
+  echartsData: new EchartsData()
 }
 
 export default stores;

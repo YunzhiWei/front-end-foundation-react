@@ -1,0 +1,16 @@
+.echart-list { height: 100%; }
+/*大数据标题 start */
+.large-screen .bigdata_title { width: 60%; height: 290px; font-size: 0px; padding: 50px 0; margin: 0 auto; text-align: center; color: #48D8FD; }
+.bigdata_title span { display: inline-block; font-size: 135px; }
+.bigdata_l { width: 30%; height: 70%; margin-top: 50px; float: left; background-position: center; background: url(../images/bigdata_l.png); background-repeat: no-repeat; background-size: 100% 100%; }
+.bigdata_r { width: 30%; height: 70%; margin-top: 50px; float: left; background-position: center; background: url(../images/bigdata_r.png); background-repeat: no-repeat; background-size: 100% 100%; }
+.bigdata_c { width: 40%; height: 100%; float: left; }
+/*大数据标题 end */
+/*大数据图表 start */
+.large-screen .bigdata_content { width: 100%; height: 2950px; display: -ms-flexbox; display: flex; display: -webkit-flex; }
+.bigdata_content .c_content { height: 100%; width: 1920px; display: -ms-flexbox; display: flex; display: -webkit-flex; -ms-flex-direction: column; flex-direction: column; padding: 0 50px; }
+.bigdata_content div.c_2 { width: 2560px; }
+.bigdata_content div.c_3 { width: 1280px; }
+.bigdata_content .c_content .cards { width: 100%; height: 980px; }
+.bigdata_content .c_content .cards:first-child { width: 100%; height: 690px; }
+/*大数据图表 end */

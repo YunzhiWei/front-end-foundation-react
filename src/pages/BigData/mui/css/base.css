@@ -22,7 +22,7 @@ input,textarea,select,optgroup,option{font-size:12px; vertical-align: middle;}
 
 /*--------------------------------------------------------------------------------------------------------------------------*/
 /* 自定类样式 开始 */
-html{width:100%;color:#333;}
+html{color:#333;}
 body{font-family:"微软雅黑"; font-size:14px; }
 a{text-decoration:none; color:#333;}
 input{border:1px solid #999;}
