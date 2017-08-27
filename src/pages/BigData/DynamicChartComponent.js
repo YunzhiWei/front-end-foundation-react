@@ -4,7 +4,7 @@ import echartsOption from '../function/function';
 
 class DynamicChartComponent extends Component {
     render() {
-        const option = echartsOption(this.props, 'DynamicChart');
+        const option = echartsOption(this.props.dynamicChart, 'DynamicChart');
         return (
             <ReactEcharts
               option={option}

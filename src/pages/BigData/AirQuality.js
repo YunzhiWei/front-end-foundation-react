@@ -7,7 +7,7 @@ import echartsOption from '../function/function';
 class AirQualityComponent extends Component {
 	render() {
 		const { echartsData } = this.props;
-		const option = echartsOption(echartsData.PM25.aqi, 'AirQuality');
+		const option = echartsOption(echartsData.PM25, 'AirQuality');
 		return (
 		    <ReactEcharts
 		      option={option}

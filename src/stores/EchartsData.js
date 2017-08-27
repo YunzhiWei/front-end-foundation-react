@@ -55,7 +55,8 @@ class EchartsData {
                 })());
             }
             return data;
-        })()
+        })(),
+        nowAqi: 0
     }
     constructor(){
         var i = 0;
@@ -171,7 +172,7 @@ class EchartsData {
                     json.result.aqi
                 ]
             })
-            console.log(self.PM25.aqi);
+            self.PM25.nowAqi = json.result.aqi;
         })
     }
 }
