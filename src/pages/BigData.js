@@ -11,6 +11,7 @@ import CardProvider from './BigData/mui/CardProvider';
 // import RadarChart from './BigData/RadarChart';
 // import WeiboData from './BigData/WeiboData';
 import ParkingLotComponent from './BigData/ParkingLot';
+import WeatherForeComponent from './BigData/WeatherFore';
 
 // import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
 // import { FromToLinesDataArray } from /BigData/data/MapExampleFromToLines';
@@ -59,7 +60,7 @@ class BigData extends Component {
                           </div>
                           <div className="c_content c_4">
                               <CardProvider className="cards" title="国内游客去向" color="light-green">
-                                  <ParkingLotComponent />
+                                  <WeatherForeComponent />
                               </CardProvider>
                               <CardProvider className="cards" title="国内游客去向" color="light-green">
                                   <ParkingLotComponent />

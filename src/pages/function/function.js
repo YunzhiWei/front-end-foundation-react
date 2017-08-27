@@ -1,3 +1,4 @@
+import echarts from 'echarts';
 import geoCoordMap from '../BigData/data/geoCoordMap';
 
 // 原SalesVolume
@@ -516,6 +517,149 @@ function parkingLotData(arg) {
     return option;
 }
 
+// 天气预报
+function weatherForeData(arg) {
+    var today = new Date().toLocaleDateString().slice(5, 9);   // ?m/dd
+    console.log(today);
+    const option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                lineStyle: {
+                    color: '#57617B'
+                }
+            }
+        },
+        legend: {
+            icon: 'rect',
+            // itemWidth: 14,
+            // itemHeight: 5,
+            itemGap: 13,
+            data: ['过去1天', '未来3天'],
+            right: '4%',
+            textStyle: {
+                fontSize: 30,
+                color: '#F1F1F3'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [{
+            type: 'category',
+            boundaryGap: false,
+            axisLine: {
+                lineStyle: {
+                    color: '#57617B'
+                }
+            },
+            data: ['昨天', '今天', '明天', '后天', '大后天']
+        }],
+        yAxis: [{
+            type: 'value',
+            axisTick: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#57617B'
+                }
+            },
+            axisLabel: {
+                margin: 10,
+                textStyle: {
+                    fontSize: 14
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#57617B'
+                }
+            }
+        }],
+        series: [{
+            name: '未来3天',
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+                normal: {
+                    width: 1
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(137, 189, 27, 0.3)'
+                    }, {
+                        offset: 0.8,
+                        color: 'rgba(137, 189, 27, 0)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgb(137,189,27)',
+                    label: {
+                        show: true,
+                        position: "bottom",
+                        fontSize: 30,
+                        formatter: function(p) {
+                            return p.dataIndex === 1 ? '' : p.value > 0 ? (p.value) : '';
+                        }
+                    }
+                }
+            },
+            connectNulls: true,
+            data: ['', 30.5, 34.2, 39.6, 42.5]
+        }, {
+            name: '过去1天',
+            type: 'line',
+            smooth: true,
+            symbolSize:10,
+            symbol:'circle',
+            lineStyle: {
+                normal: {
+                    width: 1
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(0, 136, 212, 0.3)'
+                    }, {
+                        offset: 0.8,
+                        color: 'rgba(0, 136, 212, 0)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgb(0,136,212)',
+                    label: {
+                        show: true,
+                        position: "bottom",
+                        fontSize: 30,
+                        formatter: function(p) {
+                            return p.value > 0 ? (p.value) : '';
+                        }
+                    }
+                }
+            },
+            data: [26.7, 30.5]
+        }]
+    }
+    return option;
+}
+
 function echartsOption(data, name) {
     switch(name) {
         case 'SalesVolume':
@@ -532,6 +676,8 @@ function echartsOption(data, name) {
             return weiboData(data);
         case 'ParkingLot':
             return parkingLotData(data);
+        case 'WeatherFore':
+            return weatherForeData(data);
         default :
             return;
     }

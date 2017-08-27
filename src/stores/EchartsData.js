@@ -9,7 +9,7 @@ class EchartsData {
         setInterval(function(){
             i = i === 5 ? 1 : i+1;
             self.fetchParkingDate(i);
-        }, 500);
+        }, 2000);
     }
     fetchParkingDate (index) {
         let self = this;
