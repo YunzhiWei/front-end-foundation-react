@@ -187,7 +187,6 @@ function airportCoord(arg) {
 
 // 原LineAndHistogram
 function barLines(arg) {
-    console.log(arg);
     const { yAxisConfig, xAxisData, seriesData } = arg;
 
     yAxisConfig.forEach((item) => {
@@ -350,13 +349,13 @@ function radarChart(arg) {
 function weiboData(arg) {
     const weiboData = arg;
     const option = {
-        legend: {
-            left: 'left',
-            data: ['强', '中', '弱'],
-            textStyle: {
-                color: '#ccc'
-            }
-        },
+        // legend: {
+        //     left: 'left',
+        //     data: ['强', '中', '弱'],
+        //     textStyle: {
+        //         color: '#ccc'
+        //     }
+        // },
         geo: {
             map: 'china',
             label: {
@@ -1077,6 +1076,7 @@ function airQualityData(arg) {
     return option;
 }
 
+// 资源使用量
 function resUtilizationData(argument) {
     var appusage_data = [{
         name: "app4",
@@ -1173,6 +1173,11 @@ function resUtilizationData(argument) {
         }]
     };
     return option;
+}
+
+// 热力图
+function heatMapDData(argument) {
+    // 仙女湖（27.711067, 114.798137）.
 }
 
 function echartsOption(data, name) {

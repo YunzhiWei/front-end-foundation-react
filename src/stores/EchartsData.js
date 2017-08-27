@@ -6,7 +6,7 @@ class EchartsData {
     @observable parking = {
         inUse: 0,
         all: 0
-    };
+    }
     @observable weather = {
         yesterday: {
             high: 0,
@@ -28,12 +28,34 @@ class EchartsData {
             day: 0
         }],
         min: 50
-    };
+    }
     @observable pass = {
         category: [],
         lineData: [],
         barData: [],
         dottedBase: new Date()
+    }
+    @observable PM25 = {
+        aqi: (function(){
+            let data = [];
+            let now = +new Date(1997, 9, 3);
+            let oneDay = 24 * 3600 * 1000;
+            let value = Math.random() * 1000;
+            for (let i = 0; i < 1000; i++) {
+                data.push((function(){
+                    now = new Date(+now + oneDay);
+                    value = value + Math.random() * 21 - 10;
+                    return {
+                        name: now.toString(),
+                        value: [
+                            [now.getHours(), now.getMinutes(), now.getSeconds()].join(':'),
+                            value
+                        ]
+                    }
+                })());
+            }
+            return data;
+        })()
     }
     constructor(){
         var i = 0;
@@ -44,6 +66,7 @@ class EchartsData {
             self.fetchPassDataPush();
         }, 5000);
         self.fetchWeatherData();
+        self.fetchPM25();
         self.fetchPassData();
     }
     fetchParkingData(index) {
@@ -127,6 +150,29 @@ class EchartsData {
         self.pass.barData.shift();
         self.pass.lineData.push(d + b);
         self.pass.lineData.shift();
+    }
+    fetchPM25() {
+        let self = this;
+        let appKey = 27807;
+        let sign = '3a0343bfe2324c0837afde0d26e9d0e7';
+        let url = 'http://api.k780.com/?app=weather.pm25' + '&appkey=' + appKey + '&sign=' + sign + '&weaid=245&format=json&jsoncallback=data';
+        fetchJsonp(url, {
+            jsonpCallback: 'custom_callback',
+            jsonpCallbackFunction: 'data'
+        }).then(function (data) {
+            return data.json();
+        }).then(function (json) {
+            let now = new Date();
+            self.PM25.aqi.shift();
+            self.PM25.aqi.push({
+                name: now.toString(),
+                value: [
+                    [now.getHours(), now.getMinutes(), now.getSeconds()].join(':'),
+                    json.result.aqi
+                ]
+            })
+            console.log(self.PM25.aqi);
+        })
     }
 }
 
