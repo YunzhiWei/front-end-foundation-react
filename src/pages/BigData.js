@@ -9,16 +9,17 @@ import CardProvider from './BigData/mui/CardProvider';
 // import LineAndHistogram from './BigData/LineAndHistogram';
 // import DynamicChartComponent from './BigData/DynamicChartComponent';
 // import RadarChart from './BigData/RadarChart';
-// import WeiboData from './BigData/WeiboData';
+import WeiboData from './BigData/WeiboData';
 import ParkingLotComponent from './BigData/ParkingLot';
 import WeatherForeComponent from './BigData/WeatherFore';
+import NumOfPassComponent from './BigData/NumOfPass';
 
 // import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
 // import { FromToLinesDataArray } from /BigData/data/MapExampleFromToLines';
 // import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 // import radarDataArray from './BigData/data/RadarChartData';
 // import dynamicChart from './BigData/data/dynamicChart';
-// import weiboData from './BigData/data/weibo.json';
+import weiboData from './BigData/data/weibo.json';
 
 class BigData extends Component {
     render() {
@@ -35,17 +36,15 @@ class BigData extends Component {
                               <CardProvider className="cards" title="停车场使用量" color="light-green">
                                   <ParkingLotComponent />
                               </CardProvider>
-                              <CardProvider className="cards" title="国内游客去向" color="light-green">
-                                  <ParkingLotComponent />
+                              <CardProvider className="cards" title="出入游客数量" color="light-green">
+                                  <NumOfPassComponent />
                               </CardProvider>
                               <CardProvider className="cards" title="国内游客去向" color="light-green">
                                   <ParkingLotComponent />
                               </CardProvider>
                           </div>
                           <div className="c_content c_2">
-                              <CardProvider className="cards" title="国内游客去向" color="light-green">
-                                  <ParkingLotComponent />
-                              </CardProvider>
+                              <WeiboData weiboData={weiboData} />
                               <CardProvider className="cards" title="国内游客去向" color="light-green">
                                   <ParkingLotComponent />
                               </CardProvider>
@@ -59,7 +58,7 @@ class BigData extends Component {
                               </CardProvider>
                           </div>
                           <div className="c_content c_4">
-                              <CardProvider className="cards" title="国内游客去向" color="light-green">
+                              <CardProvider className="cards" title="气温预报" color="light-green">
                                   <WeatherForeComponent />
                               </CardProvider>
                               <CardProvider className="cards" title="国内游客去向" color="light-green">

@@ -4,18 +4,18 @@ import { inject, observer } from 'mobx-react'
 import echartsOption from '../function/function';
 
 @inject("echartsData") @observer
-class WeatherForeComponent extends Component {
+class NumOfPassComponent extends Component {
 	render() {
 		const { echartsData } = this.props;
-		const option = echartsOption(echartsData.weather, 'WeatherFore');
+		const option = echartsOption(echartsData.pass, 'NumOfPass');
 		return (
 		    <ReactEcharts
 		      option={option}
 		      style={{width: '100%',height: '100%'}}
-		      className='WeatherFore'
+		      className='NumOfPass'
 		    />
 		);
 	}
 }
 
-export default WeatherForeComponent;
+export default NumOfPassComponent;

@@ -519,23 +519,43 @@ function parkingLotData(arg) {
 
 // 天气预报
 function weatherForeData(arg) {
-    var today = new Date().toLocaleDateString().slice(5, 9);   // ?m/dd
-    console.log(today);
+    let aHigh = arg.future.map(function(item){
+        return item.high;
+    }).slice(0,7);
+    aHigh.unshift('');
+    let aLow = arg.future.map(function(item){
+        return item.low;
+    }).slice(0,7);
+    aLow.unshift('');
+    let aDay = arg.future.map(function(item){
+        return item.day;
+    }).slice(0,6);
+    let bHigh = [arg.yesterday.high, arg.today.high];
+    let bLow = [arg.yesterday.low, arg.today.low];
+    let time = [arg.yesterday.day];
+    time.push.apply(time, aDay);
     const option = {
         tooltip: {
+            padding: 20,
             trigger: 'axis',
             axisPointer: {
+                type: 'cross',
+                snap: true,
                 lineStyle: {
                     color: '#57617B'
+                },
+                label: {
+                    textStyle: {
+                        fontSize: 25
+                    }
                 }
-            }
+            },
+            showContent: false
         },
         legend: {
-            icon: 'rect',
-            // itemWidth: 14,
-            // itemHeight: 5,
-            itemGap: 13,
-            data: ['过去1天', '未来3天'],
+            icon: 'pin',
+            itemGap: 50,
+            data: ['过去1天', '未来5天'],
             right: '4%',
             textStyle: {
                 fontSize: 30,
@@ -556,10 +576,18 @@ function weatherForeData(arg) {
                     color: '#57617B'
                 }
             },
-            data: ['昨天', '今天', '明天', '后天', '大后天']
+            axisLabel: {
+                align: 'center',
+                textStyle: {
+                    fontSize: 25,
+                    color: '#999'
+                }
+            },
+            data: time
         }],
         yAxis: [{
             type: 'value',
+            min: arg.min - 5,
             axisTick: {
                 show: false
             },
@@ -570,8 +598,10 @@ function weatherForeData(arg) {
             },
             axisLabel: {
                 margin: 10,
+                align: 'center',
                 textStyle: {
-                    fontSize: 14
+                    fontSize: 25,
+                    color: '#999'
                 }
             },
             splitLine: {
@@ -581,12 +611,15 @@ function weatherForeData(arg) {
             }
         }],
         series: [{
-            name: '未来3天',
+            name: '未来5天',
             type: 'line',
             smooth: true,
+            symbolSize: 15,
+            symbol:'circle',
             lineStyle: {
                 normal: {
-                    width: 1
+                    width: 5,
+                    type: 'dashed'
                 }
             },
             areaStyle: {
@@ -607,25 +640,30 @@ function weatherForeData(arg) {
                     color: 'rgb(137,189,27)',
                     label: {
                         show: true,
-                        position: "bottom",
-                        fontSize: 30,
+                        position: 'top',
+                        offset: [35, 0],
+                        distance: 20,
+                        textStyle: {
+                            fontSize: 30,
+                        },
                         formatter: function(p) {
-                            return p.dataIndex === 1 ? '' : p.value > 0 ? (p.value) : '';
+                            return p.dataIndex === 1 ? '' : p.value > 0 ? p.value + ' ℃' : '';
                         }
                     }
                 }
             },
             connectNulls: true,
-            data: ['', 30.5, 34.2, 39.6, 42.5]
+            data: aHigh
         }, {
             name: '过去1天',
             type: 'line',
             smooth: true,
-            symbolSize:10,
+            symbolSize: 15,
             symbol:'circle',
+            z: 10,
             lineStyle: {
                 normal: {
-                    width: 1
+                    width: 5
                 }
             },
             areaStyle: {
@@ -646,17 +684,385 @@ function weatherForeData(arg) {
                     color: 'rgb(0,136,212)',
                     label: {
                         show: true,
-                        position: "bottom",
-                        fontSize: 30,
+                        position: 'top',
+                        offset: [35, 0],
+                        distance: 20,
+                        textStyle: {
+                            fontSize: 30,
+                        },
                         formatter: function(p) {
-                            return p.value > 0 ? (p.value) : '';
+                            return p.value > 0 ? p.value + ' ℃' : '';
                         }
                     }
                 }
             },
-            data: [26.7, 30.5]
+            data: bHigh
+        }, {
+            name: '过去1天',
+            type: 'line',
+            smooth: true,
+            symbolSize: 15,
+            symbol:'circle',
+            z: 10,
+            lineStyle: {
+                normal: {
+                    width: 5
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(0, 136, 212, 0.3)'
+                    }, {
+                        offset: 0.8,
+                        color: 'rgba(0, 136, 212, 0)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgb(0,136,212)',
+                    label: {
+                        show: true,
+                        position: 'bottom',
+                        offset: [35, 0],
+                        distance: 20,
+                        textStyle: {
+                            fontSize: 30,
+                        },
+                        formatter: function(p) {
+                            return p.value > 0 ? p.value + ' ℃' : '';
+                        }
+                    }
+                }
+            },
+            data: bLow
+        }, {
+            name: '未来5天',
+            type: 'line',
+            smooth: true,
+            symbolSize: 15,
+            symbol:'circle',
+            lineStyle: {
+                normal: {
+                    width: 5,
+                    type: 'dashed'
+                }
+            },
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(137, 189, 27, 0.3)'
+                    }, {
+                        offset: 0.8,
+                        color: 'rgba(137, 189, 27, 0)'
+                    }], false),
+                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                    shadowBlur: 10
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgb(137,189,27)',
+                    label: {
+                        show: true,
+                        position: 'bottom',
+                        offset: [30, 0],
+                        distance: 20,
+                        textStyle: {
+                            fontSize: 30,
+                        },
+                        formatter: function(p) {
+                            return p.dataIndex === 1 ? '' : p.value > 0 ? p.value + ' ℃' : '';
+                        }
+                    }
+                }
+            },
+            connectNulls: true,
+            data: aLow
         }]
     }
+    return option;
+}
+
+// 出入游客数量
+function numOfPassData(arg) {
+    // option
+    const option = {
+        tooltip: {
+            trigger: 'axis',
+            hideDelay: 400,
+            padding: 20,
+            axisPointer: {
+                type: 'shadow'
+            },
+            textStyle: {
+                fontSize: 60,
+            },
+        },
+        legend: {
+            data: ['line', 'bar'],
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+        xAxis: {
+            data: arg.category.map(function(item){ return item }),
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            },
+            axisLabel: {
+                align: 'center',
+                textStyle: {
+                    fontSize: 25,
+                    color: '#999'
+                }
+            }
+        },
+        yAxis: {
+            splitLine: {show: false},
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            },
+            axisLabel: {
+                align: 'center',
+                textStyle: {
+                    fontSize: 25,
+                    color: '#999'
+                }
+            }
+        },
+        series: [{
+            name: 'line',
+            type: 'line',
+            smooth: true,
+            showAllSymbol: true,
+            symbol: 'emptyCircle',
+            symbolSize: 15,
+            animation: true,
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) { return idx * 10 },
+            animationDelayUpdate: function (idx) { return idx * 10 },
+            data: arg.lineData.map(function(item){ return item })
+        }, {
+            name: 'bar',
+            type: 'bar',
+            barWidth: 10,
+            animation: true,
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) { return idx * 10 },
+            animationDelayUpdate: function (idx) { return idx * 10 },
+            itemStyle: {
+                normal: {
+                    barBorderRadius: 5,
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: '#14c8d4'},
+                            {offset: 1, color: '#43eec6'}
+                        ]
+                    )
+                }
+            },
+            data: arg.barData.map(function(item){ return item })
+        }, {
+            name: 'line',
+            type: 'bar',
+            barGap: '-100%',
+            barWidth: 10,
+            animation: true,
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) { return idx * 10 },
+            animationDelayUpdate: function (idx) { return idx * 10 },
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: 'rgba(20,200,212,0.5)'},
+                            {offset: 0.2, color: 'rgba(20,200,212,0.2)'},
+                            {offset: 1, color: 'rgba(20,200,212,0)'}
+                        ]
+                    )
+                }
+            },
+            z: -12,
+            data: arg.lineData.map(function(item){ return item })
+        }, {
+            name: 'dotted',
+            type: 'pictorialBar',
+            symbol: 'rect',
+            animation: true,
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) { return idx * 10 },
+            animationDelayUpdate: function (idx) { return idx * 10 },
+            itemStyle: {
+                normal: {
+                    color: '#0f375f'
+                }
+            },
+            symbolRepeat: true,
+            symbolSize: [12, 4],
+            symbolMargin: 1,
+            z: -10,
+            data: arg.lineData.map(function(item){ return item })
+        }]
+    };
+    return option;
+}
+
+// 空气质量
+function AirQualityData(arg) {
+    function randomData() {
+        now = new Date(+now + oneDay);
+        value = value + Math.random() * 21 - 10;
+        return {
+            name: now.toString(),
+            value: [
+                [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+                Math.round(value)
+            ]
+        }
+    }
+
+    var data = [];
+    var now = +new Date(1997, 9, 3);
+    var oneDay = 24 * 3600 * 1000;
+    var value = Math.random() * 1000;
+    for (var i = 0; i < 1000; i++) {
+        data.push(randomData());
+    }
+
+    const option = {
+        backgroundColor: '#000',
+        title: {
+            text: '动态数据 + 时间坐标轴'
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: function (params) {
+                params = params[0];
+                var date = new Date(params.name);
+                return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+            },
+            axisPointer: {
+                animation: false
+            }
+        },
+        grid: [
+            {x: '7%', y: '7%', width: '38%', height: '80%'}
+        ],
+        xAxis: {
+            type: 'time',
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            splitLine: {
+                show: false
+            }
+        },
+        series: [{
+            name: '模拟数据',
+            type: 'line',
+            showSymbol: false,
+            hoverAnimation: false,
+            data: data
+        },{
+                name:'PM2.5',
+                type:'gauge',
+                center : ['75%', '50%'],
+                min:0,
+                max:500,
+                splitNumber:10,
+                radius: '50%',
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: [[0.1, 'lime'],[150/500, '#1e90ff'],[1, '#ff4500']],
+                        width: 3,
+                        shadowColor : '#fff', //默认透明
+                        shadowBlur: 10
+                    }
+                },
+                axisLabel: {            // 坐标轴小标记
+                    textStyle: {       // 属性lineStyle控制线条样式
+                        fontWeight: 'bolder',
+                        color: '#fff',
+                        shadowColor : '#fff', //默认透明
+                        shadowBlur: 10
+                    }
+                },
+                axisTick: {            // 坐标轴小标记
+                    length :15,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto',
+                        shadowColor : '#fff', //默认透明
+                        shadowBlur: 10
+                    }
+                },
+                splitLine: {           // 分隔线
+                    length :25,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        width:3,
+                        color: '#fff',
+                        shadowColor : '#fff', //默认透明
+                        shadowBlur: 10
+                    }
+                },
+                pointer: {           // 分隔线
+                    shadowColor : '#fff', //默认透明
+                    shadowBlur: 5
+                },
+                title : {
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+                        fontSize: 20,
+                        fontStyle: 'italic',
+                        color: '#fff',
+                        shadowColor : '#fff', //默认透明
+                        shadowBlur: 10
+                    }
+                },
+                detail : {
+                    backgroundColor: 'rgba(30,144,255,0.8)',
+                    borderWidth: 1,
+                    borderColor: '#fff',
+                    shadowColor : '#fff', //默认透明
+                    shadowBlur: 5,
+                    offsetCenter: [0, '50%'],       // x, y，单位px
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder',
+                        color: '#fff'
+                    }
+                },
+                data:[{value: 40, name: 'PM2.5'}]
+            }]
+    };
+
+    setInterval(function () {
+
+        for (var i = 0; i < 5; i++) {
+            data.shift();
+            data.push(randomData());
+        }
+
+        myChart.setOption({
+            series: [{
+                data: data
+            }]
+        });
+    }, 1000);
     return option;
 }
 
@@ -678,6 +1084,10 @@ function echartsOption(data, name) {
             return parkingLotData(data);
         case 'WeatherFore':
             return weatherForeData(data);
+        case 'NumOfPass':
+            return numOfPassData(data);
+        case 'AirQuality':
+            return AirQualityData(data);
         default :
             return;
     }
