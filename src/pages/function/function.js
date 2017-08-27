@@ -187,7 +187,7 @@ function airportCoord(arg) {
 
 // 原LineAndHistogram
 function barLines(arg) {
-    
+    console.log(arg);
     const { yAxisConfig, xAxisData, seriesData } = arg;
 
     yAxisConfig.forEach((item) => {
@@ -195,9 +195,11 @@ function barLines(arg) {
         item.scale = true;
         item.boundaryGap = [0, 0];
         item.nameTextStyle = {
+            fontSize: 40,
             color: '#BFDAED'
         };
         item.axisLabel.textStyle = {
+            fontSize: 40,
             color: '#fff'
         }
     });
@@ -241,23 +243,22 @@ function barLines(arg) {
                 }
             }
         },
-        legend: {
-            data: legendData,
-            textStyle: {
-                color: '#BFDAED'
-            },
-        },
+        // legend: {
+        //     data: legendData,
+        //     textStyle: {
+        //         fontSize: 40,
+        //         color: '#BFDAED'
+        //     },
+        // },
         grid: {
-            top: 60,
-            left: 50,
-            right: 50,
-            bottom: 30
+            left: 250,
         },
         xAxis: [{
             type: 'category',
             boundaryGap: true,
             data: xAxisData,
             nameTextStyle: {
+                fontSize: 40,
                 color: '#BFDAED'
             },
             axisPointer: {
@@ -265,6 +266,7 @@ function barLines(arg) {
             },
             axisLabel: {
                 textStyle: {
+                    fontSize: 40,
                     color: '#fff'
                 }
             }
@@ -632,7 +634,7 @@ function weatherForeData(arg) {
                         color: 'rgba(137, 189, 27, 0)'
                     }], false),
                     shadowColor: 'rgba(0, 0, 0, 0.1)',
-                    shadowBlur: 10
+                    shadowBlur: 15
                 }
             },
             itemStyle: {
@@ -676,7 +678,7 @@ function weatherForeData(arg) {
                         color: 'rgba(0, 136, 212, 0)'
                     }], false),
                     shadowColor: 'rgba(0, 0, 0, 0.1)',
-                    shadowBlur: 10
+                    shadowBlur: 15
                 }
             },
             itemStyle: {
@@ -719,7 +721,7 @@ function weatherForeData(arg) {
                         color: 'rgba(0, 136, 212, 0)'
                     }], false),
                     shadowColor: 'rgba(0, 0, 0, 0.1)',
-                    shadowBlur: 10
+                    shadowBlur: 15
                 }
             },
             itemStyle: {
@@ -762,7 +764,7 @@ function weatherForeData(arg) {
                         color: 'rgba(137, 189, 27, 0)'
                     }], false),
                     shadowColor: 'rgba(0, 0, 0, 0.1)',
-                    shadowBlur: 10
+                    shadowBlur: 15
                 }
             },
             itemStyle: {
@@ -920,7 +922,7 @@ function numOfPassData(arg) {
 }
 
 // 空气质量
-function AirQualityData(arg) {
+function airQualityData(arg) {
     function randomData() {
         now = new Date(+now + oneDay);
         value = value + Math.random() * 21 - 10;
@@ -942,10 +944,6 @@ function AirQualityData(arg) {
     }
 
     const option = {
-        backgroundColor: '#000',
-        title: {
-            text: '动态数据 + 时间坐标轴'
-        },
         tooltip: {
             trigger: 'axis',
             formatter: function (params) {
@@ -958,12 +956,24 @@ function AirQualityData(arg) {
             }
         },
         grid: [
-            {x: '7%', y: '7%', width: '38%', height: '80%'}
+            {x: '5%', y: '5%', width: '50%', height: '80%'}
         ],
         xAxis: {
             type: 'time',
             splitLine: {
                 show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            },
+            axisLabel: {
+                align: 'center',
+                textStyle: {
+                    fontSize: 25,
+                    color: '#999'
+                }
             }
         },
         yAxis: {
@@ -971,6 +981,18 @@ function AirQualityData(arg) {
             boundaryGap: [0, '100%'],
             splitLine: {
                 show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            },
+            axisLabel: {
+                align: 'center',
+                textStyle: {
+                    fontSize: 25,
+                    color: '#999'
+                }
             }
         },
         series: [{
@@ -982,17 +1004,17 @@ function AirQualityData(arg) {
         },{
                 name:'PM2.5',
                 type:'gauge',
-                center : ['75%', '50%'],
+                center : ['80%', '50%'],
                 min:0,
                 max:500,
                 splitNumber:10,
-                radius: '50%',
+                radius: '80%',
                 axisLine: {            // 坐标轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
                         color: [[0.1, 'lime'],[150/500, '#1e90ff'],[1, '#ff4500']],
-                        width: 3,
+                        width: 10,
                         shadowColor : '#fff', //默认透明
-                        shadowBlur: 10
+                        shadowBlur: 15
                     }
                 },
                 axisLabel: {            // 坐标轴小标记
@@ -1000,69 +1022,156 @@ function AirQualityData(arg) {
                         fontWeight: 'bolder',
                         color: '#fff',
                         shadowColor : '#fff', //默认透明
-                        shadowBlur: 10
+                        shadowBlur: 15
                     }
                 },
                 axisTick: {            // 坐标轴小标记
-                    length :15,        // 属性length控制线长
+                    length :25,        // 属性length控制线长
                     lineStyle: {       // 属性lineStyle控制线条样式
                         color: 'auto',
                         shadowColor : '#fff', //默认透明
-                        shadowBlur: 10
+                        shadowBlur: 15
                     }
                 },
                 splitLine: {           // 分隔线
-                    length :25,         // 属性length控制线长
+                    length :35,         // 属性length控制线长
                     lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                        width:3,
+                        width:6,
                         color: '#fff',
                         shadowColor : '#fff', //默认透明
-                        shadowBlur: 10
+                        shadowBlur: 15
                     }
                 },
                 pointer: {           // 分隔线
                     shadowColor : '#fff', //默认透明
-                    shadowBlur: 5
+                    shadowBlur: 10
                 },
                 title : {
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
-                        fontSize: 20,
+                        fontSize: 50,
                         fontStyle: 'italic',
                         color: '#fff',
                         shadowColor : '#fff', //默认透明
-                        shadowBlur: 10
+                        shadowBlur: 15
                     }
                 },
                 detail : {
                     backgroundColor: 'rgba(30,144,255,0.8)',
-                    borderWidth: 1,
+                    borderWidth: 3,
                     borderColor: '#fff',
                     shadowColor : '#fff', //默认透明
-                    shadowBlur: 5,
+                    shadowBlur: 10,
+                    height: 60,
+                    width: 120,
                     offsetCenter: [0, '50%'],       // x, y，单位px
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
+                        fontSize: 45,
                         color: '#fff'
                     }
                 },
                 data:[{value: 40, name: 'PM2.5'}]
             }]
     };
+    return option;
+}
 
-    setInterval(function () {
+function resUtilizationData(argument) {
+    var appusage_data = [{
+        name: "app4",
+        value: 34
+    }, {
+        name: "app11",
+        value: 46
+    }, {
+        name: "app8",
+        value: 53
+    }, {
+        name: "app3",
+        value: 68
+    }, {
+        name: "app16",
+        value: 79
+    }];
+    const option = {
+        "tooltip": {
+            "trigger": "axis",
+            "axisPointer": { // 坐标轴指示器，坐标轴触发有效
+                "type": "shadow" // 默认为直线，可选为："line" | "shadow"
+            }
+        },
+        "grid": {
+            "left": "3%",
+            "right": "10%",
+            "bottom": "3%",
+            "containLabel": true
+        },
+        "yAxis": [{
+            "type": "category",
+            "data": ["TOP5", "TOP4", "TOP3", "TOP2", "TOP1"],
+            "axisLine": {
+                "show": false
+            },
+            "axisTick": {
+                "show": false,
+                "alignWithLabel": true
+            },
+            "axisLabel": {
+                "margin": 30,
+                "textStyle": {
+                    "fontSize": 40,
+                    "color": "#ffb069"
+                }
+            }
+        }],
+        "xAxis": [{
+            "type": "value",
+            "axisLine": {
+                "show": false
+            },
+            "axisTick": {
+                "show": false
+            },
+            "axisLabel": {
+                "show": false
+            },
+            "splitLine": {
+                "show": false
+            }
+        }],
 
-        for (var i = 0; i < 5; i++) {
-            data.shift();
-            data.push(randomData());
-        }
-
-        myChart.setOption({
-            series: [{
-                data: data
-            }]
-        });
-    }, 1000);
+        "series": [{
+            "name": "应用使用率",
+            "type": "bar",
+            "data": appusage_data,
+            "barCategoryGap": "35%",
+            "label": {
+                "normal": {
+                    "show": true,
+                    "position": "right",
+                    "formatter": function(params) {
+                        return params.data.name;
+                    },
+                    "textStyle": {
+                        "fontSize": 40,
+                        "color": "#bcbfff" //color of value
+                    }
+                }
+            },
+            "itemStyle": {
+                "normal": {
+                    "color": new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        "offset": 0,
+                        "color": "rgba(0, 136, 212, 0.6)" // 0% 处的颜色
+                    }, {
+                        "offset": 1,
+                        "color": "rgba(30, 144, 255, 0.9)" // 100% 处的颜色
+                    }], false)
+                }
+            }
+        }]
+    };
     return option;
 }
 
@@ -1087,7 +1196,9 @@ function echartsOption(data, name) {
         case 'NumOfPass':
             return numOfPassData(data);
         case 'AirQuality':
-            return AirQualityData(data);
+            return airQualityData(data);
+        case 'ResUtilization':
+            return resUtilizationData(data);
         default :
             return;
     }
