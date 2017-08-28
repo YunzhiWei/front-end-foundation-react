@@ -2,6 +2,28 @@ import { observable } from 'mobx';
 import axios from 'axios';
 import fetchJsonp from 'fetch-jsonp';
 
+function aqiDataGenerate(now, oneDay, value){
+    now = new Date(+now + oneDay);
+    value = value + Math.random() * 21 - 10;
+    return {
+        name: now.toString(),
+        value: [
+            [now.getHours(), now.getMinutes(), now.getSeconds()].join(':'),
+            value
+        ]
+    }
+}
+function aqiData(){
+    let data = [];
+    let now = +new Date(1997, 9, 3);
+    let oneDay = 24 * 3600 * 1000;
+    let value = Math.random() * 1000;
+    for (let i = 0; i < 1000; i++) {
+        data.push(aqiDataGenerate(now, oneDay, value));
+    }
+    return data;
+}
+
 class EchartsData {
     @observable parking = {
         inUse: 0,
@@ -36,26 +58,7 @@ class EchartsData {
         dottedBase: new Date()
     }
     @observable PM25 = {
-        aqi: (function(){
-            let data = [];
-            let now = +new Date(1997, 9, 3);
-            let oneDay = 24 * 3600 * 1000;
-            let value = Math.random() * 1000;
-            for (let i = 0; i < 1000; i++) {
-                data.push((function(){
-                    now = new Date(+now + oneDay);
-                    value = value + Math.random() * 21 - 10;
-                    return {
-                        name: now.toString(),
-                        value: [
-                            [now.getHours(), now.getMinutes(), now.getSeconds()].join(':'),
-                            value
-                        ]
-                    }
-                })());
-            }
-            return data;
-        })(),
+        aqi: aqiData(),
         nowAqi: 0
     }
     constructor(){

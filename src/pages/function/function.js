@@ -208,6 +208,7 @@ function barLines(arg) {
             item.itemStyle = {
                 normal: {
                     barBorderRadius: 4,
+                    color: 'rgba(30, 144, 255, 0.9)',
                     opacity: '0.8'
                 },
                 emphasis: {
@@ -224,7 +225,7 @@ function barLines(arg) {
         }
     })
 
-    const legendData = seriesData.map((item) => { return item.name });
+    // const legendData = seriesData.map((item) => { return item.name });
 
     const option = {
         animation: true,
@@ -307,13 +308,18 @@ function dynamicChart(arg) {
     const legendData = dynamicSeries.map((item, i) => { return item.name });
     dynamicSeries.forEach((item) => {
         if (item.type === 'bar') {
-          item.itemStyle = {
-              normal: { barBorderRadius: 4, opacity: '0.8' },
-              emphasis: { opacity: '1' }
-          };
-          item.animationEasing = 'elasticOut';
-          item.animationDelay = function (idx) { return idx * 10 };
-          item.animationDelayUpdate = function (idx) { return idx * 10 };
+            item.itemStyle = {
+                normal: { barBorderRadius: 4, opacity: '0.8', color: 'rgba(30, 144, 255, 0.9)' },
+                emphasis: { opacity: '1' }
+            };
+            item.animationEasing = 'elasticOut';
+            item.animationDelay = function (idx) { return idx * 10 };
+            item.animationDelayUpdate = function (idx) { return idx * 10 };
+        } else if(item.type === 'line') {
+            item.itemStyle = {
+                normal: { opacity: '0.8', color: '#fff' },
+                emphasis: { opacity: '1' }
+            };
         }
     });
     const option = {
@@ -1102,6 +1108,21 @@ function resUtilizationData(arg) {
     }, {
         name: "app16",
         value: 79
+    }, {
+        name: "app4",
+        value: 62
+    }, {
+        name: "app5",
+        value: 70
+    }, {
+        name: "app6",
+        value: 24
+    }, {
+        name: "app8",
+        value: 11
+    }, {
+        name: "app2",
+        value: 8
     }];
     const option = {
         "tooltip": {
@@ -1118,7 +1139,7 @@ function resUtilizationData(arg) {
         },
         "yAxis": [{
             "type": "category",
-            "data": ["TOP5", "TOP4", "TOP3", "TOP2", "TOP1"],
+            "data": ["TOP10","TOP9","TOP8","TOP7","TOP6","TOP5", "TOP4", "TOP3", "TOP2", "TOP1"],
             "axisLine": {
                 "show": false
             },

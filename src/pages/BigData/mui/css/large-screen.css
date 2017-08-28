@@ -23,34 +23,34 @@
 .echart-list .title-box .title-tip { position: absolute; width: 15px; height: 1px }
 .echart-list .title-box .title-tip em { position: absolute; width: 5px; height: 5px; border-radius: 50% }
 .echart-list .title-box .left-top { top: -1px; left: -15px; transform: rotate(-45deg); transform-origin: 100% 0%; -ms-transform: rotate(-45deg); -ms-transform-origin: 100% 0%; -webkit-transform: rotate(-45deg); -webkit-transform-origin: 100% 0%; -moz-transform: rotate(-45deg); -moz-transform-origin: 100% 0% }
-.echart-list .title-box .left-top em { left: -2px; top: -2px; box-shadow: 0 0 1px 1px #7ff2e3 }
+.echart-list .title-box .left-top em { left: -2px; top: -2px; box-shadow: 0 0 1px 1px #48d8fd }
 .echart-list .title-box .top-right { top: -1px; right: -15px; transform: rotate(45deg); transform-origin: 0% 100%; -ms-transform: rotate(45deg); -ms-transform-origin: 0% 100%; -webkit-transform: rotate(45deg); -webkit-transform-origin: 0% 100%; -moz-transform: rotate(45deg); -moz-transform-origin: 0% 100% }
-.echart-list .title-box .top-right em { right: -2px; top: -2px; box-shadow: 0 0 1px 1px #7ff2e3 }
+.echart-list .title-box .top-right em { right: -2px; top: -2px; box-shadow: 0 0 1px 1px #48d8fd }
 .echart-list .title-box .right-bottom { bottom: -1px; left: -15px; transform: rotate(45deg); transform-origin: 100% 0%; -ms-transform: rotate(45deg); -ms-transform-origin: 100% 0%; -webkit-transform: rotate(45deg); -webkit-transform-origin: 100% 0%; -moz-transform: rotate(45deg); -moz-transform-origin: 100% 0% }
-.echart-list .title-box .right-bottom em { left: -2px; top: -2px; box-shadow: 0 0 1px 1px #7ff2e3 }
+.echart-list .title-box .right-bottom em { left: -2px; top: -2px; box-shadow: 0 0 1px 1px #48d8fd }
 .echart-list .title-box .bottom-left { bottom: -1px; right: -15px; transform: rotate(-45deg); transform-origin: 0% 100%; -ms-transform: rotate(-45deg); -ms-transform-origin: 0% 100%; -webkit-transform: rotate(-45deg); -webkit-transform-origin: 0% 100%; -moz-transform: rotate(-45deg); -moz-transform-origin: 0% 100% }
-.echart-list .title-box .bottom-left em { top: -2px; right: -2px; box-shadow: 0 0 1px 1px #7ff2e3 }
+.echart-list .title-box .bottom-left em { top: -2px; right: -2px; box-shadow: 0 0 1px 1px #48d8fd }
 .echart-list .content { width: 100%; height: calc(100% - 140px) }
 .echart-list .content img { width: 100%; height: 100% }
 .light-green { box-shadow: 0px 0px 30px #18403b inset; animation: lightGreenShadowColor 3s linear infinite alternate; -moz-animation: lightGreenShadowColor 3s linear infinite alternate; -webkit-animation: lightGreenShadowColor 3s linear infinite alternate }
 @keyframes lightGreenShadowColor {
 	from { box-shadow: 0px 0px 30px #18403b inset }
-	to { box-shadow: 0px 0px 30px #7ff2e3 inset }
+	to { box-shadow: 0px 0px 30px #48d8fd inset }
 }
-.light-green .standard { background: linear-gradient(to right, #7ff2e3, #333, transparent, #333, #7ff2e3) }
-.light-green .vertical { background: linear-gradient(to bottom, #7ff2e3, #7ff2e3, #666, transparent, #666, #7ff2e3, #7ff2e3) }
-.light-green .tip-line.left-top { border-left: 1px solid #7ff2e3; border-top: 1px solid #7ff2e3 }
-.light-green .tip-line.left-top em { border-left: 2px solid #7ff2e3; border-top: 2px solid #7ff2e3 }
-.light-green .tip-line.top-right { border-right: 1px solid #7ff2e3; border-top: 1px solid #7ff2e3 }
-.light-green .tip-line.top-right em { border-right: 2px solid #7ff2e3; border-top: 2px solid #7ff2e3 }
-.light-green .tip-line.right-bottom { border-right: 1px solid #7ff2e3; border-bottom: 1px solid #7ff2e3 }
-.light-green .tip-line.right-bottom em { border-right: 2px solid #7ff2e3; border-bottom: 2px solid #7ff2e3 }
-.light-green .tip-line.bottom-left { border-left: 1px solid #7ff2e3; border-bottom: 1px solid #7ff2e3 }
-.light-green .tip-line.bottom-left em { border-left: 2px solid #7ff2e3; border-bottom: 2px solid #7ff2e3 }
-.light-green .title-box .title-mess { border-top: 1px solid #7ff2e3; border-bottom: 1px solid #7ff2e3; color: #7ff2e3; text-shadow: 0 0 15px #7ff2e3 }
-.light-green .title-box .title-tip { background: #7ff2e3 }
-.light-green .title-box .title-tip em { background: #7ff2e3 }
-.light-green .title-box .left-top em, .light-green .title-box .top-right em, .light-green .title-box .right-bottom em, .light-green .title-box .bottom-left em { box-shadow: 0 0 1px 1px #7ff2e3 }
+.light-green .standard { background: linear-gradient(to right, #48d8fd, #333, transparent, #333, #48d8fd) }
+.light-green .vertical { background: linear-gradient(to bottom, #48d8fd, #48d8fd, #666, transparent, #666, #48d8fd, #48d8fd) }
+.light-green .tip-line.left-top { border-left: 4px solid #48d8fd; border-top: 4px solid #48d8fd }
+.light-green .tip-line.left-top em { border-left: 4px solid #48d8fd; border-top: 4px solid #48d8fd }
+.light-green .tip-line.top-right { border-right: 4px solid #48d8fd; border-top: 4px solid #48d8fd }
+.light-green .tip-line.top-right em { border-right: 4px solid #48d8fd; border-top: 4px solid #48d8fd }
+.light-green .tip-line.right-bottom { border-right: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd }
+.light-green .tip-line.right-bottom em { border-right: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd }
+.light-green .tip-line.bottom-left { border-left: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd }
+.light-green .tip-line.bottom-left em { border-left: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd }
+.light-green .title-box .title-mess { border-top: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd; color: #48d8fd; text-shadow: 0 0 15px #48d8fd }
+.light-green .title-box .title-tip { background: #48d8fd }
+.light-green .title-box .title-tip em { background: #48d8fd }
+.light-green .title-box .left-top em, .light-green .title-box .top-right em, .light-green .title-box .right-bottom em, .light-green .title-box .bottom-left em { box-shadow: 0 0 4px 1px #48d8fd }
 .sky-blue { box-shadow: 0px 0px 30px #9297fe inset; animation: skyBlueShadowColor 3s linear infinite alternate; -moz-animation: skyBlueShadowColor 3s linear infinite alternate; -webkit-animation: skyBlueShadowColor 3s linear infinite alternate }
 @keyframes skyBlueShadowColor {
 	from { box-shadow: 0px 0px 30px #9297fe inset }
