@@ -22,20 +22,8 @@ const CardProvider = (props) => (
                   <em></em>
               </span>
               <div className="title-box">
-                  <div className="title-mess">
+                  <div className="title-mess" style={{border: 'none'}}>
                       {props.title}
-                      <span className="title-tip left-top">
-                          <em></em>
-                      </span>
-                      <span className="title-tip top-right">
-                          <em></em>
-                      </span>
-                      <span className="title-tip right-bottom">
-                          <em></em>
-                      </span>
-                      <span className="title-tip bottom-left">
-                          <em></em>
-                      </span>
                   </div>
               </div>
               <div className="content" id="echarts-content1">
@@ -44,6 +32,19 @@ const CardProvider = (props) => (
           </div>
       </div>
 );
+
+// <span className="title-tip left-top">
+//     <em></em>
+// </span>
+// <span className="title-tip top-right">
+//     <em></em>
+// </span>
+// <span className="title-tip right-bottom">
+//     <em></em>
+// </span>
+// <span className="title-tip bottom-left">
+//     <em></em>
+// </span>
 
 export default CardProvider;
 
