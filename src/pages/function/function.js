@@ -241,6 +241,9 @@ function barLines(arg) {
                 crossStyle: {
                     color: '#999'
                 }
+            },
+            textStyle: {
+                fontSize: 60,
             }
         },
         // legend: {
@@ -323,7 +326,7 @@ function dynamicChart(arg) {
         }
     });
     const option = {
-        tooltip: { trigger: 'axis' },
+        tooltip: { trigger:'axis', textStyle: { fontSize: 60 } },
         legend: { data: legendData, textStyle: { color: '#fff' } },
         grid: { top: 60, left: 50, right: 50, bottom:30 },
         xAxis: xAixsConf,
@@ -342,7 +345,7 @@ function radarChart(arg) {
     const option = {
         legend: {
             data: legendData,
-            textStyle: { color: '#fff' },
+            textStyle: { color: '#fff', fontSize: 40 },
         },
         radar: radarIndicator,
         series: radarSeries
@@ -809,7 +812,7 @@ function numOfPassData(arg) {
             },
             textStyle: {
                 fontSize: 60,
-            },
+            }
         },
         legend: {
             data: ['line', 'bar'],
@@ -956,7 +959,10 @@ function airQualityData(arg) {
             },
             axisPointer: {
                 animation: false
-            }
+            },
+            textStyle: {
+                fontSize: 60,
+            },
         },
         grid: [
             {x: '5%', y: '5%', width: '50%', height: '80%'}
@@ -1125,78 +1131,81 @@ function resUtilizationData(arg) {
         value: 8
     }];
     const option = {
-        "tooltip": {
-            "trigger": "axis",
-            "axisPointer": { // 坐标轴指示器，坐标轴触发有效
-                "type": "shadow" // 默认为直线，可选为："line" | "shadow"
+        tooltip: {
+            trigger: "axis",
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: "shadow" // 默认为直线，可选为："line" | "shadow"
+            },
+            textStyle: {
+                fontSize: 60,
             }
         },
-        "grid": {
-            "left": "3%",
-            "right": "10%",
-            "bottom": "3%",
-            "containLabel": true
+        grid: {
+            left: "3%",
+            right: "10%",
+            bottom: "3%",
+            containLabel: true
         },
-        "yAxis": [{
-            "type": "category",
-            "data": ["TOP10","TOP9","TOP8","TOP7","TOP6","TOP5", "TOP4", "TOP3", "TOP2", "TOP1"],
-            "axisLine": {
-                "show": false
+        yAxis: [{
+            type: "category",
+            data: ["TOP10","TOP9","TOP8","TOP7","TOP6","TOP5", "TOP4", "TOP3", "TOP2", "TOP1"],
+            axisLine: {
+                show: false
             },
-            "axisTick": {
-                "show": false,
-                "alignWithLabel": true
+            axisTick: {
+                show: false,
+                alignWithLabel: true
             },
-            "axisLabel": {
-                "margin": 30,
-                "textStyle": {
-                    "fontSize": 40,
-                    "color": "#ffb069"
+            axisLabel: {
+                margin: 30,
+                textStyle: {
+                    fontSize: 40,
+                    color: "#ffb069"
                 }
             }
         }],
-        "xAxis": [{
-            "type": "value",
-            "axisLine": {
-                "show": false
+        xAxis: [{
+            type: "value",
+            axisLine: {
+                show: false
             },
-            "axisTick": {
-                "show": false
+            axisTick: {
+                show: false
             },
-            "axisLabel": {
-                "show": false
+            axisLabel: {
+                show: false
             },
-            "splitLine": {
-                "show": false
+            splitLine: {
+                show: false
             }
         }],
 
-        "series": [{
-            "name": "应用使用率",
-            "type": "bar",
-            "data": appusage_data,
-            "barCategoryGap": "35%",
-            "label": {
-                "normal": {
-                    "show": true,
-                    "position": "right",
-                    "formatter": function(params) {
+        series: [{
+            name: "应用使用率",
+            type: "bar",
+            data: appusage_data,
+            barCategoryGap: "35%",
+            label: {
+                normal: {
+                    show: true,
+                    position: "right",
+                    formatter: function(params) {
                         return params.data.name;
                     },
-                    "textStyle": {
-                        "fontSize": 40,
-                        "color": "#bcbfff" //color of value
+                    textStyle: {
+                        fontSize: 40,
+                        color: "#bcbfff" //color of value
                     }
                 }
             },
-            "itemStyle": {
-                "normal": {
-                    "color": new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                        "offset": 0,
-                        "color": "rgba(0, 136, 212, 0.6)" // 0% 处的颜色
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                        offset: 0,
+                        color: "rgba(0, 136, 212, 0.6)" // 0% 处的颜色
                     }, {
-                        "offset": 1,
-                        "color": "rgba(30, 144, 255, 0.9)" // 100% 处的颜色
+                        offset: 1,
+                        color: "rgba(30, 144, 255, 0.9)" // 100% 处的颜色
                     }], false)
                 }
             }
@@ -1226,6 +1235,9 @@ function transportationData(arg) {
             },
             formatter: function (params) {
                 return params[0].name + ': ' + params[0].value;
+            },
+            textStyle: {
+                fontSize: 60,
             }
         },
         xAxis: {

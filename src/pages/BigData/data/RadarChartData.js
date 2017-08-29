@@ -21,7 +21,7 @@ const radarDataArray = [
 				{ name: '预算', max: 100},
 				{ name: '工期', max: 100},
 				{ name: '质量', max: 100}
-			]
+			],
 		}
 	},
 	{
