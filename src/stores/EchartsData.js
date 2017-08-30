@@ -75,7 +75,7 @@ class EchartsData {
     }
     fetchParkingData(index) {
         let self = this;
-        axios.get('http://localhost:300/parkingLot' + index).then(function(data){
+        axios.get('http://205.209.151.188:300/parkingLot' + index).then(function(data){
             self.parking = data.data;
         })
     }
