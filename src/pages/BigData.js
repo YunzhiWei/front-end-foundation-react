@@ -7,7 +7,7 @@ import CardProvider from './BigData/mui/CardProvider';
 // import SalesVolume from './BigData/SalesVolume';
 // import AirportCoordComponent from './BigData/AirportCoord';
 import LineAndHistogram from './BigData/LineAndHistogram';
-import DynamicChartComponent from './BigData/DynamicChartComponent';
+// import DynamicChartComponent from './BigData/DynamicChartComponent';
 import RadarChart from './BigData/RadarChart';
 import WeiboData from './BigData/WeiboData';
 import ParkingLotComponent from './BigData/ParkingLot';
@@ -16,13 +16,15 @@ import NumOfPassComponent from './BigData/NumOfPass';
 import AirQualityComponent from './BigData/AirQuality';
 import ResUtilizationComponent from './BigData/ResUtilization';
 import TransportationComponent from './BigData/Transportation';
+import SankeyComponent from './BigData/Sankey';
+// import ErrorsComponent from './BigData/Errors';
 
 
 // import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
 // import { FromToLinesDataArray } from /BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
-import dynamicChart from './BigData/data/dynamicChart';
+// import dynamicChart from './BigData/data/dynamicChart';
 import weiboData from './BigData/data/weibo.json';
 
 class BigData extends Component {
@@ -50,7 +52,7 @@ class BigData extends Component {
                           <div className="c_content c_2">
                               <WeiboData weiboData={weiboData} />
                               <CardProvider className="cards" title="热力图待定" color="light-green">
-                                  <DynamicChartComponent dynamicChart={dynamicChart}/>
+                                  <SankeyComponent />
                               </CardProvider>
                           </div>
                           <div className="c_content c_3">

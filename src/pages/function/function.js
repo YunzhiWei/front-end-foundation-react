@@ -1441,9 +1441,213 @@ function transportationData(arg) {
     return option;
 }
 
-// 热力图
-function heatMapData(arg) {
-    // 仙女湖（27.711067, 114.798137）.
+// 桑基图
+function sankeyData(arg) {
+    const list = {
+        "nodes": [
+            {
+                "name": "Agricultural 'waste'"
+            },
+            {
+                "name": "预出境人数"
+            },
+            {
+                "name": "抽查人数"
+            },
+            {
+                "name": "出境人数"
+            },
+            {
+                "name": "遣返人数"
+            },
+            {
+                "name": "Bio-conversion"
+            },
+            {
+                "name": "Liquid"
+            },
+            {
+                "name": "Losses"
+            }
+        ],
+        "links": [
+            {
+                "source": "预出境人数",
+                "target": "抽查人数",
+                "value": 30,
+            },
+            {
+                "source": "预出境人数",
+                "target": "出境人数",
+                "value": 50,
+            },
+            {
+                "source": "抽查人数",
+                "target": "出境人数",
+                "value": 18,
+            },
+            {
+                "source": "抽查人数",
+                "target": "遣返人数",
+                "value": 12,
+            },
+            {
+                "source": "Agricultural 'waste'",
+                "target": "Bio-conversion",
+                "value": 16.729,
+            },
+            {
+                "source": "Agricultural 'waste'",
+                "target": "Losses",
+                "value": 8.729
+            },
+            {
+                "source": "Bio-conversion",
+                "target": "Liquid",
+                "value": 4.597
+            },
+            {
+                "source": "Bio-conversion",
+                "target": "Losses",
+                "value": 11.862
+            }
+        ]
+    }
+    const option = {
+        tooltip: {
+            trigger: 'item',
+            triggerOn: 'mousemove'
+        },
+        color: ['#43d3ff', '#09f7fe', '#fcc60c', 'rgba(30, 144, 255, 0.9)'],
+        series: [{
+            type: 'sankey',
+            layout: 'none',
+            data: list.nodes,
+            links: list.links,
+            itemStyle: {
+                normal: {
+                    borderWidth: 1,
+                    borderColor: '#aaa'
+                }
+            },
+            lineStyle: {
+                normal: {
+                    color: 'source',
+                    curveness: 0.5
+                }
+            }
+        }]
+    }
+    return option;
+}
+
+// 误差图
+function errorsData(arg) {
+    var categoryData = [];
+    var errorData = [];
+    var barData = [];
+    var dataCount = 100;
+    for (var i = 0; i < dataCount; i++) {
+        var val = Math.random() * 1000;
+        categoryData.push('category' + i);
+        errorData.push([
+            i,
+            echarts.number.round(Math.max(0, val - Math.random() * 100)),
+            echarts.number.round(val + Math.random() * 80)
+        ]);
+        barData.push(echarts.number.round(val, 2));
+    }
+
+    function renderItem(params, api) {
+        var xValue = api.value(0);
+        var highPoint = api.coord([xValue, api.value(1)]);
+        var lowPoint = api.coord([xValue, api.value(2)]);
+        var halfWidth = api.size([1, 0])[0] * 0.1;
+        var style = api.style({
+            stroke: api.visual('color'),
+            fill: null
+        });
+
+        return {
+            type: 'group',
+            children: [{
+                type: 'line',
+                shape: {
+                    x1: highPoint[0] - halfWidth, y1: highPoint[1],
+                    x2: highPoint[0] + halfWidth, y2: highPoint[1]
+                },
+                style: style
+            }, {
+                type: 'line',
+                shape: {
+                    x1: highPoint[0], y1: highPoint[1],
+                    x2: lowPoint[0], y2: lowPoint[1]
+                },
+                style: style
+            }, {
+                type: 'line',
+                shape: {
+                    x1: lowPoint[0] - halfWidth, y1: lowPoint[1],
+                    x2: lowPoint[0] + halfWidth, y2: lowPoint[1]
+                },
+                style: style
+            }]
+        };
+    }
+
+    const option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        title: {
+            text: 'Error bar chart'
+        },
+        legend: {
+            data: ['bar', 'error']
+        },
+        dataZoom: [{
+            type: 'slider',
+            start: 20,
+            end: 70
+        }, {
+            type: 'inside',
+            start: 50,
+            end: 70
+        }],
+        xAxis: {
+            data: categoryData
+        },
+        yAxis: {},
+        series: [{
+            type: 'bar',
+            name: 'bar',
+            data: barData,
+            itemStyle: {
+                normal: {
+                    color: '#77bef7'
+                }
+            }
+        }, {
+            type: 'custom',
+            name: 'error',
+            itemStyle: {
+                normal: {
+                    borderWidth: 1.5
+                }
+            },
+            renderItem: renderItem,
+            encode: {
+                x: 0,
+                y: [1, 2]
+            },
+            data: errorData,
+            z: 100
+        }]
+    };
+    return option;
 }
 
 function echartsOption(data, name) {
@@ -1472,6 +1676,10 @@ function echartsOption(data, name) {
             return resUtilizationData(data);
         case 'Transportation':
             return transportationData(data);
+        case 'Sankey':
+            return sankeyData(data);
+        case 'Errors':
+            return errorsData(data);
         default :
             return;
     }
