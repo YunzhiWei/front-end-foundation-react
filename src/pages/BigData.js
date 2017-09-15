@@ -18,6 +18,8 @@ import ResUtilizationComponent from './BigData/ResUtilization';
 import TransportationComponent from './BigData/Transportation';
 import SankeyComponent from './BigData/Sankey';
 // import ErrorsComponent from './BigData/Errors';
+import WeatherComponent from './BigData/Weather';
+import TicketBusinessComponent from './BigData/TicketBusiness';
 
 
 // import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
@@ -40,36 +42,36 @@ class BigData extends Component {
                       <div className="bigdata_content">
                           <div className="c_content c_1">
                               <CardProvider className="cards" title="停车场使用量" color="light-green">
-                                  <ParkingLotComponent />
+                                  <div className="tickets_num">
+                                      <p><span>线上售票：</span><span><b>800</b>张</span></p>
+                                      <p><span>线下售票：</span><span><b>400</b>张</span></p>
+                                      <p><span>今日检票：</span><span><b>1050</b>张</span></p>
+                                  </div>
+                                  <TicketBusinessComponent />
                               </CardProvider>
                               <CardProvider className="cards" title="出入游客数量" color="light-green">
-                                  <NumOfPassComponent />
                               </CardProvider>
                               <CardProvider className="cards" title="游客消费总量" color="light-green">
-                                  <LineAndHistogram BarLinesData={BarLinesDataArray[0]} />
                               </CardProvider>
                           </div>
                           <div className="c_content c_2">
                               <WeiboData weiboData={weiboData} />
                               <CardProvider className="cards" title="热力图待定" color="light-green">
-                                  <SankeyComponent />
                               </CardProvider>
                           </div>
                           <div className="c_content c_3">
                               <ResUtilizationComponent />
                               <CardProvider className="cards" title="消费分析" color="light-green">
-                                  <RadarChart radarData={radarDataArray[0]}/>
                               </CardProvider>
                           </div>
                           <div className="c_content c_4">
                               <CardProvider className="cards" title="气温预报" color="light-green">
-                                  <WeatherForeComponent />
+                                  <WeatherComponent />
                               </CardProvider>
                               <CardProvider className="cards" title="空气质量指数" color="light-green">
                                   <AirQualityComponent />
                               </CardProvider>
                               <CardProvider className="cards" title="交通工具统计" color="light-green">
-                                  <TransportationComponent />
                               </CardProvider>
                           </div>
                       </div>

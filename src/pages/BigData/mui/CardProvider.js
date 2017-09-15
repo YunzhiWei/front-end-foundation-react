@@ -26,7 +26,7 @@ const CardProvider = (props) => (
                       {props.title}
                   </div>
               </div>
-              <div className="content swiper-container" id="echarts-content1">
+              <div className="content" id="echarts-content1">
                   {props.children}
               </div>
           </div>

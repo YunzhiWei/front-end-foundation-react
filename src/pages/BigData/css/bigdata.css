@@ -14,3 +14,28 @@
 .bigdata_content .c_content .cards { width: 100%; height: 980px; }
 .bigdata_content .c_content .cards:first-child { width: 100%; height: 690px; }
 /*大数据图表 end */
+
+#echarts-content1>div { float: left; }
+
+.cards .tickets_num {
+	width: 30%;
+	height: 100%;
+	display: inline-block;
+	padding-top: 50px;
+	font-size: 40px;
+	color: #fff;
+}
+.cards .tickets_num p {
+	margin: 15px 0;
+	text-align: right;
+}
+.cards .tickets_num span {
+	display: inline-block;
+	color: rgba(30, 144, 255, 0.9);
+	width: 50%;
+}
+.cards .tickets_num b {
+	font-size: 72px;
+	margin-right: 20px;
+}
+

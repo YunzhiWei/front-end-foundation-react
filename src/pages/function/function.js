@@ -1650,6 +1650,79 @@ function errorsData(arg) {
     return option;
 }
 
+// 票务统计
+function ticketBusinessData(argument) {
+    var array=[60, 40, 85];
+    var array1=[100, 100, 100];
+    const option = {
+        grid: {
+            top: 60,
+            left: 30
+        },
+        xAxis: {
+            type: 'value',
+            position: 'top',
+            splitLine: {
+                lineStyle: {
+                    type: 'solid',
+                    color: '#fff'
+                }
+            },
+            axisLabel: {
+                textStyle: {
+                    color: '#fff',
+                }
+            },
+        },
+        yAxis: {
+            splitNumber: 25,
+            type: 'category',
+            axisLine: {
+                lineStyle: {
+                    type: 'solid',
+                }
+            },
+            axisLabel: {
+                show: false,
+            },
+            axisTick: {
+                show: true
+            },
+            splitLine: {
+                lineStyle: {
+                    type: 'solid',
+                    color: '#cfc3bd'
+                }
+            },
+            data: ['今日检票', '线下售票', '线上售票']
+        },
+        series: [{
+            type: 'bar',
+            silent: true,
+            barGap: '-100%',
+            itemStyle: {
+                normal: {
+                    color: 'rgba(229, 249, 251, .9)',
+                    borderWidth: 2,
+                    borderColor: '#1FBCD2'
+                }
+            },
+            data: array1
+        }, {
+            type: 'bar',
+            silent: true,
+            barGap: '-100%',
+            itemStyle: {
+                normal: {
+                    color: 'rgba(31, 188, 210, .8)',
+                }
+            },
+            data: array,
+        }]
+    }
+    return option;
+}
+
 function echartsOption(data, name) {
     switch(name) {
         case 'SalesVolume':
@@ -1680,6 +1753,8 @@ function echartsOption(data, name) {
             return sankeyData(data);
         case 'Errors':
             return errorsData(data);
+        case 'TicketBusiness':
+            return ticketBusinessData(data);
         default :
             return;
     }
