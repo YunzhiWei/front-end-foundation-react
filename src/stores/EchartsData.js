@@ -26,7 +26,9 @@ function aqiData(){
 
 class EchartsData {
     @observable parking = {
+        inUsePrev: 0,
         inUse: 0,
+        allPrev: 0,
         all: 0
     }
     @observable weather = {
@@ -75,8 +77,11 @@ class EchartsData {
     }
     fetchParkingData(index) {
         let self = this;
+        this.parking.inUsePrev = this.parking.inUse;
+        this.parking.allPrev = this.parking.all;
         axios.get('http://128.1.67.161:300/parkingLot' + index).then(function(data){
-            self.parking = data.data;
+            self.parking.inUse = data.data.inUse;
+            self.parking.all = data.data.all;
         })
     }
     fetchWeatherData () {

@@ -1,3 +1,18 @@
+@font-face { font-family: 'sa-digital-number'; src: url('fonts/sa-digital-number.eot'); }
+@font-face { font-family: 'sa-digital-number'; src: url('fonts/sa-digital-number.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+[class^="icon-"], [class*=" icon-"] { font-family: 'sa-digital-number'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1;	/* Better Font Rendering =========== */ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.icon-minus:before { content: "\2d"; }
+.icon-zero:before { content: "\30"; }
+.icon-one:before { content: "\31"; }
+.icon-two:before { content: "\32"; }
+.icon-three:before { content: "\33"; }
+.icon-four:before { content: "\34"; }
+.icon-five:before { content: "\35"; }
+.icon-six:before { content: "\36"; }
+.icon-seven:before { content: "\37"; }
+.icon-eight:before { content: "\38"; }
+.icon-nine:before { content: "\39"; }
+
 .echart-list { height: 100%; }
 /*大数据标题 start */
 .large-screen .bigdata_title { width: 60%; height: 290px; font-size: 0px; padding: 50px 0; margin: 0 auto; text-align: center; color: #48D8FD; }
@@ -17,25 +32,21 @@
 
 #echarts-content1>div { float: left; }
 
-.cards .tickets_num {
-	width: 30%;
-	height: 100%;
-	display: inline-block;
-	padding-top: 50px;
-	font-size: 40px;
-	color: #fff;
-}
-.cards .tickets_num p {
-	margin: 15px 0;
-	text-align: right;
-}
-.cards .tickets_num span {
-	display: inline-block;
-	color: rgba(30, 144, 255, 0.9);
-	width: 50%;
-}
-.cards .tickets_num b {
-	font-size: 72px;
-	margin-right: 20px;
-}
+.cards .tickets_num { width: 40%; height: 470px; display: inline-block; padding-top: 50px; font-size: 40px; color: #fff; }
+.cards .tickets_num p { height: 95px; margin: 20px 0; text-align: right; }
+.cards .tickets_num p>span { float: left; position: relative; height: 110px; line-height: 110px; display: inline-block; color: rgba(12, 207, 253, .9); width: 320px; }
+.cards .tickets_num p>span:first-child { width: 260px; }
+.cards .tickets_num p>span:last-child { width: 60px; }
+.cards .tickets_num b { position: relative; top: -12px; color: rgba(30, 250, 225, .8); font-size: 64px; font-family: 'sa-digital-number'; text-shadow: 0px 0px 20px rgba(255, 255, 255, .5); margin-right: 40px; }
+
+.cards .parking_num { width: 40%; height: 760px; display: inline-block; font-size: 40px; color: #fff; }
+.cards .parking_num hr { margin: 30px 0; border-top: 1px solid rgba(12, 207, 253, .4); }
+.cards .parking_num p { height: 95px; margin: 20px 0; text-align: right; }
+.cards .parking_num p>span { float: left; position: relative; height: 110px; line-height: 110px; display: inline-block; color: rgba(12, 207, 253, .9); width: 320px; }
+.cards .parking_num p>span:first-child { width: 260px; }
+.cards .parking_num p>span:last-child { width: 60px; }
+.cards .parking_num b { position: relative; top: -12px; color: rgba(30, 250, 225, .8); font-size: 64px; font-family: 'sa-digital-number'; text-shadow: 0px 0px 20px rgba(255, 255, 255, .5); margin-right: 40px; }
+
+
+
 

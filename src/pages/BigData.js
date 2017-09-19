@@ -20,6 +20,7 @@ import SankeyComponent from './BigData/Sankey';
 // import ErrorsComponent from './BigData/Errors';
 import WeatherComponent from './BigData/Weather';
 import TicketBusinessComponent from './BigData/TicketBusiness';
+import TimeViewComponent from './BigData/TimeView';
 
 
 // import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
@@ -41,15 +42,11 @@ class BigData extends Component {
                       </div>
                       <div className="bigdata_content">
                           <div className="c_content c_1">
-                              <CardProvider className="cards" title="停车场使用量" color="light-green">
-                                  <div className="tickets_num">
-                                      <p><span>线上售票：</span><span><b>800</b>张</span></p>
-                                      <p><span>线下售票：</span><span><b>400</b>张</span></p>
-                                      <p><span>今日检票：</span><span><b>1050</b>张</span></p>
-                                  </div>
+                              <CardProvider className="cards" title="票务统计" color="light-green">
                                   <TicketBusinessComponent />
                               </CardProvider>
-                              <CardProvider className="cards" title="出入游客数量" color="light-green">
+                              <CardProvider className="cards" title="车位管理" color="light-green">
+                                  <ParkingLotComponent />
                               </CardProvider>
                               <CardProvider className="cards" title="游客消费总量" color="light-green">
                               </CardProvider>
@@ -60,6 +57,7 @@ class BigData extends Component {
                               </CardProvider>
                           </div>
                           <div className="c_content c_3">
+                              <TimeViewComponent />
                               <ResUtilizationComponent />
                               <CardProvider className="cards" title="消费分析" color="light-green">
                               </CardProvider>

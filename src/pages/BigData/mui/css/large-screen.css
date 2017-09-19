@@ -1,4 +1,4 @@
-.large-screen { width: 7680px;height: 3240px; background: url('../images/large-screen-bg.png') no-repeat; background-size: 100% 100%; }
+.large-screen { width: 7680px; height: 3240px; background: linear-gradient(to bottom, rgba(21, 41, 136, 1), rgba(18, 27, 60, 1)); /* 标准的语法 */ }
 .echart-list { overflow: hidden; position: relative; padding: 40px 50px 40px; border-radius: 4px }
 .echart-list .border-line { position: absolute }
 .echart-list .standard { width: 100%; height: 1px }

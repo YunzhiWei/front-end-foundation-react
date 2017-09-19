@@ -468,13 +468,6 @@ function radarChart(arg) {
 function weiboData(arg) {
     const weiboData = arg;
     const option = {
-        // legend: {
-        //     left: 'left',
-        //     data: ['强', '中', '弱'],
-        //     textStyle: {
-        //         color: '#ccc'
-        //     }
-        // },
         geo: {
             map: 'china',
             label: {
@@ -484,11 +477,11 @@ function weiboData(arg) {
             },
             itemStyle: {
                 normal: {
-                    areaColor: '#323c48',
+                    areaColor: 'rgba(70, 96, 180, .8)',
                     borderColor: '#111'
                 },
                 emphasis: {
-                    areaColor: '#2a333d'
+                    areaColor: 'rgba(70, 96, 180, 1)'
                 }
             }
         },
@@ -496,13 +489,13 @@ function weiboData(arg) {
             name: '弱',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: 1,
+            symbolSize: 3,
             large: true,
             itemStyle: {
                 normal: {
                     shadowBlur: 2,
-                    shadowColor: 'rgba(37, 140, 249, 0.8)',
-                    color: 'rgba(37, 140, 249, 0.8)'
+                    shadowColor: 'rgba(37, 140, 249, 1)',
+                    color: 'rgba(37, 140, 249, 1)'
                 }
             },
             data: []
@@ -510,13 +503,13 @@ function weiboData(arg) {
             name: '中',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: 1,
+            symbolSize: 3,
             large: true,
             itemStyle: {
                 normal: {
                     shadowBlur: 2,
-                    shadowColor: 'rgba(14, 241, 242, 0.8)',
-                    color: 'rgba(14, 241, 242, 0.8)'
+                    shadowColor: 'rgba(14, 241, 242, 1)',
+                    color: 'rgba(14, 241, 242, 1)'
                 }
             },
             data: []
@@ -524,13 +517,13 @@ function weiboData(arg) {
             name: '强',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: 1,
+            symbolSize: 3,
             large: true,
             itemStyle: {
                 normal: {
                     shadowBlur: 2,
-                    shadowColor: 'rgba(255, 255, 255, 0.8)',
-                    color: 'rgba(255, 255, 255, 0.8)'
+                    shadowColor: 'rgba(255, 255, 255, 1)',
+                    color: 'rgba(255, 255, 255, 1)'
                 }
             },
             data: []
@@ -1222,35 +1215,35 @@ function airQualityData(arg) {
 // 资源使用量
 function resUtilizationData(arg) {
     var appusage_data = [{
-        name: "app4",
+        name: "山东",
         value: 34
     }, {
-        name: "app11",
+        name: "北京",
         value: 46
     }, {
-        name: "app8",
+        name: "上海",
         value: 53
     }, {
-        name: "app3",
+        name: "广东",
         value: 68
     }, {
-        name: "app16",
+        name: "安徽",
         value: 79
     }, {
-        name: "app4",
-        value: 62
+        name: "湖北",
+        value: 82
     }, {
-        name: "app5",
-        value: 70
+        name: "浙江",
+        value: 87
     }, {
-        name: "app6",
-        value: 24
+        name: "湖南",
+        value: 91
     }, {
-        name: "app8",
-        value: 11
+        name: "福建",
+        value: 121
     }, {
-        name: "app2",
-        value: 8
+        name: "江西",
+        value: 140
     }];
     const option = {
         tooltip: {
@@ -1303,7 +1296,7 @@ function resUtilizationData(arg) {
         }],
 
         series: [{
-            name: "应用使用率",
+            name: "各地游客数量排名",
             type: "bar",
             data: appusage_data,
             barCategoryGap: "35%",
@@ -1652,8 +1645,8 @@ function errorsData(arg) {
 
 // 票务统计
 function ticketBusinessData(argument) {
-    var array=[60, 40, 85];
-    var array1=[100, 100, 100];
+    var array = [600, 400, 850];
+    var sum = 1200;
     const option = {
         grid: {
             top: 60,
@@ -1662,20 +1655,18 @@ function ticketBusinessData(argument) {
         xAxis: {
             type: 'value',
             position: 'top',
-            splitLine: {
-                lineStyle: {
-                    type: 'solid',
-                    color: '#fff'
-                }
-            },
+            max: sum,
             axisLabel: {
                 textStyle: {
-                    color: '#fff',
+                    fontSize: 48,
+                    color: 'rgba(31, 188, 210, .9)',
                 }
             },
+            splitLine: {
+                show: false
+            }
         },
         yAxis: {
-            splitNumber: 25,
             type: 'category',
             axisLine: {
                 lineStyle: {
@@ -1685,36 +1676,41 @@ function ticketBusinessData(argument) {
             axisLabel: {
                 show: false,
             },
-            axisTick: {
-                show: true
-            },
-            splitLine: {
-                lineStyle: {
-                    type: 'solid',
-                    color: '#cfc3bd'
-                }
-            },
             data: ['今日检票', '线下售票', '线上售票']
         },
         series: [{
             type: 'bar',
             silent: true,
             barGap: '-100%',
+            barWidth: 50,
             itemStyle: {
                 normal: {
-                    color: 'rgba(229, 249, 251, .9)',
-                    borderWidth: 2,
-                    borderColor: '#1FBCD2'
+                    color: 'rgb(0, 63, 126)',
+                    barBorderRadius: 50,
                 }
             },
-            data: array1
+            data: [sum, sum, sum]
         }, {
             type: 'bar',
             silent: true,
             barGap: '-100%',
+            barWidth: 50,
             itemStyle: {
                 normal: {
-                    color: 'rgba(31, 188, 210, .8)',
+                    color: 'rgba(71, 216, 253, .9)',
+                    barBorderRadius: 50,
+                }
+            },
+            label: {
+                normal: {
+                    show: true,
+                    position: 'inside',
+                    formatter: function(data) {
+                        return (data.data/1200*100).toFixed(2) + '%'
+                    },
+                    textStyle: {
+                        fontSize: 30
+                    }
                 }
             },
             data: array,

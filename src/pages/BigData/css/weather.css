@@ -12,11 +12,11 @@
 .text-big { font-size: 64px; }
 
 
-#weather { height: 470px; width: 1720px; border-radius: 10px; background-image: linear-gradient(to top, rgba(32, 156, 255, .5) 0%, rgba(105, 184, 207, .4) 100%); }
+#weather { height: 470px; width: 1720px; border-radius: 10px; background-image: linear-gradient(to top, rgba(32, 156, 255, 0) 0%, rgba(105, 184, 207, 0) 100%); }
 #weather>p { margin: 0; padding: 10px 50px; color: #fff; height: 60px; font-size: 28px; line-height: 60px; }
 #weather>p span:first-child { margin-right: 35px; }
 .weather_panel { width: 100%; font-size: 0; height: 390px; }
-.weather_panel>span { position: relative; display: inline-block; float: left; height: 390px; width: 15%; padding: 0; margin: 0; font-size: 20px; color: #fff; text-align: center; }
+.weather_panel>span { position: relative; display: inline-block; float: left; height: 390px; width: 15%; padding: 0; margin: 0; font-size: 20px; color: #fff; text-align: center; overflow: hidden; }
 .weather_panel>span:first-child { width: 25%; }
 .weather_panel>span>div { width: 100%; margin-top: 40px; }
 .weather_panel>span p { margin: 25px 0; }
