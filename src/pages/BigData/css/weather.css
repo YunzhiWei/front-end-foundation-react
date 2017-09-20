@@ -1,0 +1,25 @@
+.icon_sunny { background-image: url(../images/weather/晴（白天）.png); }
+.icon_cloudy { background-image: url(../images/weather/多云.png); }
+.icon_overvast { background-image: url(../images/weather/阴天.png); }
+.icon_fog { background-image: url(../images/weather/雾.png); }
+.icon_lightrain { background-image: url(../images/weather/小雨.png); }
+.icon_heavyrain { background-image: url(../images/weather/大雨.png); }
+.icon_shower { background-image: url(../images/weather/阵雨.png); }
+.icon_thundershower { background-image: url(../images/weather/雷阵雨.png); }
+.icon_lightsnow { background-image: url(../images/weather/小雪.png); }
+.icon_heavysnow { background-image: url(../images/weather/大雪.png); }
+.icon_unknown { background-image: url(../images/weather/未知.png); }
+.text-big { font-size: 64px; }
+
+
+#weather { height: 470px; width: 1720px; border-radius: 10px; background-image: linear-gradient(to top, rgba(32, 156, 255, 0) 0%, rgba(105, 184, 207, 0) 100%); }
+#weather>p { margin: 0; padding: 10px 50px; color: rgba(12, 207, 253, .9); height: 60px; font-size: 28px; line-height: 60px; }
+#weather>p span:first-child { margin-right: 35px; }
+.weather_panel { width: 100%; font-size: 0; height: 390px; }
+.weather_panel>span { position: relative; display: inline-block; float: left; height: 390px; width: 15%; padding: 0; margin: 0; font-size: 20px; color: rgba(12, 207, 253, .9); text-align: center; overflow: hidden; }
+.weather_panel>span:first-child { width: 25%; }
+.weather_panel>span>div { width: 100%; margin-top: 40px; }
+.weather_panel>span p { margin: 25px 0; color: rgba(12, 207, 253, .9); }
+.weather_panel>span p.realtime { margin: 25px 0; }
+.weather_panel .icon_weather { display: block; margin: 15px auto; width: 60px; height: 55px; background-size: 100% 100%; }
+.weather_panel .span_split { position: absolute; left: 0px; top: 40px; width: 3px; height: 320px; background: #fff; filter: alpha(opacity=15); opacity: 0.15; }

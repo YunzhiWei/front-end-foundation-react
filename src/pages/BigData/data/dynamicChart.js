@@ -23,33 +23,7 @@ const dynamicSeries = [
             }
             return res;
         })()
-	},
-		{
-			name: '数量',
-			type:'line',
-			data: (function (){
-	            let res = [];
-	            let len = 0;
-	            while (len < 50) {
-	                res.push((Math.random()*10 + 5).toFixed(1) - 0);
-	                len++;
-	            }
-	            return res;
-	        })()
-		},
-			{
-				name: '**数量',
-				type:'bar',
-				data: (function (){
-		            let res = [];
-		            let len = 0;
-		            while (len < 50) {
-		                res.push((Math.random()*10 + 5).toFixed(1) - 0);
-		                len++;
-		            }
-		            return res;
-		        })()
-			}
+	}
 ]
 
 const dynamicXAxis = [
@@ -63,8 +37,7 @@ const dynamicXAxis = [
 	            now = new Date(now - 2000);
 	        }
 	        return res;
-	    })(),
-	    axisLabel: { textStyle: { color: '#fff' } }
+	    })()
 	}
 ]
 
@@ -73,7 +46,7 @@ const dynamicYAxis = [
 	{ name: '游船数量', max:12, min:0 }
 ]
 
-export default { 
+export default {
 	dynamicSeries,
 	dynamicXAxis,
 	dynamicYAxis

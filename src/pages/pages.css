@@ -5,6 +5,7 @@
 .Home-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  margin: 0 auto;
 }
 
 @keyframes App-logo-spin {

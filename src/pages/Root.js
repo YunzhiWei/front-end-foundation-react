@@ -13,9 +13,23 @@ class RootPage extends Component {
         <p className="Home-intro">
           To get started, edit <code>url</code> in the browser address input box.
         </p>
+        <a href ="./bigdata" style={styles}>点击进入大数据平台</a>
       </div>
     );
   }
+}
+
+const styles = {
+    display: 'block',
+    background: 'rgba(97,218,251,.4)',
+    height: '60px',
+    lineHeight: '60px',
+    width: '250px',
+    borderRadius: '10px',
+    margin: '50px auto',
+    color: '#999',
+    textDecoration: 'none',
+    boxShadow: 'rgba(102, 102, 102, .4) 0px 5px 15px'
 }
 
 export default RootPage;

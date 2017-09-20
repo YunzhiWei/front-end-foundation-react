@@ -1,119 +1,87 @@
 import React, { Component } from "react";
+import './BigData/css/bigdata.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import CardProvider from './BigData/mui/CardProvider';
-
-import SalesVolume from './BigData/SalesVolume';
-import AirportCoord from './BigData/AirportCoord';
+// import SalesVolume from './BigData/SalesVolume';
+// import AirportCoordComponent from './BigData/AirportCoord';
 import LineAndHistogram from './BigData/LineAndHistogram';
-import DynamicChart from './BigData/DynamicChart';
+import DynamicChartComponent from './BigData/DynamicChartComponent';
 import RadarChart from './BigData/RadarChart';
-import CoverageArea from './BigData/CoverageArea';
-import BarAndPie from './BigData/BarAndPie';
-import WeiboData from './BigData/WeiboData'
+import WeiboData from './BigData/WeiboData';
+import ParkingLotComponent from './BigData/ParkingLot';
+import WeatherForeComponent from './BigData/WeatherFore';
+import NumOfPassComponent from './BigData/NumOfPass';
+import AirQualityComponent from './BigData/AirQuality';
+import ResUtilizationComponent from './BigData/ResUtilization';
+import TransportationComponent from './BigData/Transportation';
+import SankeyComponent from './BigData/Sankey';
+// import ErrorsComponent from './BigData/Errors';
+import WeatherComponent from './BigData/Weather';
+import TicketBusinessComponent from './BigData/TicketBusiness';
+import TimeViewComponent from './BigData/TimeView';
+import ParkingChargeComponent from './BigData/ParkingCharge';
 
-import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
-import { FromToLinesDataArray } from './BigData/data/MapExampleFromToLines';
+
+// import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
+// import { FromToLinesDataArray } from './BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
-import coverageAreaData from './BigData/data/CoverageAreaData';
-import barAndPieArray from './BigData/data/BarAndPieData';
-
-import geoCoordMap from './BigData/data/geoCoordMap';
+import weiboData from './BigData/data/weibo.json';
 
 class BigData extends Component {
- 	render() {
- 		return (
-			<MuiThemeProvider>
-				<div style={{background: '#071B29'}}>
-				    <table style={{width: '100%'}}>
-				    	<tbody>
-				    		<tr>
-  								<td style={tdStyle}>
-  									<CardProvider className="cardProvider" title="折线图和柱状图" style={cardStyles}>
-  										<LineAndHistogram BarLinesData={BarLinesDataArray[2]} />
-  									</CardProvider>
-  								</td>
-  								<td style={tdStyle}>
-  									<CardProvider className="cardProvider" title="江西省年均降雨量" style={cardStyles}>
-  										<SalesVolume BlockAreaData={BlockAreaDataArray[1]} />
-  									</CardProvider>
-  								</td>
-  								<td style={tdStyle}>
-  									<CardProvider className="cardProvider" title="国内游客去向" style={cardStyles}>
-  										<AirportCoord 
-  											FromToLinesData={FromToLinesDataArray[0]}
-  											geoCoordMap={geoCoordMap} />
-  									</CardProvider>
-  								</td>
-				    		</tr>
-				    		<tr>
-				    			<td colSpan="2" >
-				                    <CardProvider className="cardProvider" title="游客与游船数量" style={cardStyles}>
-					    				<DynamicChart
-					    					dynamicSeries={dynamicChart.dynamicSeries}
-					    					dynamicXAxis={dynamicChart.dynamicXAxis}
-					    					dynamicYAxis={dynamicChart.dynamicYAxis}
-					    				/>
-				    				</CardProvider>
-				    			</td>
-				    			<td>
-				                    <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-				                    	<RadarChart radarData={radarDataArray[0]} />
-				    				</CardProvider>
-				    			</td>
-				    		</tr>
-				    		<tr>
-				    			<td colSpan="3">
-    				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-    				                	<CoverageArea 
-    				                		coverageAreaData={coverageAreaData}
-    				                		geoCoordMap={geoCoordMap} />
-    								</CardProvider>
-				    			</td>
-				    		</tr>
-				    		<tr>
-				    			<td colSpan="2">
-    				                <CardProvider className="cardProvider" title="预算与开销" style={cardStyles}>
-					    				<BarAndPie barAndPieArray={barAndPieArray[0]} />
-				    				</CardProvider>
-				    			</td>
-				    			<td>
-    				                <CardProvider className="cardProvider" title="微博签到点亮中国" style={cardStyles}>
-    				                	<WeiboData />
-				    				</CardProvider>
-				    			</td>
-				    		</tr>
-				    	</tbody>
-				    </table>
-			    </div>
-			</MuiThemeProvider>
-		)
- 	}
-}
-
-const cardStyles = {
-	background: '#122E41',
-	width: '100%',
-    header: {
-    	paddingBottom: 8,
-    	paddingTop: 8,
-    	background: '#193D56',
-    	titleStyle: {
-	    	fontWeight: 600,
-	    	color: '#BFDAED',
-	    }
-    },
-    text: {
-    	margin: '0 auto',
-    	position: 'relative',
-    }
-};
-
-const tdStyle = {
-	width: '33%',
+    render() {
+       		return (
+        			<MuiThemeProvider>
+          				<div className="large-screen">
+                      <div className="bigdata_title">
+                          <span className="bigdata_l"></span>
+                          <span className="bigdata_c">仙女湖景区智慧旅游大数据</span>
+                          <span className="bigdata_r"></span>
+                      </div>
+                      <div className="bigdata_content">
+                          <div className="c_content c_1">
+                              <CardProvider className="cards" title="仙女湖景区票务统计" color="light-green">
+                                  <TicketBusinessComponent />
+                              </CardProvider>
+                              <CardProvider className="cards" title="仙女湖景区车位管理" color="light-green">
+                                  <ParkingLotComponent />
+                              </CardProvider>
+                              <CardProvider className="cards" title="仙女湖景区车位收费管理" color="light-green">
+                                  <ParkingChargeComponent />
+                              </CardProvider>
+                          </div>
+                          <div className="c_content c_2">
+                              <WeiboData weiboData={weiboData} />
+                              <CardProvider className="cards" title="仙女湖景区人员流量" color="light-green">
+                                  <NumOfPassComponent />
+                              </CardProvider>
+                          </div>
+                          <div className="c_content c_3">
+                              <TimeViewComponent />
+                              <ResUtilizationComponent />
+                              <CardProvider className="cards" title="仙女湖景区人员密度" color="light-green">
+                                  <RadarChart />
+                              </CardProvider>
+                          </div>
+                          <div className="c_content c_4">
+                              <CardProvider className="cards" title="仙女湖景区天气预报" color="light-green">
+                                  <WeatherComponent />
+                              </CardProvider>
+                              <CardProvider className="cards" title="仙女湖景区空气质量" color="light-green">
+                                  <AirQualityComponent />
+                              </CardProvider>
+                              <CardProvider className="cards" title="仙女湖景区客源地统计" color="light-green">
+                                  <LineAndHistogram BarLinesData={BarLinesDataArray[1]} />
+                              </CardProvider>
+                          </div>
+                      </div>
+          			  </div>
+        			</MuiThemeProvider>
+      		)
+    	}
 }
 
 export default BigData;

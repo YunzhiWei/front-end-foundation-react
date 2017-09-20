@@ -3,23 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "echarts": "^3.6.1",
-    "element-resize-event": "2.0.7",
+    "echarts": "^3.6.2",
+    "echarts-liquidfill": "^1.0.5",
+    "element-resize-event": "^2.0.9",
     "firebase": "^4.1.3",
     "material-ui": "^0.18.4",
     "mobx": "^3.1.16",
     "mobx-react": "^4.2.1",
     "mobx-react-devtools": "^4.2.15",
     "react": "^15.6.1",
+    "react-count-animation": "^1.1.1",
+    "react-countup": "^2.2.0",
     "react-dom": "^15.6.1",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
+    "react-swiper": "^0.1.5",
     "react-tap-event-plugin": "^2.0.1",
-    "wilddog": "^2.5.10"
+    "sw-precache": "^5.2.0",
+    "swiper-r": "^0.1.3"
   },
   "devDependencies": {
-    "axios": "^0.16.2",
     "autoprefixer": "7.1.0",
+    "axios": "^0.16.2",
     "babel-core": "6.24.1",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -31,9 +36,6 @@
     "chalk": "1.1.3",
     "css-loader": "0.28.1",
     "dotenv": "4.0.0",
-    "echarts": "^3.6.1",
-    "echarts-liquidfill": "~1.0.5",
-    "element-resize-event": "^2.0.5",
     "eslint": "3.19.0",
     "eslint-config-react-app": "^1.0.4",
     "eslint-loader": "1.7.1",
@@ -42,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-react": "7.0.1",
     "extract-text-webpack-plugin": "2.1.0",
+    "fetch-jsonp": "^1.1.1",
     "file-loader": "0.11.1",
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.28.0",
@@ -100,6 +103,5 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "homepage": "http://localhost/build"
+  }
 }

@@ -8,7 +8,7 @@ import BigData from './BigData';
 export default {
   AboutPage,
   AdminPage,
+  BigData,
   HomePage,
-  RootPage,
-  BigData
+  RootPage
 };

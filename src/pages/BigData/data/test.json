@@ -1,0 +1,22 @@
+{
+    "parkingLot1": {
+        "inUse": 233,
+        "all": 800
+    },
+    "parkingLot2": {
+        "inUse": 449,
+        "all": 800
+    },
+    "parkingLot3":{
+        "inUse": 349,
+        "all": 800
+    },
+    "parkingLot4": {
+        "inUse": 549,
+        "all": 785
+    },
+    "parkingLot5": {
+        "inUse": 649,
+        "all": 790
+    }
+}

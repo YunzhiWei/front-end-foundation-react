@@ -1,30 +1,16 @@
 import React, { Component } from 'react';
 import ReactEcharts from './lib';
+import echartsOption from '../function/function';
 
 class RadarChart extends Component {
     render() {
-        const { radarSeries, radarIndicator } = this.props.radarData;
-        radarSeries.type = 'radar';
-        const legendData = radarSeries.data.map((item) => {
-            return item.name;
-        });
-        const option = {
-            legend: {
-                data: legendData,
-                textStyle: { color: '#fff' },
-            },
-            radar: radarIndicator,
-            series: radarSeries
-        };
-
+        const option = echartsOption(this.props.radarData, 'RadarChart');
         return (
-            <div className='examples'>
-                <div className='parent' style={{position: 'relative'}}>
-                    <ReactEcharts
-                        option={option}
-                        style={{height: 400,width: 500,margin: '0 0 0 -50%',left: '50%'}} />
-                </div>
-            </div>
+            <ReactEcharts
+              option={option}
+              style={{width: '100%',height: '100%'}}
+              className='RadarChart'
+            />
         );
     }
 };

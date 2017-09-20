@@ -2,31 +2,29 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
 import DevTools from 'mobx-react-devtools';
 
-import * as wilddog from 'wilddog';
+import * as firebase from 'firebase';
 
-@inject("timer", "counter") @observer
+@inject("timer", "counter", "dynamicChartStore") @observer
 class AboutPage extends Component {
   constructor() {
     super();
     this.state = {
-      speed: ''
+      speed: 60
     }
   }
 
   componentDidMount() {
-    const rootRef = wilddog.sync().ref().child('test');
-      console.log(rootRef);
-    var speedRef = rootRef.child('speed');
-    speedRef.on('value', snap => { 
-      console.log("sync up")
+    const rootRef = firebase.database().ref().child('react');
+    const speedRef = rootRef.child('speed');
+    speedRef.on('value', snap => {
       this.setState({speed: snap.val()});
     });
   }
 
   onSpeedInputKeyPress(e) {
     if (e.which === 13) {
-      const rootRef = wilddog.sync().ref().child('test');
-      rootRef.set({ 'speed': e.target.value });
+      const rootRef = firebase.database().ref().child('react');
+      rootRef.set({ speed: e.target.value });
       e.target.value = "";
     }
   }
