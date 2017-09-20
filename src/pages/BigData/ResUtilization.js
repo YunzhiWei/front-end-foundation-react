@@ -9,11 +9,13 @@ class ResUtilizationComponent extends Component {
 		const { echartsData } = this.props;
 		const option = echartsOption(echartsData.pass, 'ResUtilization');
 		return (
-		    <ReactEcharts
-		      option={option}
-		      style={{width: '100%',height: '100%'}}
-		      className='ResUtilization'
-		    />
+			<div style={{height: '980px', margin: '50px 0'}}>
+			    <ReactEcharts
+			      option={option}
+			      style={{width: '100%',height: '100%'}}
+			      className='ResUtilization'
+			    />
+		    </div>
 		);
 	}
 }

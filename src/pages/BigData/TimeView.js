@@ -14,32 +14,24 @@ class TimeViewComponent extends Component {
 	}
 	componentWillMount() {
 		var self = this;
+		function addTime(arg) { return arg < 10 ? '0'+arg : arg }
 		setInterval(function () {
 			var date = new Date();
 			self.setState({
 				year: date.getFullYear(),
 				month: date.getMonth()+1,
 				day: date.getDate(),
-				hour: date.getHours(),
-				minute: date.getMinutes(),
-				second: date.getSeconds()
+				hour: addTime(date.getHours()),
+				minute: addTime(date.getMinutes()),
+				second: addTime(date.getSeconds())
 			})
-		}, 1000)
-		var data = [{name:"a",age:1,phone:12423423},{name:"a",age:1,phone:12423423}]
-		var params = {
-			stops: data
-		}
-		params = JSON.stringify(params);
-		localStorage.setItem("params", params)
+		}, 300)
 	}
 	render() {
-		var obj = JSON.parse(localStorage.getItem("params"))
-		console.log(obj);
-		localStorage.removeItem("params");
-		console.log(JSON.parse(localStorage.getItem("params")));
 		return (
 		    <div className="time_view">
-		    	`${this.state.year} 年 ${this.state.month} 月 ${this.state.day} 日 ${this.state.hour} : ${this.state.minute} : ${this.state.second}`
+		    	<p className="yymmdd">{this.state.year} 年 {this.state.month} 月 {this.state.day} 日 星期三</p>
+		    	<p className="hhmmss"><span>{this.state.hour}</span> : <span>{this.state.minute}</span> : <span>{this.state.second}</span></p>
 		    </div>
 		);
 	}

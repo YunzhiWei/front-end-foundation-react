@@ -342,9 +342,9 @@ function dynamicChart(arg) {
 
 // 雷达图
 function radarChart(arg) {
-    var dataBJ = [[234, 185, 230, 4.09, 123, 69, 27]];
-    var dataGZ = [[146, 84, 139, 1.094, 40, 17, 25]];
-    var dataSH = [[188, 143, 197, 1.66, 99, 51, 29]];
+    var dataReal = [[75, 66, 30, 49, 23, 69]];
+    var dataPre = [[81, 71, 41, 42, 23, 67]];
+    var dataYes = [[88, 79, 67, 51, 26, 31]];
 
     var lineStyle = {
         normal: {
@@ -356,22 +356,22 @@ function radarChart(arg) {
     const option = {
         legend: {
             bottom: 5,
-            data: ['北京', '上海', '广州'],
+            data: ['实时', '昨日', '前日'],
             itemGap: 20,
             textStyle: {
                 color: '#87baf8',
                 fontSize: 40
             },
-            selectedMode: 'single'
+            // selectedMode: 'single'
         },
         radar: {
             indicator: [
-                {name: 'AQI', max: 300},
-                {name: 'PM2.5', max: 250},
-                {name: 'PM10', max: 300},
-                {name: 'CO', max: 5},
-                {name: 'NO2', max: 200},
-                {name: 'SO2', max: 100}
+                {name: '龙王岛', max: 100},
+                {name: '爱情岛', max: 100},
+                {name: '洪阳洞', max: 100},
+                {name: '桃花岛', max: 100},
+                {name: '舞龙湖', max: 100},
+                {name: '昌山庙', max: 100}
             ],
             shape: 'circle',
             splitNumber: 5,
@@ -403,10 +403,10 @@ function radarChart(arg) {
         },
         series: [
             {
-                name: '北京',
+                name: '实时',
                 type: 'radar',
                 lineStyle: lineStyle,
-                data: dataBJ,
+                data: dataReal,
                 symbol: 'none',
                 itemStyle: {
                     normal: {
@@ -426,10 +426,10 @@ function radarChart(arg) {
                 }
             },
             {
-                name: '上海',
+                name: '昨日',
                 type: 'radar',
                 lineStyle: lineStyle,
-                data: dataSH,
+                data: dataYes,
                 symbol: 'none',
                 itemStyle: {
                     normal: {
@@ -443,10 +443,10 @@ function radarChart(arg) {
                 }
             },
             {
-                name: '广州',
+                name: '前日',
                 type: 'radar',
                 lineStyle: lineStyle,
-                data: dataGZ,
+                data: dataPre,
                 symbol: 'none',
                 itemStyle: {
                     normal: {
@@ -928,8 +928,12 @@ function numOfPassData(arg) {
                 fontSize: 60,
             }
         },
+        grid: {
+            left: 80,
+            right: 50
+        },
         legend: {
-            data: ['line', 'bar'],
+            data: ['增长趋势', '游客量'],
             textStyle: {
                 color: '#ccc',
                 fontSize: 40
@@ -937,6 +941,7 @@ function numOfPassData(arg) {
         },
         xAxis: {
             data: arg.category.map(function(item){ return item }),
+            boundaryGap: true,
             axisLine: {
                 lineStyle: {
                     color: '#ccc'
@@ -945,7 +950,7 @@ function numOfPassData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 25,
+                    fontSize: 32,
                     color: '#87baf8'
                 }
             }
@@ -960,27 +965,32 @@ function numOfPassData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 25,
+                    fontSize: 32,
                     color: '#87baf8'
                 }
             }
         },
         series: [{
-            name: 'line',
+            name: '增长趋势',
             type: 'line',
             smooth: true,
             showAllSymbol: true,
             symbol: 'emptyCircle',
             symbolSize: 15,
+            lineStyle: {
+                normal: {
+                    width: 5
+                }
+            },
             animation: true,
             animationEasing: 'elasticOut',
             animationDelay: function (idx) { return idx * 10 },
             animationDelayUpdate: function (idx) { return idx * 10 },
-            data: arg.lineData.map(function(item){ return item })
+            data: arg.barData.map(function(item){ return item })
         }, {
-            name: 'bar',
+            name: '游客量',
             type: 'bar',
-            barWidth: 10,
+            barWidth: 30,
             animation: true,
             animationEasing: 'elasticOut',
             animationDelay: function (idx) { return idx * 10 },
@@ -991,54 +1001,13 @@ function numOfPassData(arg) {
                     color: new echarts.graphic.LinearGradient(
                         0, 0, 0, 1,
                         [
-                            {offset: 0, color: '#14c8d4'},
-                            {offset: 1, color: '#43eec6'}
+                            {offset: 0, color: 'rgba(20,200,212, .8)'},
+                            {offset: 1, color: 'rgba(67,238,198, .8)'}
                         ]
                     )
                 }
             },
             data: arg.barData.map(function(item){ return item })
-        }, {
-            name: 'line',
-            type: 'bar',
-            barGap: '-100%',
-            barWidth: 10,
-            animation: true,
-            animationEasing: 'elasticOut',
-            animationDelay: function (idx) { return idx * 10 },
-            animationDelayUpdate: function (idx) { return idx * 10 },
-            itemStyle: {
-                normal: {
-                    color: new echarts.graphic.LinearGradient(
-                        0, 0, 0, 1,
-                        [
-                            {offset: 0, color: 'rgba(20,200,212,0.5)'},
-                            {offset: 0.2, color: 'rgba(20,200,212,0.2)'},
-                            {offset: 1, color: 'rgba(20,200,212,0)'}
-                        ]
-                    )
-                }
-            },
-            z: -12,
-            data: arg.lineData.map(function(item){ return item })
-        }, {
-            name: 'dotted',
-            type: 'pictorialBar',
-            symbol: 'rect',
-            animation: true,
-            animationEasing: 'elasticOut',
-            animationDelay: function (idx) { return idx * 10 },
-            animationDelayUpdate: function (idx) { return idx * 10 },
-            itemStyle: {
-                normal: {
-                    color: '#0f375f'
-                }
-            },
-            symbolRepeat: true,
-            symbolSize: [12, 4],
-            symbolMargin: 1,
-            z: -10,
-            data: arg.lineData.map(function(item){ return item })
         }]
     };
     return option;
@@ -1215,21 +1184,6 @@ function airQualityData(arg) {
 // 资源使用量
 function resUtilizationData(arg) {
     var appusage_data = [{
-        name: "山东",
-        value: 34
-    }, {
-        name: "北京",
-        value: 46
-    }, {
-        name: "上海",
-        value: 53
-    }, {
-        name: "广东",
-        value: 68
-    }, {
-        name: "安徽",
-        value: 79
-    }, {
         name: "湖北",
         value: 82
     }, {
@@ -1263,7 +1217,7 @@ function resUtilizationData(arg) {
         },
         yAxis: [{
             type: "category",
-            data: ["TOP10","TOP9","TOP8","TOP7","TOP6","TOP5", "TOP4", "TOP3", "TOP2", "TOP1"],
+            data: ["TOP5", "TOP4", "TOP3", "TOP2", "TOP1"],
             axisLine: {
                 show: false
             },

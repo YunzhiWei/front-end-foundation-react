@@ -79,7 +79,7 @@ class EchartsData {
         let self = this;
         this.parking.inUsePrev = this.parking.inUse;
         this.parking.allPrev = this.parking.all;
-        axios.get('http://128.1.67.161:300/parkingLot' + index).then(function(data){
+        axios.get('http://192.168.1.16:300/parkingLot' + index).then(function(data){
             self.parking.inUse = data.data.inUse;
             self.parking.all = data.data.all;
         })

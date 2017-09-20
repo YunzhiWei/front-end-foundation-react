@@ -1,5 +1,6 @@
 @font-face { font-family: 'sa-digital-number'; src: url('fonts/sa-digital-number.eot'); }
 @font-face { font-family: 'sa-digital-number'; src: url('fonts/sa-digital-number.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'ZZGFSH'; src: url('fonts/造字工房尚黑（非商用）纤细体.ttf') format('truetype'); font-weight: normal; font-style: normal; }
 [class^="icon-"], [class*=" icon-"] { font-family: 'sa-digital-number'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1;	/* Better Font Rendering =========== */ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .icon-minus:before { content: "\2d"; }
 .icon-zero:before { content: "\30"; }
@@ -12,6 +13,10 @@
 .icon-seven:before { content: "\37"; }
 .icon-eight:before { content: "\38"; }
 .icon-nine:before { content: "\39"; }
+.text-baoman { color: #ff4362; }
+.text-baohe { color: #fcc60c; }
+.text-kongxian { color: #49fed8; }
+.text-zhengchang { color: #48d8fd; }
 
 .echart-list { height: 100%; }
 /*大数据标题 start */
@@ -37,16 +42,28 @@
 .cards .tickets_num p>span { float: left; position: relative; height: 110px; line-height: 110px; display: inline-block; color: rgba(12, 207, 253, .9); width: 320px; }
 .cards .tickets_num p>span:first-child { width: 260px; }
 .cards .tickets_num p>span:last-child { width: 60px; }
-.cards .tickets_num b { position: relative; top: -12px; color: rgba(30, 250, 225, .8); font-size: 64px; font-family: 'sa-digital-number'; text-shadow: 0px 0px 20px rgba(255, 255, 255, .5); margin-right: 40px; }
+.cards .tickets_num b { position: relative; top: -12px; color: rgba(30, 250, 225, .8); font-size: 64px; font-family: 'sa-digital-number'; /*text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);*/ margin-right: 40px; }
 
-.cards .parking_num { width: 40%; height: 760px; display: inline-block; font-size: 40px; color: #fff; }
-.cards .parking_num hr { margin: 30px 0; border-top: 1px solid rgba(12, 207, 253, .4); }
+.cards .parking_num { width: 40%; height: 760px; display: inline-table; font-size: 40px; color: #fff; }
+.cards .parking_num hr { margin: 30px 0; border-top: 2px solid rgba(12, 207, 253, .4); }
 .cards .parking_num p { height: 95px; margin: 20px 0; text-align: right; }
 .cards .parking_num p>span { float: left; position: relative; height: 110px; line-height: 110px; display: inline-block; color: rgba(12, 207, 253, .9); width: 320px; }
 .cards .parking_num p>span:first-child { width: 260px; }
 .cards .parking_num p>span:last-child { width: 60px; }
-.cards .parking_num b { position: relative; top: -12px; color: rgba(30, 250, 225, .8); font-size: 64px; font-family: 'sa-digital-number'; text-shadow: 0px 0px 20px rgba(255, 255, 255, .5); margin-right: 40px; }
+.cards .parking_num b { position: relative; top: -12px; color: rgba(30, 250, 225, .8); font-size: 64px; font-family: 'sa-digital-number'; /*text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);*/ margin-right: 40px; }
 
+.time_view { font-family: 'ZZGFSH'; height: 690px; margin: 50px 0; padding: 140px 0; color: rgb(17, 227, 242); text-align: right; font-size: 100px; font-weight: 900; }
+.time_view .hhmmss { font-size: 220px; }
+.time_view .hhmmss span { display: inline-table; text-align: center; width: 260px; }
 
-
-
+.parking_charge { height: 100%; width: 100%; padding: 0 50px; }
+.parking_charge>div { display: inline-block; height: 760px; width: 385px; margin: 0 10px; padding: 40px; background: linear-gradient(to bottom, rgba(40, 66, 143, 1), rgba(40, 66, 143, 0)); }
+.parking_charge p { text-align: center; margin: 50px auto; }
+.parking_charge .charge_title, .parking_charge .charge_subtitle, .parking_charge .charge_state { font-size: 28px; color: #48d8fd; }
+.parking_charge .charge_num { font-family: 'ZZGFSH'; font-weight: 900; font-size: 82px; margin-bottom: 96px; }
+.parking_charge .charge_state { }
+.parking_charge span { display: inline-block; height: 50px; line-height: 30px; width: 140px; padding: 5px 20px;	/*margin-top: 40px;*/ border-width: 2px; border-style: solid; border-radius: 25px; }
+.parking_charge .text-baoman span { border-color: #ff4362; color: #ff4362; }
+.parking_charge .text-kongxian span { border-color: #49fed8; color: #49fed8; }
+.parking_charge .text-baohe span { border-color: #fcc60c; color: #fcc60c; }
+.parking_charge .text-zhengchang span { border-color: #48d8fd; color: #48d8fd; }
