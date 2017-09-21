@@ -47,7 +47,7 @@
 .light-green .tip-line.right-bottom em { border-right: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd }
 .light-green .tip-line.bottom-left { border-left: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd }
 .light-green .tip-line.bottom-left em { border-left: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd }
-.light-green .title-box .title-mess { border-top: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd; color: #48d8fd; text-shadow: 0 0 15px #48d8fd }
+.light-green .title-box .title-mess { border-top: 4px solid #48d8fd; border-bottom: 4px solid #48d8fd; color: #48d8fd; /*text-shadow: 0 0 15px #48d8fd*/ }
 .light-green .title-box .title-tip { background: #48d8fd }
 .light-green .title-box .title-tip em { background: #48d8fd }
 .light-green .title-box .left-top em, .light-green .title-box .top-right em, .light-green .title-box .right-bottom em, .light-green .title-box .bottom-left em { box-shadow: 0 0 4px 1px #48d8fd }
