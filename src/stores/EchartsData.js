@@ -77,16 +77,11 @@ class EchartsData {
     }
     fetchParkingData(index) {
         let self = this;
-<<<<<<< HEAD
         this.parking.inUsePrev = this.parking.inUse;
         this.parking.allPrev = this.parking.all;
         axios.get('http://128.1.67.161:300/parkingLot' + index).then(function(data){
             self.parking.inUse = data.data.inUse;
             self.parking.all = data.data.all;
-=======
-        axios.get('http://128.1.67.161:300/parkingLot' + index).then(function(data){
-            self.parking = data.data;
->>>>>>> 1e6d8ef5819305740021ea36fd06d391b871982d
         })
     }
     fetchWeatherData () {
