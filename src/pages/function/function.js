@@ -1610,6 +1610,9 @@ function ticketBusinessData(argument) {
             type: 'value',
             position: 'top',
             max: sum,
+            axisLine: {
+                show: false
+            },
             axisLabel: {
                 textStyle: {
                     fontSize: 48,
@@ -1623,9 +1626,7 @@ function ticketBusinessData(argument) {
         yAxis: {
             type: 'category',
             axisLine: {
-                lineStyle: {
-                    type: 'solid',
-                }
+                show: false
             },
             axisLabel: {
                 show: false,
