@@ -1713,5 +1713,3 @@ function echartsOption(data, name) {
 
 export default echartsOption;
 
-
-kekeke
