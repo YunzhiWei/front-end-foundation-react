@@ -22,6 +22,7 @@ import WeatherComponent from './BigData/Weather';
 import TicketBusinessComponent from './BigData/TicketBusiness';
 import TimeViewComponent from './BigData/TimeView';
 import ParkingChargeComponent from './BigData/ParkingCharge';
+// import TagCloudComponent from './BigData/TagCloud';
 
 
 // import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';

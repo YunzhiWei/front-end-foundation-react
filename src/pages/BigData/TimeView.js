@@ -4,28 +4,30 @@ class TimeViewComponent extends Component {
 	constructor() {
 		super()
 		this.state = {
-			year: '2017',
-			month: '09',
-			day: '19',
-			hour: '16',
-			minute: '10',
-			second: '55'
+			year: '1970',
+			month: '01',
+			day: '01',
+			hour: '00',
+			minute: '00',
+			second: '00'
 		}
 	}
 	componentWillMount() {
 		var self = this;
 		function addTime(arg) { return arg < 10 ? '0'+arg : arg }
-		setInterval(function () {
-			var date = new Date();
-			self.setState({
-				year: date.getFullYear(),
-				month: date.getMonth()+1,
-				day: date.getDate(),
-				hour: addTime(date.getHours()),
-				minute: addTime(date.getMinutes()),
-				second: addTime(date.getSeconds())
-			})
-		}, 300)
+		function step() {
+		    var date = new Date();
+		    self.setState({
+		    	year: date.getFullYear(),
+		    	month: date.getMonth()+1,
+		    	day: date.getDate(),
+		    	hour: addTime(date.getHours()),
+		    	minute: addTime(date.getMinutes()),
+		    	second: addTime(date.getSeconds())
+		    })
+		    requestAnimationFrame(step);
+		}
+		requestAnimationFrame(step);
 	}
 	render() {
 		return (
