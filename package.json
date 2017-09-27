@@ -15,12 +15,11 @@
     "react-count-animation": "^1.1.1",
     "react-countup": "^2.2.0",
     "react-dom": "^15.6.1",
+    "react-heatmap": "^1.0.6",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-swiper": "^0.1.5",
     "react-tap-event-plugin": "^2.0.1",
-    "sw-precache": "^5.2.0",
-    "swiper-r": "^0.1.3"
+    "sw-precache": "^5.2.0"
   },
   "devDependencies": {
     "autoprefixer": "7.1.0",
