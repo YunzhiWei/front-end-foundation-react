@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactEcharts from './lib';
+import ReactEcharts from '../lib';
 import echartsOption from "../function/function";
 
 require('./data/mapLib').blockAreaMap.map((item)=>{ return require("echarts/map/js/"+(item === 'china' ? 'china' : 'province/'+item)+".js") })

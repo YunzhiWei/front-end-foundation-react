@@ -68,7 +68,4 @@
 .parking_charge .text-baohe span { border-color: #fcc60c; color: #fcc60c; }
 .parking_charge .text-zhengchang span { border-color: #48d8fd; color: #48d8fd; }
 
-#ParkingHeat { height: 690px; margin: 50px 0; }
-#heatmap { height: 100%; width: 100%; background-image: url('../images/heatmap-bg.png'); background-size: 100% 100% }
-
 

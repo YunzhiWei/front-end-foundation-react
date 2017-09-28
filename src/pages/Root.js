@@ -14,6 +14,7 @@ class RootPage extends Component {
           To get started, edit <code>url</code> in the browser address input box.
         </p>
         <a href ="./bigdata" style={styles}>点击进入大数据平台</a>
+        <a href ="./parkinglot" style={styles}>点击进入智能停车场管理</a>
       </div>
     );
   }

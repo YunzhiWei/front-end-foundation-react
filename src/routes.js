@@ -9,6 +9,7 @@ const Routes = () =>
     <Route path="/admin" component={pages.AdminPage} />
     <Route path="/home" component={pages.HomePage} />
     <Route path="/bigdata" component={pages.BigData} />
+    <Route path="/parkinglot" component={pages.ParkingLot} />
   </switch>
 
 export default Routes;

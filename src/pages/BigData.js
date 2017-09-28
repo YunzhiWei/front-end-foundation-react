@@ -3,7 +3,7 @@ import './BigData/css/bigdata.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import CardProvider from './BigData/mui/CardProvider';
+import CardProvider from './mui/CardProvider';
 // import SalesVolume from './BigData/SalesVolume';
 // import AirportCoordComponent from './BigData/AirportCoord';
 import LineAndHistogram from './BigData/LineAndHistogram';
@@ -22,7 +22,6 @@ import WeatherComponent from './BigData/Weather';
 import TicketBusinessComponent from './BigData/TicketBusiness';
 import TimeViewComponent from './BigData/TimeView';
 import ParkingChargeComponent from './BigData/ParkingCharge';
-import ParkingHeatComponent from './BigData/ParkingHeat';
 
 
 // import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
@@ -61,7 +60,7 @@ class BigData extends Component {
                               </CardProvider>
                           </div>
                           <div className="c_content c_3">
-                              <ParkingHeatComponent />
+                              <TimeViewComponent />
                               <ResUtilizationComponent />
                               <CardProvider className="cards" title="仙女湖景区人员密度" color="light-green">
                                   <RadarChart />

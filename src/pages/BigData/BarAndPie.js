@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactEcharts from './lib';
+import ReactEcharts from '../lib';
 
 class BarAndPie extends Component {
     render() {

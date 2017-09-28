@@ -1,0 +1,7 @@
+#ParkingHeat { height: 100%; width: 100%; }
+#heatmap { height: 100%; width: 100%; background-image: url('../images/heatmap-bg.png'); background-size: 100% 100%; opacity: .9 }
+
+#parking-lot .c_center { width: 3840px; height: 1770px; padding: 0 50px; }
+#parking-lot .CarsDistri, #parking-lot .IOSummary { height: 1770px; }
+#parking-lot .CarsDistribution { display: inline-block; }
+#parking-lot .ServiceCondition { height: 1770px; }

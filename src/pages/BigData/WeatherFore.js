@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import ReactEcharts from './lib';
+import ReactEcharts from '../lib';
 import { inject, observer } from 'mobx-react'
 import echartsOption from '../function/function';
 

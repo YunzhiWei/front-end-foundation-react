@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import CountUp from 'react-countup';
 
-import ReactEcharts from './lib';
+import ReactEcharts from '../lib';
 import echartsOption from '../function/function';
 
 import { inject, observer } from 'mobx-react'
