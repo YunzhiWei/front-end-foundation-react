@@ -915,7 +915,6 @@ function weatherForeData(arg) {
 
 // 出入游客数量
 function numOfPassData(arg) {
-    // option
     const option = {
         tooltip: {
             trigger: 'axis',

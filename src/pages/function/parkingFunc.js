@@ -38,7 +38,7 @@ function carsDistributionData(arg) {
             itemGap: 30
         },
         visualMap: {
-            right: 'right',
+            right: 50,
             bottom: 50,
             calculable: true,
             textStyle: { color: 'rgb(38, 242, 233)',fontSize: 46 },
@@ -61,7 +61,6 @@ function carsDistributionData(arg) {
     option.legend.data = legendData;
     option.visualMap.min = visualMin;
     option.visualMap.max = visualMax;
-    option.visualMap.text = visualLabel;
     option.geo.map = geoMapName;
     return option;
 }
@@ -163,131 +162,147 @@ function carsDistribution2Data(arg) {
 }
 
 // 全国车辆分布图
-function radarChartData(arg) {
-    var dataReal = [[75, 66, 30, 49, 23, 69]];
-    var dataPre = [[81, 71, 41, 42, 23, 67]];
-    var dataYes = [[88, 79, 67, 51, 26, 31]];
-
-    var lineStyle = {
-        normal: {
-            width: 1,
-            opacity: 0.5
-        }
-    };
-
+function carsDistribution3Data(arg) {
+    var datas = arg.map((item) => item)
+    console.log(datas);
     const option = {
-        legend: {
-            bottom: 5,
-            data: ['实时', '昨日', '前日'],
-            itemGap: 20,
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)",
             textStyle: {
-                color: '#87baf8',
-                fontSize: 40
-            },
-            // selectedMode: 'single'
-        },
-        radar: {
-            indicator: [
-                {name: '龙王岛', max: 100},
-                {name: '爱情岛', max: 100},
-                {name: '洪阳洞', max: 100},
-                {name: '桃花岛', max: 100},
-                {name: '舞龙湖', max: 100},
-                {name: '昌山庙', max: 100}
-            ],
-            shape: 'circle',
-            splitNumber: 5,
-            radius: '75%',
-            center: ['50%', '45%'],
-            name: {
-                textStyle: {
-                    color: '#43eec6',
-                    fontSize: 40
-                }
-            },
-            splitLine: {
-                lineStyle: {
-                    color: [
-                        'rgba(182, 251, 255, 0.2)', 'rgba(169, 228, 244, 0.4)',
-                        'rgba(157, 208, 234, 0.6)', 'rgba(151, 198, 229, 0.7)',
-                        'rgba(141, 181, 220, 0.9)', 'rgba(131, 164, 212, 1)'
-                    ].reverse()
-                }
-            },
-            splitArea: {
-                show: false
-            },
-            axisLine: {
-                lineStyle: {
-                    color: 'rgba(141, 181, 220, 0.5)'
-                }
+                fontSize: 42
             }
         },
-        series: [
+        series : [
             {
-                name: '实时',
-                type: 'radar',
-                lineStyle: lineStyle,
-                data: dataReal,
-                symbol: 'none',
-                itemStyle: {
+                name: '全国客源车辆所属省份统计',
+                type: 'pie',
+                radius : '65%',
+                label: {
                     normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [
-                                {offset: 0, color: '#14c8d4'},
-                                {offset: 1, color: '#43eec6'}
-                            ]
-                        )
+                        textStyle: {
+                            fontSize: 46
+                        }
                     }
                 },
-                areaStyle: {
-                    normal: {
-                        opacity: 0.1
-                    }
-                }
-            },
-            {
-                name: '昨日',
-                type: 'radar',
-                lineStyle: lineStyle,
-                data: dataYes,
-                symbol: 'none',
                 itemStyle: {
-                    normal: {
-                        color: '#B3E4A1'
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
                     }
                 },
-                areaStyle: {
-                    normal: {
-                        opacity: 0.05
-                    }
-                }
-            },
-            {
-                name: '前日',
-                type: 'radar',
-                lineStyle: lineStyle,
-                data: dataPre,
-                symbol: 'none',
-                itemStyle: {
-                    normal: {
-                        color: 'rgb(238, 197, 102)'
-                    }
-                },
-                areaStyle: {
-                    normal: {
-                        opacity: 0.05
-                    }
-                }
+                data: datas,
             }
         ]
     };
     return option;
 }
 
+// 车辆停留分布时间
+function standingTimeData(arg) {
+    var dataNames = arg.map((item) => item.name )
+    var datas = arg.map((item) => item.value )
+    const option = {
+        tooltip: {
+            trigger: 'axis',
+            hideDelay: 400,
+            padding: 20,
+            axisPointer: {
+                type: 'shadow'
+            },
+            textStyle: {
+                fontSize: 60,
+            }
+        },
+        grid: {
+            left: 80,
+            right: 50
+        },
+        legend: {
+            data: ['增长趋势', '游客量'],
+            textStyle: {
+                color: '#ccc',
+                fontSize: 40
+            }
+        },
+        xAxis: {
+            data: dataNames,
+            boundaryGap: true,
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            },
+            axisLabel: {
+                align: 'center',
+                textStyle: {
+                    fontSize: 32,
+                    color: '#87baf8'
+                }
+            }
+        },
+        yAxis: {
+            splitLine: {show: false},
+            axisLine: {
+                lineStyle: {
+                    color: '#ccc'
+                }
+            },
+            axisLabel: {
+                align: 'center',
+                textStyle: {
+                    fontSize: 32,
+                    color: '#87baf8'
+                }
+            }
+        },
+        series: [{
+            name: '增长趋势',
+            type: 'line',
+            smooth: true,
+            showAllSymbol: true,
+            symbol: 'emptyCircle',
+            symbolSize: 15,
+            lineStyle: {
+                normal: {
+                    width: 5
+                }
+            },
+            animation: true,
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) { return idx * 10 },
+            animationDelayUpdate: function (idx) { return idx * 10 },
+            data: datas
+        }, {
+            name: '游客量',
+            type: 'bar',
+            barWidth: 30,
+            animation: true,
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) { return idx * 10 },
+            animationDelayUpdate: function (idx) { return idx * 10 },
+            itemStyle: {
+                normal: {
+                    barBorderRadius: 5,
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1,
+                        [
+                            {offset: 0, color: 'rgba(20,200,212, .8)'},
+                            {offset: 1, color: 'rgba(67,238,198, .8)'}
+                        ]
+                    )
+                }
+            },
+            data: datas
+        }]
+    };
+    return option;
+}
+
+
 function IOCarsData(arg) {
-    
+    // http://gallery.echartsjs.com/editor.html?c=bar1
 }
 
 function echartsOption(data, name) {
@@ -296,8 +311,10 @@ function echartsOption(data, name) {
             return carsDistributionData(data);
         case 'CarsDistribution2':
             return carsDistribution2Data(data);
-        case 'RadarChart':
-            return radarChartData(data);
+        case 'CarsDistribution3':
+            return carsDistribution3Data(data);
+        case 'StandingTime':
+            return standingTimeData(data);
         case 'IOCars':
             return IOCarsData(data);
         default :

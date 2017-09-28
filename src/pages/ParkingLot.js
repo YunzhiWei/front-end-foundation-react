@@ -8,6 +8,7 @@ import CardProvider from './mui/CardProvider';
 
 import ParkingHeatComponent from './ParkingLot/ParkingHeat';
 import CarsDistributionComponent from './ParkingLot/CarsDistribution';
+import StandingTimeComponent from './ParkingLot/StandingTime';
 import IOCarsComponent from './ParkingLot/IOCars';
 
 class ParkingLot extends Component {
@@ -26,7 +27,7 @@ class ParkingLot extends Component {
 								<CarsDistributionComponent />
 							</CardProvider>
 							<CardProvider className="cards" title="仙女湖景区客源车辆分布" color="light-green">
-								
+								<StandingTimeComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_2 c_center">

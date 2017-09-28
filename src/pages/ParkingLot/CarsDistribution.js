@@ -10,7 +10,7 @@ class CarsDistributionComponent extends Component {
     render() {
         const option = echartsOption(this.props.parkingLotData._carsDistribution, 'CarsDistribution');
         const option2 = echartsOption(this.props.parkingLotData._carsDistribution.mapDataSeries[0].data, 'CarsDistribution2')
-        const option3 = echartsOption(this.props.radarData, 'RadarChart');
+        const option3 = echartsOption(this.props.parkingLotData._carsDistribution3, 'CarsDistribution3');
         return (
             <div style={{width: '100%', height: '100%'}}>
                 <ReactEcharts
@@ -26,7 +26,7 @@ class CarsDistributionComponent extends Component {
                     />
                     <ReactEcharts 
                         option={option3}
-                        style={{width: '80%',height: '50%'}}
+                        style={{width: '100%',height: '50%'}}
                         className='CarsDistribution'
                     />
                 </div>

@@ -118,7 +118,113 @@ class ParkingLotData {
         geoMapName: "江西",
         visualMin: 0,
         visualMax: 1200,
-        visualLabel: ['高', '低'],
+    }
+    @observable _carsDistribution3 = [{
+        value: 1335,
+        name: '江西省'
+    }, {
+        value: 310,
+        name: '福建省'
+    }, {
+        value: 234,
+        name: '浙江省'
+    }, {
+        value: 135,
+        name: '湖北省'
+    }, {
+        value: 548,
+        name: '湖南省'
+    }]
+    @observable _standingTime = [{
+        value: 135,
+        name: '≤0.5h'
+    }, {
+        value: 310,
+        name: '0.5~1.5h'
+    }, {
+        value: 234,
+        name: '1.5~2.5h'
+    }, {
+        value: 135,
+        name: '2.5~3.5h'
+    }, {
+        value: 548,
+        name: '3.5~4.5h'
+    }, {
+        value: 1335,
+        name: '4.5~5.5h'
+    }, {
+        value: 310,
+        name: '5.5~6.5h'
+    }, {
+        value: 234,
+        name: '6.5~7.5h'
+    }, {
+        value: 135,
+        name: '7.5~8.5h'
+    }, {
+        value: 548,
+        name: '8.5~9.5h'
+    }, {
+        value: 135,
+        name: '9.5~10.5h'
+    }, {
+        value: 548,
+        name: '10.5~11.5h'
+    }]
+    @observable _IOCars = {
+        inputCars: [{
+            license: "赣A9U070",
+            id: 1111111111,
+            logo: '奔驰',
+            time: '10:00:59'
+        }, {
+            license: "赣C58888",
+            id: 1111111112,
+            logo: '宝马',
+            time: '10:08:59'
+        }, {
+            license: "赣D58888",
+            id: 1111111113,
+            logo: 'GTR',
+            time: '10:08:59'
+        }, {
+            license: "赣E58888",
+            id: 1111111114,
+            logo: 'AE86',
+            time: '10:08:59'
+        }, {
+            license: "赣H58888",
+            id: 1111111115,
+            logo: '大众桑塔纳',
+            time: '10:08:59'
+        }],
+        outputCars: [{
+            license: "赣A9U070",
+            id: 1111111111,
+            logo: '奔驰',
+            time: '20:00:59'
+        }, {
+            license: "赣C58888",
+            id: 1111111112,
+            logo: '宝马',
+            time: '20:08:59'
+        }, {
+            license: "赣D58888",
+            id: 1111111113,
+            logo: 'GTR',
+            time: '20:08:59'
+        }, {
+            license: "赣E58888",
+            id: 1111111114,
+            logo: 'AE86',
+            time: '20:08:59'
+        }, {
+            license: "赣H58888",
+            id: 1111111115,
+            logo: '大众桑塔纳',
+            time: '20:08:59'
+        }]
     }
 }
 
