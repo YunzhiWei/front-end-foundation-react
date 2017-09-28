@@ -2,7 +2,7 @@ import echarts from 'echarts';
 import geoCoordMap from '../BigData/data/geoCoordMap';
 
 // 省内车源分布（地图）
-function carsDistribution(arg) {
+function carsDistributionData(arg) {
     const {geoMapName, visualMin, visualMax, visualLabel, mapDataSeries} = arg;
     var series = [];
     mapDataSeries.map((item, i) => {
@@ -67,7 +67,7 @@ function carsDistribution(arg) {
 }
 
 // 省内车源分布（柱状图）
-function carsDistribution2(arg) {
+function carsDistribution2Data(arg) {
     var val = [];
     var order = [];
     var max;
@@ -163,7 +163,7 @@ function carsDistribution2(arg) {
 }
 
 // 全国车辆分布图
-function radarChart(arg) {
+function radarChartData(arg) {
     var dataReal = [[75, 66, 30, 49, 23, 69]];
     var dataPre = [[81, 71, 41, 42, 23, 67]];
     var dataYes = [[88, 79, 67, 51, 26, 31]];
@@ -286,15 +286,20 @@ function radarChart(arg) {
     return option;
 }
 
+function IOCarsData(arg) {
+    
+}
 
 function echartsOption(data, name) {
     switch(name) {
         case 'CarsDistribution':
-            return carsDistribution(data);
+            return carsDistributionData(data);
         case 'CarsDistribution2':
-            return carsDistribution2(data);
+            return carsDistribution2Data(data);
         case 'RadarChart':
-            return radarChart(data);
+            return radarChartData(data);
+        case 'IOCars':
+            return IOCarsData(data);
         default :
             return;
     }
