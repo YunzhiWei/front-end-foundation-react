@@ -10,6 +10,7 @@ import ParkingHeatComponent from './ParkingLot/ParkingHeat';
 import CarsDistributionComponent from './ParkingLot/CarsDistribution';
 import StandingTimeComponent from './ParkingLot/StandingTime';
 import IOCarsComponent from './ParkingLot/IOCars';
+import IOCarsTimeComponent from './ParkingLot/IOCarsTime';
 
 class ParkingLot extends Component {
     render() {
@@ -18,7 +19,7 @@ class ParkingLot extends Component {
 				<div id="parking-lot" className="large-screen">
 					<div className="bigdata_title">
 						<span className="bigdata_l"></span>
-							<span className="bigdata_c">仙女湖景区智能停车场</span>
+						<span className="bigdata_c">仙女湖景区智能停车场</span>
 						<span className="bigdata_r"></span>
 					</div>
 					<div className="bigdata_content">
@@ -33,6 +34,9 @@ class ParkingLot extends Component {
 						<div className="c_content c_2 c_center">
 							<CardProvider className="cards ServiceCondition" title="仙女湖景区客源车辆分布" color="light-green">
 								<ParkingHeatComponent />
+							</CardProvider>
+							<CardProvider className="cards" title="仙女湖景区客源车辆分布" color="light-green">
+								<IOCarsTimeComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_4">

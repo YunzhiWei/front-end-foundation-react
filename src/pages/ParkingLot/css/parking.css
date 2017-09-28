@@ -6,6 +6,9 @@
 #parking-lot .CarsDistribution { display: inline-block; }
 #parking-lot .ServiceCondition { height: 1770px; }
 #IO-Cars { width: 100%; height: 100%; }
-#IO-Cars .input, #IO-Cars .output { width: 100%; height: 50%; }
-#IO-Cars .input p, #IO-Cars .output p { color: #fff; }
+#IO-Cars .input, #IO-Cars .output { width: 100%; height: 750px; font-size: 62px;margin: 30px 0; }
+#IO-Cars .input p, #IO-Cars .output p { display: block; color: #fff; text-align: center; }
+#IO-Cars .input p span, #IO-Cars .output p span { text-align: center; }
+#IO-Cars .input p:first-child span, #IO-Cars .output p:first-child span { margin: 0 50px; font-family: 'ZZGFSH'; font-size: 92px; color: rgb(17, 227, 242); }
+
 
