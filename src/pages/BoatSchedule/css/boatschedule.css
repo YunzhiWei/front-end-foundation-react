@@ -22,5 +22,6 @@
 }
 #boat-schedule .bigdata_content .c_center .boat-map {
 	height: 2060px;
+	transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

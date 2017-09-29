@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import CardProvider from './mui/CardProvider';
 
 import IOBoatsComponent from './BoatSchedule/IOBoats';
+import FortyBoatsComponent from './BoatSchedule/FortyBoats';
 
 class BoatSchedule extends Component {
     render() {
@@ -20,7 +21,7 @@ class BoatSchedule extends Component {
 					</div>
 					<div className="boat_top">
 						<CardProvider className="cards" title="仙女湖景区客源车辆统计" color="light-green">
-						
+							<FortyBoatsComponent />
 						</CardProvider>
 					</div>
 					<div className="bigdata_content">

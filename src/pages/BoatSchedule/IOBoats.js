@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import ReactEcharts from '../lib';
 import { inject, observer } from 'mobx-react';
 
 import CountUp from 'react-countup';
@@ -15,7 +14,7 @@ function setting(start, end) {
     return setTemp;
 }
 
-@inject("parkingLotData") @observer
+@inject("boatScheduleData") @observer
 class IOBoatsComponent extends Component {
     render() {
         const setting1 = setting(this.props.parkingLotData._IOCars.inSumPrev, this.props.parkingLotData._IOCars.inSum);
