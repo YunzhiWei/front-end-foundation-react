@@ -164,7 +164,6 @@ function carsDistribution2Data(arg) {
 // 全国车辆分布图
 function carsDistribution3Data(arg) {
     var datas = arg.map((item) => item)
-    console.log(datas);
     const option = {
         tooltip : {
             trigger: 'item',
@@ -220,7 +219,7 @@ function standingTimeData(arg) {
             right: 50
         },
         legend: {
-            data: ['增长趋势', '游客量'],
+            data: ['增长趋势', '停留时长'],
             textStyle: {
                 color: '#ccc',
                 fontSize: 40
@@ -275,7 +274,7 @@ function standingTimeData(arg) {
             animationDelayUpdate: function (idx) { return idx * 10 },
             data: datas
         }, {
-            name: '游客量',
+            name: '停留时长',
             type: 'bar',
             barWidth: 30,
             animation: true,
@@ -304,60 +303,71 @@ function standingTimeData(arg) {
 function IOCarsTimeData(arg) {
     var dataIn = arg.map((item) => item.In);
     var dataOut = arg.map((item) => item.Out);
+    var xData = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00'];
+    var itemStyle = { normal: { label: { textStyle: { fontSize: 32 } } } };
+    var markPointData = [{type : 'max', name: '最大值'},{type : 'min', name: '最小值'}];
+    var markLineData = [{type : 'average', name : '平均值'}];
+    var markLineStyle = { normal: { width: 4 } };
     const option = {
-        tooltip : {
-            trigger: 'axis'
+        tooltip: {
+            trigger: 'axis',
+            textStyle: {
+                fontSize: 42
+            }
         },
         legend: {
-            data:['进场数量','离场数量']
+            data:['进场数量','离场数量'],
+            textStyle: { color: '#f', fontSize: 32},
+            itemWidth: 60,
+            itemHeight: 30,
+            itemGap: 30
         },
-        // calculable : true,
         xAxis : [
             {
                 type : 'category',
-                data : ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00']
+                data : xData,
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 48,
+                        color: 'rgba(31, 188, 210, .9)',
+                    },
+                    margin: 10
+                }
             }
         ],
         yAxis : [
             {
-                type : 'value'
+                type : 'value',
+                axisLabel: {
+                    textStyle: {
+                        fontSize: 48,
+                        color: 'rgba(31, 188, 210, .9)'
+                    },
+                    margin: 30
+                }
             }
         ],
         series : [
             {
                 name:'进场数量',
-                type:'bar',
-                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-                markPoint : {
-                    data : [
-                        {type : 'max', name: '最大值'},
-                        {type : 'min', name: '最小值'}
-                    ]
-                },
-                markLine : {
-                    data : [
-                        {type : 'average', name: '平均值'}
-                    ]
-                }
+                data:dataIn
             },
             {
                 name:'离场数量',
-                type:'bar',
-                data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
-                markPoint : {
-                    data : [
-                        {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183},
-                        {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
-                    ]
-                },
-                markLine : {
-                    data : [
-                        {type : 'average', name : '平均值'}
-                    ]
-                }
+                data:dataOut
             }
         ]
     };
+    option.series.map((item) => {
+        item.type = 'bar';
+        item.markPoint = {};
+        item.markLine = {};
+        item.markPoint.data = markPointData;
+        item.markLine.data = markLineData;
+        item.markPoint.symbolSize = 160;
+        item.markPoint.itemStyle = item.markLine.itemStyle = itemStyle;
+        item.markLine.lineStyle = markLineStyle;
+    })
     return option
 }
 

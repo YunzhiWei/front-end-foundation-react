@@ -16,7 +16,7 @@ function setting(start, end) {
 }
 
 @inject("parkingLotData") @observer
-class IOCarsComponent extends Component {
+class IOBoatsComponent extends Component {
     render() {
         const setting1 = setting(this.props.parkingLotData._IOCars.inSumPrev, this.props.parkingLotData._IOCars.inSum);
         const setting2 = setting(this.props.parkingLotData._IOCars.outSumPrev, this.props.parkingLotData._IOCars.outSum);
@@ -37,4 +37,4 @@ class IOCarsComponent extends Component {
 	}
 }
 
-export default IOCarsComponent;
+export default IOBoatsComponent;

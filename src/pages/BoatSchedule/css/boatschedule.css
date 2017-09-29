@@ -1,0 +1,26 @@
+#boat-schedule .boat_top {
+	height: 690px;
+	margin: 50px 0;
+	padding: 0 50px;
+}
+#boat-schedule .boat_top .cards {
+	height: 690px;
+}
+#boat-schedule .c_center {
+	width: 3840px;
+	height: 1770px;
+	padding: 0 50px;
+}
+#boat-schedule .c_content .cards:first-child {
+	height: 980px;
+}
+.boat_top .title-box {
+	display: none;
+}
+.boat_top .cards .content {
+	height: 100%;
+}
+#boat-schedule .bigdata_content .c_center .boat-map {
+	height: 2060px;
+}
+

@@ -10,6 +10,7 @@ const Routes = () =>
     <Route path="/home" component={pages.HomePage} />
     <Route path="/bigdata" component={pages.BigData} />
     <Route path="/parkinglot" component={pages.ParkingLot} />
+    <Route path="/boat" component={pages.BoatSchedule} />
   </switch>
 
 export default Routes;

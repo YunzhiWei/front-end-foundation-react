@@ -24,23 +24,23 @@ class ParkingLot extends Component {
 					</div>
 					<div className="bigdata_content">
 						<div className="c_content c_1">
-							<CardProvider className="cards CarsDistri" title="仙女湖景区客源车辆分布" color="light-green">
+							<CardProvider className="cards CarsDistri" title="仙女湖景区客源车辆统计" color="light-green">
 								<CarsDistributionComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区客源车辆分布" color="light-green">
+							<CardProvider className="cards" title="仙女湖景区车辆停留时间统计" color="light-green">
 								<StandingTimeComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_2 c_center">
-							<CardProvider className="cards ServiceCondition" title="仙女湖景区客源车辆分布" color="light-green">
+							<CardProvider className="cards ServiceCondition" title="仙女湖景区客停车场使用情况" color="light-green">
 								<ParkingHeatComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区客源车辆分布" color="light-green">
+							<CardProvider className="cards" title="仙女湖景区出入时间统计" color="light-green">
 								<IOCarsTimeComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_4">
-							<CardProvider className="cards IOSummary" title="仙女湖景区停车场使用量热点图" color="light-green">
+							<CardProvider className="cards IOSummary" title="仙女湖景区停车场实时进出场统计" color="light-green">
 								<IOCarsComponent />
 							</CardProvider>
 							<CardProvider className="cards ParkingHeat" title="仙女湖景区停车场使用量热点图" color="light-green">
