@@ -27,10 +27,10 @@ class BoatSchedule extends Component {
 					<div className="bigdata_content">
 						<div className="c_content c_1">
 							<CardProvider className="cards" title="仙女湖景区客源车辆统计" color="light-green">
-							
+								<IOBoatsComponent />
 							</CardProvider>
 							<CardProvider className="cards" title="仙女湖景区车辆停留时间统计" color="light-green">
-							
+								<IOBoatsComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_2 c_center">
@@ -40,10 +40,10 @@ class BoatSchedule extends Component {
 						</div>
 						<div className="c_content c_4">
 							<CardProvider className="cards" title="仙女湖景区停车场实时进出场统计" color="light-green">
-								
+								<IOBoatsComponent />
 							</CardProvider>
 							<CardProvider className="cards" title="仙女湖景区停车场使用量热点图" color="light-green">
-								
+								<IOBoatsComponent />
 							</CardProvider>
 						</div>
 					</div>

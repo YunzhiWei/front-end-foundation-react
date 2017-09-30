@@ -15,6 +15,7 @@ class RootPage extends Component {
         </p>
         <a href ="./bigdata" style={styles}>点击进入大数据平台</a>
         <a href ="./parkinglot" style={styles}>点击进入智能停车场管理</a>
+        <a href ="./boat" style={styles}>点击进入智能游船调度</a>
       </div>
     );
   }
