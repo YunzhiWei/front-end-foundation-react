@@ -17,19 +17,14 @@ function setting(start, end) {
 @inject("boatScheduleData") @observer
 class IOBoatsComponent extends Component {
     render() {
-        const setting1 = setting(this.props.boatScheduleData._IOCars.inSumPrev, this.props.boatScheduleData._IOCars.inSum);
-        const setting2 = setting(this.props.boatScheduleData._IOCars.outSumPrev, this.props.boatScheduleData._IOCars.outSum);
+        const setting1 = setting(this.props.boatScheduleData._IOBoats.inSumPrev, this.props.boatScheduleData._IOBoats.inSum);
+        const setting2 = setting(this.props.boatScheduleData._IOBoats.outSumPrev, this.props.boatScheduleData._IOBoats.outSum);
 		return (
             <div id="IO-Cars">
                 <div className="input">
-                    <p className="title">当日进车<b><CountUp className="account-balance" {...setting1} /></b>辆</p>
-                    <p className="subtitle"><span className="col-lg-4">车牌号</span><span className="col-lg-4">车型</span><span className="col-lg-4">进场时间</span></p>
-                    <div>{this.props.boatScheduleData._IOCars.inputCars.map((item, i) => <p key={item.id} className={`list ${item.New ? 'new' : ''}`}><span className="col-lg-4">{item.license}</span><span className="col-lg-4">{item.logo}</span><span className="col-lg-4">{item.time}</span></p>)}</div>
-                </div>
-                <div className="output">
-                    <p className="title">当日出车<b><CountUp className="account-balance" {...setting2} /></b>辆</p>
-                    <p className="subtitle"><span className="col-lg-4">车牌号</span><span className="col-lg-4">离场时间</span><span className="col-lg-4">停留时间</span></p>
-                    <div>{this.props.boatScheduleData._IOCars.outputCars.map((item, i) => <p key={item.id} className={`list ${item.New ? 'new' : ''}`} ><span className="col-lg-4">{item.license}</span><span className="col-lg-4">{item.time}</span><span className="col-lg-4">{item.stayTime} 小时</span></p>)}</div>
+                    <p className="title">在岗快艇<b><CountUp className="account-balance" {...setting1} /></b>辆</p>
+                    <p className="subtitle"><span className="col-lg-3">名称</span><span className="col-lg-3">线路</span><span className="col-lg-3">停靠</span><span className="col-lg-3">离港时间</span></p>
+                    <div>{this.props.boatScheduleData._IOBoats.inputBoats.map((item, i) => <p key={item.id} className={`list ${item.New ? 'new' : ''}`}><span className="col-lg-3">{item.license}</span><span className="col-lg-3">{item.line}</span><span className="col-lg-3">{item.stayStation}</span><span className="col-lg-3">{item.time}</span></p>)}</div>
                 </div>
 		    </div>
         );

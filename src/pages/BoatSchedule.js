@@ -8,6 +8,7 @@ import CardProvider from './mui/CardProvider';
 
 import IOBoatsComponent from './BoatSchedule/IOBoats';
 import FortyBoatsComponent from './BoatSchedule/FortyBoats';
+import BoatPosComponent from './BoatSchedule/BoatPos';
 
 class BoatSchedule extends Component {
     render() {
@@ -20,29 +21,29 @@ class BoatSchedule extends Component {
 						<span className="bigdata_r"></span>
 					</div>
 					<div className="boat_top">
-						<CardProvider className="cards" title="仙女湖景区客源车辆统计" color="light-green">
+						<CardProvider className="cards" title="仙女湖景区游船使用量统计" color="light-green">
 							<FortyBoatsComponent />
 						</CardProvider>
 					</div>
 					<div className="bigdata_content">
 						<div className="c_content c_1">
-							<CardProvider className="cards" title="仙女湖景区客源车辆统计" color="light-green">
+							<CardProvider className="cards" title="仙女湖景区出港游船统计" color="light-green">
 								<IOBoatsComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区车辆停留时间统计" color="light-green">
+							<CardProvider className="cards" title="仙女湖景区出港快艇统计" color="light-green">
 								<IOBoatsComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_2 c_center">
-							<CardProvider className="cards boat-map" title="仙女湖景区客停车场使用情况" color="light-green">
-								
+							<CardProvider className="cards boat-map" title="仙女湖景区游船实时定位" color="light-green">
+								<BoatPosComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_4">
-							<CardProvider className="cards" title="仙女湖景区停车场实时进出场统计" color="light-green">
+							<CardProvider className="cards" title="仙女湖景区入港游船统计" color="light-green">
 								<IOBoatsComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区停车场使用量热点图" color="light-green">
+							<CardProvider className="cards" title="仙女湖景区入港快艇统计" color="light-green">
 								<IOBoatsComponent />
 							</CardProvider>
 						</div>

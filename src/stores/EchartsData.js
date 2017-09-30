@@ -71,8 +71,8 @@ class EchartsData {
             self.fetchParkingData(i);
             self.fetchPassDataPush();
         }, 5000);
-        self.fetchWeatherData();
-        self.fetchPM25();
+        // self.fetchWeatherData();
+        // self.fetchPM25();
         self.fetchPassData();
     }
     fetchParkingData(index) {
