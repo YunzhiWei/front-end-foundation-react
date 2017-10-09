@@ -90,6 +90,40 @@ class BoatScheduleData {
             stayTime: 5.5
         }]
     }
+    @observable _posMakers = [{
+        text: "游船001",
+        location: "114.84183,27.711712"
+    }, {
+        text: "游船001",
+        location: "114.807565,27.717436"
+    }, {
+        text: "游船001",
+        location: "114.817354,27.724353"
+    }, {
+        text: "游船001",
+        location: "114.824563,27.735208"
+    }, {
+        text: "游船001",
+        location: "114.838324,27.704532"
+    }, {
+        text: "游船001",
+        location: "114.815384,27.690257"
+    }, {
+        text: "游船001",
+        location: "114.785437,27.722742"
+    }, {
+        text: "游船001",
+        location: "114.794536,27.713787"
+    }, {
+        text: "游船001",
+        location: "114.813782,27.693458"
+    }, {
+        text: "游船001",
+        location: "114.833381,27.719736"
+    }, {
+        text: "游船001",
+        location: "114.851111,27.704538"
+    }];
     constructor() {
         var self = this;
         var i = 0;
