@@ -1,0 +1,47 @@
+#bigdata-anls .c_content {
+	width: 1920px;
+}
+#bigdata-anls .c_cube {
+	height: 1770px;
+}
+#bigdata-anls .c_4 {
+	display: inline-block;
+}
+#bigdata-anls .first {
+	height: 690px;
+}
+#bigdata-anls .half {
+	display: inline-block;
+	width: 885px;
+}
+#bigdata-anls .margin_right {
+	margin-right: 50px!important;
+}
+#bigdata-anls .c_content .content {
+	position: relative;
+}
+#bigdata-anls .anlsmap {
+	position: absolute;
+	top: 50px;
+	left: 500px;
+	height: 200px;
+	width: 800px;
+}
+#bigdata-anls .anlsmap>div {
+	display: inline-block;
+	text-align: center;
+	width: 50%;
+}
+#bigdata-anls .anlsmap p {
+	color: #fff;
+}
+#bigdata-anls .anlsmap p.cyan {
+	color: #00EBEB;
+}
+#bigdata-anls .anlsmap p.yellow {
+	color: #F0F05B;
+}
+#bigdata-anls .anlsmap b {
+	font-family: 'ZZGFSH';
+	font-size: 82px;
+}
