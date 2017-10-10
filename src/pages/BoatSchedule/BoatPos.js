@@ -5,10 +5,9 @@ import {Map, MarkerList, InfoWindow, ScaleControl, Marker} from 'react-bmap';
 
 @inject("boatScheduleData") @observer
 class BoatPosComponent extends Component {
-
     render() {
 		return (
-            <Map style={{height: '100%', width: '100%'}} center={{lng: 114.802949, lat: 27.715516}} zoom="16" dragging="false">
+            <Map style={{height: '100%', width: '100%'}} center={{lng: 114.802949, lat: 27.715516}} zoom="16">
                 <InfoWindow position={{lng: 114.833381, lat: 27.719736}} text="信息窗口内容" title="信息窗口标题"/>
                 <Marker position={{lng: 114.785437, lat: 27.722742}} icon="red1"/>
                 <Marker position={{lng: 114.833381, lat: 27.719736}} icon="red2"/>
