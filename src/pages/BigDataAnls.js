@@ -31,7 +31,7 @@ class BigDataAnls extends Component {
 							<CalendarGridComponent />
 						</div>
 						<div className="c_content c_2">
-							<CardProvider className="cards c_cube" title="仙女湖景区游客分布" color="light-green">
+							<CardProvider className="cards c_cube" title="仙女湖景区全国游客分布" color="light-green">
 								<AnlsMapComponent />
 							</CardProvider>
 							<CardProvider className="cards" title="全国客源统计排名" color="light-green">
@@ -39,7 +39,7 @@ class BigDataAnls extends Component {
 							</CardProvider>
 						</div>
 						<div className="c_content c_3">
-							<CardProvider className="cards c_cube" title="仙女湖景区停车场实时进出场统计" color="light-green">
+							<CardProvider className="cards c_cube" title="仙女湖景区省内游客分布" color="light-green">
 								<AnlsProvMapComponent />
 							</CardProvider>
 							<CardProvider className="cards" title="省内客源统计排名" color="light-green">
