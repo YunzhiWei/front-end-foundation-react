@@ -6,9 +6,16 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import CalendarGridComponent from './BigDataAnls/CalendarGrid';
 import AnlsMapComponent from './BigDataAnls/AnlsMap';
+import AnlsProvMapComponent from './BigDataAnls/AnlsProvMap';
+import MaleToFemaleComponent from './BigDataAnls/MaleToFemale';
+import IndvToGroupComponent from './BigDataAnls/IndvToGroup';
+import OnToOffComponent from './BigDataAnls/OnToOff';
+import AgeDistributionComponent from './BigDataAnls/AgeDistribution';
+import RankingComponent from './BigDataAnls/Ranking';
+import CustomerTendComponent from './BigDataAnls/CustomerTend';
 
 import CardProvider from './mui/CardProvider';
-115.431919,27.931156
+
 class BigDataAnls extends Component {
     render() {
    		return (
@@ -24,28 +31,36 @@ class BigDataAnls extends Component {
 							<CalendarGridComponent />
 						</div>
 						<div className="c_content c_2">
-							<CardProvider className="cards c_cube" title="仙女湖景区客停车场使用情况" color="light-green">
+							<CardProvider className="cards c_cube" title="仙女湖景区游客分布" color="light-green">
 								<AnlsMapComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区出入时间统计" color="light-green">
+							<CardProvider className="cards" title="全国客源统计排名" color="light-green">
+								<RankingComponent choose="china" />
 							</CardProvider>
 						</div>
 						<div className="c_content c_3">
 							<CardProvider className="cards c_cube" title="仙女湖景区停车场实时进出场统计" color="light-green">
+								<AnlsProvMapComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区停车场使用量热点图" color="light-green">
+							<CardProvider className="cards" title="省内客源统计排名" color="light-green">
+								<RankingComponent choose="jiangxi" />
 							</CardProvider>
 						</div>
 						<div className="c_content c_4">
-							<CardProvider className="cards half first margin_right" title="停车场实时进出场统计" color="light-green">
+							<CardProvider className="cards half first margin_right" title="线上线下占比" color="light-green">
+								<OnToOffComponent/>
 							</CardProvider>
-							<CardProvider className="cards half first" title="停车场实时进出场统计" color="light-green">
+							<CardProvider className="cards half first" title="年龄分布" color="light-green">
+								<AgeDistributionComponent/>
 							</CardProvider>
-							<CardProvider className="cards half margin_right" title="停车场实时进出场统计" color="light-green">
+							<CardProvider className="cards half margin_right" title="景区团散客比例" color="light-green">
+								<IndvToGroupComponent/>
 							</CardProvider>
-							<CardProvider className="cards half" title="停车场使用量热点图" color="light-green">
+							<CardProvider className="cards half" title="景区男女比例" color="light-green">
+								<MaleToFemaleComponent/>
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区停车场使用量热点图" color="light-green">
+							<CardProvider className="cards" title="仙女湖景区游客数量趋势" color="light-green">
+								<CustomerTendComponent/>
 							</CardProvider>
 						</div>
 					</div>
