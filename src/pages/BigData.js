@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import './BigData/css/bigdata.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import CardProvider from './mui/CardProvider';
-// import SalesVolume from './BigData/SalesVolume';
-// import AirportCoordComponent from './BigData/AirportCoord';
+
 import LineAndHistogram from './BigData/LineAndHistogram';
 import DynamicChartComponent from './BigData/DynamicChartComponent';
 import RadarChart from './BigData/RadarChart';
@@ -17,15 +15,11 @@ import AirQualityComponent from './BigData/AirQuality';
 import ResUtilizationComponent from './BigData/ResUtilization';
 import TransportationComponent from './BigData/Transportation';
 import SankeyComponent from './BigData/Sankey';
-// import ErrorsComponent from './BigData/Errors';
 import WeatherComponent from './BigData/Weather';
 import TicketBusinessComponent from './BigData/TicketBusiness';
 import TimeViewComponent from './BigData/TimeView';
 import ParkingChargeComponent from './BigData/ParkingCharge';
 
-
-// import { BlockAreaDataArray } from './BigData/data/MapExampleBlockArea';
-// import { FromToLinesDataArray } from './BigData/data/MapExampleFromToLines';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import radarDataArray from './BigData/data/RadarChartData';
 import dynamicChart from './BigData/data/dynamicChart';
