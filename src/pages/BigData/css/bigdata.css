@@ -20,7 +20,7 @@
 
 .echart-list { height: 100%; }
 /*大数据标题 start */
-.large-screen .bigdata_title { width: 60%; height: 290px; font-size: 0px; padding: 50px 0; margin: 0 auto; text-align: center; color: #48D8FD; }
+.large-screen .bigdata_title { width: 60%; height: 290px; font-size: 0px; padding: 50px 0; margin: 0 auto; text-align: center; color: #48D8FD; position: relative; }
 .bigdata_title span { display: inline-block; font-size: 135px; }
 .bigdata_l { width: 30%; height: 70%; margin-top: 50px; float: left; background-position: center; background: url(../images/bigdata_l.png); background-repeat: no-repeat; background-size: 100% 100%; }
 .bigdata_r { width: 30%; height: 70%; margin-top: 50px; float: left; background-position: center; background: url(../images/bigdata_r.png); background-repeat: no-repeat; background-size: 100% 100%; }
@@ -68,4 +68,7 @@
 .parking_charge .text-baohe span { border-color: #fcc60c; color: #fcc60c; }
 .parking_charge .text-zhengchang span { border-color: #48d8fd; color: #48d8fd; }
 
-
+.bigdata_content .c_content .cards { position: relative; }
+.bigdata_content .c_content .cards a { position: absolute; z-index: 10; width: 1720px; height: 760px; }
+.bigdata_content .c_content .cards a.h_half { height: 380px; }
+.bigdata_content .c_content .cards a.down { top: 540px; }

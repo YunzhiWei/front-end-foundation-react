@@ -23,9 +23,9 @@ import weiboData from './BigData/data/weibo.json';
 
 class BigData extends Component {
     render() {
-     		return (
-      			<MuiThemeProvider>
-        				<div className="large-screen">
+ 		return (
+  			<MuiThemeProvider>
+				<div className="large-screen">
                     <div className="bigdata_title">
                         <span className="bigdata_l"></span>
                         <span className="bigdata_c">仙女湖景区智慧旅游大数据</span>
@@ -34,9 +34,12 @@ class BigData extends Component {
                     <div className="bigdata_content">
                         <div className="c_content c_1">
                             <CardProvider className="cards" title="仙女湖景区票务统计" color="light-green">
+                                <a href="/bigdata2"></a>
                                 <TicketBusinessComponent />
                             </CardProvider>
                             <CardProvider className="cards" title="仙女湖景区车位管理" color="light-green">
+                                <a className="h_half" href="/parkinglot"></a>
+                                <a className="h_half down" href="/boat"></a>
                                 <ParkingLotComponent />
                             </CardProvider>
                             <CardProvider className="cards" title="仙女湖景区车位收费管理" color="light-green">
@@ -68,9 +71,9 @@ class BigData extends Component {
                             </CardProvider>
                         </div>
                     </div>
-        			  </div>
-      			</MuiThemeProvider>
-    		)
+                </div>
+  			</MuiThemeProvider>
+		)
   	}
 }
 
