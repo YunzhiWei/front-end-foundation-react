@@ -72,3 +72,20 @@
 .bigdata_content .c_content .cards a { position: absolute; z-index: 10; width: 1720px; height: 760px; }
 .bigdata_content .c_content .cards a.h_half { height: 380px; }
 .bigdata_content .c_content .cards a.down { top: 540px; }
+
+div#tip{ position:absolute; width:100px; height:auto; border:1px solid #00CC66; font-size: 60px;}
+
+.bigdata_title a {
+	position: absolute;
+	height: 100px;
+	width: 400px;
+	font-size: 60px;
+	font-weight: 600;
+	left: -1500px;
+	top: 100px;
+	color: #fff;
+	text-decoration: none;
+}
+.bigdata_title .glyphicon-chevron-left {
+	font-size: 60px;
+}

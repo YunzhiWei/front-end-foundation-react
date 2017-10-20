@@ -22,6 +22,7 @@ class BigDataAnls extends Component {
    			<MuiThemeProvider>
 				<div id="bigdata-anls" className="large-screen">
 					<div className="bigdata_title">
+						<a href="/bigdata"><span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 返回大屏幕</a>
 						<span className="bigdata_l"></span>
 						<span className="bigdata_c">仙女湖景区大数据分析</span>
 						<span className="bigdata_r"></span>

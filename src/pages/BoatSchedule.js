@@ -16,6 +16,7 @@ class BoatSchedule extends Component {
    			<MuiThemeProvider>
 				<div id="boat-schedule" className="large-screen">
 					<div className="bigdata_title">
+						<a href="/bigdata"><span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 返回大屏幕</a>
 						<span className="bigdata_l"></span>
 						<span className="bigdata_c">仙女湖景区智能游船调度</span>
 						<span className="bigdata_r"></span>
