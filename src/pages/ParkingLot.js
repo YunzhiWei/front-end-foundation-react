@@ -18,10 +18,11 @@ class ParkingLot extends Component {
    			<MuiThemeProvider>
 				<div id="parking-lot" className="large-screen">
 					<div className="bigdata_title">
-						<a href="/bigdata"><span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 返回大屏幕</a>
-						<span className="bigdata_l"></span>
-						<span className="bigdata_c">仙女湖景区智能停车场</span>
-						<span className="bigdata_r"></span>
+						<a href="/bigdata">
+							<span className="bigdata_l"></span>
+							<span className="bigdata_c">仙女湖景区智能停车场</span>
+							<span className="bigdata_r"></span>
+						</a>
 					</div>
 					<div className="bigdata_content">
 						<div className="c_content c_1">
