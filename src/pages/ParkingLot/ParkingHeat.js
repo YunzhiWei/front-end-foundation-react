@@ -3,7 +3,7 @@ import ReactEcharts from '../lib';
 import { inject, observer } from 'mobx-react';
 import echartsOption from '../function/function';
 
-import h337 from 'heatmapjs/heatmap.js';
+import h337 from 'heatmapjs/build/heatmap.min.js';
 
 class ParkingHeatComponent extends Component {
     constructor() {

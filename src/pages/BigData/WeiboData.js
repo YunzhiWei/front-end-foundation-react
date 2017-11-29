@@ -10,7 +10,7 @@ class WeiboData extends Component {
 		return (
 			<ReactEcharts
               option={option}
-              style={{width: '100%',height: '100%'}}
+              style={{width: '100%',height: 'calc(100% - 1410px)'}}
               className='WeiboData'
             />
 		)

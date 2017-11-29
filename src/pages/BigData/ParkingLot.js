@@ -34,7 +34,7 @@ class ParkingLotComponent extends Component {
 			<div style={{height: '100%', width: '100%'}}>
 			    <ReactEcharts
 					option={option}
-					style={{width: '60%',height: '100%', display: 'inline-block'}}
+					style={{width: '60%',height: '100%',float: "left", display: 'inline-block'}}
 					className='ParkingLot'
 			    />
 			    <div className="parking_num">

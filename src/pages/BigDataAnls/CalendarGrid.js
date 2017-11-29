@@ -8,7 +8,7 @@ class CalendarGridComponent extends Component {
     render() {
         const option = echartsOption(this.props.bigDataAnlsData, 'CalendarGrid');        
         return (
-            <div style={{width: '100%', height: '2850px', margin: '50px auto'}}>
+            <div style={{width: '100%', height: '3930px', margin: '50px auto'}}>
                 <ReactEcharts
                     option={option}
                     style={{width: '100%',height: '100%'}}

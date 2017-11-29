@@ -36,7 +36,7 @@ class TicketBusinessComponent extends Component {
 				</div>
 			    <ReactEcharts
 			      option={option}
-			      style={{width: '60%',height: '100%', display: 'inline-block'}}
+			      style={{width: '45%',height: '100%', display: 'inline-block'}}
 			      className='TicketBusiness'
 			    />
 		    </div>
