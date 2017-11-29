@@ -10,81 +10,81 @@ class BoatScheduleData {
         outSumPrev: 0,
         outSum: 0,
         inputBoats: [{
-            license: "001",
+            license: "游001",
             id: 1111111111,
-            line: 'X',
+            line: '线路A',
             stayStation: '龙王岛',
             time: '10:00:59'
         }, {
-            license: "001",
+            license: "游002",
             id: 1111111112,
-            line: 'X',
+            line: '线路B',
             stayStation: '龙王岛',
             time: '10:08:59'
         }, {
-            license: "001",
+            license: "游003",
             id: 1111111113,
-            line: 'X',
+            line: '线路B',
             stayStation: '龙王岛',
             time: '10:08:59'
         }, {
-            license: "001",
+            license: "游004",
             id: 1111111114,
-            line: 'X',
+            line: '线路A',
             stayStation: '龙王岛',
             time: '10:08:59'
         }, {
-            license: "001",
+            license: "游002",
             id: 1111111115,
-            line: 'X',
+            line: '线路C',
             stayStation: '龙王岛',
             time: '10:08:59'
         }, {
-            license: "001",
+            license: "游001",
             id: 1111111116,
-            line: 'X',
+            line: '线路A',
             stayStation: '龙王岛',
             time: '10:08:59'
         }],
         outputBoats: [{
-            license: "001",
+            license: "游004",
             id: 1111111111,
-            line: 'X',
+            line: '线路C',
             stayStation: '龙王岛',
             time: '20:00:59',
             stayTime: 5.5
         }, {
-            license: "001",
+            license: "游002",
             id: 1111111112,
-            line: 'X',
+            line: '线路A',
             stayStation: '龙王岛',
             time: '20:08:59',
             stayTime: 5.5
         }, {
-            license: "001",
+            license: "游003",
             id: 1111111113,
-            line: 'X',
+            line: '线路B',
             stayStation: '龙王岛',
             time: '20:08:59',
             stayTime: 5.5
         }, {
-            license: "001",
+            license: "游005",
             id: 1111111114,
-            line: 'X',
+            line: '线路C',
             stayStation: '龙王岛',
             time: '20:08:59',
             stayTime: 5.5
         }, {
-            license: "001",
+            license: "游001",
             id: 1111111115,
-            line: 'X',
+            line: '线路A',
             stayStation: '龙王岛',
             time: '20:08:59',
             stayTime: 5.5
         }, {
-            license: "001",
+            license: "游001",
             id: 1111111116,
-            line: 'X',
+            line: '线路B',
             stayStation: '龙王岛',
             time: '20:08:59',
             stayTime: 5.5
@@ -145,32 +145,42 @@ class BoatScheduleData {
        this._IOBoats.outSum += Math.floor(Math.random() * 5);
     }
     scrollContent(i) {
+        var boatArr = ['游001', '游002', '游003', '游004', '游005']
+        var lineArr = ['线路A', '线路B', '线路C', '线路D'];
+        var stayArr = ['龙王岛', '情人岛', '爱情岛', '名人岛', '圣集寺', '主码头', '杨梅岭']
+        function getNowFormatDate() {
+            var date = new Date();
+            var seperator = ":";
+            var currentdate = date.getHours() + seperator + date.getMinutes()
+                    + seperator + date.getSeconds();
+            return currentdate;
+        }
         this._IOBoats.inputBoats.map((item) => item.New = false);
         this._IOBoats.outputBoats.map((item) => item.New = false);
         this._IOBoats.inputBoats.shift();
         this._IOBoats.inputBoats.shift();
         this._IOBoats.inputBoats.push({
-            license: "001",
+            license: boatArr[Math.floor(Math.random() * 5)],
             id: 1111111117 + i,
-            line: 'X',
-            stayStation: '龙王岛',
-            time: '10:08:'+i,
+            line: lineArr[Math.floor(Math.random() * 4)],
+            stayStation: stayArr[Math.floor(Math.random() * 7)],
+            time: getNowFormatDate(),
             New: true
         }, {
-            license: "001",
+            license: boatArr[Math.floor(Math.random() * 5)],
             id: 1111111117 + i+1,
-            line: 'X',
-            stayStation: '龙王岛',
-            time: '10:08:'+i,
+            line: lineArr[Math.floor(Math.random() * 4)],
+            stayStation: stayArr[Math.floor(Math.random() * 7)],
+            time: getNowFormatDate(),
             New: true,
         });
 
         this._IOBoats.outputBoats.shift();
         this._IOBoats.outputBoats.push({
-            license: "001",
+            license: boatArr[Math.floor(Math.random() * 5)],
             id: 1111111117 + i,
             logo: '大众桑塔纳',
-            time: '20:08:'+i,
+            time: getNowFormatDate(),
             stayTime: 5.5+i,
             New: true
         });

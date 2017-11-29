@@ -314,4 +314,8 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
   },
+  // 2017.11.09添加
+  externals: {
+      jquery: 'window.$',
+  },
 };

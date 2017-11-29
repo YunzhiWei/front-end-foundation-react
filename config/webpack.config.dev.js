@@ -256,4 +256,8 @@ module.exports = {
   performance: {
     hints: false,
   },
+  // 2017.11.09添加
+  externals: {
+      jquery: 'window.$',
+  },
 };

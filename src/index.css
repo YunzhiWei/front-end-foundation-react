@@ -2,9 +2,52 @@ html,body {
   margin: 0;
   padding: 0;
   width: 7680px;
-  height: 3240px;
+  /*height: 3240px;*/
+  height: 100%;
   font-family: sans-serif;
   background: transparent;
+}
+html {
+	background-color: rgb(12, 22, 28);
+	zoom: 0.25;
+}
+.flipster {
+  position: relative;
+	height: 100%!important;
+  width: 100%;
+  overflow: visible;
+}
+.flipster ul.flip-items {
+	perspective: 4500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+	width: 2500px!important;
+	height: 1251px!important;
+  margin-top: -625px;
+  margin-left: -1250px;
+}
+.flipster img {
+  opacity: .8;
+  margin-bottom: 80px;
+  -webkit-transition: all .35s ease-in-out;
+     -moz-transition: all .35s ease-in-out;
+      -ms-transition: all .35s ease-in-out;
+       -o-transition: all .35s ease-in-out;
+          transition: all .35s ease-in-out;
+}
+.flipster img:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.1, 1.1);
+     -moz-transform: scale(1.1, 1.1);
+      -ms-transform: scale(1.1, 1.1);
+       -o-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+  -webkit-transition: all .35s ease-in-out;
+     -moz-transition: all .35s ease-in-out;
+      -ms-transition: all .35s ease-in-out;
+       -o-transition: all .35s ease-in-out;
+          transition: all .35s ease-in-out;
 }
 #root,.App,.App>switch {
   display: block;

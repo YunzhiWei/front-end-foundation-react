@@ -18,34 +18,34 @@ class ParkingLot extends Component {
    			<MuiThemeProvider>
 				<div id="parking-lot" className="large-screen">
 					<div className="bigdata_title">
-						<a href="/bigdata">
+						<a href="/">
 							<span className="bigdata_l"></span>
-							<span className="bigdata_c">仙女湖景区智能停车场</span>
+							<span className="bigdata_c">景区智能停车场</span>
 							<span className="bigdata_r"></span>
 						</a>
 					</div>
 					<div className="bigdata_content">
 						<div className="c_content c_1">
-							<CardProvider className="cards CarsDistri" title="仙女湖景区客源车辆统计" color="light-green">
+							<CardProvider className="cards CarsDistri" title="景区客源车辆统计" color="light-green">
 								<CarsDistributionComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区车辆停留时间统计" color="light-green">
+							<CardProvider className="cards" title="景区车辆停留时间统计" color="light-green">
 								<StandingTimeComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_2 c_center">
-							<CardProvider className="cards ServiceCondition" title="仙女湖景区客停车场使用情况" color="light-green">
+							<CardProvider className="cards ServiceCondition" title="景区客停车场使用情况" color="light-green">
 								<ParkingHeatComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区出入时间统计" color="light-green">
+							<CardProvider className="cards" title="景区出入时间统计" color="light-green">
 								<IOCarsTimeComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_4">
-							<CardProvider className="cards IOSummary" title="仙女湖景区停车场实时进出场统计" color="light-green">
+							<CardProvider className="cards IOSummary" title="景区停车场实时进出场统计" color="light-green">
 								<IOCarsComponent />
 							</CardProvider>
-							<CardProvider className="cards ParkingHeat" title="仙女湖景区停车场使用量热点图" color="light-green">
+							<CardProvider className="cards ParkingHeat" title="景区停车场使用量热点图" color="light-green">
 								<ParkingHeatComponent />
 							</CardProvider>
 						</div>

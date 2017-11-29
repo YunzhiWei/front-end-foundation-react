@@ -22,9 +22,9 @@ class BigDataAnls extends Component {
    			<MuiThemeProvider>
 				<div id="bigdata-anls" className="large-screen">
 					<div className="bigdata_title">
-						<a href="/bigdata">
+						<a href="/">
 							<span className="bigdata_l"></span>
-							<span className="bigdata_c">仙女湖景区大数据分析</span>
+							<span className="bigdata_c">景区大数据分析</span>
 							<span className="bigdata_r"></span>
 						</a>
 					</div>
@@ -33,7 +33,7 @@ class BigDataAnls extends Component {
 							<CalendarGridComponent />
 						</div>
 						<div className="c_content c_2">
-							<CardProvider className="cards c_cube" title="仙女湖景区全国游客分布" color="light-green">
+							<CardProvider className="cards c_cube" title="景区全国游客分布" color="light-green">
 								<AnlsMapComponent />
 							</CardProvider>
 							<CardProvider className="cards" title="全国客源统计排名" color="light-green">
@@ -41,7 +41,7 @@ class BigDataAnls extends Component {
 							</CardProvider>
 						</div>
 						<div className="c_content c_3">
-							<CardProvider className="cards c_cube" title="仙女湖景区省内游客分布" color="light-green">
+							<CardProvider className="cards c_cube" title="景区省内游客分布" color="light-green">
 								<AnlsProvMapComponent />
 							</CardProvider>
 							<CardProvider className="cards" title="省内客源统计排名" color="light-green">
@@ -61,7 +61,7 @@ class BigDataAnls extends Component {
 							<CardProvider className="cards half" title="景区男女比例" color="light-green">
 								<MaleToFemaleComponent/>
 							</CardProvider>
-							<CardProvider className="cards" title="仙女湖景区游客数量趋势" color="light-green">
+							<CardProvider className="cards" title="景区游客数量趋势" color="light-green">
 								<CustomerTendComponent/>
 							</CardProvider>
 						</div>
