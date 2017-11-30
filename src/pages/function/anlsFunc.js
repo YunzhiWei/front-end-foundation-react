@@ -22,21 +22,21 @@ function calendarGridData(arg) {
         margin: 10,
         textStyle: {
     	    color: '#fff',
-    		fontSize: 36
+    		fontSize: 56
     	},
     };
     var monthLabel = {
     	margin: 25,
     	textStyle: {
         	color: '#fff',
-        	fontSize: 36
+        	fontSize: 56
         }
     };
     var yearLabel = {
     	margin: 75,
     	textStyle: {
         	color: '#fff',
-        	fontSize: 48
+        	fontSize: 72
         }
     };
     const option = {
@@ -47,7 +47,7 @@ function calendarGridData(arg) {
                 return format + ': ' + p.data[1];
             },
             textStyle: {
-            	fontSize: 36
+            	fontSize: 56
             }
         },
         visualMap: {
@@ -60,13 +60,13 @@ function calendarGridData(arg) {
         },
         calendar: [{
             range: '2015',
-            left: 250,
+            left: 200,
         }, {
             range: '2016',
             left: 800,
         }, {
             range: '2017',
-            left: 1350,
+            left: 1400,
         }],
         series: [{
 	        calendarIndex: 0,
@@ -81,8 +81,8 @@ function calendarGridData(arg) {
     };
     option.calendar.map((item) => {
     	item.orient = 'vertical';
-    	item.top = 120;
-    	item.cellSize = [50, 50];
+    	item.top = 200;
+    	item.cellSize = [60, 60];
     	item.dayLabel = dayLabel;
     	item.monthLabel = monthLabel;
     	item.yearLabel = yearLabel;
@@ -320,12 +320,15 @@ function anlsMapData(arg) {
 	        label: {
 	            normal: {
 	                show: true,
-	                position: 'right',
-	                formatter: '{b}'
+	                position: 'bottom',
+	                formatter: '{b}',
+	                textStyle: {
+	                	fontSize: 46
+	                }
 	            }
 	        },
 	        symbolSize: function(val) {
-	            return val[2] / 4;
+	            return val[2]/2 < 20 ? 20 : val[2]/2;
 	        },
 	        showEffectOn: 'render',
 	        itemStyle: {
@@ -367,12 +370,12 @@ function anlsMapData(arg) {
 	            period: 6,
 	            trailLength: 0,
 	            symbol: planePath,
-	            symbolSize: 15
+	            symbolSize: 40
 	        },
 	        lineStyle: {
 	            normal: {
 	                color: color[i],
-	                width: 1,
+	                width: 3,
 	                opacity: 0.4,
 	                curveness: 0.2
 	            }
@@ -389,12 +392,15 @@ function anlsMapData(arg) {
 	        label: {
 	            normal: {
 	                show: true,
-	                position: 'right',
-	                formatter: '{b}'
+	                position: 'bottom',
+	                formatter: '{b}',
+	                textStyle: {
+	                	fontSize: 46
+	                }
 	            }
 	        },
 	        symbolSize: function(val) {
-	            return val[2] / 4;
+	            return val[2]/2 < 20 ? 20 : val[2]/2;
 	        },
 	        showEffectOn: 'render',
 	        itemStyle: {
@@ -550,14 +556,21 @@ function anlsMapData(arg) {
 	    color: ['gold', 'aqua', 'lime'],
 	    backgroundColor: '#404a59',
 	    tooltip: {
-	        trigger: 'item'
+	        trigger: 'item',
+	        textStyle: {
+	            fontSize: 64
+	        }
 	    },
 	    legend: {
 	        orient: 'vertical',
 	        top: 'bottom',
 	        left: 'right',
+	        itemGap: 40,
+	        itemWidth: 40,
+	        itemHeight: 40,
 	        data: ['北京 Top10', '上海 Top10', '广州 Top10'],
 	        textStyle: {
+	        	fontSize: 64,
 	            color: '#fff'
 	        },
 	        selectedMode: 'single'
@@ -627,7 +640,7 @@ function anlsProvMapData(arg) {
             showEffectOn: 'render',
             zlevel: 3,
             symbol: 'circle',
-            symbolSize: 30,
+            symbolSize: 40,
             rippleEffect: {
                 brushType: 'stroke',
                 period: 5,
@@ -636,12 +649,12 @@ function anlsProvMapData(arg) {
             label: {
                 normal: {
                     formatter: '{b}',
-                    position: 'right',
-                    offset: [8, -2],
+                    position: 'top',
+                    offset: [0, -20],
                     show: true,
                     textStyle: {
                         color: "yellow",
-                        fontSize: 46
+                        fontSize: 56
                     }
                 }
             },
@@ -668,11 +681,11 @@ function anlsProvMapData(arg) {
                 normal: {
                     formatter: '{b}',
                     position: 'right',
-                    offset: [8, -2],
+                    offset: [20, 0],
                     show: true,
                     textStyle: {
                         color: "#00EBEB",
-                        fontSize: 46
+                        fontSize: 56
                     }
                 }
             },
@@ -718,7 +731,7 @@ function maleToFemaleData(arg) {
             label: {
             	normal: {
             		textStyle: {
-            			fontSize: 36
+            			fontSize: 64
             		}
             	}
             },
@@ -753,7 +766,7 @@ function indvToGroupData(argument) {
 	        trigger: 'item',
 	        formatter: "{a} <br/>{b}: {c} ({d}%)",
 	        textStyle: {
-	        	fontSize: 46
+	        	fontSize: 64
 	        }
 	    },
 	    legend: {
@@ -762,7 +775,7 @@ function indvToGroupData(argument) {
 	        x: 'left',
 	        data: ['data1', 'data2', 'data3'],
 	        textStyle: {
-	            fontSize: 28,
+	            fontSize: 46,
 	            color: '#fff'
 	        }
 	    },
@@ -782,13 +795,13 @@ function indvToGroupData(argument) {
 	                    textStyle: {
 	                        color: '#fff',
 	                        fontWeight: 'bold',
-	                        fontSize: 14
+	                        fontSize: 56
 	                    }
 	                },
 	                emphasis: {
 	                    show: true,
 	                    textStyle: {
-	                        fontSize: '30',
+	                        fontSize: 56,
 	                        fontWeight: 'bold'
 	                    }
 	                }
@@ -825,7 +838,7 @@ function indvToGroupData(argument) {
 	                    textStyle: {
 	                        color: '#fff',
 	                        fontWeight: 'bold',
-	                        fontSize: 14
+	                        fontSize: 56
 	                    }
 	                },
 
@@ -874,12 +887,12 @@ function indvToGroupData(argument) {
 	            },
 	            label: {
 	                normal: {
+	                	show: false,
 	                    position: 'inner',
 	                    formatter: '{c}',
 	                    textStyle: {
 	                        color: '#777777',
 	                        fontWeight: 'bold',
-	                        fontSize: 10
 	                    }
 	                }
 	            },
@@ -904,27 +917,51 @@ function indvToGroupData(argument) {
 function onToOffData(arg) {
 	var tips = 64;
 	const option = {
-	    title: {
-	        text: '64%',
-	        subtext:"线上占比",
-	        x: 'center',
-	        y: 'center',
-	        textStyle: {
-	            color: '#fb358a',
-	            fontSize: 64,
-	        }
-	    },
+	    // title: {
+	    //     text: `${tips}%`,
+	    //     subtext:"线上占比",
+	    //     x: 'center',
+	    //     y: 'center',
+	    //     textStyle: {
+	    //         color: '#fb358a',
+	    //         fontSize: 64,
+	    //     },
+	    //     subtextStyle: {
+	    //         color: '#fb358a',
+	    //         fontSize: 56,
+	    //     }
+	    // },
+	    tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)",
+            textStyle: {
+                fontSize: '56',
+                fontWeight: 'bold'
+            }
+        },
 	    series: [{
-	        name: '线上',
+	        name: '线上线下占比',
 	        type: 'pie',
-	        radius: ['75%', '80%'],
-	        hoverAnimation: false,
+	        radius: ['75%', '85%'],
 	        label: {
 	            normal: {
-	                show: false,
-	            }
+	                show: true,
+	                textStyle: {
+	                    fontSize: '56',
+	                    fontWeight: 'bold'
+	                },
+	                position: "center"
+	            },
+	            emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '56',
+                        fontWeight: 'bold'
+                    }
+                }
 	        },
 	        data: [{
+	        	name: "线上占比",
 		        value: tips,
 		        itemStyle: {
 		            normal: {
@@ -934,7 +971,14 @@ function onToOffData(arg) {
 		            }
 		        }
 		    }, {
-		        value: 100 - tips
+		    	name: "线下占比",
+		        value: 100 - tips,
+		        itemStyle: {
+		            normal: {
+		                shadowBlur: 40,
+		                shadowColor: '#fb358a'
+		            }
+		        }
 		    }]
 	    }]
 	};
@@ -947,11 +991,12 @@ function ageDistributionData(arg) {
 	    color: ['#3398DB'],
 	    tooltip : {
 	        trigger: 'axis',
+	        formatter: "{b}岁左右人数： <br/>{c}",
 	        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
 	            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
 	        },
 	        textStyle: {
-	        	fontSize: 46
+	        	fontSize: 64
 	        }
 	    },
 	    grid: {
@@ -975,7 +1020,7 @@ function ageDistributionData(arg) {
 	            axisLabel: {
 	            	textStyle: {
 	            		color: '#fff',
-		            	fontSize: 28
+		            	fontSize: 46
 	            	}
 	            }
 	        }
@@ -993,7 +1038,7 @@ function ageDistributionData(arg) {
 	            axisLabel: {
 	            	textStyle: {
 	            		color: '#fff',
-		            	fontSize: 28
+		            	fontSize: 46
 	            	}
 	            }
 	        }
@@ -1011,7 +1056,10 @@ function ageDistributionData(arg) {
 	            normal: {
 	                show: true,
 	                position: 'top',
-	                formatter: '{c} 人'
+	                formatter: '{c}',
+	                textStyle: {
+	                	fontSize: 46
+	                }
 	            }
 	        },
 	    itemStyle: {
@@ -1036,7 +1084,10 @@ function customerTendData(arg) {
 	const option= {
 		color: ['#38b4ee'],
 		tooltip: {
-			trigger: 'axis'
+			trigger: 'axis',
+			textStyle: {
+				fontSize: 64
+			}
 		},
 		xAxis: {
 			type: 'category',
@@ -1045,7 +1096,7 @@ function customerTendData(arg) {
 			axisLabel:{
 			    textStyle:{
 			        color:'#dededf',
-			        fontSize: 32
+			        fontSize: 56
 			    }
 			},
 			splitLine:{//网格线
@@ -1069,7 +1120,7 @@ function customerTendData(arg) {
 		    axisLabel:{
 			    textStyle:{
 			        color:'#dededf',
-			        fontSize: 32
+			        fontSize: 56
 			    }
 			},
 			splitLine:{//网格线
@@ -1092,7 +1143,7 @@ function customerTendData(arg) {
 						show: false,
 						position: 'top',
 						textStyle: {
-							fontSize: 46
+							fontSize: 65
 						}
 					}
 				}

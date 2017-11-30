@@ -2,6 +2,28 @@ import React,{ Component } from 'react';
 import './css/weather.css'
 
 class WeatherComponent extends Component {
+    constructor() {
+        super()
+        this.state = {
+            year: '1970',
+            month: '01',
+            day: '01'
+        }
+    }
+    componentWillMount() {
+        var self = this;
+        function addTime(arg) { return arg < 10 ? '0'+arg : arg }
+        function step() {
+            var date = new Date();
+            self.setState({
+                year: date.getFullYear(),
+                month: date.getMonth()+1,
+                day: date.getDate()
+            })
+            requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
     render() {
         var today = 'icon_sunny';
         var day1 = 'icon_cloudy';
@@ -11,7 +33,7 @@ class WeatherComponent extends Component {
         var day5 = 'icon_shower';
         return (
             <div id="weather">
-                <p className="day"><span>2017年09月15日</span><span>周五</span></p>
+                <p className="day"><span>{this.state.year} 年 {this.state.month} 月 {this.state.day} 日</span><span>星期{"日一二三四五六".charAt(new Date().getDay())}</span></p>
                 <div className="weather_panel">
                     <span>
                         <div>

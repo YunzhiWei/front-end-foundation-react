@@ -5,7 +5,7 @@ html,body {
   height: 4320px;
   font-family: sans-serif;
   background: transparent;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 html {
   background-color: rgb(12, 22, 28);

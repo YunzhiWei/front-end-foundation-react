@@ -21,12 +21,12 @@ class CarsDistributionComponent extends Component {
                 <div style={{width: '50%', height: '100%', display: 'inline-block', textAlign: 'right'}}>
                     <ReactEcharts 
                         option={option2}
-                        style={{width: '80%',height: '50%'}}
+                        style={{width: '95%',height: '50%'}}
                         className='CarsDistribution'
                     />
                     <ReactEcharts 
                         option={option3}
-                        style={{width: '100%',height: '50%'}}
+                        style={{width: '95%',height: '50%'}}
                         className='CarsDistribution'
                     />
                 </div>

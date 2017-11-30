@@ -73,8 +73,8 @@ const BlockAreaDataArray = [
         ]
       }
     ],
-    geoMapName: "江西",
-    map: "jiangxi",
+    // geoMapName: "江西",
+    // map: "jiangxi",
     visualMin: 0,
     visualMax: 2500,
     visualLabel: ['高','低'],

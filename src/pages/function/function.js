@@ -194,12 +194,12 @@ function barLines(arg) {
         item.scale = true;
         item.boundaryGap = [0, 0];
         item.nameTextStyle = {
-            fontSize: 40,
+            fontSize: 56,
             color: '#87baf8'
         };
         item.nameGap = 40;
         item.axisLabel.textStyle = {
-            fontSize: 40,
+            fontSize: 56,
             color: '#87baf8'
         }
     });
@@ -244,26 +244,21 @@ function barLines(arg) {
                 }
             },
             textStyle: {
-                fontSize: 60,
+                fontSize: 64,
             }
         },
-        // legend: {
-        //     data: legendData,
-        //     textStyle: {
-        //         fontSize: 40,
-        //         color: '#BFDAED'
-        //     },
-        // },
         grid: {
-            left: 250,
-            top: 150
+            left: 200,
+            top: 100,
+            right: 40,
+            bottom: 80
         },
         xAxis: [{
             type: 'category',
             boundaryGap: true,
             data: xAxisData,
             nameTextStyle: {
-                fontSize: 40,
+                fontSize: 56,
                 color: '#87baf8'
             },
             axisPointer: {
@@ -271,7 +266,7 @@ function barLines(arg) {
             },
             axisLabel: {
                 textStyle: {
-                    fontSize: 40,
+                    fontSize: 56,
                     color: '#87baf8'
                 }
             }
@@ -360,7 +355,7 @@ function radarChart(arg) {
             itemGap: 20,
             textStyle: {
                 color: '#87baf8',
-                fontSize: 40
+                fontSize: 56
             },
             // selectedMode: 'single'
         },
@@ -380,7 +375,7 @@ function radarChart(arg) {
             name: {
                 textStyle: {
                     color: '#43eec6',
-                    fontSize: 40
+                    fontSize: 56
                 }
             },
             splitLine: {
@@ -470,6 +465,7 @@ function weiboData(arg) {
     const option = {
         geo: {
             map: 'china',
+            zoom: 1.25,
             label: {
                 emphasis: {
                     show: false
@@ -563,29 +559,29 @@ function parkingLotData(arg) {
             position: 'outside',
             offset: [20, -10],
             textStyle: {
-                fontSize: 50,
+                fontSize: 64,
             }
         }
     };
     const option = {
-        tooltip: {
-            trigger: 'axis',
-            hideDelay: 400,
-            formatter: '{a0}: {c0}<br />{a1}: {c1}',
-            padding: 20,
-            axisPointer: {
-                type: 'none'
-            },
-            textStyle: {
-                fontSize: 40,
-            },
-        },
+        // tooltip: {
+        //     trigger: 'axis',
+        //     hideDelay: 400,
+        //     formatter: '{a0}: {c0}<br />{a1}: {c1}',
+        //     padding: 20,
+        //     axisPointer: {
+        //         type: 'none'
+        //     },
+        //     textStyle: {
+        //         fontSize: 64,
+        //     },
+        // },
         grid: {
             containLabel: true,
             left: 20,
             top: 0,
             bottom: 0,
-            right: 120
+            right: 150
         },
         color:['#48d8fd', '#43eec6' ],
         yAxis: {
@@ -594,10 +590,10 @@ function parkingLotData(arg) {
             axisLine: {show: false},
             axisTick: {show: false},
             axisLabel: {
-                margin: 30,
+                margin: 50,
                 align: 'center',
                 textStyle: {
-                    fontSize: 40,
+                    fontSize: 64,
                     color: '#87baf8'
                 }
             }
@@ -935,7 +931,7 @@ function numOfPassData(arg) {
             data: ['增长趋势', '游客量'],
             textStyle: {
                 color: '#ccc',
-                fontSize: 40
+                fontSize: 64
             }
         },
         xAxis: {
@@ -949,7 +945,7 @@ function numOfPassData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 32,
+                    fontSize: 46,
                     color: '#87baf8'
                 }
             }
@@ -964,7 +960,7 @@ function numOfPassData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 32,
+                    fontSize: 46,
                     color: '#87baf8'
                 }
             }
@@ -1026,7 +1022,7 @@ function airQualityData(arg) {
         }
     }
     let data = [];
-    let now = +new Date(1997, 9, 3);
+    let now = +new Date();
     let oneDay = 24 * 3600 * 1000;
     let value = Math.random() * 1000;
     for (let i = 0; i < 1000; i++) {
@@ -1063,7 +1059,7 @@ function airQualityData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 25,
+                    fontSize: 46,
                     color: '#87baf8'
                 }
             }
@@ -1082,7 +1078,7 @@ function airQualityData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 25,
+                    fontSize: 46,
                     color: '#87baf8'
                 }
             }
@@ -1111,7 +1107,7 @@ function airQualityData(arg) {
                 min:0,
                 max:500,
                 splitNumber:10,
-                radius: '80%',
+                radius: '60%',
                 axisLine: {            // 坐标轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
                         color: [[0.1, 'lime'],[150/500, '#1e90ff'],[1, '#ff4500']],
@@ -1123,6 +1119,7 @@ function airQualityData(arg) {
                 axisLabel: {            // 坐标轴小标记
                     textStyle: {       // 属性lineStyle控制线条样式
                         fontWeight: 'bolder',
+                        fontSize: 46,
                         color: '#fff',
                         shadowColor : '#fff', //默认透明
                         shadowBlur: 15
@@ -1152,7 +1149,7 @@ function airQualityData(arg) {
                 title : {
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
-                        fontSize: 50,
+                        fontSize: 56,
                         fontStyle: 'italic',
                         color: '#fff',
                         shadowColor : '#fff', //默认透明
@@ -1165,12 +1162,12 @@ function airQualityData(arg) {
                     borderColor: '#fff',
                     shadowColor : '#fff', //默认透明
                     shadowBlur: 10,
-                    height: 60,
-                    width: 120,
+                    height: 80,
+                    width: 150,
                     offsetCenter: [0, '50%'],       // x, y，单位px
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
-                        fontSize: 45,
+                        fontSize: 64,
                         color: '#fff'
                     }
                 },
@@ -1227,7 +1224,7 @@ function resUtilizationData(arg) {
             axisLabel: {
                 margin: 30,
                 textStyle: {
-                    fontSize: 40,
+                    fontSize: 56,
                     color: '#43eec6'
                 }
             }
@@ -1261,7 +1258,7 @@ function resUtilizationData(arg) {
                         return params.data.name;
                     },
                     textStyle: {
-                        fontSize: 40,
+                        fontSize: 56,
                         color: "#bcbfff" //color of value
                     }
                 }
@@ -1636,7 +1633,7 @@ function ticketBusinessData(argument) {
             type: 'bar',
             silent: true,
             barGap: '-100%',
-            barWidth: 50,
+            barWidth: 100,
             itemStyle: {
                 normal: {
                     color: 'rgb(0, 63, 126)',
@@ -1648,7 +1645,7 @@ function ticketBusinessData(argument) {
             type: 'bar',
             silent: true,
             barGap: '-100%',
-            barWidth: 50,
+            barWidth: 100,
             itemStyle: {
                 normal: {
                     color: 'rgba(71, 216, 253, .9)',
@@ -1663,7 +1660,7 @@ function ticketBusinessData(argument) {
                         return (data.data/1200*100).toFixed(2) + '%'
                     },
                     textStyle: {
-                        fontSize: 30
+                        fontSize: 58
                     }
                 }
             },

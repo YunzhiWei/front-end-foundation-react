@@ -19,7 +19,8 @@ function fortyBoatsData(arg) {
                         position: 'center',
                         show: true,
                         textStyle: {
-                            fontSize: '34',
+                            fontSize: 56,
+                            margin: [0,0,20,0]
                         }
                     }
                 },
@@ -37,7 +38,7 @@ function fortyBoatsData(arg) {
                         position: 'center',
                         show: true,
                         textStyle: {
-                            fontSize: '34',
+                            fontSize: 64,
                         }
                     }
                 },
@@ -79,7 +80,7 @@ function fortyBoatsData(arg) {
     var seriesTemp =  {
         type: 'pie',
         clockWise: false,
-        radius: [100, 120],
+        radius: [150, 170],
         itemStyle: dataStyle,
         hoverAnimation: false,
     }

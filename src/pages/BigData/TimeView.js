@@ -32,8 +32,9 @@ class TimeViewComponent extends Component {
 	render() {
 		return (
 		    <div className="time_view">
-		    	<p className="yymmdd">{this.state.year} 年 {this.state.month} 月 {this.state.day} 日 星期三</p>
-		    	<p className="hhmmss"><span>{this.state.hour}</span> : <span>{this.state.minute}</span> : <span>{this.state.second}</span></p>
+		    	<p className="yymmdd">{this.state.year} 年 {this.state.month} 月 {this.state.day} 日</p>
+		    	<p className="week"> 星期{"日一二三四五六".charAt(new Date().getDay())}</p>
+		    	<p className="hhmmss"><span>{this.state.hour}</span><span className="split"> : </span><span>{this.state.minute}</span><span className="split"> : </span><span>{this.state.second}</span></p>
 		    </div>
 		);
 	}

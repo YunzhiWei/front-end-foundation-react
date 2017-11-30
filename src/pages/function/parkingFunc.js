@@ -5,7 +5,20 @@ import geoCoordMap from '../BigData/data/geoCoordMap';
 function carsDistributionData(arg) {
     const {geoMapName, visualMin, visualMax, visualLabel, mapDataSeries} = arg;
     var series = [];
+    var label;
     mapDataSeries.map((item, i) => {
+        label = {
+            normal: {
+                label: {
+                    show: true,
+                    position: "top",
+                    textStyle: {
+                        color: '#0',
+                        fontSize: 46
+                    }
+                }
+            }
+        }
         series[i] = {};
         series[i].data = [];
         item.data.map((ele) => {
@@ -13,16 +26,9 @@ function carsDistributionData(arg) {
         });
         series[i].name = item.name;
         series[i].type = "map";
+        series[i].zoom = 1.25;
         series[i].mapType = geoMapName;
-        series[i].label = {
-            normal: {
-                show: true,
-                textStyle: {
-                    color: '#0',
-                    fontSize: 32
-                }
-            }
-        };
+        series[i].itemStyle = label;
     });
     const legendData = mapDataSeries.map((item) => { var temp = item.name; return { name: temp, icon: 'circle' }});
     const option = {
@@ -32,7 +38,7 @@ function carsDistributionData(arg) {
             top: 50,
             left: 'center',
             selectedMode: 'single',
-            textStyle: { color: '#f', fontSize: 46},
+            textStyle: { color: '#f', fontSize: 56},
             itemWidth: 30,
             itemHeight: 30,
             itemGap: 30
@@ -41,27 +47,18 @@ function carsDistributionData(arg) {
             right: 50,
             bottom: 50,
             calculable: true,
-            textStyle: { color: 'rgb(38, 242, 233)',fontSize: 46 },
+            textStyle: { color: 'rgb(38, 242, 233)',fontSize: 56 },
             inRange: {
                 color: ['#05bcfa','#0a64a9'],
             },
             itemWidth: 60,
             itemHeight: 280
         },
-        geo: { 
-            roam: false,
-            type: 'map',
-            map: '',
-            itemStyle: {
-                normal: { color: 'rgba(5, 188, 250, .8)' },
-            }
-        },
         series: series
     }
     option.legend.data = legendData;
     option.visualMap.min = visualMin;
     option.visualMap.max = visualMax;
-    option.geo.map = geoMapName;
     return option;
 }
 
@@ -98,7 +95,7 @@ function carsDistribution2Data(arg) {
             },
             axisLabel: {
                 textStyle: {
-                    fontSize: 32,
+                    fontSize: 46,
                     color: 'rgba(31, 188, 210, .9)',
                 }
             },
@@ -120,7 +117,7 @@ function carsDistribution2Data(arg) {
             type: 'bar',
             silent: true,
             barGap: '-100%',
-            barWidth: 50,
+            barWidth: 100,
             itemStyle: {
                 normal: {
                     color: 'rgb(0, 63, 126)',
@@ -132,7 +129,7 @@ function carsDistribution2Data(arg) {
             type: 'bar',
             silent: true,
             barGap: '-100%',
-            barWidth: 50,
+            barWidth: 100,
             itemStyle: {
                 normal: {
                     color: 'rgba(71, 216, 253, .9)',
@@ -151,7 +148,7 @@ function carsDistribution2Data(arg) {
                         return order[len - data.dataIndex -1].name
                     },
                     textStyle: {
-                        fontSize: 30
+                        fontSize: 56
                     }
                 }
             },
@@ -169,18 +166,19 @@ function carsDistribution3Data(arg) {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)",
             textStyle: {
-                fontSize: 42
+                fontSize: 64
             }
         },
         series : [
             {
                 name: '全国客源车辆所属省份统计',
                 type: 'pie',
-                radius : '65%',
+                radius : '100%',
                 label: {
                     normal: {
+                        position: "inside",
                         textStyle: {
-                            fontSize: 46
+                            fontSize: 56
                         }
                     }
                 },
@@ -215,14 +213,14 @@ function standingTimeData(arg) {
             }
         },
         grid: {
-            left: 80,
-            right: 50
+            left: 200,
+            right: 40
         },
         legend: {
             data: ['增长趋势', '停留时长'],
             textStyle: {
                 color: '#ccc',
-                fontSize: 40
+                fontSize: 52
             }
         },
         xAxis: {
@@ -236,7 +234,7 @@ function standingTimeData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 32,
+                    fontSize: 56,
                     color: '#87baf8'
                 }
             }
@@ -251,7 +249,7 @@ function standingTimeData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 32,
+                    fontSize: 56,
                     color: '#87baf8'
                 }
             }
@@ -304,20 +302,21 @@ function IOCarsTimeData(arg) {
     var dataIn = arg.map((item) => item.In);
     var dataOut = arg.map((item) => item.Out);
     var xData = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00'];
-    var itemStyle = { normal: { label: { textStyle: { fontSize: 32 } } } };
+    var itemStyle = { normal: { label: { textStyle: { fontSize: 46 } } } };
     var markPointData = [{type : 'max', name: '最大值'},{type : 'min', name: '最小值'}];
     var markLineData = [{type : 'average', name : '平均值'}];
     var markLineStyle = { normal: { width: 4 } };
+    var markArea = { normal: { fontSize: 64 } };
     const option = {
         tooltip: {
             trigger: 'axis',
             textStyle: {
-                fontSize: 42
+                fontSize: 64
             }
         },
         legend: {
             data:['进场数量','离场数量'],
-            textStyle: { color: '#f', fontSize: 32},
+            textStyle: { color: '#f', fontSize: 56},
             itemWidth: 60,
             itemHeight: 30,
             itemGap: 30
@@ -328,7 +327,7 @@ function IOCarsTimeData(arg) {
                 data : xData,
                 axisLabel: {
                     textStyle: {
-                        fontSize: 48,
+                        fontSize: 56,
                         color: 'rgba(31, 188, 210, .9)',
                     },
                     margin: 10
@@ -340,7 +339,7 @@ function IOCarsTimeData(arg) {
                 type : 'value',
                 axisLabel: {
                     textStyle: {
-                        fontSize: 48,
+                        fontSize: 56,
                         color: 'rgba(31, 188, 210, .9)'
                     },
                     margin: 30
@@ -362,11 +361,13 @@ function IOCarsTimeData(arg) {
         item.type = 'bar';
         item.markPoint = {};
         item.markLine = {};
+        item.markArea = {};
         item.markPoint.data = markPointData;
         item.markLine.data = markLineData;
-        item.markPoint.symbolSize = 160;
+        item.markPoint.symbolSize = 200;
         item.markPoint.itemStyle = item.markLine.itemStyle = itemStyle;
         item.markLine.lineStyle = markLineStyle;
+        item.markArea.label = markArea;
     })
     return option
 }
