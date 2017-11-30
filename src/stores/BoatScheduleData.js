@@ -134,20 +134,11 @@ class BoatScheduleData {
         }, 3000)
         setInterval(function(){
             self.updateFortyBoats();
-        }, 500)
+        }, 3000)
     }
     updateFortyBoats() {
 		var i = Math.floor(Math.random() * 40);
-        function check(self) {
-            return self._fortyBoats.map((item) => item === 100 ? 1 : null);
-        }
-        if (!(40-check(this).join("").length)) {
-            return ;
-        } else if (this._fortyBoats[i] === 100) {
-            this.updateFortyBoats();
-        } else {
-            this._fortyBoats[i] += 1;
-        }
+        this._fortyBoats[i] += 1;
     }
     updateIOBoats() {
        this._IOBoats.inSumPrev = this._IOBoats.inSum;

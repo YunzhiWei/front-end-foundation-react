@@ -20,8 +20,8 @@
 
 .echart-list { height: 100%; }
 /*大数据标题 start */
-.large-screen .bigdata_title { width: 60%; height: 390px; font-size: 0px; padding: 50px 0; margin: 0 auto; text-align: center; color: #48D8FD; position: relative; }
-.bigdata_title span { display: inline-block; font-size: 135px; }
+.large-screen .bigdata_title { width: 80%; height: 390px; font-size: 0px; padding: 50px 0; margin: 0 auto; text-align: center; color: #48D8FD; position: relative; }
+.bigdata_title span { display: inline-block; font-size: 198px; }
 .bigdata_l { width: 30%; height: 70%; margin-top: 50px; float: left; background-position: center; background: url(../images/bigdata_l.png); background-repeat: no-repeat; background-size: 100% 100%; }
 .bigdata_r { width: 30%; height: 70%; margin-top: 50px; float: left; background-position: center; background: url(../images/bigdata_r.png); background-repeat: no-repeat; background-size: 100% 100%; }
 .bigdata_c { width: 40%; height: 100%; float: left; }

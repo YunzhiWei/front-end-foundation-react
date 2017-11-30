@@ -105,6 +105,7 @@ class EchartsData {
         }
         function fetchWeather(url, time) {
             fetchJsonp(url, {
+                dataType: "jsonp",
                 jsonpCallback: 'custom_callback',
                 jsonpCallbackFunction: 'data' + time
             }).then(function (data) {
