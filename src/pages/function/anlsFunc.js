@@ -19,24 +19,24 @@ function calendarGridData(arg) {
         return data;
     }
     var dayLabel = {
-        margin: 10,
+        margin: 2,
         textStyle: {
     	    color: '#fff',
-    		fontSize: 56
+    		fontSize: 14
     	},
     };
     var monthLabel = {
-    	margin: 25,
+    	margin: 6,
     	textStyle: {
         	color: '#fff',
-        	fontSize: 56
+        	fontSize: 14
         }
     };
     var yearLabel = {
-    	margin: 75,
+    	margin: 18,
     	textStyle: {
         	color: '#fff',
-        	fontSize: 72
+        	fontSize: 18
         }
     };
     const option = {
@@ -47,7 +47,7 @@ function calendarGridData(arg) {
                 return format + ': ' + p.data[1];
             },
             textStyle: {
-            	fontSize: 56
+            	fontSize: 14
             }
         },
         visualMap: {
@@ -60,13 +60,13 @@ function calendarGridData(arg) {
         },
         calendar: [{
             range: '2015',
-            left: 200,
+            left: 50,
         }, {
             range: '2016',
-            left: 800,
+            left: 200,
         }, {
             range: '2017',
-            left: 1400,
+            left: 350,
         }],
         series: [{
 	        calendarIndex: 0,
@@ -81,8 +81,8 @@ function calendarGridData(arg) {
     };
     option.calendar.map((item) => {
     	item.orient = 'vertical';
-    	item.top = 200;
-    	item.cellSize = [60, 60];
+    	item.top = 50;
+    	item.cellSize = [15, 15];
     	item.dayLabel = dayLabel;
     	item.monthLabel = monthLabel;
     	item.yearLabel = yearLabel;
@@ -323,12 +323,12 @@ function anlsMapData(arg) {
 	                position: 'bottom',
 	                formatter: '{b}',
 	                textStyle: {
-	                	fontSize: 46
+	                	fontSize: 12
 	                }
 	            }
 	        },
 	        symbolSize: function(val) {
-	            return val[2]/2 < 20 ? 20 : val[2]/2;
+	            return val[2]/2 < 5 ? 5 : val[2]/8;
 	        },
 	        showEffectOn: 'render',
 	        itemStyle: {
@@ -370,12 +370,12 @@ function anlsMapData(arg) {
 	            period: 6,
 	            trailLength: 0,
 	            symbol: planePath,
-	            symbolSize: 40
+	            symbolSize: 16
 	        },
 	        lineStyle: {
 	            normal: {
 	                color: color[i],
-	                width: 3,
+	                width: 1,
 	                opacity: 0.4,
 	                curveness: 0.2
 	            }
@@ -395,12 +395,12 @@ function anlsMapData(arg) {
 	                position: 'bottom',
 	                formatter: '{b}',
 	                textStyle: {
-	                	fontSize: 46
+	                	fontSize: 16
 	                }
 	            }
 	        },
 	        symbolSize: function(val) {
-	            return val[2]/2 < 20 ? 20 : val[2]/2;
+	            return val[2]/2 < 5 ? 5 : val[2]/8;
 	        },
 	        showEffectOn: 'render',
 	        itemStyle: {
@@ -420,7 +420,7 @@ function anlsMapData(arg) {
 	const option = {
 	    bmap: {
 	        center: [104.114129, 37.550339],
-	        zoom: 6,
+	        zoom: 4,
 	        roam: false,
 	        mapStyle: {
 	            styleJson: [{
@@ -558,19 +558,19 @@ function anlsMapData(arg) {
 	    tooltip: {
 	        trigger: 'item',
 	        textStyle: {
-	            fontSize: 64
+	            fontSize: 16
 	        }
 	    },
 	    legend: {
 	        orient: 'vertical',
-	        top: 'bottom',
+	        bottom: 20,
 	        left: 'right',
-	        itemGap: 40,
-	        itemWidth: 40,
-	        itemHeight: 40,
+	        itemGap: 10,
+	        itemWidth: 10,
+	        itemHeight: 10,
 	        data: ['北京 Top10', '上海 Top10', '广州 Top10'],
 	        textStyle: {
-	        	fontSize: 64,
+	        	fontSize: 16,
 	            color: '#fff'
 	        },
 	        selectedMode: 'single'
@@ -589,14 +589,14 @@ function anlsProvMapData(arg) {
 	    name: '上饶市',
 	    value: geoCoordMap['上饶']
 	}, {
-	    name: '鹰潭市',
-	    value: geoCoordMap['鹰潭']
+	    name: '萍乡市',
+	    value: geoCoordMap['萍乡']
 	}, {
 	    name: '九江市',
 	    value: geoCoordMap['九江']
 	}, {
-	    name: '抚州市',
-	    value: geoCoordMap['抚州']
+	    name: '宜春市',
+	    value: geoCoordMap['宜春']
 	}, {
 	    name: '樟树市',
 	    value: geoCoordMap['樟树']
@@ -640,7 +640,7 @@ function anlsProvMapData(arg) {
             showEffectOn: 'render',
             zlevel: 3,
             symbol: 'circle',
-            symbolSize: 40,
+            symbolSize: 10,
             rippleEffect: {
                 brushType: 'stroke',
                 period: 5,
@@ -654,7 +654,7 @@ function anlsProvMapData(arg) {
                     show: true,
                     textStyle: {
                         color: "yellow",
-                        fontSize: 56
+                        fontSize: 14
                     }
                 }
             },
@@ -671,7 +671,7 @@ function anlsProvMapData(arg) {
             showEffectOn: 'render',
             zlevel: 3,
             symbol: 'circle',
-            symbolSize: 40,
+            symbolSize: 10,
             rippleEffect: {
                 brushType: 'stroke',
                 period: 2,
@@ -685,7 +685,7 @@ function anlsProvMapData(arg) {
                     show: true,
                     textStyle: {
                         color: "#00EBEB",
-                        fontSize: 56
+                        fontSize: 14
                     }
                 }
             },
@@ -713,12 +713,12 @@ function maleToFemaleData(arg) {
 	        x : 'center',
 	        y : 'bottom',
 	        data:['男','女'],
-	        itemWidth: 50,
-	        itemHeight: 30,
-	        itemGap: 20,
+	        itemWidth: 14,
+	        itemHeight: 10,
+	        itemGap: 8,
 	        textStyle: {
 	        	color: '#fff',
-	        	fontSize: 36
+	        	fontSize: 14
 	        }
 	    },
 	    calculable : true,
@@ -726,12 +726,12 @@ function maleToFemaleData(arg) {
             name:'面积模式',
             type:'pie',
             center: ['50%', '45%'],
-            radius : ['30%', '80%'],
+            radius : ['30%', '60%'],
             roseType : 'radius',
             label: {
             	normal: {
             		textStyle: {
-            			fontSize: 64
+            			fontSize: 16
             		}
             	}
             },
@@ -746,36 +746,25 @@ function maleToFemaleData(arg) {
 
 // 景区团散比
 function indvToGroupData(argument) {
-	var giftImageUrl = "data:image/png;base64,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";
-
 	const option = {
-	    graphic: {
-	        elements: [{
-	            type: 'image',
-	            style: {
-	                image: giftImageUrl,
-	                width: 30,
-	                height: 30
-	            },
-	            left: 'center',
-	            top: 'center'
-	        }]
-	    },
-	    color: ['#83D560', '#AF89D6', '#a9ADF3'],
+	    color: ['#83D560', '#AF89D6'],
 	    tooltip: {
 	        trigger: 'item',
 	        formatter: "{a} <br/>{b}: {c} ({d}%)",
 	        textStyle: {
-	        	fontSize: 64
+	        	fontSize: 16
 	        }
 	    },
 	    legend: {
-	        orient: 'vertical', //horizontal 
+	        orient: 'horizontal', //vertical
 	        //bottom: '0%',
-	        x: 'left',
-	        data: ['data1', 'data2', 'data3'],
+	        x: 'center',
+	        itemWidth: 14,
+	        itemHeight: 10,
+	        itemGap: 8,
+	        data: ['散客', '团客'],
 	        textStyle: {
-	            fontSize: 46,
+	            fontSize: 12,
 	            color: '#fff'
 	        }
 	    },
@@ -795,13 +784,13 @@ function indvToGroupData(argument) {
 	                    textStyle: {
 	                        color: '#fff',
 	                        fontWeight: 'bold',
-	                        fontSize: 56
+	                        fontSize: 14
 	                    }
 	                },
 	                emphasis: {
 	                    show: true,
 	                    textStyle: {
-	                        fontSize: 56,
+	                        fontSize: 14,
 	                        fontWeight: 'bold'
 	                    }
 	                }
@@ -811,16 +800,12 @@ function indvToGroupData(argument) {
 	                    show: false
 	                }
 	            },
-
 	            data: [{
-	                value: 1778.2,
-	                name: 'data1'
+	                value: 118,
+	                name: '散客'
 	            }, {
-	                value: 7118,
-	                name: 'data2'
-	            }, {
-	                value: 3870.2,
-	                name: 'data3'
+	                value: 178,
+	                name: '团客'
 	            }]
 	        }, //外圈
 	        {
@@ -838,7 +823,7 @@ function indvToGroupData(argument) {
 	                    textStyle: {
 	                        color: '#fff',
 	                        fontWeight: 'bold',
-	                        fontSize: 56
+	                        fontSize: 14
 	                    }
 	                },
 
@@ -856,20 +841,17 @@ function indvToGroupData(argument) {
 	            },
 	            itemStyle: {
 	                normal: {
-	                    shadowBlur: 30,
+	                    shadowBlur: 8,
 	                    shadowColor: 'rgba(0, 0, 0, 0.4)'
 	                }
 	            },
 
 	            data: [{
-	                value: 178,
-	                name: 'data1'
-	            }, {
 	                value: 118,
-	                name: 'data2'
+	                name: '散客'
 	            }, {
-	                value: 870,
-	                name: 'data3'
+	                value: 178,
+	                name: '团客'
 	            }]
 	        }, {
 	            name: '最外圈',
@@ -898,14 +880,11 @@ function indvToGroupData(argument) {
 	            },
 
 	            data: [{
-	                value: 178,
-	                name: 'data1'
-	            }, {
 	                value: 118,
-	                name: 'data2'
+	                name: '散客'
 	            }, {
-	                value: 870,
-	                name: 'data3'
+	                value: 178,
+	                name: '团客'
 	            }]
 	        }
 	    ]
@@ -917,25 +896,11 @@ function indvToGroupData(argument) {
 function onToOffData(arg) {
 	var tips = 64;
 	const option = {
-	    // title: {
-	    //     text: `${tips}%`,
-	    //     subtext:"线上占比",
-	    //     x: 'center',
-	    //     y: 'center',
-	    //     textStyle: {
-	    //         color: '#fb358a',
-	    //         fontSize: 64,
-	    //     },
-	    //     subtextStyle: {
-	    //         color: '#fb358a',
-	    //         fontSize: 56,
-	    //     }
-	    // },
 	    tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b}: {c} ({d}%)",
             textStyle: {
-                fontSize: '56',
+                fontSize: 14,
                 fontWeight: 'bold'
             }
         },
@@ -947,7 +912,7 @@ function onToOffData(arg) {
 	            normal: {
 	                show: true,
 	                textStyle: {
-	                    fontSize: '56',
+	                    fontSize: 14,
 	                    fontWeight: 'bold'
 	                },
 	                position: "center"
@@ -955,7 +920,7 @@ function onToOffData(arg) {
 	            emphasis: {
                     show: true,
                     textStyle: {
-                        fontSize: '56',
+                        fontSize: 14,
                         fontWeight: 'bold'
                     }
                 }
@@ -966,7 +931,7 @@ function onToOffData(arg) {
 		        itemStyle: {
 		            normal: {
 		                color: '#fb358a',
-		                shadowBlur: 40,
+		                shadowBlur: 10,
 		                shadowColor: '#fb358a'
 		            }
 		        }
@@ -975,7 +940,7 @@ function onToOffData(arg) {
 		        value: 100 - tips,
 		        itemStyle: {
 		            normal: {
-		                shadowBlur: 40,
+		                shadowBlur: 10,
 		                shadowColor: '#fb358a'
 		            }
 		        }
@@ -996,7 +961,7 @@ function ageDistributionData(arg) {
 	            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
 	        },
 	        textStyle: {
-	        	fontSize: 64
+	        	fontSize: 16
 	        }
 	    },
 	    grid: {
@@ -1020,7 +985,7 @@ function ageDistributionData(arg) {
 	            axisLabel: {
 	            	textStyle: {
 	            		color: '#fff',
-		            	fontSize: 46
+		            	fontSize: 16
 	            	}
 	            }
 	        }
@@ -1038,7 +1003,7 @@ function ageDistributionData(arg) {
 	            axisLabel: {
 	            	textStyle: {
 	            		color: '#fff',
-		            	fontSize: 46
+		            	fontSize: 12
 	            	}
 	            }
 	        }
@@ -1058,7 +1023,7 @@ function ageDistributionData(arg) {
 	                position: 'top',
 	                formatter: '{c}',
 	                textStyle: {
-	                	fontSize: 46
+	                	fontSize: 12
 	                }
 	            }
 	        },
@@ -1086,7 +1051,7 @@ function customerTendData(arg) {
 		tooltip: {
 			trigger: 'axis',
 			textStyle: {
-				fontSize: 64
+				fontSize: 16
 			}
 		},
 		xAxis: {
@@ -1096,7 +1061,7 @@ function customerTendData(arg) {
 			axisLabel:{
 			    textStyle:{
 			        color:'#dededf',
-			        fontSize: 56
+			        fontSize: 14
 			    }
 			},
 			splitLine:{//网格线
@@ -1120,7 +1085,7 @@ function customerTendData(arg) {
 		    axisLabel:{
 			    textStyle:{
 			        color:'#dededf',
-			        fontSize: 56
+			        fontSize: 14
 			    }
 			},
 			splitLine:{//网格线
@@ -1143,7 +1108,7 @@ function customerTendData(arg) {
 						show: false,
 						position: 'top',
 						textStyle: {
-							fontSize: 65
+							fontSize: 16
 						}
 					}
 				}

@@ -127,7 +127,7 @@ function airportCoord(arg) {
                 period: 6,
                 trailLength: 0,
                 symbol: iconPath,
-                symbolSize: 15
+                symbolSize: 4
             };
         }
         const markers = {
@@ -194,12 +194,12 @@ function barLines(arg) {
         item.scale = true;
         item.boundaryGap = [0, 0];
         item.nameTextStyle = {
-            fontSize: 56,
+            fontSize: 14,
             color: '#87baf8'
         };
         item.nameGap = 40;
         item.axisLabel.textStyle = {
-            fontSize: 56,
+            fontSize: 14,
             color: '#87baf8'
         }
     });
@@ -244,21 +244,21 @@ function barLines(arg) {
                 }
             },
             textStyle: {
-                fontSize: 64,
+                fontSize: 16,
             }
         },
         grid: {
-            left: 200,
-            top: 100,
-            right: 40,
-            bottom: 80
+            left: 50,
+            top: 20,
+            right: 10,
+            bottom: 20
         },
         xAxis: [{
             type: 'category',
             boundaryGap: true,
             data: xAxisData,
             nameTextStyle: {
-                fontSize: 56,
+                fontSize: 14,
                 color: '#87baf8'
             },
             axisPointer: {
@@ -266,7 +266,7 @@ function barLines(arg) {
             },
             axisLabel: {
                 textStyle: {
-                    fontSize: 56,
+                    fontSize: 14,
                     color: '#87baf8'
                 }
             }
@@ -294,16 +294,16 @@ function dynamicChart(arg) {
     const yAixsConf = dynamicYAxis.map((item) => {
         item.type = 'value';
         item.scale = true;
-        item.nameTextStyle = { color: '#87baf8', fontSize: 30 };
+        item.nameTextStyle = { color: '#87baf8', fontSize: 10 };
         item.nameGap = 40;
         item.boundaryGap = [0.2, 0.2];
-        item.axisLabel = { textStyle : { color: '#87baf8', fontSize: 40 } };
+        item.axisLabel = { textStyle : { color: '#87baf8', fontSize: 10 } };
         return item;
     });
     const xAixsConf = dynamicXAxis.map((item) => {
         item.type = 'category';
         item.boundaryGap = true;
-        item.axisLabel = { textStyle : { color: '#87baf8', fontSize: 40, align: 'left' } };
+        item.axisLabel = { textStyle : { color: '#87baf8', fontSize: 10, align: 'left' } };
         return item;
     });
     const legendData = dynamicSeries.map((item, i) => { return item.name });
@@ -324,9 +324,9 @@ function dynamicChart(arg) {
         }
     });
     const option = {
-        tooltip: { trigger:'axis', textStyle: { fontSize: 60 } },
-        legend: { data: legendData, textStyle: { color: '#87baf8', fontSize: 40 } },
-        grid: { top: 160, left: 150, right: 150, bottom:130 },
+        tooltip: { trigger:'axis', textStyle: { fontSize: 15 } },
+        legend: { data: legendData, textStyle: { color: '#87baf8', fontSize: 10 } },
+        grid: { top: 40, left: 28, right: 28, bottom: 32 },
         xAxis: xAixsConf,
         yAxis: yAixsConf,
         series: dynamicSeries
@@ -352,10 +352,10 @@ function radarChart(arg) {
         legend: {
             bottom: 5,
             data: ['实时', '昨日', '前日'],
-            itemGap: 20,
+            itemGap: 5,
             textStyle: {
                 color: '#87baf8',
-                fontSize: 56
+                fontSize: 14
             },
             // selectedMode: 'single'
         },
@@ -375,7 +375,7 @@ function radarChart(arg) {
             name: {
                 textStyle: {
                     color: '#43eec6',
-                    fontSize: 56
+                    fontSize: 14
                 }
             },
             splitLine: {
@@ -485,7 +485,7 @@ function weiboData(arg) {
             name: '弱',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: 3,
+            symbolSize: 1,
             large: true,
             itemStyle: {
                 normal: {
@@ -499,7 +499,7 @@ function weiboData(arg) {
             name: '中',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: 3,
+            symbolSize: 1,
             large: true,
             itemStyle: {
                 normal: {
@@ -513,7 +513,7 @@ function weiboData(arg) {
             name: '强',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: 3,
+            symbolSize: 1,
             large: true,
             itemStyle: {
                 normal: {
@@ -559,29 +559,17 @@ function parkingLotData(arg) {
             position: 'outside',
             offset: [20, -10],
             textStyle: {
-                fontSize: 64,
+                fontSize: 16,
             }
         }
     };
     const option = {
-        // tooltip: {
-        //     trigger: 'axis',
-        //     hideDelay: 400,
-        //     formatter: '{a0}: {c0}<br />{a1}: {c1}',
-        //     padding: 20,
-        //     axisPointer: {
-        //         type: 'none'
-        //     },
-        //     textStyle: {
-        //         fontSize: 64,
-        //     },
-        // },
         grid: {
             containLabel: true,
-            left: 20,
+            left: 5,
             top: 0,
             bottom: 0,
-            right: 150
+            right: 38
         },
         color:['#48d8fd', '#43eec6' ],
         yAxis: {
@@ -590,10 +578,10 @@ function parkingLotData(arg) {
             axisLine: {show: false},
             axisTick: {show: false},
             axisLabel: {
-                margin: 50,
+                margin: 12,
                 align: 'center',
                 textStyle: {
-                    fontSize: 64,
+                    fontSize: 16,
                     color: '#87baf8'
                 }
             }
@@ -656,7 +644,7 @@ function weatherForeData(arg) {
     time.push.apply(time, aDay);
     const option = {
         tooltip: {
-            padding: 20,
+            padding: 5,
             trigger: 'axis',
             axisPointer: {
                 type: 'cross',
@@ -674,7 +662,7 @@ function weatherForeData(arg) {
         },
         legend: {
             icon: 'pin',
-            itemGap: 50,
+            itemGap: 12,
             data: ['过去1天', '未来5天'],
             right: '4%',
             textStyle: {
@@ -915,23 +903,23 @@ function numOfPassData(arg) {
         tooltip: {
             trigger: 'axis',
             hideDelay: 400,
-            padding: 20,
+            padding: 5,
             axisPointer: {
                 type: 'shadow'
             },
             textStyle: {
-                fontSize: 60,
+                fontSize: 15,
             }
         },
         grid: {
-            left: 80,
-            right: 50
+            left: 20,
+            right: 12
         },
         legend: {
             data: ['增长趋势', '游客量'],
             textStyle: {
                 color: '#ccc',
-                fontSize: 64
+                fontSize: 16
             }
         },
         xAxis: {
@@ -945,7 +933,7 @@ function numOfPassData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 46,
+                    fontSize: 12,
                     color: '#87baf8'
                 }
             }
@@ -960,7 +948,7 @@ function numOfPassData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 46,
+                    fontSize: 12,
                     color: '#87baf8'
                 }
             }
@@ -971,10 +959,10 @@ function numOfPassData(arg) {
             smooth: true,
             showAllSymbol: true,
             symbol: 'emptyCircle',
-            symbolSize: 15,
+            symbolSize: 4,
             lineStyle: {
                 normal: {
-                    width: 5
+                    width: 2
                 }
             },
             animation: true,
@@ -985,7 +973,7 @@ function numOfPassData(arg) {
         }, {
             name: '游客量',
             type: 'bar',
-            barWidth: 30,
+            barWidth: 8,
             animation: true,
             animationEasing: 'elasticOut',
             animationDelay: function (idx) { return idx * 10 },
@@ -1040,7 +1028,7 @@ function airQualityData(arg) {
                 animation: false
             },
             textStyle: {
-                fontSize: 60,
+                fontSize: 15,
             },
         },
         grid: [
@@ -1059,7 +1047,7 @@ function airQualityData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 46,
+                    fontSize: 12,
                     color: '#87baf8'
                 }
             }
@@ -1078,7 +1066,7 @@ function airQualityData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 46,
+                    fontSize: 12,
                     color: '#87baf8'
                 }
             }
@@ -1119,7 +1107,7 @@ function airQualityData(arg) {
                 axisLabel: {            // 坐标轴小标记
                     textStyle: {       // 属性lineStyle控制线条样式
                         fontWeight: 'bolder',
-                        fontSize: 46,
+                        fontSize: 12,
                         color: '#fff',
                         shadowColor : '#fff', //默认透明
                         shadowBlur: 15
@@ -1149,7 +1137,7 @@ function airQualityData(arg) {
                 title : {
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
-                        fontSize: 56,
+                        fontSize: 14,
                         fontStyle: 'italic',
                         color: '#fff',
                         shadowColor : '#fff', //默认透明
@@ -1162,12 +1150,12 @@ function airQualityData(arg) {
                     borderColor: '#fff',
                     shadowColor : '#fff', //默认透明
                     shadowBlur: 10,
-                    height: 80,
-                    width: 150,
+                    height: 20,
+                    width: 38,
                     offsetCenter: [0, '50%'],       // x, y，单位px
                     textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                         fontWeight: 'bolder',
-                        fontSize: 64,
+                        fontSize: 16,
                         color: '#fff'
                     }
                 },
@@ -1202,7 +1190,7 @@ function resUtilizationData(arg) {
                 type: "shadow" // 默认为直线，可选为："line" | "shadow"
             },
             textStyle: {
-                fontSize: 60,
+                fontSize: 15,
             }
         },
         grid: {
@@ -1222,9 +1210,9 @@ function resUtilizationData(arg) {
                 alignWithLabel: true
             },
             axisLabel: {
-                margin: 30,
+                margin: 8,
                 textStyle: {
-                    fontSize: 56,
+                    fontSize: 14,
                     color: '#43eec6'
                 }
             }
@@ -1258,7 +1246,7 @@ function resUtilizationData(arg) {
                         return params.data.name;
                     },
                     textStyle: {
-                        fontSize: 56,
+                        fontSize: 14,
                         color: "#bcbfff" //color of value
                     }
                 }
@@ -1302,7 +1290,7 @@ function transportationData(arg) {
                 return params[0].name + ': ' + params[0].value;
             },
             textStyle: {
-                fontSize: 60,
+                fontSize: 15,
             }
         },
         xAxis: {
@@ -1311,7 +1299,7 @@ function transportationData(arg) {
             axisLine: {show: false},
             axisLabel: {
                 textStyle: {
-                    fontSize: 45,
+                    fontSize: 12,
                     color: '#87baf8'
                 }
             }
@@ -1344,7 +1332,7 @@ function transportationData(arg) {
             type: 'pictorialBar',
             barGap: '-100%',
             symbolPosition: 'end',
-            symbolSize: 50,
+            symbolSize: 12,
             symbolOffset: [0, '-120%'],
             data: [{
                 value: 123,
@@ -1599,8 +1587,8 @@ function ticketBusinessData(argument) {
     var sum = 1200;
     const option = {
         grid: {
-            top: 60,
-            left: 30
+            top: 15,
+            left: 8
         },
         xAxis: {
             type: 'value',
@@ -1611,7 +1599,7 @@ function ticketBusinessData(argument) {
             },
             axisLabel: {
                 textStyle: {
-                    fontSize: 48,
+                    fontSize: 12,
                     color: 'rgba(31, 188, 210, .9)',
                 }
             },
@@ -1633,11 +1621,11 @@ function ticketBusinessData(argument) {
             type: 'bar',
             silent: true,
             barGap: '-100%',
-            barWidth: 100,
+            barWidth: 25,
             itemStyle: {
                 normal: {
                     color: 'rgb(0, 63, 126)',
-                    barBorderRadius: 50,
+                    barBorderRadius: 12,
                 }
             },
             data: [sum, sum, sum]
@@ -1645,11 +1633,11 @@ function ticketBusinessData(argument) {
             type: 'bar',
             silent: true,
             barGap: '-100%',
-            barWidth: 100,
+            barWidth: 25,
             itemStyle: {
                 normal: {
                     color: 'rgba(71, 216, 253, .9)',
-                    barBorderRadius: 50,
+                    barBorderRadius: 12,
                 }
             },
             label: {
@@ -1660,7 +1648,7 @@ function ticketBusinessData(argument) {
                         return (data.data/1200*100).toFixed(2) + '%'
                     },
                     textStyle: {
-                        fontSize: 58
+                        fontSize: 14
                     }
                 }
             },

@@ -24,7 +24,7 @@ class AnlsMapComponent extends Component {
         const setting1 = setting(0, 23153);
         const setting2 = setting(0, 4241);        
         return (
-            <div style={{width: '100%', height: '100%'}}>
+            <div style={{width: '100%', height: '100%', overflow: 'hidden'}}>
                 <ReactEcharts
                     option={option}
                     style={{width: '100%',height: '100%'}}

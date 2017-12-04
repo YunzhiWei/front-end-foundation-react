@@ -1,31 +1,32 @@
-#bigdata-anls .c_content { width: 1920px; }
-#bigdata-anls .c_cube { height: 2390px; }
+#bigdata-anls .c_content { width: 480px; }
+#bigdata-anls .c_cube { height: 598px; }
 #bigdata-anls .c_4 { display: inline-block; }
-#bigdata-anls .first { height: 950px; }
-#bigdata-anls .half { display: inline-block; width: 885px; }
-#bigdata-anls .margin_right { margin-right: 50px !important; }
+#bigdata-anls .first { height: 238px; }
+#bigdata-anls .half { display: inline-block; width: 222px; }
+#bigdata-anls .margin_right { margin-right: 12px !important; }
 #bigdata-anls .c_content .content { position: relative; }
-#bigdata-anls .anlsmap { position: absolute; top: 50px; left: 500px; height: 200px; width: 800px; }
+#bigdata-anls .AnlsMap { height: calc(100% + 20px)!important; }
+#bigdata-anls .anlsmap { position: absolute; top: 12px; left: 120px; height: 50px; width: 200px; }
 #bigdata-anls .anlsmap>div { display: inline-block; text-align: center; width: 50%; }
-#bigdata-anls .anlsmap p { color: #fff; font-size: 58px; }
+#bigdata-anls .anlsmap p { color: #fff; font-size: 14px; }
 #bigdata-anls .anlsmap p.cyan { color: #00EBEB; }
 #bigdata-anls .anlsmap p.yellow { color: #F0F05B; }
-#bigdata-anls .anlsmap b { font-family: 'ZZGFSH'; font-size: 112px; }
+#bigdata-anls .anlsmap b { font-family: 'ZZGFSH'; font-size: 28px; }
 
 /*客源统计排名*/
-#bigdata-anls .rank div { display: -ms-inline-flexbox; display: inline-flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: distribute; justify-content: space-around; height: 760px; }
-#bigdata-anls .rank .rank_l { width: 600px; }
-#bigdata-anls .rank .rank_r { border-left: 5px dotted #0074A4; width: 1120px; }
-#bigdata-anls .rank .rank_l_tit, #bigdata-anls .rank .rank_r_tit { font-size: 64px; color: #00ADCD; margin: 30px auto; }
-#bigdata-anls .rank p { color: #fff; font-size: 46px; display: -ms-flexbox; display: flex; -ms-flex-pack: distribute; justify-content: space-around; }
+#bigdata-anls .rank div { display: -ms-inline-flexbox; display: inline-flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: distribute; justify-content: space-around; height: 190px; }
+#bigdata-anls .rank .rank_l { width: 150px; }
+#bigdata-anls .rank .rank_r { border-left: 2px dotted #0074A4; width: 280px; }
+#bigdata-anls .rank .rank_l_tit, #bigdata-anls .rank .rank_r_tit { font-size: 16px; color: #00ADCD; margin: 8px auto; }
+#bigdata-anls .rank p { color: #fff; font-size: 12px; display: -ms-flexbox; display: flex; -ms-flex-pack: distribute; justify-content: space-around; }
 
 /*左侧排名*/
-#bigdata-anls .rank_l p b { display: inline-block; width: 68px; height: 68px; border-radius: 34px; color: #666; text-align: center; background-color: #00DED9; }
+#bigdata-anls .rank_l p b { display: inline-block; width: 18px; height: 18px; border-radius: 16px; color: #666; text-align: center; background-color: #00DED9; }
 #bigdata-anls .rank_l p span { color: #00ADCD; }
-#bigdata-anls .rank_l p .rank_name { display: inline-block; width: 250px; color: #ddd; text-align: center; background-color: #0074A4; border-radius: 10px; }
+#bigdata-anls .rank_l p .rank_name { display: inline-block; width: 62px; color: #ddd; text-align: center; background-color: #0074A4; border-radius: 10px; }
 
 /*右侧排名*/
-#bigdata-anls .rank_r p span { color: #ddd; }
+#bigdata-anls .rank_r p span { color: #ddd; padding: 0 2px; }
 #bigdata-anls .rank_r p span:last-child { color: #0074A4; }
-#bigdata-anls .rank_r p b { display: inline-block; width: 400px; height: 66px; border: 5px solid #0074A4; border-radius: 34px; padding: 1px; overflow: hidden; }
-#bigdata-anls .rank_r p b i { display: inline-block; height: 48px; border-radius: 24px; background-image: linear-gradient(left, rgba(0, 122, 198, 1), rgba(0, 225, 252, 1)); }
+#bigdata-anls .rank_r p b { display: inline-block; width: 100px; height: 16px; border: 2px solid #0074A4; border-radius: 10px; padding: 0; overflow: hidden; }
+#bigdata-anls .rank_r p b i { display: inline-block; float: left; height: 12px; border-radius: 6px; background-image: linear-gradient(left, rgba(0, 122, 198, 1), rgba(0, 225, 252, 1)); }

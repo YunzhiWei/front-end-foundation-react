@@ -1,15 +1,14 @@
 html,body {
   margin: 0;
   padding: 0;
-  width: 7680px;
-  height: 4320px;
+  width: 1920px;
+  height: 1080px;
   font-family: sans-serif;
   background: transparent;
   overflow: hidden;
 }
 html {
   background-color: rgb(12, 22, 28);
-  zoom: 0.25;
 }
 .flipster {
   position: relative;
@@ -18,18 +17,18 @@ html {
   overflow: visible;
 }
 .flipster ul.flip-items {
-  perspective: 4500px;
+  perspective: 1125px;
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 2500px!important;
-  height: 1251px!important;
-  margin-top: -625px;
-  margin-left: -1250px;
+  width: 625px!important;
+  height: 318px!important;
+  margin-top: -156px;
+  margin-left: -312px;
 }
 .flipster img {
   opacity: .8;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
   transition: all .35s ease-in-out;
 }
 .flipster img:hover {

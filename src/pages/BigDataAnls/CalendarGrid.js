@@ -10,7 +10,7 @@ class CalendarGridComponent extends Component {
         return (
             <ReactEcharts
                 option={option}
-                style={{width: '100%', height: '100%', margin: '50px 0'}}
+                style={{width: '100%', height: '100%', margin: '12px 0'}}
                 className='CalendarGrid'
             />
         );
