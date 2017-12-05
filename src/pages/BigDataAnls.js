@@ -24,7 +24,7 @@ class BigDataAnls extends Component {
 					<div className="bigdata_title">
 						<a href="/">
 							<span className="bigdata_l"></span>
-							<span className="bigdata_c">景区大数据分析</span>
+							<span className="bigdata_c">仙女湖景区大数据分析</span>
 							<span className="bigdata_r"></span>
 						</a>
 					</div>

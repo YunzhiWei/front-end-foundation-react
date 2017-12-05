@@ -124,6 +124,7 @@ class BoatScheduleData {
         text: "游船001",
         location: "114.851111,27.704538"
     }];
+    @observable _posLineWay = []
     constructor() {
         var self = this;
         var i = 0;
@@ -134,7 +135,8 @@ class BoatScheduleData {
         }, 3000)
         setInterval(function(){
             self.updateFortyBoats();
-        }, 3000)
+        }, 3000);
+        self.fetchLineWay();
     }
     updateFortyBoats() {
 		var i = Math.floor(Math.random() * 40);
@@ -186,6 +188,18 @@ class BoatScheduleData {
             stayTime: 5.5+i,
             New: true
         });
+    }
+    fetchLineWay() {
+        var self = this;
+        var count = 0
+        var colors = ["red", "red", "red", "red", "blue", "blue", "blue"];
+        axios.get('http://128.1.67.161:301/db').then(function(data){
+            for (var i in data.data) {
+                if (data.data.hasOwnProperty(i)) {
+                    self._posLineWay.push({ data: data.data[i], color: colors[count++] });
+                }
+            }
+        })
     }
 }
 

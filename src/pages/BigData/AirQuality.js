@@ -10,10 +10,11 @@ class AirQualityComponent extends Component {
 		const option = echartsOption(echartsData.PM25, 'AirQuality');
 		return (
 			<div style={{width: "100%",height: "100%"}}>
-				<div className="comfort" style={{width: "50%", height: "100%", display: "inline-block", float:"left", color: "#fff"}}>
-					<p>当前温度：{echartsData.comfort.temperature}</p>
-					<p>当前湿度：{echartsData.comfort.humidity}</p>
-					<p>当前舒适度：{echartsData.comfort.comfort}</p>
+				<div className="comfort" style={{width: "50%", height: "100%"}}>
+					<p>实时温度：<span>{echartsData.comfort.temperature}</span></p>
+					<p>实时湿度：<span>{echartsData.comfort.humidity}</span></p>
+					<p>舒适指数：<span>{echartsData.comfort.comfortIndex}</span></p>
+					<p>舒适度：<span>{echartsData.comfort.comfort}</span></p>
 				</div>
 			    <ReactEcharts
 			      option={option}

@@ -78,16 +78,26 @@ class EchartsData {
     @observable comfort = {
         humidity: 0,
         temperature: 0,
-        confort: 0
+        comfortIndex: 0,
+        comfort: ''
     }
     constructor(){
         var i = 0;
+        var change = false;
         var self = this;
         setInterval(function(){
             i = i === 5 ? 1 : i+1;
+            if(new Date().getHours() === 0 && !change) {
+                self.fetchPassDataPush();
+                change = !change;
+            } else if (new Date().getHours() === 1 && change) {
+                change = !change;
+            }
             self.fetchParkingData(i);
-            self.fetchPassDataPush();
-        }, 5000);
+            self.fetchWeatherData();
+            self.fetchPM25();
+        }, 180000);
+        self.fetchParkingData(4)
         self.fetchWeatherData();
         self.fetchPM25();
         self.fetchPassData();
@@ -136,7 +146,27 @@ class EchartsData {
                     var reg = /\d+/ig;
                     var humidity = json.result.humidity.match(reg)[0]/100;
                     var temperature = json.result.temperature_curr.match(reg)[0]/1;
-                    var comfort = temperature - ( 0.55 - 0.55 * humidity ) * ( temperature - 58 );
+                    var comfortIndex = (temperature - ( 0.55 - 0.55 * humidity ) * ( temperature - 58 )).toFixed(2);
+                    var comfort;
+                    if (comfortIndex < 0) {
+                        comfort = '极冷，不舒适';
+                    } else if (comfortIndex >= 0 && comfortIndex < 26) {
+                        comfort = '很冷，不舒适';
+                    } else if (comfortIndex >= 26 && comfortIndex < 39) {
+                        comfort = '冷，不舒适';
+                    } else if (comfortIndex >= 39 && comfortIndex < 51) {
+                        comfort = '少部分人不舒适';
+                    } else if (comfortIndex >= 51 && comfortIndex < 71) {
+                        comfort = '舒适';
+                    } else if (comfortIndex >= 71 && comfortIndex < 79) {
+                        comfort = '少部分人不舒适';
+                    } else if (comfortIndex >= 79 && comfortIndex < 85) {
+                        comfort = '热，不舒适';
+                    } else if (comfortIndex >= 85 && comfortIndex < 90) {
+                        comfort = '炎热，不舒适';
+                    } else if (comfortIndex >= 90) {
+                        comfort = '酷热，很不舒适';
+                    }
                     self.weather[time] = {
                         'icon': weatherIcon[json.result.weatid],
                         'temp_curr': json.result.temp_curr + "℃",
@@ -144,7 +174,7 @@ class EchartsData {
                         'weather': json.result.weather,
                         'wind': "风速" + json.result.winp
                     };
-                    self.comfort = { 'humidity': json.result.humidity, "temperature": json.result.temperature_curr, "comfort": comfort }
+                    self.comfort = { 'humidity': json.result.humidity, "temperature": json.result.temperature_curr, "comfortIndex": comfortIndex, "comfort": comfort }
                     findMin(self.weather[time].low);
                 } else if (time === 'future') {
                     self.weather[time] = json.result.map(function(item, i){

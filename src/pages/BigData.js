@@ -29,7 +29,7 @@ class BigData extends Component {
                     <div className="bigdata_title">
                         <a href="/">
                             <span className="bigdata_l"></span>
-                            <span className="bigdata_c">景区智慧旅游大数据</span>
+                            <span className="bigdata_c">仙女湖景区智能管控平台</span>
                             <span className="bigdata_r"></span>
                         </a>
                     </div>
