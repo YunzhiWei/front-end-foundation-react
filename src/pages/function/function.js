@@ -557,7 +557,7 @@ function parkingLotData(arg) {
         normal: {
             show: true,
             position: 'outside',
-            offset: [20, -10],
+            offset: [4, -2],
             textStyle: {
                 fontSize: 16,
             }
@@ -573,12 +573,12 @@ function parkingLotData(arg) {
         },
         color:['#48d8fd', '#43eec6' ],
         yAxis: {
-            data: ['使用量：\n\n总量：', '使用量：\n\n总量：'],
+            data: ['使用量：\n\n\n总量：', '使用量：\n\n\n总量：'],
             inverse: true,
             axisLine: {show: false},
             axisTick: {show: false},
             axisLabel: {
-                margin: 12,
+                margin: 4,
                 align: 'center',
                 textStyle: {
                     fontSize: 16,
@@ -599,6 +599,7 @@ function parkingLotData(arg) {
             symbolRepeat: true,
             symbolSize: ['100%', '100%'],
             barCategoryGap: '50%',
+            barGap: '100%',
             data: [{
                 value: inUse,
                 symbol: pathSymbols.car
@@ -609,7 +610,7 @@ function parkingLotData(arg) {
         }, {
             name: '总量',
             type: 'pictorialBar',
-            barGap: '50%',
+            barGap: '100%',
             label: labelSetting,
             symbolRepeat: true,
             symbolSize: ['100%', '100%'],
@@ -1621,7 +1622,7 @@ function ticketBusinessData(argument) {
             type: 'bar',
             silent: true,
             barGap: '-100%',
-            barWidth: 25,
+            barWidth: 15,
             itemStyle: {
                 normal: {
                     color: 'rgb(0, 63, 126)',
@@ -1632,8 +1633,7 @@ function ticketBusinessData(argument) {
         }, {
             type: 'bar',
             silent: true,
-            barGap: '-100%',
-            barWidth: 25,
+            barWidth: 15,
             itemStyle: {
                 normal: {
                     color: 'rgba(71, 216, 253, .9)',

@@ -42,15 +42,15 @@
 .cards .tickets_num p>span { float: left; position: relative; height: 45px; line-height: 45px; display: inline-block; color: rgba(12, 207, 253, .9); width: 40%; }
 .cards .tickets_num p>span:first-child { width: 50%; }
 .cards .tickets_num p>span:last-child { width: 10%; }
-.cards .tickets_num b { position: relative; top: -3px; color: rgba(30, 250, 225, .8); font-size: 27px; font-family: 'ZZGFSH'; /*text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);*/ margin-right: 40px; }
+.cards .tickets_num b { position: relative; top: -3px; color: rgba(30, 250, 225, .8); font-size: 26px; font-family: 'ZZGFSH'; /*text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);*/ margin-right: 8px; }
 
-.cards .parking_num { width: 40%; float: left; height: 100%; display: inline-table; font-size: 62px; color: #fff; }
-.cards .parking_num hr { margin: 30px 0; border-top: 2px solid rgba(12, 207, 253, .4); }
-.cards .parking_num p { height: 160px; margin: 20px 0; text-align: right; }
-.cards .parking_num p>span { float: left; position: relative; height: 160px; line-height: 160px; display: inline-block; color: rgba(12, 207, 253, .9); width: 40%; }
-.cards .parking_num p>span:first-child { width: 50%; text-align: left; padding-left: 20px; }
+.cards .parking_num { width: 40%; float: left; height: 100%; display: inline-table; font-size: 16px; color: #fff; }
+.cards .parking_num hr { margin: 5px 0; border-top: 2px solid rgba(12, 207, 253, .4); }
+.cards .parking_num p { height: 40px; margin: 5px 0; text-align: right; }
+.cards .parking_num p>span { float: left; position: relative; height: 40px; line-height: 40px; display: inline-block; color: rgba(12, 207, 253, .9); width: 40%; }
+.cards .parking_num p>span:first-child { width: 50%; text-align: left; padding-left: 5px; }
 .cards .parking_num p>span:last-child { width: 10%; }
-.cards .parking_num b { position: relative; top: -12px; color: rgba(30, 250, 225, .8); font-size: 108px; font-family: 'ZZGFSH'; /*text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);*/ margin-right: 10px; }
+.cards .parking_num b { position: relative; top: -3px; color: rgba(30, 250, 225, .8); font-size: 26px; font-family: 'ZZGFSH'; /*text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);*/ margin-right: 8px; }
 
 .time_view { font-family: 'ZZGFSH'; height: 238px; box-sizing: border-box; margin: 12px 0; padding: 35px 0; color: rgb(17, 227, 242); text-align: right; font-size: 32px; font-weight: 900; }
 .time_view .week { font-size: 40px }
