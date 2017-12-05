@@ -1010,169 +1010,80 @@ function numOfPassData(arg) {
 
 // 空气质量
 function airQualityData(arg) {
-    function randomData() {
-        now = new Date(+now + oneDay);
-        value = value + Math.random() * 21 - 10;
-        return {
-            name: now.toString(),
-            value: [
-                [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-                Math.round(value)
-            ]
-        }
-    }
-    let data = [];
-    let now = +new Date();
-    let oneDay = 24 * 3600 * 1000;
-    let value = Math.random() * 1000;
-    for (let i = 0; i < 1000; i++) {
-        data.push(randomData());
-    }
     const option = {
-        tooltip: {
-            trigger: 'axis',
-            formatter: function (params) {
-                params = params[0];
-                var date = new Date(params.name);
-                return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-            },
-            axisPointer: {
-                animation: false
-            },
-            textStyle: {
-                fontSize: 60,
-            },
-        },
-        grid: [
-            {x: '5%', y: '5%', width: '50%', height: '80%'}
-        ],
-        xAxis: {
-            type: 'time',
-            splitLine: {
-                show: false
-            },
-            axisLine: {
-                lineStyle: {
-                    color: '#ccc'
-                }
-            },
-            axisLabel: {
-                align: 'center',
-                textStyle: {
-                    fontSize: 46,
-                    color: '#87baf8'
-                }
-            }
-        },
-        yAxis: {
-            type: 'value',
-            boundaryGap: [0, '100%'],
-            splitLine: {
-                show: false
-            },
-            axisLine: {
-                lineStyle: {
-                    color: '#ccc'
-                }
-            },
-            axisLabel: {
-                align: 'center',
-                textStyle: {
-                    fontSize: 46,
-                    color: '#87baf8'
-                }
-            }
-        },
         series: [{
-            name: '模拟数据',
-            type: 'line',
-            showSymbol: false,
-            hoverAnimation: false,
-            areaStyle: {
-                normal: {
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                        offset: 0,
-                        color: 'rgb(255, 158, 68)'
-                    }, {
-                        offset: 1,
-                        color: 'rgb(255, 70, 131)'
-                    }])
+            name:'PM2.5',
+            type:'gauge',
+            center : ['45%', '50%'],
+            min:0,
+            max:500,
+            splitNumber:10,
+            radius: '80%',
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: [[0.1, 'lime'],[150/500, '#1e90ff'],[1, '#ff4500']],
+                    width: 10,
+                    shadowColor : '#fff', //默认透明
+                    shadowBlur: 15
                 }
             },
-            data: data
-        },{
-                name:'PM2.5',
-                type:'gauge',
-                center : ['80%', '50%'],
-                min:0,
-                max:500,
-                splitNumber:10,
-                radius: '60%',
-                axisLine: {            // 坐标轴线
-                    lineStyle: {       // 属性lineStyle控制线条样式
-                        color: [[0.1, 'lime'],[150/500, '#1e90ff'],[1, '#ff4500']],
-                        width: 10,
-                        shadowColor : '#fff', //默认透明
-                        shadowBlur: 15
-                    }
-                },
-                axisLabel: {            // 坐标轴小标记
-                    textStyle: {       // 属性lineStyle控制线条样式
-                        fontWeight: 'bolder',
-                        fontSize: 46,
-                        color: '#fff',
-                        shadowColor : '#fff', //默认透明
-                        shadowBlur: 15
-                    }
-                },
-                axisTick: {            // 坐标轴小标记
-                    length :25,        // 属性length控制线长
-                    lineStyle: {       // 属性lineStyle控制线条样式
-                        color: 'auto',
-                        shadowColor : '#fff', //默认透明
-                        shadowBlur: 15
-                    }
-                },
-                splitLine: {           // 分隔线
-                    length :35,         // 属性length控制线长
-                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                        width:6,
-                        color: '#fff',
-                        shadowColor : '#fff', //默认透明
-                        shadowBlur: 15
-                    }
-                },
-                pointer: {           // 分隔线
+            axisLabel: {            // 坐标轴小标记
+                textStyle: {       // 属性lineStyle控制线条样式
+                    fontWeight: 'bolder',
+                    fontSize: 46,
+                    color: '#fff',
                     shadowColor : '#fff', //默认透明
-                    shadowBlur: 10
-                },
-                title : {
-                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                        fontWeight: 'bolder',
-                        fontSize: 56,
-                        fontStyle: 'italic',
-                        color: '#fff',
-                        shadowColor : '#fff', //默认透明
-                        shadowBlur: 15
-                    }
-                },
-                detail : {
-                    backgroundColor: 'rgba(30,144,255,0.8)',
-                    borderWidth: 3,
-                    borderColor: '#fff',
+                    shadowBlur: 15
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length :25,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto',
                     shadowColor : '#fff', //默认透明
-                    shadowBlur: 10,
-                    height: 80,
-                    width: 150,
-                    offsetCenter: [0, '50%'],       // x, y，单位px
-                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                        fontWeight: 'bolder',
-                        fontSize: 64,
-                        color: '#fff'
-                    }
-                },
-                data:[{value: arg.nowAqi, name: 'PM2.5'}]
-            }]
+                    shadowBlur: 15
+                }
+            },
+            splitLine: {           // 分隔线
+                length :35,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    width:6,
+                    color: '#fff',
+                    shadowColor : '#fff', //默认透明
+                    shadowBlur: 15
+                }
+            },
+            pointer: {           // 分隔线
+                shadowColor : '#fff', //默认透明
+                shadowBlur: 10
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 56,
+                    fontStyle: 'italic',
+                    color: '#fff',
+                    shadowColor : '#fff', //默认透明
+                    shadowBlur: 15
+                }
+            },
+            detail : {
+                backgroundColor: 'rgba(30,144,255,0.8)',
+                borderWidth: 3,
+                borderColor: '#fff',
+                shadowColor : '#fff', //默认透明
+                shadowBlur: 10,
+                height: 80,
+                width: 150,
+                offsetCenter: [0, '50%'],       // x, y，单位px
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 64,
+                    color: '#fff'
+                }
+            },
+            data:[{value: arg.nowAqi, name: 'PM2.5'}]
+        }]
     };
     return option;
 }

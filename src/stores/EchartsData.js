@@ -50,6 +50,18 @@ class EchartsData {
             high: 0,
             low: 0,
             day: 0
+        }, {
+            high: 0,
+            low: 0,
+            day: 0
+        }, {
+            high: 0,
+            low: 0,
+            day: 0
+        }, {
+            high: 0,
+            low: 0,
+            day: 0
         }],
         min: 50
     }
@@ -62,6 +74,11 @@ class EchartsData {
     @observable PM25 = {
         aqi: aqiData(),
         nowAqi: 0
+    }
+    @observable comfort = {
+        humidity: 0,
+        temperature: 0,
+        confort: 0
     }
     constructor(){
         var i = 0;
@@ -104,6 +121,7 @@ class EchartsData {
             return { 'high': high, 'low': low, 'day': yesterday };
         }
         function fetchWeather(url, time) {
+            var weatherIcon = ["icon_sunny", "icon_cloudy", "icon_overvast", "icon_shower", "icon_thundershower", "icon_lightrain", "icon_lightrain", "icon_lightrain", "icon_heavyrain", "icon_heavyrain", "icon_heavyrain", "icon_heavyrain", "icon_heavyrain", "icon_lightsnow", "icon_lightsnow", "icon_lightsnow", "icon_heavysnow", "icon_heavysnow", "icon_fog", "icon_lightrain", "icon_fog", "icon_lightrain", "icon_lightrain", "icon_heavyrain", "icon_heavyrain", "icon_lightsnow", "icon_lightsnow", "icon_heavysnow", "icon_fog", "icon_fog", "icon_fog", "icon_fog"];
             fetchJsonp(url, {
                 dataType: "jsonp",
                 jsonpCallback: 'custom_callback',
@@ -115,12 +133,30 @@ class EchartsData {
                     self.weather[time] = getTemp(json.result);
                     findMin(self.weather[time].low);
                 } else if (time === 'today') {
-                    self.weather[time] = { 'high': json.result.temp_high , 'low': json.result.temp_low, 'day': json.result.days}
+                    var reg = /\d+/ig;
+                    var humidity = json.result.humidity.match(reg)[0]/100;
+                    var temperature = json.result.temperature_curr.match(reg)[0]/1;
+                    var comfort = temperature - ( 0.55 - 0.55 * humidity ) * ( temperature - 58 );
+                    self.weather[time] = {
+                        'icon': weatherIcon[json.result.weatid],
+                        'temp_curr': json.result.temp_curr + "℃",
+                        'temp': json.result.temp_high + " - " + json.result.temp_low + "℃",
+                        'weather': json.result.weather,
+                        'wind': "风速" + json.result.winp
+                    };
+                    self.comfort = { 'humidity': json.result.humidity, "temperature": json.result.temperature_curr, "comfort": comfort }
                     findMin(self.weather[time].low);
                 } else if (time === 'future') {
-                    self.weather[time] = json.result.map(function(item){
+                    self.weather[time] = json.result.map(function(item, i){
                         findMin(item.temp_low);
-                        return { 'high': item.temp_high, 'low': item.temp_low, 'day': item.days }
+                        return {
+                            'date': "星期" + "日一二三四五六日".charAt(new Date().getDay() + i),
+                            'day': (new Date().getMonth() + 1) + "月" + (new Date().getDate() + i) + "日",
+                            'icon': weatherIcon[item.weatid],
+                            'temp': item.temp_high + " - " + item.temp_low + "℃",
+                            'weather': item.weather,
+                            'wind': "风速" + item.winp
+                        }
                     })
                 }
             });
