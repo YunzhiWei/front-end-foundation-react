@@ -361,12 +361,13 @@ function radarChart(arg) {
         },
         radar: {
             indicator: [
+                {name: '民俗文化园', max: 100},
                 {name: '龙王岛', max: 100},
                 {name: '爱情岛', max: 100},
-                {name: '洪阳洞', max: 100},
+                {name: '龙凤苑', max: 100},
                 {name: '桃花岛', max: 100},
-                {name: '舞龙湖', max: 100},
-                {name: '昌山庙', max: 100}
+                {name: '圣集寺', max: 100},
+                {name: '名人岛', max: 100}
             ],
             shape: 'circle',
             splitNumber: 5,

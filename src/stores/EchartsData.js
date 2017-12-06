@@ -178,9 +178,10 @@ class EchartsData {
                     findMin(self.weather[time].low);
                 } else if (time === 'future') {
                     self.weather[time] = json.result.map(function(item, i){
+                        console.log(i);
                         findMin(item.temp_low);
                         return {
-                            'date': "星期" + "日一二三四五六日".charAt(new Date().getDay() + i),
+                            'date': "星期" + "日一二三四五六日一二三四五六".charAt(new Date().getDay() + i),
                             'day': (new Date().getMonth() + 1) + "月" + (new Date().getDate() + i) + "日",
                             'icon': weatherIcon[item.weatid],
                             'temp': item.temp_high + " - " + item.temp_low + "℃",
