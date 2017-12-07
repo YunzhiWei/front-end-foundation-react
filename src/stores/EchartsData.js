@@ -26,10 +26,32 @@ function aqiData(){
 
 class EchartsData {
     @observable parking = {
-        inUsePrev: 0,
+        prevInUse: 0,
         inUse: 0,
-        allPrev: 0,
-        all: 0
+        prevAll: 0,
+        all: 0,
+        prevRealIn: 0,
+        prevRealOut: 0,
+        realIn: 0,
+        realOut: 0
+    }
+    @observable boating = {
+        prevInUse: 0,
+        inUse: 0,
+        prevAll: 0,
+        all: 0,
+        prevRealIn: 0,
+        prevRealOut: 0,
+        realIn: 0,
+        realOut: 0
+    }
+    @observable ticketsNum = {
+        prevOnline: 0,
+        online: 0,
+        prevOffline: 0,
+        offline: 0,
+        prevCheck: 0,
+        check: 0
     }
     @observable weather = {
         yesterday: {
@@ -82,11 +104,11 @@ class EchartsData {
         comfort: ''
     }
     constructor(){
-        var i = 0;
+        var i = 1;
         var change = false;
         var self = this;
         setInterval(function(){
-            i = i === 5 ? 1 : i+1;
+            i = i === 10 ? 1 : i+1;
             if(new Date().getHours() === 0 && !change) {
                 self.fetchPassDataPush();
                 change = !change;
@@ -96,20 +118,90 @@ class EchartsData {
             self.fetchParkingData(i);
             self.fetchWeatherData();
             self.fetchPM25();
+            self.tickets(i);
         }, 180000);
-        self.fetchParkingData(4)
+        self.fetchParkingData(1);
+        self.tickets(0);
         self.fetchWeatherData();
         self.fetchPM25();
         self.fetchPassData();
     }
     fetchParkingData(index) {
         let self = this;
-        this.parking.inUsePrev = this.parking.inUse;
-        this.parking.allPrev = this.parking.all;
+        var realInParking = [0, 0, 1, 0, 2, 1, 0, 1, 0, 0, 0];
+        var realOutParking = [0, 0, 2, 1, 0, 0, 1, 1, 2, 0, 0];
+        var realInBoating = [0, 0, 1, 0, 2, 1, 0, 1, 0, 0, 0];
+        var realOutBoating = [0, 0, 2, 1, 0, 0, 1, 1, 2, 0, 0];
+        var boating = [{
+                "inUse": 2,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 0
+            }, {
+                "inUse": 2,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 0
+            }, {
+                "inUse": 2,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 0
+            }, {
+                "inUse": 3,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 1
+            }, {
+                "inUse": 2,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 1
+            }, {
+                "inUse": 3,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 1
+            }, {
+                "inUse": 2,
+                "all": 39,
+                "realIn": 1,
+                "realOut": 0
+            }, {
+                "inUse": 2,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 0
+            }, {
+                "inUse": 2,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 0
+            }, {
+                "inUse": 2,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 0
+            }, {
+                "inUse": 3,
+                "all": 39,
+                "realIn": 0,
+                "realOut": 1
+            }]
+        this.parking.prevInUse = this.parking.inUse;
+        this.parking.prevAll = this.parking.all;
+        this.parking.prevRealIn = this.parking.realIn;
+        this.parking.prevRealOut = this.parking.realIn;
         axios.get('http://128.1.67.161:300/parkingLot' + index).then(function(data){
             self.parking.inUse = data.data.inUse;
             self.parking.all = data.data.all;
+            self.parking.realIn = realInParking[index];
+            self.parking.realOut = realOutParking[index];
         })
+        self.boating.inUse = boating[index].inUse;
+        self.boating.all = boating[index].all;
+        self.boating.realIn = boating[index].realIn;
+        self.boating.realOut = boating[index].realOut;
     }
     fetchWeatherData () {
         let self = this;
@@ -178,7 +270,6 @@ class EchartsData {
                     findMin(self.weather[time].low);
                 } else if (time === 'future') {
                     self.weather[time] = json.result.map(function(item, i){
-                        console.log(i);
                         findMin(item.temp_low);
                         return {
                             'date': "星期" + "日一二三四五六日一二三四五六".charAt(new Date().getDay() + i),
@@ -199,6 +290,9 @@ class EchartsData {
     }
     fetchPassData() {
         let self = this;
+        var date = ["07:00:00", "07:30:00", "08:00:00", "08:30:00", "09:00:00", "09:30:00", "10:00:00", "10:30:00","11:00:00","11:30:00","12:00:00","12:30:00","13:00:00","13:30:00","14:00:00","14:19:00"]
+        var passIn = [5, 1, 8, 74, 27, 28, 24, 33, 64, 6, 7, 25, 20, 6, 10, 0];
+        var passOut = [0, 5, 2, 53, 52, 52, 55, 75, 62, 7, 28, 45, 21, 16, 21, 0];
         for (let i = 0; i < 20; i++) {
             let date = new Date(self.pass.dottedBase += 3600 * 24 * 1000);
             self.pass.category.push([
@@ -250,6 +344,18 @@ class EchartsData {
             })
             self.PM25.nowAqi = json.result.aqi;
         })
+    }
+    tickets(index) {
+        var onlineTicket = [24, 24, 24, 24, 25, 25, 25, 25, 26, 26];
+        var offlineTicket = [332, 332, 332, 332, 332, 332, 332, 332, 332, 332];
+        var error = [137, 142, 142, 148, 148, 152, 152, 156, 156, 156]
+        let self = this;
+        self.ticketsNum.prevOnline = self.ticketsNum.online;
+        self.ticketsNum.prevOffline = self.ticketsNum.offline;
+        self.ticketsNum.prevCheck = self.ticketsNum.check;
+        self.ticketsNum.online = onlineTicket[index];
+        self.ticketsNum.offline = offlineTicket[index];
+        self.ticketsNum.check = error[index];
     }
 }
 

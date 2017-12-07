@@ -22,14 +22,18 @@ function setting(start, end) {
 @inject("echartsData") @observer
 class ParkingLotComponent extends Component {
 	render() {
-		const { echartsData } = this.props;
-		const option = echartsOption(echartsData.parking, 'ParkingLot');
-		const setting1 = setting(0, 432);
-		const setting2 = setting(0, 20);
-		const setting3 = setting(0, 32);
-		const setting4 = setting(0, 26);
-		const setting5 = setting(0, 6);
-		const setting6 = setting(0, 4);
+		const { parking, boating } = this.props.echartsData;
+		const option = echartsOption({parking, boating}, 'ParkingLot');
+		var prevUsableParking = parking.prevAll - parking.prevInUse;
+		var usableParking = parking.all - parking.inUse;
+		var prevUsableBoating = boating.prevAll - boating.prevInUse;
+		var usableBoating = boating.all - boating.inUse;
+		const setting1 = setting(prevUsableParking, usableParking);
+		const setting2 = setting(parking.prevRealOut, parking.realOut);
+		const setting3 = setting(parking.prevRealIn, parking.realIn);
+		const setting4 = setting(prevUsableBoating, usableBoating);
+		const setting5 = setting(parking.prevRealOut, parking.realOut);
+		const setting6 = setting(parking.prevRealIn, parking.realIn);
 		return (
 			<div style={{height: '100%', width: '100%'}}>
 			    <ReactEcharts

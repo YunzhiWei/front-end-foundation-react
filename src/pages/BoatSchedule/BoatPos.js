@@ -8,9 +8,12 @@ import img from '../mui/images/large-screen-bg.png'
 class BoatPosComponent extends Component {
     render() {
     	const posLineWay = this.props.boatScheduleData._posLineWay;
+		var markerData = this.props.boatScheduleData._markerData.map((item, i) => {
+			return { lng: item.lng, lat: item.lat };
+		});
+		console.log(markerData);
 		return (
 			<div style={{height: '100%', width: '100%', position: 'relative'}}>
-				
 	            <Map style={{height: '100%', width: '100%'}} center={{lng: 114.789949, lat: 27.715516}} zoom="17">
 	                <Marker position={{ lng: 114.801669, lat: 27.730641 }} icon="red1">
 	                	 <div style={{width: '300px', height: '100px', lineHeight: '100px', color: '#333', background: 'rgba(61, 212, 222, .4)', position: "relative", top: "-120px", left: "-150px", textAlign: 'center'}}>仙女湖主码头</div>
@@ -36,6 +39,15 @@ class BoatPosComponent extends Component {
 	            	<Marker position={{ lng: 114.805074, lat: 27.698925 }} icon="red8">
 	            		 <div style={{width: '300px', height: '100px', lineHeight: '100px', color: '#333', background: 'rgba(61, 212, 222, .4)', position: "relative", top: "-120px", left: "-150px", textAlign: 'center'}}>龙王岛码头</div>
 	            	</Marker>
+	            	<MarkerList 
+	            		data={markerData}
+	            		fillStyle="#ff3333" 
+	                    coordType="bd09mc" 
+	                    animation={true} 
+	                    isShowShadow={true}
+	                    multiple={true} 
+	                    autoViewport={false}
+                    />	            	
 	            	{posLineWay.map((item, i) => (
 	            		<Polyline 
 	            			key={i}
