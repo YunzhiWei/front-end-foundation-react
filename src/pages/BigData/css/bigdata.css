@@ -67,7 +67,7 @@
 .parking_charge>div { display: inline-block; height: 100%; border-radius: 40px; width: 385px; margin: 0 10px; padding: 40px; background: linear-gradient(to bottom, rgba(40, 66, 143, 1), rgba(40, 66, 143, .1) 70%, rgba(40, 66, 143, 0)); }
 .parking_charge p { text-align: center; margin: 100px auto; }
 .parking_charge .charge_title, .parking_charge .charge_subtitle, .parking_charge .charge_state { font-size: 58px; color: #48d8fd; }
-.parking_charge .charge_num { font-family: 'ZZGFSH'; font-weight: 900; font-size: 82px; margin-bottom: 180px; }
+.parking_charge .charge_num { font-family: 'ZZGFSH'; font-weight: 900; font-size: 68px; margin-bottom: 180px; }
 .parking_charge .charge_state { }
 .parking_charge span { display: inline-block; box-sizing: content-box; height: 80px; line-height: 80px; width: 60%; padding: 10px 15px;	/*margin-top: 40px;*/ border-width: 2px; border-style: solid; border-radius: 25px; }
 .parking_charge .text-baoman span { border-color: #ff4362; color: #ff4362; }

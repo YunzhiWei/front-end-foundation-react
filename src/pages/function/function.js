@@ -248,10 +248,10 @@ function barLines(arg) {
             }
         },
         grid: {
-            left: 200,
+            left: 250,
             top: 100,
             right: 40,
-            bottom: 80
+            bottom: 120
         },
         xAxis: [{
             type: 'category',
@@ -266,9 +266,10 @@ function barLines(arg) {
             },
             axisLabel: {
                 textStyle: {
-                    fontSize: 56,
+                    fontSize: 46,
                     color: '#87baf8'
-                }
+                },
+                rotate: 45
             }
         }],
         yAxis: yAxisConfig,
@@ -337,9 +338,9 @@ function dynamicChart(arg) {
 
 // 雷达图
 function radarChart(arg) {
-    var dataReal = [[75, 66, 30, 49, 23, 69, 45]];
-    var dataPre = [[81, 71, 41, 42, 23, 67, 35]];
-    var dataYes = [[88, 79, 67, 51, 26, 31, 45]];
+    var dataReal = [[25, 26, 20, 19, 23, 19, 25]];
+    var dataPre = [[11, 21, 21, 22, 23, 27, 25]];
+    var dataYes = [[28, 19, 27, 21, 26, 21, 25]];
 
     var lineStyle = {
         normal: {
@@ -920,8 +921,8 @@ function numOfPassData(arg) {
             }
         },
         grid: {
-            left: 80,
-            right: 50
+            left: 120,
+            right: 40
         },
         legend: {
             data: ['增长趋势', '游客量'],

@@ -8,10 +8,8 @@ import img from '../mui/images/large-screen-bg.png'
 class BoatPosComponent extends Component {
     render() {
     	const posLineWay = this.props.boatScheduleData._posLineWay;
-		var markerData = this.props.boatScheduleData._markerData.map((item, i) => {
-			return { lng: item.lng, lat: item.lat };
-		});
-		console.log(markerData);
+		var markerData = this.props.boatScheduleData._markerData;
+		console.log(markerData[0]);
 		return (
 			<div style={{height: '100%', width: '100%', position: 'relative'}}>
 	            <Map style={{height: '100%', width: '100%'}} center={{lng: 114.789949, lat: 27.715516}} zoom="17">
@@ -40,14 +38,27 @@ class BoatPosComponent extends Component {
 	            		 <div style={{width: '300px', height: '100px', lineHeight: '100px', color: '#333', background: 'rgba(61, 212, 222, .4)', position: "relative", top: "-120px", left: "-150px", textAlign: 'center'}}>龙王岛码头</div>
 	            	</Marker>
 	            	<MarkerList 
-	            		data={markerData}
-	            		fillStyle="#ff3333" 
-	                    coordType="bd09mc" 
-	                    animation={true} 
-	                    isShowShadow={true}
-	                    multiple={true} 
-	                    autoViewport={false}
-                    />	            	
+	            	    data={[
+	            	        {
+	            	            text: "长沙大道",
+	            	            location: "114.755146,27.74542"
+	            	        },
+	            	        {
+	            	            text: "机场高速",
+	            	            location: "114.755146,27.74542"
+	            	        }
+	            	    ]} 
+	            	    fillStyle="#ff3333" 
+	            	    animation={true} 
+	            	    isShowShadow={false} 
+	            	    multiple={true} 
+	            	    autoViewport={true}
+	            	    className="test"
+	            	    style={{
+	            	    	width: '500px',
+	            	    	height: '500px'
+	            	    }}
+	            	/>
 	            	{posLineWay.map((item, i) => (
 	            		<Polyline 
 	            			key={i}

@@ -10,7 +10,7 @@ function fortyBoatsData(arg) {
             // 超过20个换行
             i === 20 ? position = [-97.5, 75] : '';
             series.push(Object.assign({},seriesTemp));
-            series[i].name = `游船${i+1}号`;
+            series[i].name = item.name;
             series[i].center = [`${position[0] + count}%`, `${position[1]}%`];
             series[i].data = [{
                 label: {
@@ -34,7 +34,7 @@ function fortyBoatsData(arg) {
                 itemStyle: placeHolderStyle,
                 label: {
                     normal: {
-                        formatter: (data) => 100 - data.data.value + '%',
+                        formatter: (data) => (100 - data.data.value).toFixed(2) + '%',
                         position: 'center',
                         show: true,
                         textStyle: {
@@ -43,8 +43,8 @@ function fortyBoatsData(arg) {
                     }
                 },
             }]
-            series[i].data[0].value = item;
-            series[i].data[1].value = 100 - item;
+            series[i].data[0].value = item.usage * 100;
+            series[i].data[1].value = 100 - item.usage * 100;
             series[i].data[0].label.normal.textStyle.color = series[i].data[1].label.normal.textStyle.color = series[i].data[0].itemStyle.normal.color= series[i].data[0].itemStyle.normal.shadowColor = color;
             count += 5;
         })

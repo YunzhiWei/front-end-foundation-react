@@ -20,16 +20,17 @@ const BarLinesDataArray = [
     yAxisConfig: [
       {
         name: '数量/人',
-        min: 0, max: 50000, interval: 10000,
-        axisLabel: { formatter: '{value}' }
+        min: 0, max: 200000, interval: 40000,
+        axisLabel: { formatter: '{value}' },
+        splitLine: { show: false }
       }
     ],
-    xAxisData: ['江西','福建','湖南','浙江','湖北','上海','广东','安徽','江苏','河南'],
+    xAxisData: ['江西', '湖南', '上海', '福建', '江苏', '湖北', '广东', '浙江', '安徽', '粤港澳'],
     seriesData: [
       {
         name:'游客总数',
         type:'bar',
-        data:[48384, 38564, 38351, 36000, 34546, 31418, 30156, 29361, 27146, 21354]
+        data:[178084, 34857, 13900, 7393, 6541, 5678, 4455, 4398, 4252, 1494]
       }
     ]
   },

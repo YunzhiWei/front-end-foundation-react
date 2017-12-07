@@ -290,37 +290,38 @@ class EchartsData {
     }
     fetchPassData() {
         let self = this;
-        var date = ["07:00:00", "07:30:00", "08:00:00", "08:30:00", "09:00:00", "09:30:00", "10:00:00", "10:30:00","11:00:00","11:30:00","12:00:00","12:30:00","13:00:00","13:30:00","14:00:00","14:19:00"]
         var passIn = [5, 1, 8, 74, 27, 28, 24, 33, 64, 6, 7, 25, 20, 6, 10, 0];
         var passOut = [0, 5, 2, 53, 52, 52, 55, 75, 62, 7, 28, 45, 21, 16, 21, 0];
-        for (let i = 0; i < 20; i++) {
-            let date = new Date(self.pass.dottedBase += 3600 * 24 * 1000);
-            self.pass.category.push([
-                date.getFullYear(),
-                date.getMonth() + 1,
-                date.getDate()
-            ].join('-'));
-            let b = Math.random() * 200;
-            let d = Math.random() * 200;
-            self.pass.barData.push(b)
-            self.pass.lineData.push(d + b);
+        var month1 = [1,3,5,7,8,10,12];
+        var month2 = [4,6,9,11];
+        var month3 = 2;
+        function getDays(month, year) {
+            return !(month1.indexOf(month) + 1) ? 31 : !(month2.indexOf(month) + 1) ? 30 : month === month3 && year%4 === 0 ? 29 : 28 ;
         }
-    }
-    fetchPassDataPush() {
-        let self = this;
-        let date = new Date(self.pass.dottedBase += 3600 * 24 * 1000);
-        self.pass.category.push([
-            date.getFullYear(),
-            date.getMonth() + 1,
-            date.getDate()
-        ].join('-'));
-        self.pass.category.shift();
-        let b = Math.random() * 200;
-        let d = Math.random() * 200;
-        self.pass.barData.push(b);
-        self.pass.barData.shift();
-        self.pass.lineData.push(d + b);
-        self.pass.lineData.shift();
+        function getDate(index) {
+            var year = new Date().getFullYear();
+            var month = new Date().getMonth() + 1;
+            var day = new Date().getDate() - index;
+            if(month - 1 < 0) {
+                var preMonth = month + 11;
+                year -= 1;
+            } else {
+                var preMonth = month - 1;
+            }
+            var preDay = getDays(preMonth, year);
+            if(day - 1 < 0) {
+                month = preMonth;
+                day = preDay + day;
+            }
+            return [month, day];
+        }
+        axios.get('http://128.1.67.161:302/data').then(function(data){
+            data.data.latest20.map((item, i) => {
+                self.pass.category.unshift(getDate(i + 1).join('-'));
+                self.pass.barData.push(item.sum);
+                self.pass.lineData.push(item.sum);
+            })
+        })
     }
     fetchPM25() {
         let self = this;
