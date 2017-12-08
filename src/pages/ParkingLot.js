@@ -46,7 +46,7 @@ class ParkingLot extends Component {
 								<IOCarsComponent />
 							</CardProvider>
 							<CardProvider className="cards ParkingHeat" title="景区停车场使用量热点图" color="light-green">
-								<ParkingHeatComponent />
+								<ParkingHeatComponent type={'kuai'} />
 							</CardProvider>
 						</div>
 					</div>

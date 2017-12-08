@@ -1088,17 +1088,17 @@ function airQualityData(arg) {
 // 资源使用量
 function resUtilizationData(arg) {
     var appusage_data = [{
-        name: "湖北",
-        value: 82
-    }, {
-        name: "浙江",
-        value: 87
-    }, {
-        name: "湖南",
-        value: 91
+        name: "江苏",
+        value: 46
     }, {
         name: "福建",
-        value: 121
+        value: 52
+    }, {
+        name: "上海",
+        value: 58
+    }, {
+        name: "湖南",
+        value: 62
     }, {
         name: "江西",
         value: 140

@@ -52,7 +52,7 @@ class BoatPosComponent extends Component {
 	            	    animation={true} 
 	            	    isShowShadow={false} 
 	            	    multiple={true} 
-	            	    autoViewport={true}
+	            	    autoViewport={false}
 	            	    className="test"
 	            	    style={{
 	            	    	width: '500px',

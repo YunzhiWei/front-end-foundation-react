@@ -240,88 +240,100 @@ class BoatScheduleData {
         }]
     @observable _IOBoats = {
         inSumPrev: 0,
-        inSum: 0,
+        inSum: 26,
         outSumPrev: 0,
-        outSum: 0,
+        outSum: 10,
         inputBoats: [{
-            license: "游001",
+            license: "赣仙游004",
             id: 1111111111,
-            line: '线路A',
-            stayStation: '龙王岛',
-            time: '10:00:59'
+            type: 0,
+            line: '主码头-圣集寺',
+            stayStation: '圣集寺',
+            time: '07:40:43'
         }, {
-            license: "游002",
+            license: "赣仙游006",
+            type: 0,
             id: 1111111112,
-            line: '线路B',
-            stayStation: '龙王岛',
-            time: '10:08:59'
+            line: '主码头-圣集寺',
+            stayStation: '圣集寺',
+            time: '07:58:28'
         }, {
-            license: "游003",
+            license: "赣仙游083",
+            type: 1,
             id: 1111111113,
-            line: '线路B',
-            stayStation: '龙王岛',
-            time: '10:08:59'
+            line: '主码头-圣集寺',
+            stayStation: '圣集寺',
+            time: '08:28:39'
         }, {
-            license: "游004",
+            license: "赣仙游013",
+            type: 0,
             id: 1111111114,
-            line: '线路A',
-            stayStation: '龙王岛',
-            time: '10:08:59'
+            line: '主码头-圣集寺',
+            stayStation: '圣集寺',
+            time: '08:32:53'
         }, {
-            license: "游002",
+            license: "赣仙游010",
+            type: 0,
             id: 1111111115,
-            line: '线路C',
-            stayStation: '龙王岛',
-            time: '10:08:59'
+            line: '主码头-圣集寺',
+            stayStation: '圣集寺',
+            time: '09:08:25'
         }, {
-            license: "游001",
+            license: "赣仙游102",
+            type: 1,
             id: 1111111116,
-            line: '线路A',
-            stayStation: '龙王岛',
-            time: '10:08:59'
+            line: '主码头-圣集寺',
+            stayStation: '圣集寺',
+            time: '09:11:39'
         }],
         outputBoats: [{
-            license: "游004",
+            license: "赣仙游004",
             id: 1111111111,
-            line: '线路C',
-            stayStation: '龙王岛',
-            time: '20:00:59',
-            stayTime: 5.5
+            type: 0,
+            line: '圣集寺-龙凤苑',
+            stayStation: '主码头',
+            time: '08:01:49',
+            stayTime: 0
         }, {
-            license: "游002",
+            license: "赣仙游006",
             id: 1111111112,
-            line: '线路A',
-            stayStation: '龙王岛',
-            time: '20:08:59',
-            stayTime: 5.5
+            type: 0,
+            line: '圣集寺-龙凤苑',
+            stayStation: '主码头',
+            time: '08:18:23',
+            stayTime: 0
         }, {
-            license: "游003",
+            license: "赣仙游083",
             id: 1111111113,
-            line: '线路B',
-            stayStation: '龙王岛',
-            time: '20:08:59',
-            stayTime: 5.5
+            type: 1,
+            line: '圣集寺-龙凤苑',
+            stayStation: '主码头',
+            time: '08:48:59',
+            stayTime: 0.5
         }, {
-            license: "游005",
+            license: "赣仙游013",
             id: 1111111114,
-            line: '线路C',
-            stayStation: '龙王岛',
-            time: '20:08:59',
-            stayTime: 5.5
+            type: 0,
+            line: '圣集寺-龙凤苑',
+            stayStation: '主码头',
+            time: '08:56:25',
+            stayTime: 0.5
         }, {
-            license: "游001",
+            license: "赣仙游010",
             id: 1111111115,
-            line: '线路A',
-            stayStation: '龙王岛',
-            time: '20:08:59',
-            stayTime: 5.5
+            type: 0,
+            line: '圣集寺-龙凤苑',
+            stayStation: '主码头',
+            time: '09:28:46',
+            stayTime: 0
         }, {
-            license: "游001",
+            license: "赣仙游102",
             id: 1111111116,
-            line: '线路B',
-            stayStation: '龙王岛',
-            time: '20:08:59',
-            stayTime: 5.5
+            type: 1,
+            line: '圣集寺-龙凤苑',
+            stayStation: '主码头',
+            time: '09:33:31',
+            stayTime: 0
         }]
     }
     @observable _markerData = { lng: 114.801669, lat: 27.730641 };
@@ -363,11 +375,11 @@ class BoatScheduleData {
     constructor() {
         var self = this;
         var i = 0;
-        setInterval(function(){
-        	self.updateIOBoats();
-        	self.scrollContent(i);
-        	i+=2;
-        }, 3000)
+        // setInterval(function(){
+        // 	self.updateIOBoats();
+        // 	self.scrollContent(i);
+        // 	i+=2;
+        // }, 50000)
         self.fetchLineWay();
     }
     updateFortyBoats() {
