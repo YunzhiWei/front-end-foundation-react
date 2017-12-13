@@ -717,7 +717,7 @@ function indvToGroupData(argument) {
 
 // 线上线下比
 function onToOffData(arg) {
-	var tips = 80.97;
+	var tips = 88.97;
 	const option = {
 	    tooltip: {
             trigger: 'item',

@@ -17,8 +17,6 @@ import TimeViewComponent from './BigData/TimeView';
 import ParkingChargeComponent from './BigData/ParkingCharge';
 
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
-import radarDataArray from './BigData/data/RadarChartData';
-import dynamicChart from './BigData/data/dynamicChart';
 import weiboData from './BigData/data/weibo.json';
 
 class BigData extends Component {

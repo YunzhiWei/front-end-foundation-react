@@ -8,7 +8,7 @@ class ParkingLotData {
             name: "2017",
             data: [{
                 name: "南昌市",
-                value: 842
+                value: 642
             }, {
                 name: "九江市",
                 value: 82
@@ -32,7 +32,7 @@ class ParkingLotData {
                 value: 554
             }, {
                 name: "新余市",
-                value: 395
+                value: 2232
             }, {
                 name: "抚州市",
                 value: 201
@@ -232,7 +232,7 @@ class ParkingLotData {
     }
     updateIOCarsTime() {
         var arrIn = [8, 14, 15, 12, 8, 6, 5, 6, 4, 2, 2, 0];
-        var arrOut = [0, 1, 2, 2, 8, 7, 6, 8, 6, 12, 10, 12];
+        var arrOut = [0, 1, 2, 2, 8, 7, 6, 22, 19, 4, 2, 2];
         this._IOCarsTime.map((item, i) => {
             item.In = arrIn[i];
             item.Out = arrOut[i];
@@ -250,13 +250,13 @@ class ParkingLotData {
         this._IOCars.inputCars.shift();
         this._IOCars.inputCars.shift();
         this._IOCars.inputCars.push({
-            license: "赣K58888",
+            license: "赣K3A187",
             id: 1111111117 + i,
             addr: '新余',
             time: '10:08:'+i,
             New: true
         }, {
-            license: "赣K58888",
+            license: "赣K55AE8",
             id: 1111111117 + i+1,
             addr: '新余',
             time: '10:08:'+i,
@@ -265,7 +265,7 @@ class ParkingLotData {
 
         this._IOCars.outputCars.shift();
         this._IOCars.outputCars.push({
-            license: "赣K58888",
+            license: "赣K28B0A",
             id: 1111111117 + i,
             addr: '新余',
             time: '20:08:'+i,

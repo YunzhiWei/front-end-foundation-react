@@ -50,10 +50,10 @@ class RootPage extends Component {
 						<p style={styles.p}>客流分析</p>
 					</li>
 					<li>
-						<a href="./bigdata">
-							<img src={require('./images/ReactApp1.jpg')} style={styles.img} />
+						<a href="http://59.55.128.155:8000/XNH3D/">
+							<img src={require('./images/GIS.jpg')} style={styles.img} />
 						</a>
-						<p style={styles.p}>综合管控</p>
+						<p style={styles.p}>三维地理信息系统</p>
 					</li>
 				</ul>
 			</div>

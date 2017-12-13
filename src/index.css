@@ -22,10 +22,10 @@ html {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 2500px!important;
-  height: 1251px!important;
-  margin-top: -625px;
-  margin-left: -1250px;
+  width: 1920px!important;
+  height: 1080px!important;
+  margin-top: -540px;
+  margin-left: -960px;
 }
 .flipster img {
   opacity: .8;
