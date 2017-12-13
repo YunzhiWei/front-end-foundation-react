@@ -347,9 +347,9 @@ class EchartsData {
         })
     }
     tickets(index) {
-        var onlineTicket = [24, 24, 24, 24, 25, 25, 25, 25, 26, 26];
-        var offlineTicket = [332, 332, 332, 332, 332, 332, 332, 332, 332, 332];
-        var error = [137, 142, 142, 148, 148, 152, 152, 156, 156, 156]
+        var onlineTicket = [124, 124, 124, 124, 125, 125, 125, 125, 126, 126];
+        var offlineTicket = [532, 532, 532, 532, 532, 532, 532, 532, 532, 532];
+        var error = [387, 389, 394, 408, 418, 426, 482, 456, 456, 456]
         let self = this;
         self.ticketsNum.prevOnline = self.ticketsNum.online;
         self.ticketsNum.prevOffline = self.ticketsNum.offline;

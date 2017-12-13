@@ -26,23 +26,13 @@ function carsDistributionData(arg) {
         });
         series[i].name = item.name;
         series[i].type = "map";
-        series[i].zoom = 1.25;
+        series[i].zoom = 1.2;
         series[i].mapType = geoMapName;
         series[i].itemStyle = label;
     });
-    const legendData = mapDataSeries.map((item) => { var temp = item.name; return { name: temp, icon: 'circle' }});
     const option = {
         color: ['rgb(38, 242, 233)','rgb(64, 201, 240)', 'rgb(30, 144, 255)'],
         tooltip: { trigger: 'none' },
-        legend: { 
-            top: 50,
-            left: 'center',
-            selectedMode: 'single',
-            textStyle: { color: '#f', fontSize: 56},
-            itemWidth: 30,
-            itemHeight: 30,
-            itemGap: 30
-        },
         visualMap: {
             right: 50,
             bottom: 50,
@@ -56,9 +46,8 @@ function carsDistributionData(arg) {
         },
         series: series
     }
-    option.legend.data = legendData;
-    option.visualMap.min = visualMin;
-    option.visualMap.max = visualMax;
+    option.visualMap.min = 0;
+    option.visualMap.max = 800;
     return option;
 }
 
@@ -173,10 +162,11 @@ function carsDistribution3Data(arg) {
             {
                 name: '全国客源车辆所属省份统计',
                 type: 'pie',
-                radius : '100%',
+                center: ['53%', '45%'],
+                radius : '60%',
                 label: {
                     normal: {
-                        position: "inside",
+                        position: "outside",
                         textStyle: {
                             fontSize: 56
                         }
@@ -214,7 +204,7 @@ function standingTimeData(arg) {
         },
         grid: {
             left: 200,
-            right: 40
+            right: 40,
         },
         legend: {
             data: ['增长趋势', '停留时长'],
@@ -313,6 +303,11 @@ function IOCarsTimeData(arg) {
             textStyle: {
                 fontSize: 64
             }
+        },
+        grid: {
+            top: 180,
+            left: 0,
+            right: 0
         },
         legend: {
             data:['进场数量','离场数量'],

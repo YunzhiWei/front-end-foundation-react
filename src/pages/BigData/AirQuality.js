@@ -14,7 +14,6 @@ class AirQualityComponent extends Component {
 					<p>实时温度：<span>{echartsData.comfort.temperature}</span></p>
 					<p>实时湿度：<span>{echartsData.comfort.humidity}</span></p>
 					<p>舒适指数：<span>{echartsData.comfort.comfortIndex}</span></p>
-					<p>舒适度：<span>{echartsData.comfort.comfort}</span></p>
 				</div>
 			    <ReactEcharts
 			      option={option}

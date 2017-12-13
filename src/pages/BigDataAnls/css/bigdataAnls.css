@@ -13,7 +13,7 @@
 #bigdata-anls .anlsmap b { font-family: 'ZZGFSH'; font-size: 112px; }
 
 /*客源统计排名*/
-#bigdata-anls .rank div { display: -ms-inline-flexbox; display: inline-flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: distribute; justify-content: space-around; height: 760px; }
+#bigdata-anls .rank div { display: -ms-inline-flexbox; display: inline-flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: distribute; justify-content: space-around; height: 100%; }
 #bigdata-anls .rank .rank_l { width: 600px; }
 #bigdata-anls .rank .rank_r { border-left: 5px dotted #0074A4; width: 1120px; }
 #bigdata-anls .rank .rank_l_tit, #bigdata-anls .rank .rank_r_tit { font-size: 64px; color: #00ADCD; margin: 30px auto; }

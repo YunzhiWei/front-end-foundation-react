@@ -5,133 +5,59 @@ import fetchJsonp from 'fetch-jsonp';
 class ParkingLotData {
     @observable _carsDistribution = {
         mapDataSeries: [{
-            name: "2018",
-            data: [{
-                name: "南昌市",
-                value: 953
-            }, {
-                name: "九江市",
-                value: 111
-            }, {
-                name: "宜春市",
-                value: 222
-            }, {
-                name: "上饶市",
-                value: 333
-            }, {
-                name: "鹰潭市",
-                value: 444
-            }, {
-                name: "赣州市",
-                value: 555
-            }, {
-                name: "吉安市",
-                value: 666
-            }, {
-                name: "萍乡市",
-                value: 777
-            }, {
-                name: "新余市",
-                value: 888
-            }, {
-                name: "抚州市",
-                value: 1200
-            }, {
-                name: "景德镇市",
-                value: 999
-            }, ]
-        }, {
             name: "2017",
             data: [{
                 name: "南昌市",
-                value: 120
+                value: 842
             }, {
                 name: "九江市",
-                value: 121
+                value: 82
             }, {
                 name: "宜春市",
-                value: 122
+                value: 715
             }, {
                 name: "上饶市",
-                value: 123
+                value: 29
             }, {
                 name: "鹰潭市",
-                value: 125
+                value: 7
             }, {
                 name: "赣州市",
-                value: 143
+                value: 203
             }, {
                 name: "吉安市",
-                value: 154
+                value: 429
             }, {
                 name: "萍乡市",
-                value: 143
+                value: 554
             }, {
                 name: "新余市",
-                value: 154
+                value: 395
             }, {
                 name: "抚州市",
-                value: 165
+                value: 201
             }, {
                 name: "景德镇市",
-                value: 187
-            }, ]
-        }, {
-            name: "2016",
-            data: [{
-                name: "南昌市",
-                value: 927
-            }, {
-                name: "九江市",
-                value: 640
-            }, {
-                name: "宜春市",
-                value: 330
-            }, {
-                name: "上饶市",
-                value: 657
-            }, {
-                name: "鹰潭市",
-                value: 404
-            }, {
-                name: "赣州市",
-                value: 168
-            }, {
-                name: "吉安市",
-                value: 235
-            }, {
-                name: "萍乡市",
-                value: 962
-            }, {
-                name: "新余市",
-                value: 472
-            }, {
-                name: "抚州市",
-                value: 589
-            }, {
-                name: "景德镇市",
-                value: 800
-            }, ]
+                value: 9
+            }]
         }],
         geoMapName: "江西",
-        visualMin: 0,
-        visualMax: 1200,
     }
     @observable _carsDistribution3 = [{
-        value: 1335,
+        value: 3418,
         name: '江西省'
     }, {
-        value: 310,
+        value: 694,
+        name: '湖南省'
+    }, {
+        value: 276,
+        name: '上海市'
+    }, {
+        value: 146,
         name: '福建省'
     }, {
-        value: 234,
-        name: '浙江省'
-    }, {
-        value: 135,
-        name: '湖北省'
-    }, {
-        value: 548,
-        name: '湖南省'
+        value: 129,
+        name: '江苏省'
     }]
     @observable _standingTime = [{
         value: 5,
@@ -186,9 +112,9 @@ class ParkingLotData {
             addr: '新余',
             time: '09:48:36'
         }, {
-            license: "赣KM6900",
+            license: "赣A9U070",
             id: 1111111113,
-            addr: '新余',
+            addr: '南昌',
             time: '09:55:44'
         }, {
             license: "赣KG7297",
@@ -201,9 +127,9 @@ class ParkingLotData {
             addr: '新余',
             time: '10:03:59'
         }, {
-            license: "赣KL2959",
+            license: "赣CL2A59",
             id: 1111111116,
-            addr: '新余',
+            addr: '宜春',
             time: '10:06:59'
         }],
         outputCars: [{
@@ -225,9 +151,9 @@ class ParkingLotData {
             time: '09:17:34',
             stayTime: 25
         }, {
-            license: "赣K417C5",
+            license: "赣A417C5",
             id: 1111111114,
-            addr: '新余',
+            addr: '南昌',
             time: '09:38:23',
             stayTime: 6
         }, {

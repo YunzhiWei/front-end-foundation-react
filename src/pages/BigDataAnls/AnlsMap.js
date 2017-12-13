@@ -21,8 +21,8 @@ function setting(start, end) {
 class AnlsMapComponent extends Component {
     render() {
         const option = echartsOption(this.props.bigDataAnlsData, 'AnlsMap');
-        const setting1 = setting(0, 23153);
-        const setting2 = setting(0, 4241);        
+        const setting1 = setting(0, 353);
+        const setting2 = setting(0, 341);        
         return (
             <div style={{width: '100%', height: '100%'}}>
                 <ReactEcharts
@@ -36,7 +36,7 @@ class AnlsMapComponent extends Component {
                         <p className="cyan"><span><b><CountUp className="account-balance" {...setting1} /></b></span> 人</p>
                     </div>
                     <div>
-                        <p>当前城市人数</p>
+                        <p>当前景区人数</p>
                         <p className="yellow"><span><b><CountUp className="account-balance" {...setting2} /></b></span> 人</p>
                     </div>
                 </div>

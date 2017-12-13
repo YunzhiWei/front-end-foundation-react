@@ -101,11 +101,16 @@ class ParkingHeatComponent extends Component {
         // } else {
         // 
         // }
-            return (
-                <div id="ParkingHeat">
-                    <div id="heatmap"></div>
-                </div>
-            );
+            // return (
+            //     <div id="ParkingHeat">
+            //         <div id="heatmap"></div>
+            //     </div>
+            // );
+        return (
+            <div className="parking_cube">
+                <div></div>
+            </div>
+        )
 	}
 }
 

@@ -338,9 +338,9 @@ function dynamicChart(arg) {
 
 // 雷达图
 function radarChart(arg) {
-    var dataReal = [[25, 26, 20, 19, 23, 19, 25]];
-    var dataPre = [[11, 21, 21, 22, 23, 27, 25]];
-    var dataYes = [[28, 19, 27, 21, 26, 21, 25]];
+    var dataReal = [[39, 62, 20, 52, 2, 0, 0]];
+    var dataPre = [[36, 68, 21, 49, 0, 0, 0]];
+    var dataYes = [[34, 65, 27, 55, 1, 0, 2]];
 
     var lineStyle = {
         normal: {
@@ -361,22 +361,22 @@ function radarChart(arg) {
             // selectedMode: 'single'
         },
         grid: {
-            left: 40,
-            right: 40
+            left: 80,
+            right: 80
         },
         radar: {
             indicator: [
                 {name: '民俗文化园', max: 100},
-                {name: '龙王岛', max: 100},
+                {name: '圣集寺', max: 100},
                 {name: '爱情岛', max: 100},
                 {name: '龙凤苑', max: 100},
                 {name: '桃花岛', max: 100},
-                {name: '圣集寺', max: 100},
+                {name: '龙王岛', max: 100},
                 {name: '名人岛', max: 100}
             ],
             shape: 'circle',
             splitNumber: 5,
-            radius: '75%',
+            radius: '65%',
             center: ['50%', '45%'],
             name: {
                 textStyle: {
