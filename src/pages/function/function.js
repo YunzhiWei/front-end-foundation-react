@@ -555,7 +555,7 @@ function weiboData(arg) {
 // 停车场监控
 function parkingLotData(arg) {    
     var allParking = arg.parking.all;
-    var inUseParking = arg.parking.inUse;
+    var inUseParking = arg.parking.realIn - arg.parking.realOut;
     var allBoating = arg.boating.all;
     var inUseBoating = arg.boating.inUse;
     var pathSymbols = {

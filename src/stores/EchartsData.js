@@ -115,7 +115,7 @@ class EchartsData {
             } else if (new Date().getHours() === 1 && change) {
                 change = !change;
             }
-            self.fetchParkingData(i);
+            // self.fetchParkingData(i);
             self.fetchWeatherData();
             self.fetchPM25();
             self.tickets(i);
@@ -128,20 +128,20 @@ class EchartsData {
     }
     fetchParkingData(index) {
         let self = this;
-        var realInParking = [0, 0, 1, 0, 2, 1, 0, 1, 0, 0, 0];
-        var realOutParking = [0, 0, 2, 1, 0, 0, 1, 1, 2, 0, 0];
-        var realInBoating = [0, 0, 1, 0, 2, 1, 0, 1, 0, 0, 0];
-        var realOutBoating = [0, 0, 2, 1, 0, 0, 1, 1, 2, 0, 0];
+        var realInParking = [0, 133, 1, 0, 2, 1, 0, 1, 0, 0, 0];
+        var realOutParking = [0, 8, 2, 1, 0, 0, 1, 1, 2, 0, 0];
+        var realInBoating = [6, 6, 1, 0, 2, 1, 0, 1, 0, 0, 0];
+        var realOutBoating = [2, 2, 2, 1, 0, 0, 1, 1, 2, 0, 0];
         var boating = [{
-                "inUse": 2,
+                "inUse": 4,
                 "all": 39,
-                "realIn": 0,
-                "realOut": 0
+                "realIn": 2,
+                "realOut": 6
             }, {
-                "inUse": 2,
+                "inUse": 4,
                 "all": 39,
-                "realIn": 0,
-                "realOut": 0
+                "realIn": 2,
+                "realOut": 6
             }, {
                 "inUse": 2,
                 "all": 39,

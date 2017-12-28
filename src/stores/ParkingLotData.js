@@ -98,39 +98,59 @@ class ParkingLotData {
     }]
     @observable _IOCars = {
         inSumPrev: 0,
-        inSum: 41,
+        inSum: 133,
         outSumPrev: 0,
-        outSum: 16,
+        outSum: 8,
         inputCars: [{
             license: "赣K9U070",
             id: 1111111111,
             addr: '新余',
-            time: '09:43:19'
+            time: '10:03:19'
         }, {
             license: "赣K5J581",
             id: 1111111112,
             addr: '新余',
-            time: '09:48:36'
+            time: '10:05:36'
         }, {
             license: "赣A9U070",
             id: 1111111113,
             addr: '南昌',
-            time: '09:55:44'
+            time: '10:06:44'
         }, {
             license: "赣KG7297",
             id: 1111111114,
             addr: '新余',
-            time: '10:01:11'
+            time: '10:09:01'
         }, {
             license: "赣KF6681",
             id: 1111111115,
             addr: '新余',
-            time: '10:03:59'
+            time: '10:10:59'
         }, {
             license: "赣CL2A59",
             id: 1111111116,
             addr: '宜春',
-            time: '10:06:59'
+            time: '10:12:46'
+        }, {
+            license: "赣CL2A59",
+            id: 1111111116,
+            addr: '宜春',
+            time: '10:14:32'
+        }, {
+            license: "赣CL2A59",
+            id: 1111111116,
+            addr: '宜春',
+            time: '10:17:59'
+        }, {
+            license: "赣CL2A59",
+            id: 1111111116,
+            addr: '宜春',
+            time: '10:18:33'
+        }, {
+            license: "赣CL2A59",
+            id: 1111111116,
+            addr: '宜春',
+            time: '10:20:17'
         }],
         outputCars: [{
             license: "赣KL6780",
@@ -167,6 +187,18 @@ class ParkingLotData {
             id: 1111111116,
             addr: '新余',
             time: '10:09:58',
+            stayTime: 49
+        }, {
+            license: "赣K94U81",
+            id: 1111111116,
+            addr: '新余',
+            time: '10:12:23',
+            stayTime: 49
+        }, {
+            license: "赣K5Z439",
+            id: 1111111116,
+            addr: '新余',
+            time: '10:14:11',
             stayTime: 49
         }]
     }
