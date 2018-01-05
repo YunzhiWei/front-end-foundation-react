@@ -3,7 +3,7 @@ import './css/base.css';
 import './css/large-screen.css';
 
 const CardProvider = (props) => (
-    <div className={props.className} style={{margin: '50px auto'}}>
+    <div className={props.className} style={{margin: '12px auto'}}>
           <div className={"echart-list "+props.color} >
               <div className="border-line standard top-line"></div>
               <div className="border-line vertical right-line"></div>

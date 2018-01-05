@@ -69,7 +69,7 @@ const styles = {
 	},
 	p: {
 		textAlign: "center",
-		fontSize: 82,
+		fontSize: 22,
 		color: "#04ffcd"
 	},
 	canvas: {

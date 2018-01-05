@@ -127,7 +127,7 @@ function airportCoord(arg) {
                 period: 6,
                 trailLength: 0,
                 symbol: iconPath,
-                symbolSize: 15
+                symbolSize: 4
             };
         }
         const markers = {
@@ -194,12 +194,12 @@ function barLines(arg) {
         item.scale = true;
         item.boundaryGap = [0, 0];
         item.nameTextStyle = {
-            fontSize: 56,
+            fontSize: 14,
             color: '#87baf8'
         };
         item.nameGap = 40;
         item.axisLabel.textStyle = {
-            fontSize: 56,
+            fontSize: 14,
             color: '#87baf8'
         }
     });
@@ -244,29 +244,30 @@ function barLines(arg) {
                 }
             },
             textStyle: {
-                fontSize: 64,
+                fontSize: 16,
             }
         },
         grid: {
-            left: 250,
-            top: 100,
-            right: 40,
-            bottom: 120
+            left: 60,
+            top: 20,
+            right: 10,
+            bottom: 40
         },
         xAxis: [{
             type: 'category',
             boundaryGap: true,
             data: xAxisData,
             nameTextStyle: {
-                fontSize: 56,
+                fontSize: 14,
                 color: '#87baf8'
             },
             axisPointer: {
                 type: 'shadow'
             },
             axisLabel: {
+                interval: 0,
                 textStyle: {
-                    fontSize: 46,
+                    fontSize: 14,
                     color: '#87baf8'
                 },
                 rotate: 45
@@ -295,16 +296,16 @@ function dynamicChart(arg) {
     const yAixsConf = dynamicYAxis.map((item) => {
         item.type = 'value';
         item.scale = true;
-        item.nameTextStyle = { color: '#87baf8', fontSize: 30 };
+        item.nameTextStyle = { color: '#87baf8', fontSize: 10 };
         item.nameGap = 40;
         item.boundaryGap = [0.2, 0.2];
-        item.axisLabel = { textStyle : { color: '#87baf8', fontSize: 40 } };
+        item.axisLabel = { textStyle : { color: '#87baf8', fontSize: 10 } };
         return item;
     });
     const xAixsConf = dynamicXAxis.map((item) => {
         item.type = 'category';
         item.boundaryGap = true;
-        item.axisLabel = { textStyle : { color: '#87baf8', fontSize: 40, align: 'left' } };
+        item.axisLabel = { textStyle : { color: '#87baf8', fontSize: 10, align: 'left' } };
         return item;
     });
     const legendData = dynamicSeries.map((item, i) => { return item.name });
@@ -325,8 +326,8 @@ function dynamicChart(arg) {
         }
     });
     const option = {
-        tooltip: { trigger:'axis', textStyle: { fontSize: 60 } },
-        legend: { data: legendData, textStyle: { color: '#87baf8', fontSize: 40 } },
+        tooltip: { trigger:'axis', textStyle: { fontSize: 15 } },
+        legend: { data: legendData, textStyle: { color: '#87baf8', fontSize: 10 } },
         grid: { top: 160, left: 150, right: 150, bottom:130 },
         xAxis: xAixsConf,
         yAxis: yAixsConf,
@@ -353,16 +354,12 @@ function radarChart(arg) {
         legend: {
             bottom: 5,
             data: ['实时', '昨日', '前日'],
-            itemGap: 20,
+            itemGap: 5,
             textStyle: {
                 color: '#87baf8',
-                fontSize: 56
+                fontSize: 14
             },
             // selectedMode: 'single'
-        },
-        grid: {
-            left: 80,
-            right: 80
         },
         radar: {
             indicator: [
@@ -376,12 +373,12 @@ function radarChart(arg) {
             ],
             shape: 'circle',
             splitNumber: 5,
-            radius: '65%',
+            radius: '50%',
             center: ['50%', '45%'],
             name: {
                 textStyle: {
                     color: '#43eec6',
-                    fontSize: 56
+                    fontSize: 14
                 }
             },
             splitLine: {
@@ -491,7 +488,7 @@ function weiboData(arg) {
             name: '弱',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: 3,
+            symbolSize: 1,
             large: true,
             itemStyle: {
                 normal: {
@@ -505,7 +502,7 @@ function weiboData(arg) {
             name: '中',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: 3,
+            symbolSize: 1,
             large: true,
             itemStyle: {
                 normal: {
@@ -519,7 +516,7 @@ function weiboData(arg) {
             name: '强',
             type: 'scatter',
             coordinateSystem: 'geo',
-            symbolSize: 3,
+            symbolSize: 1,
             large: true,
             itemStyle: {
                 normal: {
@@ -566,31 +563,31 @@ function parkingLotData(arg) {
         normal: {
             show: true,
             position: 'outside',
-            offset: [20, -10],
+            offset: [4, -2],
             textStyle: {
-                fontSize: 64,
+                fontSize: 16,
             }
         }
     };
     const option = {
         grid: {
             containLabel: true,
-            left: 20,
+            left: 5,
             top: 0,
             bottom: 0,
-            right: 150
+            right: 38
         },
         color:['#48d8fd', '#43eec6' ],
         yAxis: {
-            data: ['使用量：\n\n总量：', '使用量：\n\n总量：'],
+            data: ['使用量：\n\n\n总量：', '使用量：\n\n\n总量：'],
             inverse: true,
             axisLine: {show: false},
             axisTick: {show: false},
             axisLabel: {
-                margin: 50,
+                margin: 4,
                 align: 'center',
                 textStyle: {
-                    fontSize: 64,
+                    fontSize: 16,
                     color: '#87baf8'
                 }
             }
@@ -671,7 +668,7 @@ function weatherForeData(arg) {
         },
         legend: {
             icon: 'pin',
-            itemGap: 50,
+            itemGap: 12,
             data: ['过去1天', '未来5天'],
             right: '4%',
             textStyle: {
@@ -912,23 +909,24 @@ function numOfPassData(arg) {
         tooltip: {
             trigger: 'axis',
             hideDelay: 400,
-            padding: 20,
+            padding: 5,
             axisPointer: {
                 type: 'shadow'
             },
             textStyle: {
-                fontSize: 60,
+                fontSize: 16,
             }
         },
         grid: {
-            left: 120,
-            right: 40
+            left: 50,
+            right: 12,
+            bottom: 25
         },
         legend: {
             data: ['增长趋势', '游客量'],
             textStyle: {
                 color: '#ccc',
-                fontSize: 64
+                fontSize: 16
             }
         },
         xAxis: {
@@ -942,7 +940,7 @@ function numOfPassData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 46,
+                    fontSize: 12,
                     color: '#87baf8'
                 }
             }
@@ -957,7 +955,7 @@ function numOfPassData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 46,
+                    fontSize: 12,
                     color: '#87baf8'
                 }
             }
@@ -968,10 +966,10 @@ function numOfPassData(arg) {
             smooth: true,
             showAllSymbol: true,
             symbol: 'emptyCircle',
-            symbolSize: 15,
+            symbolSize: 4,
             lineStyle: {
                 normal: {
-                    width: 5
+                    width: 2
                 }
             },
             animation: true,
@@ -982,7 +980,7 @@ function numOfPassData(arg) {
         }, {
             name: '游客量',
             type: 'bar',
-            barWidth: 30,
+            barWidth: 8,
             animation: true,
             animationEasing: 'elasticOut',
             animationDelay: function (idx) { return idx * 10 },
@@ -1019,63 +1017,63 @@ function airQualityData(arg) {
             axisLine: {            // 坐标轴线
                 lineStyle: {       // 属性lineStyle控制线条样式
                     color: [[0.1, 'lime'],[150/500, '#1e90ff'],[1, '#ff4500']],
-                    width: 10,
+                    width: 2,
                     shadowColor : '#fff', //默认透明
-                    shadowBlur: 15
+                    shadowBlur: 2
                 }
             },
             axisLabel: {            // 坐标轴小标记
                 textStyle: {       // 属性lineStyle控制线条样式
                     fontWeight: 'bolder',
-                    fontSize: 46,
+                    fontSize: 12,
                     color: '#fff',
                     shadowColor : '#fff', //默认透明
-                    shadowBlur: 15
+                    shadowBlur: 2
                 }
             },
             axisTick: {            // 坐标轴小标记
-                length :25,        // 属性length控制线长
+                length :6,        // 属性length控制线长
                 lineStyle: {       // 属性lineStyle控制线条样式
                     color: 'auto',
                     shadowColor : '#fff', //默认透明
-                    shadowBlur: 15
+                    shadowBlur: 2
                 }
             },
             splitLine: {           // 分隔线
-                length :35,         // 属性length控制线长
+                length :10,         // 属性length控制线长
                 lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                    width:6,
+                    width:2,
                     color: '#fff',
                     shadowColor : '#fff', //默认透明
-                    shadowBlur: 15
+                    shadowBlur: 2
                 }
             },
             pointer: {           // 分隔线
                 shadowColor : '#fff', //默认透明
-                shadowBlur: 10
+                shadowBlur: 2
             },
             title : {
                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                     fontWeight: 'bolder',
-                    fontSize: 56,
+                    fontSize: 14,
                     fontStyle: 'italic',
                     color: '#fff',
                     shadowColor : '#fff', //默认透明
-                    shadowBlur: 15
+                    shadowBlur: 2
                 }
             },
             detail : {
                 backgroundColor: 'rgba(30,144,255,0.8)',
-                borderWidth: 3,
+                borderWidth: 1,
                 borderColor: '#fff',
                 shadowColor : '#fff', //默认透明
-                shadowBlur: 10,
-                height: 80,
-                width: 150,
+                shadowBlur: 2,
+                height: 20,
+                width: 38,
                 offsetCenter: [0, '50%'],       // x, y，单位px
                 textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                     fontWeight: 'bolder',
-                    fontSize: 64,
+                    fontSize: 16,
                     color: '#fff'
                 }
             },
@@ -1110,13 +1108,14 @@ function resUtilizationData(arg) {
                 type: "shadow" // 默认为直线，可选为："line" | "shadow"
             },
             textStyle: {
-                fontSize: 60,
+                fontSize: 16,
             }
         },
         grid: {
             left: "3%",
             right: "10%",
             bottom: "3%",
+            top: "3%",
             containLabel: true
         },
         yAxis: [{
@@ -1130,9 +1129,9 @@ function resUtilizationData(arg) {
                 alignWithLabel: true
             },
             axisLabel: {
-                margin: 30,
+                margin: 8,
                 textStyle: {
-                    fontSize: 56,
+                    fontSize: 14,
                     color: '#43eec6'
                 }
             }
@@ -1166,7 +1165,7 @@ function resUtilizationData(arg) {
                         return params.data.name;
                     },
                     textStyle: {
-                        fontSize: 56,
+                        fontSize: 14,
                         color: "#bcbfff" //color of value
                     }
                 }
@@ -1210,7 +1209,7 @@ function transportationData(arg) {
                 return params[0].name + ': ' + params[0].value;
             },
             textStyle: {
-                fontSize: 60,
+                fontSize: 15,
             }
         },
         xAxis: {
@@ -1219,7 +1218,7 @@ function transportationData(arg) {
             axisLine: {show: false},
             axisLabel: {
                 textStyle: {
-                    fontSize: 45,
+                    fontSize: 12,
                     color: '#87baf8'
                 }
             }
@@ -1252,7 +1251,7 @@ function transportationData(arg) {
             type: 'pictorialBar',
             barGap: '-100%',
             symbolPosition: 'end',
-            symbolSize: 50,
+            symbolSize: 12,
             symbolOffset: [0, '-120%'],
             data: [{
                 value: 123,
@@ -1508,8 +1507,9 @@ function ticketBusinessData(arg) {
     var array = [check, offline, online];
     const option = {
         grid: {
-            top: 60,
-            left: 30
+            top: 15,
+            left: 8,
+            bottom: 20
         },
         xAxis: {
             type: 'value',
@@ -1520,7 +1520,7 @@ function ticketBusinessData(arg) {
             },
             axisLabel: {
                 textStyle: {
-                    fontSize: 48,
+                    fontSize: 12,
                     color: 'rgba(31, 188, 210, .9)',
                 }
             },
@@ -1541,12 +1541,11 @@ function ticketBusinessData(arg) {
         series: [{
             type: 'bar',
             silent: true,
-            barGap: '-100%',
-            barWidth: 100,
+            barWidth: 20,
             itemStyle: {
                 normal: {
                     color: 'rgb(0, 63, 126)',
-                    barBorderRadius: 50,
+                    barBorderRadius: 12,
                 }
             },
             data: [sum, sum, sum]
@@ -1554,22 +1553,21 @@ function ticketBusinessData(arg) {
             type: 'bar',
             silent: true,
             barGap: '-100%',
-            barWidth: 100,
             itemStyle: {
                 normal: {
                     color: 'rgba(71, 216, 253, .9)',
-                    barBorderRadius: 50,
+                    barBorderRadius: 12,
                 }
             },
             label: {
                 normal: {
                     show: true,
-                    position: ['50%', '10%'],
+                    position: ['50%', '5%'],
                     formatter: function(data, i) {
                         return (data.data/sum*100).toFixed(2) + '%'
                     },
                     textStyle: {
-                        fontSize: 58,
+                        fontSize: 14,
                         color: '#fff'
                     }
                 }

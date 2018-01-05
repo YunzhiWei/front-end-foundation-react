@@ -296,7 +296,7 @@ class EchartsData {
         var month2 = [4,6,9,11];
         var month3 = 2;
         function getDays(month, year) {
-            return !(month1.indexOf(month) + 1) ? 31 : !(month2.indexOf(month) + 1) ? 30 : month === month3 && year%4 === 0 ? 29 : 28 ;
+            return month1.indexOf(month) + 1 ? 31 : month2.indexOf(month) + 1 ? 30 : month === month3 && year%4 === 0 ? 29 : 28 ;
         }
         function getDate(index) {
             var year = new Date().getFullYear();
@@ -307,6 +307,9 @@ class EchartsData {
                 year -= 1;
             } else {
                 var preMonth = month - 1;
+                if (preMonth === 0) {
+                    preMonth = 12;
+                }
             }
             var preDay = getDays(preMonth, year);
             if(day - 1 < 0) {
