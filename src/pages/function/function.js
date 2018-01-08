@@ -1507,7 +1507,7 @@ function ticketBusinessData(arg) {
     var array = [check, offline, online];
     const option = {
         grid: {
-            top: 15,
+            top: 25,
             left: 8,
             bottom: 20
         },
@@ -1541,7 +1541,7 @@ function ticketBusinessData(arg) {
         series: [{
             type: 'bar',
             silent: true,
-            barWidth: 20,
+            barWidth: 24,
             itemStyle: {
                 normal: {
                     color: 'rgb(0, 63, 126)',
@@ -1553,6 +1553,7 @@ function ticketBusinessData(arg) {
             type: 'bar',
             silent: true,
             barGap: '-100%',
+            barWidth: 24,
             itemStyle: {
                 normal: {
                     color: 'rgba(71, 216, 253, .9)',

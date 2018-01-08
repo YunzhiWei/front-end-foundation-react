@@ -38,24 +38,24 @@ function calendarGridData(arg) {
         return data;
     }
     var dayLabel = {
-        margin: 10,
+        margin: 2,
         textStyle: {
     	    color: '#fff',
-    		fontSize: 56
+    		fontSize: 14
     	}
     };
     var monthLabel = {
-    	margin: 25,
+    	margin: 6,
     	textStyle: {
         	color: '#fff',
-        	fontSize: 56
+        	fontSize: 14
         }
     };
     var yearLabel = {
-    	margin: 75,
+    	margin: 18,
     	textStyle: {
         	color: '#fff',
-        	fontSize: 72
+        	fontSize: 18
         }
     };
     const option = {
@@ -66,7 +66,7 @@ function calendarGridData(arg) {
                 return format + ': ' + p.data[1];
             },
             textStyle: {
-            	fontSize: 56
+            	fontSize: 14
             }
         },
         visualMap: {
@@ -79,13 +79,13 @@ function calendarGridData(arg) {
         },
         calendar: [{
             range: '2015',
-            left: 200,
+            left: 50,
         }, {
             range: '2016',
-            left: 800,
+            left: 200,
         }, {
             range: '2017',
-            left: 1400,
+            left: 350,
         }],
         series: [{
 	        calendarIndex: 0,
@@ -100,8 +100,8 @@ function calendarGridData(arg) {
     };
     option.calendar.map((item) => {
     	item.orient = 'vertical';
-    	item.top = 200;
-    	item.cellSize = [60, 60];
+    	item.top = 50;
+    	item.cellSize = [15, 15];
     	item.dayLabel = dayLabel;
     	item.monthLabel = monthLabel;
     	item.yearLabel = yearLabel;
@@ -218,12 +218,12 @@ function anlsMapData(arg) {
 	                position: 'bottom',
 	                formatter: '{b}',
 	                textStyle: {
-	                	fontSize: 46
+	                	fontSize: 12
 	                }
 	            }
 	        },
 	        symbolSize: function(val) {
-	            return val[2]/2 < 20 ? 20 : val[2]/200;
+	            return val[2]/2 < 20 ? 5 : val[2]/800;
 	        },
 	        showEffectOn: 'render',
 	        itemStyle: {
@@ -245,7 +245,7 @@ function anlsMapData(arg) {
 	            period: 6,
 	            trailLength: 0.7,
 	            color: '#fff',
-	            symbolSize: 3
+	            symbolSize: 2
 	        },
 	        lineStyle: {
 	            normal: {
@@ -265,12 +265,12 @@ function anlsMapData(arg) {
 	            period: 6,
 	            trailLength: 0,
 	            symbol: tangle,
-	            symbolSize: 40
+	            symbolSize: 10
 	        },
 	        lineStyle: {
 	            normal: {
 	                color: color[i],
-	                width: 3,
+	                width: 2,
 	                opacity: 0.4,
 	                curveness: 0.2
 	            }
@@ -290,12 +290,12 @@ function anlsMapData(arg) {
 	                position: 'bottom',
 	                formatter: '{b}',
 	                textStyle: {
-	                	fontSize: 46
+	                	fontSize: 12
 	                }
 	            }
 	        },
 	        symbolSize: function(val) {
-	            return val[2]/2 < 20 ? 20 : val[2]/200;
+	            return val[2]/2 < 20 ? 5 : val[2]/800;
 	        },
 	        showEffectOn: 'render',
 	        itemStyle: {
@@ -315,7 +315,7 @@ function anlsMapData(arg) {
 	const option = {
 	    bmap: {
 	        center: [114.79,27.72],
-	        zoom: 8,
+	        zoom: 6,
 	        roam: false,
 	        mapStyle: {
 	            styleJson: [{
@@ -521,7 +521,7 @@ function anlsProvMapData(arg) {
             showEffectOn: 'render',
             zlevel: 3,
             symbol: 'circle',
-            symbolSize: 40,
+            symbolSize: 10,
             rippleEffect: {
                 brushType: 'stroke',
                 period: 5,
@@ -535,7 +535,7 @@ function anlsProvMapData(arg) {
                     show: true,
                     textStyle: {
                         color: "yellow",
-                        fontSize: 56
+                        fontSize: 14
                     }
                 }
             },
@@ -552,7 +552,7 @@ function anlsProvMapData(arg) {
             showEffectOn: 'render',
             zlevel: 3,
             symbol: 'circle',
-            symbolSize: 40,
+            symbolSize: 10,
             rippleEffect: {
                 brushType: 'stroke',
                 period: 2,
@@ -566,7 +566,7 @@ function anlsProvMapData(arg) {
                     show: true,
                     textStyle: {
                         color: "#00EBEB",
-                        fontSize: 56
+                        fontSize: 14
                     }
                 }
             },
@@ -604,7 +604,7 @@ function maleToFemaleData(arg) {
             			return data.data.value + '%'
             		},
             		textStyle: {
-            			fontSize: 64
+            			fontSize: 16
             		}
             	}
             },
@@ -619,34 +619,32 @@ function maleToFemaleData(arg) {
 
 // 景区团散比
 function indvToGroupData(argument) {
-	var giftImageUrl = "data:image/png;base64,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";
-
 	const option = {
 	    color: ['#83D560', '#AF89D6', '#a9ADF3'],
 	    tooltip: {
 	        trigger: 'item',
-	        formatter: "{a} <br/>{b}: {c} ({d}%)",
+	        formatter: "{b}: {c} ({d}%)",
 	        textStyle: {
-	        	fontSize: 64
+	        	fontSize: 16
 	        }
 	    },
 	    series: [//外圈
 	        {
 	            name: '外圈',
 	            type: 'pie',
-	            radius: ['70%', '85%'], 
+	            radius: ['40%', '50%'], 
 	            avoidLabelOverlap: false,
 	            label: {
 	                normal: {
 	                    show: true,
-	                    position: 'insideTopRight', //center  
+	                    position: 'outside', //center  
 	                    formatter: function(param) {
-	                        return param.name + ':\n' + Math.round(param.percent) + '%';
+	                        return param.name + '\n' + param.percent + '%';
 	                    },
 	                    textStyle: {
-	                        color: '#ccc',
-	                        fontWeight: 'bold',
-	                        fontSize: 56
+	                        color: '#F0F05B',
+	                        fontWeight: 'normal',
+	                        fontSize: 12
 	                    }
 	                },
 
@@ -664,7 +662,7 @@ function indvToGroupData(argument) {
 	            },
 	            itemStyle: {
 	                normal: {
-	                    shadowBlur: 30,
+	                    shadowBlur: 8,
 	                    shadowColor: 'rgba(0, 0, 0, 0.4)'
 	                }
 	            },
@@ -673,13 +671,14 @@ function indvToGroupData(argument) {
 	                value: 1778.2,
 	                name: '散客'
 	            }, {
-	                value: 7118,
+	                value: 7218,
 	                name: '团客'
 	            }]
 	        }, {
 	            name: '最外圈',
+	            silent: true,
 	            type: 'pie',
-	            radius: ['90%', '95%'],
+	            radius: ['55%', '60%'],
 	            color: ['#ffff00'],
 	            avoidLabelOverlap: false,
 	            itemStyle: {
@@ -693,12 +692,6 @@ function indvToGroupData(argument) {
 	            label: {
 	                normal: {
 	                	show: false,
-	                    position: 'insideTopRight',
-	                    formatter: '{c}',
-	                    textStyle: {
-	                        color: '#ccc',
-	                        fontWeight: 'bold',
-	                    }
 	                }
 	            },
 
@@ -706,7 +699,7 @@ function indvToGroupData(argument) {
 	                value: 1778.2,
 	                name: '散客'
 	            }, {
-	                value: 7118,
+	                value: 7218,
 	                name: '团客'
 	            }]
 	        }
@@ -723,7 +716,7 @@ function onToOffData(arg) {
             trigger: 'item',
             formatter: "{a} <br/>{b}: {c} ({d}%)",
             textStyle: {
-                fontSize: '56',
+                fontSize: 14,
                 fontWeight: 'bold'
             }
         },
@@ -735,7 +728,7 @@ function onToOffData(arg) {
 	            normal: {
 	                show: true,
 	                textStyle: {
-	                    fontSize: '56',
+	                    fontSize: 14,
 	                    fontWeight: 'bold'
 	                },
 	                position: "center"
@@ -743,7 +736,7 @@ function onToOffData(arg) {
 	            emphasis: {
                     show: true,
                     textStyle: {
-                        fontSize: '56',
+                        fontSize: 14,
                         fontWeight: 'bold'
                     }
                 }
@@ -754,7 +747,7 @@ function onToOffData(arg) {
 		        itemStyle: {
 		            normal: {
 		                color: '#fb358a',
-		                shadowBlur: 40,
+		                shadowBlur: 10,
 		                shadowColor: '#fb358a'
 		            }
 		        }
@@ -763,7 +756,7 @@ function onToOffData(arg) {
 		        value: tips,
 		        itemStyle: {
 		            normal: {
-		                shadowBlur: 40,
+		                shadowBlur: 10,
 		                shadowColor: '#fb358a'
 		            }
 		        }
@@ -784,14 +777,13 @@ function ageDistributionData(arg) {
 	            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
 	        },
 	        textStyle: {
-	        	fontSize: 64
+	        	fontSize: 16
 	        }
 	    },
 	    grid: {
-	    	left: 0,
+	    	left: 20,
 	    	right: 0,
-	    	bottom: 100,
-	        containLabel: true
+	    	bottom: 42,
 	    },
 	    xAxis : [
 	        {
@@ -808,7 +800,7 @@ function ageDistributionData(arg) {
 	            axisLabel: {
 	            	textStyle: {
 	            		color: '#fff',
-		            	fontSize: 46
+		            	fontSize: 12
 	            	},
 	            	interval: 0,
 	            	rotate: 45
@@ -835,7 +827,7 @@ function ageDistributionData(arg) {
 	                position: 'top',
 	                formatter: '{c}',
 	                textStyle: {
-	                	fontSize: 46,
+	                	fontSize: 12,
 	                	color: '#00EBEB'
 	                }
 	            }
@@ -851,7 +843,7 @@ function ageDistributionData(arg) {
                     color: 'rgba(17, 168,171, 0.1)'
                 }]),
                 shadowColor: 'rgba(0, 0, 0, 0.1)',
-                shadowBlur: 10
+                shadowBlur: 2
             }
         }
 	};
@@ -863,17 +855,16 @@ function customerTendData(arg) {
 	var month2 = [4,6,9,11];
 	var month3 = 2;
 	function getDays(month, year) {
-	    return !(month1.indexOf(month) + 1) ? 31 : !(month2.indexOf(month) + 1) ? 30 : month === month3 && year%4 === 0 ? 29 : 28 ;
+	    return month1.indexOf(month) + 1 ? 31 : month2.indexOf(month) + 1 ? 30 : month === month3 && year%4 === 0 ? 29 : 28 ;
 	}
 	function getDate(index) {
 	    var year = new Date().getFullYear();
 	    var month = new Date().getMonth() + 1;
 	    var day = new Date().getDate() - index;
-	    if(month - 1 < 0) {
-	        var preMonth = month + 11;
+	    var preMonth = month - 1;
+	    if(preMonth === 0) {
+	        preMonth = month + 11;
 	        year -= 1;
-	    } else {
-	        var preMonth = month - 1;
 	    }
 	    var preDay = getDays(preMonth, year);
 	    if(day - 1 < 0) {
@@ -883,7 +874,7 @@ function customerTendData(arg) {
 	    return [month, day];
 	}
 	var day = [];
-	for (var i = 1; i < 8; i++) {
+	for (var i = 0; i < 7; i++) {
 		day.unshift(getDate(i + 1).join('-'));
 	}
 	const option= {
@@ -891,7 +882,7 @@ function customerTendData(arg) {
 		tooltip: {
 			trigger: 'axis',
 			textStyle: {
-				fontSize: 64
+				fontSize: 16
 			}
 		},
 		xAxis: {
@@ -901,7 +892,7 @@ function customerTendData(arg) {
 			axisLabel:{
 			    textStyle:{
 			        color:'#dededf',
-			        fontSize: 56
+			        fontSize: 14
 			    },
 			    interval: 0
 			},
@@ -924,7 +915,7 @@ function customerTendData(arg) {
 		    axisLabel:{
 			    textStyle:{
 			        color:'#dededf',
-			        fontSize: 56
+			        fontSize: 14
 			    }
 			},
 			splitLine:{//网格线
@@ -940,14 +931,14 @@ function customerTendData(arg) {
 				name:'游客趋势',
 				type:'line',
 				smooth:true,
-			    symbolSize:12,
+			    symbolSize:2,
 				data: [532, 567, 93, 80, 50, 96, 146],
 				label: {
 					normal: {
 						show: true,
 						position: 'top',
 						textStyle: {
-							fontSize: 65
+							fontSize: 16
 						}
 					}
 				}

@@ -37,7 +37,7 @@
 
 #echarts-content1>div { float: left; }
 
-.cards .tickets_num { width: 55%; height: 100%; display: inline-block; padding-top: 12px; font-size: 18px; color: #fff; }
+.cards .tickets_num { width: 50%; height: 100%; display: inline-block; padding-top: 18px; font-size: 18px; color: #fff; }
 .cards .tickets_num p { height: 45px; margin: 5px 0; text-align: right; }
 .cards .tickets_num p>span { float: left; position: relative; height: 45px; line-height: 45px; display: inline-block; color: rgba(12, 207, 253, .9); width: 40%; }
 .cards .tickets_num p>span:first-child { width: 50%; }

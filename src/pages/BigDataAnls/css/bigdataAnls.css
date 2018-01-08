@@ -5,15 +5,15 @@
 #bigdata-anls .half { display: inline-block; width: 222px; }
 #bigdata-anls .margin_right { margin-right: 12px !important; }
 #bigdata-anls .c_content .content { position: relative; }
-#bigdata-anls .anlsmap { position: absolute; top: 12px; left: 120px; height: 50px; width: 200px; }
+#bigdata-anls .anlsmap { position: absolute; top: 12px; left: 120px; height: 50px; width: 200px; padding: 10px 15px; box-sizing: content-box; border-radius: 5px; background-color: rgba(255, 255, 255, 0.2); box-shadow: 1px 1px 2px #333 }
 #bigdata-anls .anlsmap>div { display: inline-block; text-align: center; width: 50%; }
-#bigdata-anls .anlsmap p { color: #fff; font-size: 14px; }
+#bigdata-anls .anlsmap p { color: #fff; font-size: 14px; font-weight: bold; }
 #bigdata-anls .anlsmap p.cyan { color: #00EBEB; }
 #bigdata-anls .anlsmap p.yellow { color: #F0F05B; }
 #bigdata-anls .anlsmap b { font-family: 'ZZGFSH'; font-size: 28px; }
 
 /*客源统计排名*/
-#bigdata-anls .rank div { display: -ms-inline-flexbox; display: inline-flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: distribute; justify-content: space-around; height: 190px; }
+#bigdata-anls .rank div { display: -ms-inline-flexbox; display: inline-flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: distribute; justify-content: space-around; height: 100%; }
 #bigdata-anls .rank .rank_l { width: 150px; }
 #bigdata-anls .rank .rank_r { border-left: 2px dotted #0074A4; width: 280px; }
 #bigdata-anls .rank .rank_l_tit, #bigdata-anls .rank .rank_r_tit { font-size: 16px; color: #00ADCD; margin: 8px auto; }

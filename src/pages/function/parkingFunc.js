@@ -14,7 +14,7 @@ function carsDistributionData(arg) {
                     position: "top",
                     textStyle: {
                         color: '#0',
-                        fontSize: 46
+                        fontSize: 12
                     }
                 }
             }
@@ -34,15 +34,15 @@ function carsDistributionData(arg) {
         color: ['rgb(38, 242, 233)','rgb(64, 201, 240)', 'rgb(30, 144, 255)'],
         tooltip: { trigger: 'none' },
         visualMap: {
-            right: 50,
-            bottom: 50,
+            right: 10,
+            bottom: 10,
             calculable: true,
-            textStyle: { color: 'rgb(38, 242, 233)',fontSize: 56 },
+            textStyle: { color: 'rgb(38, 242, 233)',fontSize: 14 },
             inRange: {
                 color: ['#05bcfa','#0a64a9'],
             },
-            itemWidth: 60,
-            itemHeight: 280
+            itemWidth: 15,
+            itemHeight: 70
         },
         series: series
     }
@@ -72,8 +72,9 @@ function carsDistribution2Data(arg) {
     
     const option = {
         grid: {
-            top: 60,
-            left: 30
+            top: 25,
+            left: 8,
+            bottom: 0
         },
         xAxis: {
             type: 'value',
@@ -84,7 +85,7 @@ function carsDistribution2Data(arg) {
             },
             axisLabel: {
                 textStyle: {
-                    fontSize: 46,
+                    fontSize: 12,
                     color: 'rgba(31, 188, 210, .9)',
                 }
             },
@@ -105,30 +106,29 @@ function carsDistribution2Data(arg) {
         series: [{
             type: 'bar',
             silent: true,
-            barGap: '-100%',
-            barWidth: 100,
+            barWidth: 20,
             itemStyle: {
                 normal: {
                     color: 'rgb(0, 63, 126)',
-                    barBorderRadius: 50,
+                    barBorderRadius: 12,
                 }
             },
             data: maxs
         }, {
             type: 'bar',
-            silent: true,
+            // silent: true,
             barGap: '-100%',
-            barWidth: 100,
+            barWidth: 20,
             itemStyle: {
                 normal: {
                     color: 'rgba(71, 216, 253, .9)',
-                    barBorderRadius: 50,
+                    barBorderRadius: 12,
                 }
             },
             label: {
                 normal: {
                     show: true,
-                    position: 'inside',
+                    position: ['50%', '0%'],
                     // formatter: function(data) {
                     //     return (data.data/sum).toFixed(2) + '%'
                     // },
@@ -137,7 +137,8 @@ function carsDistribution2Data(arg) {
                         return order[len - data.dataIndex -1].name
                     },
                     textStyle: {
-                        fontSize: 56
+                        fontSize: 14,
+                        color: '#fff'
                     }
                 }
             },
@@ -155,20 +156,21 @@ function carsDistribution3Data(arg) {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)",
             textStyle: {
-                fontSize: 64
+                fontSize: 16
             }
         },
         series : [
             {
                 name: '全国客源车辆所属省份统计',
                 type: 'pie',
-                center: ['53%', '45%'],
-                radius : '60%',
+                center: ['55%', '55%'],
+                radius : '70%',
                 label: {
                     normal: {
                         position: "outside",
                         textStyle: {
-                            fontSize: 56
+                            fontSize: 18,
+                            fontWeight: 'bold'
                         }
                     }
                 },
@@ -194,23 +196,24 @@ function standingTimeData(arg) {
         tooltip: {
             trigger: 'axis',
             hideDelay: 400,
-            padding: 20,
+            padding: 6,
             axisPointer: {
                 type: 'shadow'
             },
             textStyle: {
-                fontSize: 60,
+                fontSize: 16,
             }
         },
         grid: {
-            left: 200,
-            right: 40,
+            left: 40,
+            right: 10,
+            bottom: 30
         },
         legend: {
             data: ['增长趋势', '停留时长'],
             textStyle: {
                 color: '#ccc',
-                fontSize: 52
+                fontSize: 14
             }
         },
         xAxis: {
@@ -224,7 +227,7 @@ function standingTimeData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 56,
+                    fontSize: 14,
                     color: '#87baf8'
                 }
             }
@@ -239,7 +242,7 @@ function standingTimeData(arg) {
             axisLabel: {
                 align: 'center',
                 textStyle: {
-                    fontSize: 56,
+                    fontSize: 14,
                     color: '#87baf8'
                 }
             }
@@ -250,10 +253,10 @@ function standingTimeData(arg) {
             smooth: true,
             showAllSymbol: true,
             symbol: 'emptyCircle',
-            symbolSize: 15,
+            symbolSize: 4,
             lineStyle: {
                 normal: {
-                    width: 5
+                    width: 2
                 }
             },
             animation: true,
@@ -264,7 +267,7 @@ function standingTimeData(arg) {
         }, {
             name: '停留时长',
             type: 'bar',
-            barWidth: 30,
+            barWidth: 8,
             animation: true,
             animationEasing: 'elasticOut',
             animationDelay: function (idx) { return idx * 10 },
@@ -292,29 +295,30 @@ function IOCarsTimeData(arg) {
     var dataIn = arg.map((item) => item.In);
     var dataOut = arg.map((item) => item.Out);
     var xData = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00'];
-    var itemStyle = { normal: { label: { textStyle: { fontSize: 46 } } } };
+    var itemStyle = { normal: { label: { textStyle: { fontSize: 12 } } } };
     var markPointData = [{type : 'max', name: '最大值'},{type : 'min', name: '最小值'}];
     var markLineData = [{type : 'average', name : '平均值'}];
-    var markLineStyle = { normal: { width: 4 } };
-    var markArea = { normal: { fontSize: 64 } };
+    var markLineStyle = { normal: { width: 1 } };
+    var markArea = { normal: { fontSize: 16 } };
     const option = {
         tooltip: {
             trigger: 'axis',
             textStyle: {
-                fontSize: 64
+                fontSize: 16
             }
         },
         grid: {
-            top: 180,
-            left: 0,
-            right: 0
+            top: 50,
+            left: 40,
+            right: 40,
+            bottom: 20
         },
         legend: {
             data:['进场数量','离场数量'],
-            textStyle: { color: '#f', fontSize: 56},
-            itemWidth: 60,
-            itemHeight: 30,
-            itemGap: 30
+            textStyle: { color: '#f', fontSize: 14},
+            itemWidth: 15,
+            itemHeight: 8,
+            itemGap: 8
         },
         xAxis : [
             {
@@ -322,10 +326,10 @@ function IOCarsTimeData(arg) {
                 data : xData,
                 axisLabel: {
                     textStyle: {
-                        fontSize: 56,
+                        fontSize: 14,
                         color: 'rgba(31, 188, 210, .9)',
                     },
-                    margin: 10
+                    margin: 2
                 }
             }
         ],
@@ -334,10 +338,10 @@ function IOCarsTimeData(arg) {
                 type : 'value',
                 axisLabel: {
                     textStyle: {
-                        fontSize: 56,
+                        fontSize: 14,
                         color: 'rgba(31, 188, 210, .9)'
                     },
-                    margin: 30
+                    margin: 8
                 }
             }
         ],
@@ -359,7 +363,7 @@ function IOCarsTimeData(arg) {
         item.markArea = {};
         item.markPoint.data = markPointData;
         item.markLine.data = markLineData;
-        item.markPoint.symbolSize = 200;
+        item.markPoint.symbolSize = 50;
         item.markPoint.itemStyle = item.markLine.itemStyle = itemStyle;
         item.markLine.lineStyle = markLineStyle;
         item.markArea.label = markArea;

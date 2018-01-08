@@ -302,14 +302,10 @@ class EchartsData {
             var year = new Date().getFullYear();
             var month = new Date().getMonth() + 1;
             var day = new Date().getDate() - index;
-            if(month - 1 < 0) {
-                var preMonth = month + 11;
+            var preMonth = month - 1;
+            if(preMonth === 0) {
+                preMonth = month + 11;
                 year -= 1;
-            } else {
-                var preMonth = month - 1;
-                if (preMonth === 0) {
-                    preMonth = 12;
-                }
             }
             var preDay = getDays(preMonth, year);
             if(day - 1 < 0) {
