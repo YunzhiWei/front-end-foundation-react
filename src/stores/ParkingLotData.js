@@ -23,7 +23,7 @@ class ParkingLotData {
                 value: 7
             }, {
                 name: "赣州市",
-                value: 203
+                 value: 203
             }, {
                 name: "吉安市",
                 value: 429
@@ -132,25 +132,10 @@ class ParkingLotData {
             addr: '宜春',
             time: '10:12:46'
         }, {
-            license: "赣CL2A59",
-            id: 1111111116,
-            addr: '宜春',
+            license: "赣A9U070",
+            id: 1111111117,
+            addr: '南昌',
             time: '10:14:32'
-        }, {
-            license: "赣CL2A59",
-            id: 1111111116,
-            addr: '宜春',
-            time: '10:17:59'
-        }, {
-            license: "赣CL2A59",
-            id: 1111111116,
-            addr: '宜春',
-            time: '10:18:33'
-        }, {
-            license: "赣CL2A59",
-            id: 1111111116,
-            addr: '宜春',
-            time: '10:20:17'
         }],
         outputCars: [{
             license: "赣KL6780",
@@ -190,13 +175,13 @@ class ParkingLotData {
             stayTime: 49
         }, {
             license: "赣K94U81",
-            id: 1111111116,
+            id: 1111111117,
             addr: '新余',
             time: '10:12:23',
             stayTime: 49
         }, {
             license: "赣K5Z439",
-            id: 1111111116,
+            id: 1111111118,
             addr: '新余',
             time: '10:14:11',
             stayTime: 49

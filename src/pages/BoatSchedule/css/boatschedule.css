@@ -27,7 +27,7 @@
 	height: 696px;
 	transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
 }
-#boat-schedule #IO-Cars .input, #boat-schedule #IO-Cars .output {k
+#boat-schedule #IO-Cars .input, #boat-schedule #IO-Cars .output {
 	height: calc(100% - 15px);
 }
 .jxjb {
