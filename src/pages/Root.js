@@ -26,25 +26,25 @@ class RootPage extends Component {
 				</div>
 				<ul>
 					<li>
-						<a href="./bigdata">
+						<a href="#/bigdata">
 							<img src={require('./images/ReactApp1.jpg')} style={styles.img} />
 						</a>
 						<p style={styles.p}>综合管控</p>
 					</li>
 					<li>
-						<a href="./parkinglot">
+						<a href="#/parkinglot">
 							<img src={require('./images/ReactApp2.jpg')} style={styles.img} />
 						</a>
 						<p style={styles.p}>智能停车场</p>
 					</li>
 					<li>
-						<a href="./boat">
+						<a href="#/boat">
 							<img src={require('./images/ReactApp3.jpg')} style={styles.img} />
 						</a>
 						<p style={styles.p}>游船调度</p>
 					</li>
 					<li>
-						<a href="./bigdata2">
+						<a href="#/bigdata2">
 							<img src={require('./images/ReactApp4.jpg')} style={styles.img} />
 						</a>
 						<p style={styles.p}>客流分析</p>
