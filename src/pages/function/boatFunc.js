@@ -10,7 +10,7 @@ function fortyBoatsData(arg) {
             // 超过20个换行
             i === 20 ? position = [-97.5, 75] : '';
             series.push(Object.assign({},seriesTemp));
-            series[i].name = `游船${i+1}号`;
+            series[i].name = item.name;
             series[i].center = [`${position[0] + count}%`, `${position[1]}%`];
             series[i].data = [{
                 label: {
@@ -19,14 +19,14 @@ function fortyBoatsData(arg) {
                         position: 'center',
                         show: true,
                         textStyle: {
-                            fontSize: 56,
-                            margin: [0,0,20,0]
+                            fontSize: 14,
+                            margin: [0,0,5,0]
                         }
                     }
                 },
                 itemStyle: {
                     normal: {
-                        shadowBlur: 40
+                        shadowBlur: 10
                     }
                 }
             }, {
@@ -34,17 +34,17 @@ function fortyBoatsData(arg) {
                 itemStyle: placeHolderStyle,
                 label: {
                     normal: {
-                        formatter: (data) => 100 - data.data.value + '%',
+                        formatter: (data) => (100 - data.data.value).toFixed(2) + '%',
                         position: 'center',
                         show: true,
                         textStyle: {
-                            fontSize: 64,
+                            fontSize: 16,
                         }
                     }
                 },
             }]
-            series[i].data[0].value = item;
-            series[i].data[1].value = 100 - item;
+            series[i].data[0].value = item.usage * 100;
+            series[i].data[1].value = 100 - item.usage * 100;
             series[i].data[0].label.normal.textStyle.color = series[i].data[1].label.normal.textStyle.color = series[i].data[0].itemStyle.normal.color= series[i].data[0].itemStyle.normal.shadowColor = color;
             count += 5;
         })
@@ -80,7 +80,7 @@ function fortyBoatsData(arg) {
     var seriesTemp =  {
         type: 'pie',
         clockWise: false,
-        radius: [150, 170],
+        radius: [38, 42],
         itemStyle: dataStyle,
         hoverAnimation: false,
     }

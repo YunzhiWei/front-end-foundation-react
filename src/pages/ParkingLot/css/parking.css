@@ -1,19 +1,39 @@
 #ParkingHeat { height: 100%; width: 100%; }
-#heatmap { height: 100%; width: 100%; background-image: url('../images/heatmap-bg.png'); background-size: 100% 100%; opacity: .9 }
+#heatmap { height: 100%; width: 100%; background-image: url('../images/heatmap-bg.jpg'); background-size: 100% 100%; opacity: .9 }
 #parking-lot .c_center { width: 960px; height: 100%; padding: 0 12px; }
 #parking-lot .CarsDistri, #parking-lot .IOSummary { height: 598px; }
 #parking-lot .CarsDistribution { display: inline-block; }
 #parking-lot .ServiceCondition { height: 598px; }
-#IO-Cars { width: 100%; height: 100%; }
-#IO-Cars .input, #IO-Cars .output { font-size: 16px; width: 100%; height:50%; margin: 8px 0; }
-#IO-Cars .input p, #IO-Cars .output p { display: block; text-align: center; color: #FFF; }
-#IO-Cars .input p span, #IO-Cars .output p span { text-align: center; }
-#IO-Cars .input .title span, #IO-Cars .output .title span { font-family: "ZZGFSH"; font-size: 23px; margin: 0 12px; color: rgb(17, 227, 242); }
+#IO-Cars { background-color: rgba(26, 26, 143, 0.15); width: 100%; height: 100%; }
+#IO-Cars .input, #IO-Cars .output { font-size: 16px; width: 100%; height: calc(50% - 8px); margin: 8px 0; overflow: hidden; }
+#IO-Cars .input> div, #IO-Cars .output> div { position: relative; overflow: hidden; height: calc(100% - 80px); transition: all .25s ease-in-out; margin-top: 5px; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: start; align-items: flex-start; }
+#IO-Cars .input p, #IO-Cars .output p { display: block; width: 100%; text-align: center; color: #FFF; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; }
+#IO-Cars .input p span, #IO-Cars .output p span { float: none; padding: 0 5px; text-align: center; color: #48d8fd;	/*font-weight: bold;*/ }
+#IO-Cars .input p.title, #IO-Cars .output p.title { display: inline-block; color: #48d8fd; font-weight: bold; }
+#IO-Cars .input .title span, #IO-Cars .output .title span { font-family: "ZZGFSH"; font-size: 26px; margin: 0 12px; color: #fff; }
 #IO-Cars .input .subtitle, #IO-Cars .output .subtitle { height: 25px; }
-#IO-Cars .input> div, #IO-Cars .output> div { position: relative; overflow: hidden; height: calc(100% - 28px); transition: all .25s ease-in-out; }
-#IO-Cars .input> div p, #IO-Cars .output> div p { position: relative; transition: all .25s ease-in-out; }
+#IO-Cars .input .subtitle span, #IO-Cars .output .subtitle span { color: rgb(250, 197, 12); font-weight: bold; }
+#IO-Cars .input> div p, #IO-Cars .output> div p { position: relative; padding: 5px 0; border-bottom: 1px dotted rgba(215, 215, 215, 0.3); transition: all .25s ease-in-out; }
 #IO-Cars .input> div .new, #IO-Cars .output> div .new { animation: new-pop .5s cubic-bezier(0.4, 0, 0.2, 1) }
 @keyframes new-pop {
 	from { top: 132px; }
 	to { top: 0; }
 }
+
+#parking_cube { width: 100%; height: 100%; overflow: hidden; color: #fff; }
+#father { width: 400%; height: 100%; overflow: hidden; }
+.zong { width: 100%; height: 100%; -webkit-animation: change 60s linear infinite; }
+.zong:hover { animation-play-state: paused; }
+.son { width: 25%; height: 100%; float: left; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+#parking_cube .zong .son span { display: block; width: 8%; height: 30%; margin: 0 1%; color: #fff; background-color: #0BCBD5; text-align: center; padding: 8% 0; box-sizing: border-box; border-radius: 6%; }
+#parking_cube .zong .son span.red { background-color: red; }
+@keyframes change {
+	0% { margin-left: 0; }
+	30% { margin-left: 0; }
+	33% { margin-left: -25%; }
+	63% { margin-left: -25%; }
+	66% { margin-left: -50%; }
+	97% { margin-left: -50%; }
+	100% { margin-left: -75%; }
+}
+

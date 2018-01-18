@@ -22,11 +22,11 @@ function setting(start, end) {
 @inject("echartsData") @observer
 class TicketBusinessComponent extends Component {
 	render() {
-		const parking = this.props.echartsData.parking;
-		const option = echartsOption(parking, 'TicketBusiness');
-		const setting1 = setting(parking.inUsePrev, parking.inUse);
-		const setting2 = setting(parking.allPrev, parking.all);
-		const setting3 = setting(0, 1200);
+		const ticketsNum = this.props.echartsData.ticketsNum;
+		const option = echartsOption(ticketsNum, 'TicketBusiness');
+		const setting1 = setting(ticketsNum.prevOnline, ticketsNum.online);
+		const setting2 = setting(ticketsNum.prevOffline, ticketsNum.offline);
+		const setting3 = setting(ticketsNum.prevCheck, ticketsNum.check);
 		return (
 			<div style={{height: '100%', width: '100%'}}>
 				<div className="tickets_num">
@@ -36,7 +36,7 @@ class TicketBusinessComponent extends Component {
 				</div>
 			    <ReactEcharts
 			      option={option}
-			      style={{width: '45%',height: '100%', display: 'inline-block'}}
+			      style={{width: '50%',height: '100%', display: 'inline-block'}}
 			      className='TicketBusiness'
 			    />
 		    </div>

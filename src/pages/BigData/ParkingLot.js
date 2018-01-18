@@ -22,14 +22,18 @@ function setting(start, end) {
 @inject("echartsData") @observer
 class ParkingLotComponent extends Component {
 	render() {
-		const { echartsData } = this.props;
-		const option = echartsOption(echartsData.parking, 'ParkingLot');
-		const setting1 = setting(0, 432);
-		const setting2 = setting(0, 20);
-		const setting3 = setting(0, 32);
-		const setting4 = setting(0, 26);
-		const setting5 = setting(0, 6);
-		const setting6 = setting(0, 4);
+		const { parking, boating } = this.props.echartsData;
+		const option = echartsOption({parking, boating}, 'ParkingLot');
+		var prevUsableParking = parking.prevAll - parking.prevInUse;
+		var usableParking = parking.all - parking.inUse;
+		var prevUsableBoating = boating.prevAll - boating.prevInUse;
+		var usableBoating = boating.all - boating.inUse;
+		const setting1 = setting(prevUsableParking, 431);
+		const setting2 = setting(parking.prevRealOut, parking.realOut);
+		const setting3 = setting(parking.prevRealIn, parking.realIn);
+		const setting4 = setting(prevUsableBoating, 35);
+		const setting5 = setting(boating.prevRealOut, boating.realOut);
+		const setting6 = setting(boating.prevRealIn, boating.realIn);
 		return (
 			<div style={{height: '100%', width: '100%'}}>
 			    <ReactEcharts
@@ -39,8 +43,8 @@ class ParkingLotComponent extends Component {
 			    />
 			    <div className="parking_num">
 			        <p><span>可用车位：</span><span><b><CountUp className="account-balance" {...setting1} /></b></span><span>辆</span></p>
-			        <p><span>实时出场：</span><span><b><CountUp className="account-balance" {...setting2} /></b></span><span>辆</span></p>
-			        <p><span>实时入场：</span><span><b><CountUp className="account-balance" {...setting3} /></b></span><span>辆</span></p>
+			        <p><span>累计出场：</span><span><b><CountUp className="account-balance" {...setting2} /></b></span><span>辆</span></p>
+			        <p><span>累计入场：</span><span><b><CountUp className="account-balance" {...setting3} /></b></span><span>辆</span></p>
 			        <hr/>
 			        <p><span>可调船数：</span><span><b><CountUp className="account-balance" {...setting4} /></b></span><span>艘</span></p>
 			        <p><span>实时离港：</span><span><b><CountUp className="account-balance" {...setting5} /></b></span><span>艘</span></p>

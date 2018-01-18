@@ -18,7 +18,7 @@ class BoatSchedule extends Component {
 					<div className="bigdata_title">
 						<a href="/">
 							<span className="bigdata_l"></span>
-							<span className="bigdata_c">景区智能游船调度</span>
+							<span className="bigdata_c">仙女湖景区智能游船调度</span>
 							<span className="bigdata_r"></span>
 						</a>
 					</div>
@@ -30,10 +30,10 @@ class BoatSchedule extends Component {
 					<div className="bigdata_content">
 						<div className="c_content c_1">
 							<CardProvider className="cards" title="景区离港游船统计" color="light-green">
-								<IOBoatsComponent name={"游船"} />
+								<IOBoatsComponent name={"游船"} type={"游船进"} />
 							</CardProvider>
 							<CardProvider className="cards" title="景区在港游船统计" color="light-green">
-								<IOBoatsComponent name={"游船"} />
+								<IOBoatsComponent name={"游船"} type={"游船出"} />
 							</CardProvider>
 						</div>
 						<div className="c_content c_2 c_center">
@@ -43,10 +43,10 @@ class BoatSchedule extends Component {
 						</div>
 						<div className="c_content c_4">
 							<CardProvider className="cards" title="景区离港快艇统计" color="light-green">
-								<IOBoatsComponent name={"快艇"} />
+								<IOBoatsComponent name={"快艇"} type={"快艇进"} />
 							</CardProvider>
 							<CardProvider className="cards" title="景区在港快艇统计" color="light-green">
-								<IOBoatsComponent name={"快艇"} />
+								<IOBoatsComponent name={"快艇"} type={"快艇出"} />
 							</CardProvider>
 						</div>
 					</div>

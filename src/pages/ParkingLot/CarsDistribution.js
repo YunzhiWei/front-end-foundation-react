@@ -15,21 +15,21 @@ class CarsDistributionComponent extends Component {
             <div style={{width: '100%', height: '100%'}}>
                 <ReactEcharts
                     option={option}
-                    style={{width: '50%',height: '100%'}}
+                    style={{width: '50%',height: '50%'}}
                     className='CarsDistribution'
                 />
-                <div style={{width: '50%', height: '100%', display: 'inline-block', textAlign: 'right'}}>
+                <div style={{width: '50%', height: '50%', display: 'inline-block', textAlign: 'right'}}>
                     <ReactEcharts 
                         option={option2}
-                        style={{width: '95%',height: '50%'}}
-                        className='CarsDistribution'
-                    />
-                    <ReactEcharts 
-                        option={option3}
-                        style={{width: '95%',height: '50%'}}
+                        style={{width: '95%',height: '100%'}}
                         className='CarsDistribution'
                     />
                 </div>
+                <ReactEcharts 
+                    option={option3}
+                    style={{width: '100%',height: '50%'}}
+                    className='CarsDistribution'
+                />
             </div>
         );
     }

@@ -17,14 +17,14 @@ html {
   overflow: visible;
 }
 .flipster ul.flip-items {
-  perspective: 1125px;
+  perspective: 1200px;
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 625px!important;
-  height: 318px!important;
-  margin-top: -156px;
-  margin-left: -312px;
+  width: 480px!important;
+  height: 270px!important;
+  margin-top: -136px;
+  margin-left: -240px;
 }
 .flipster img {
   opacity: .8;
