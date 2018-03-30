@@ -192,7 +192,7 @@ class EchartsData {
         this.parking.prevAll = this.parking.all;
         this.parking.prevRealIn = this.parking.realIn;
         this.parking.prevRealOut = this.parking.realIn;
-        axios.get('http://128.1.67.161:300/parkingLot' + index).then(function(data){
+        axios.get('http://www.zhuxiaoyi.com:300/parkingLot' + index).then(function(data){
             self.parking.inUse = data.data.inUse;
             self.parking.all = data.data.all;
             self.parking.realIn = realInParking[index];
@@ -314,7 +314,7 @@ class EchartsData {
             }
             return [month, day];
         }
-        axios.get('http://128.1.67.161:302/data').then(function(data){
+        axios.get('http://www.zhuxiaoyi.com:302/data').then(function(data){
             data.data.latest20.map((item, i) => {
                 self.pass.category.unshift(getDate(i + 1).join('-'));
                 self.pass.barData.push(item.sum);

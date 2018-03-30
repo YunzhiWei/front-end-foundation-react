@@ -437,7 +437,7 @@ class BoatScheduleData {
         var self = this;
         var count = 0
         var colors = ["red", "red", "red", "red", "blue", "blue", "blue"];
-        axios.get('http://128.1.67.161:301/db').then(function(data){
+        axios.get('http://www.zhuxiaoyi.com:301/db').then(function(data){
             for (var i in data.data) {
                 if (data.data.hasOwnProperty(i)) {
                     self._posLineWay.push({ data: data.data[i], color: colors[count++] });
