@@ -46,12 +46,12 @@ class EchartsData {
         realOut: 0
     }
     @observable ticketsNum = {
-        prevOnline: 0,
-        online: 0,
-        prevOffline: 0,
-        offline: 0,
-        prevCheck: 0,
-        check: 0
+        prevOnline: 266,
+        online: 266,
+        prevOffline: 873,
+        offline: 873,
+        prevCheck: 1139,
+        check: 1139
     }
     @observable weather = {
         yesterday: {
@@ -115,11 +115,11 @@ class EchartsData {
             } else if (new Date().getHours() === 1 && change) {
                 change = !change;
             }
-            // self.fetchParkingData(i);
-            self.fetchWeatherData();
-            self.fetchPM25();
+            self.fetchParkingData(i);
+            // self.fetchWeatherData();
+            // self.fetchPM25();
             self.tickets(i);
-        }, 180000);
+        }, 10000);
         self.fetchParkingData(1);
         self.tickets(0);
         self.fetchWeatherData();
@@ -128,76 +128,132 @@ class EchartsData {
     }
     fetchParkingData(index) {
         let self = this;
-        var realInParking = [0, 133, 1, 0, 2, 1, 0, 1, 0, 0, 0];
-        var realOutParking = [0, 8, 2, 1, 0, 0, 1, 1, 2, 0, 0];
-        var realInBoating = [6, 6, 1, 0, 2, 1, 0, 1, 0, 0, 0];
-        var realOutBoating = [2, 2, 2, 1, 0, 0, 1, 1, 2, 0, 0];
         var boating = [{
-                "inUse": 4,
-                "all": 39,
+                "inUse": 2,
+                "all": 45,
                 "realIn": 2,
-                "realOut": 6
+                "realOut": 2
             }, {
-                "inUse": 4,
-                "all": 39,
+                "inUse": 2,
+                "all": 45,
                 "realIn": 2,
-                "realOut": 6
+                "realOut": 2
             }, {
                 "inUse": 2,
-                "all": 39,
-                "realIn": 0,
-                "realOut": 0
-            }, {
-                "inUse": 3,
-                "all": 39,
-                "realIn": 0,
-                "realOut": 1
+                "all": 45,
+                "realIn": 2,
+                "realOut": 2
             }, {
                 "inUse": 2,
-                "all": 39,
-                "realIn": 0,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 39,
-                "realIn": 0,
-                "realOut": 1
+                "all": 45,
+                "realIn": 2,
+                "realOut": 2
             }, {
                 "inUse": 2,
-                "all": 39,
-                "realIn": 1,
-                "realOut": 0
+                "all": 45,
+                "realIn": 2,
+                "realOut": 2
             }, {
                 "inUse": 2,
-                "all": 39,
-                "realIn": 0,
-                "realOut": 0
+                "all": 45,
+                "realIn": 2,
+                "realOut": 2
             }, {
                 "inUse": 2,
-                "all": 39,
-                "realIn": 0,
-                "realOut": 0
+                "all": 45,
+                "realIn": 2,
+                "realOut": 2
             }, {
                 "inUse": 2,
-                "all": 39,
-                "realIn": 0,
-                "realOut": 0
+                "all": 45,
+                "realIn": 2,
+                "realOut": 2
             }, {
-                "inUse": 3,
-                "all": 39,
-                "realIn": 0,
-                "realOut": 1
+                "inUse": 2,
+                "all": 45,
+                "realIn": 2,
+                "realOut": 2
+            }, {
+                "inUse": 2,
+                "all": 45,
+                "realIn": 2,
+                "realOut": 2
+            }, {
+                "inUse": 2,
+                "all": 45,
+                "realIn": 2,
+                "realOut": 2
+            }];
+        var parking = [{
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
+            }, {
+                "inUse": 87,
+                "all": 556,
+                "realIn": 354,
+                "realOut": 331
             }]
         this.parking.prevInUse = this.parking.inUse;
         this.parking.prevAll = this.parking.all;
         this.parking.prevRealIn = this.parking.realIn;
         this.parking.prevRealOut = this.parking.realIn;
-        axios.get('http://www.zhuxiaoyi.com:300/parkingLot' + index).then(function(data){
-            self.parking.inUse = data.data.inUse;
-            self.parking.all = data.data.all;
-            self.parking.realIn = realInParking[index];
-            self.parking.realOut = realOutParking[index];
-        })
+        this.boating.prevInUse = this.boating.inUse;
+        this.boating.prevAll = this.boating.all;
+        this.boating.prevRealIn = this.boating.realIn;
+        this.boating.prevRealOut = this.boating.realIn;
+        // axios.get('http://www.zhuxiaoyi.com:300/parkingLot' + index).then(function(data){
+            self.parking.inUse = parking[index].inUse;
+            self.parking.all = parking[index].all;
+            self.parking.realIn = parking[index].realIn;
+            self.parking.realOut = parking[index].realOut;
+        // })
         self.boating.inUse = boating[index].inUse;
         self.boating.all = boating[index].all;
         self.boating.realIn = boating[index].realIn;
@@ -281,6 +337,8 @@ class EchartsData {
                         }
                     })
                 }
+            }).catch(function(err) {
+                console.log(err);
             });
         }
         function findMin(compare) {
@@ -343,12 +401,14 @@ class EchartsData {
                 ]
             })
             self.PM25.nowAqi = json.result.aqi;
-        })
+        }).catch(function(err) {
+            console.log(err);
+        });
     }
     tickets(index) {
-        var onlineTicket = [124, 124, 124, 124, 125, 125, 125, 125, 126, 126];
-        var offlineTicket = [532, 532, 532, 532, 532, 532, 532, 532, 532, 532];
-        var error = [387, 389, 394, 408, 418, 426, 482, 456, 456, 456]
+        var onlineTicket = [0, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266];
+        var offlineTicket = [0, 873, 873, 873, 873, 873, 873, 873, 873, 873, 873];
+        var error = [0, 1139, 1139, 1139, 1139, 1139, 1139, 1139, 1139, 1139, 1139]
         let self = this;
         self.ticketsNum.prevOnline = self.ticketsNum.online;
         self.ticketsNum.prevOffline = self.ticketsNum.offline;

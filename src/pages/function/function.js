@@ -339,9 +339,9 @@ function dynamicChart(arg) {
 
 // 雷达图
 function radarChart(arg) {
-    var dataReal = [[39, 62, 20, 52, 2, 0, 0]];
-    var dataPre = [[36, 68, 21, 49, 0, 0, 0]];
-    var dataYes = [[34, 65, 27, 55, 1, 0, 2]];
+    var dataReal = [[20, 14, 60, 2, 0, 0, 0]];
+    var dataPre = [[26, 17, 61, 4, 0, 0, 0]];
+    var dataYes = [[24, 15, 67, 5, 0, 0, 0]];
 
     var lineStyle = {
         normal: {
@@ -552,7 +552,7 @@ function weiboData(arg) {
 // 停车场监控
 function parkingLotData(arg) {    
     var allParking = arg.parking.all;
-    var inUseParking = arg.parking.realIn - arg.parking.realOut;
+    var inUseParking = arg.parking.inUse;
     var allBoating = arg.boating.all;
     var inUseBoating = arg.boating.inUse;
     var pathSymbols = {

@@ -906,7 +906,7 @@ function customerTendData(arg) {
 			data: day
 		},
 		yAxis: {
-		    interval:50,
+		    // interval:50,
 		    axisTick:{show:false},
 		    axisLine:{
 		        show:false,
@@ -932,7 +932,7 @@ function customerTendData(arg) {
 				type:'line',
 				smooth:true,
 			    symbolSize:2,
-				data: [532, 567, 93, 80, 50, 96, 146],
+				data: [532, 567, 293, 280, 350, 896, 1146],
 				label: {
 					normal: {
 						show: true,

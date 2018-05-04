@@ -1,42 +1,42 @@
 {
     "parkingLot1": {
-        "inUse": 23,
+        "inUse": 87,
         "all": 556
     },
     "parkingLot2": {
-        "inUse": 24,
+        "inUse": 87,
         "all": 556
     },
     "parkingLot3":{
-        "inUse": 26,
+        "inUse": 87,
         "all": 556
     },
     "parkingLot4": {
-        "inUse": 25,
+        "inUse": 87,
         "all": 556
     },
     "parkingLot5": {
-        "inUse": 23,
+        "inUse": 87,
         "all": 556
     },
     "parkingLot6": {
-        "inUse": 20,
+        "inUse": 87,
         "all": 556
     },
     "parkingLot7": {
-        "inUse": 23,
+        "inUse": 87,
         "all": 556
     },
     "parkingLot8":{
-        "inUse": 22,
+        "inUse": 87,
         "all": 556
     },
     "parkingLot9": {
-        "inUse": 25,
+        "inUse": 87,
         "all": 556
     },
     "parkingLot10": {
-        "inUse": 23,
+        "inUse": 87,
         "all": 556
     }
 }

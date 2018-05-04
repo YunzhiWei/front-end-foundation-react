@@ -42,12 +42,12 @@ class BoatPosComponent extends Component {
 	            	<MarkerList 
 	            	    data={[
 	            	        {
-	            	            text: "赣仙游004",
-	            	            location: "114.754146,27.74542"
+	            	            text: "赣仙游008",
+	            	            location: "114.809682,27.71418"
 	            	        },
 	            	        {
-	            	            text: "赣仙游006",
-	            	            location: "114.808278,27.723758"
+	            	            text: "赣仙游002",
+	            	            location: "114.798471,27.726868"
 	            	        }
 	            	    ]} 
 	            	    fillStyle="#ff3333" 

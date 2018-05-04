@@ -30,10 +30,10 @@ class BoatSchedule extends Component {
 					<div className="bigdata_content">
 						<div className="c_content c_1">
 							<CardProvider className="cards" title="景区离港游船统计" color="light-green">
-								<IOBoatsComponent name={"游船"} type={"游船进"} />
+								<IOBoatsComponent name={"游船"} type={"游船出"} />
 							</CardProvider>
 							<CardProvider className="cards" title="景区在港游船统计" color="light-green">
-								<IOBoatsComponent name={"游船"} type={"游船出"} />
+								<IOBoatsComponent name={"游船"} type={"游船进"} />
 							</CardProvider>
 						</div>
 						<div className="c_content c_2 c_center">
@@ -43,10 +43,10 @@ class BoatSchedule extends Component {
 						</div>
 						<div className="c_content c_4">
 							<CardProvider className="cards" title="景区离港快艇统计" color="light-green">
-								<IOBoatsComponent name={"快艇"} type={"快艇进"} />
+								<IOBoatsComponent name={"快艇"} type={"快艇出"} />
 							</CardProvider>
 							<CardProvider className="cards" title="景区在港快艇统计" color="light-green">
-								<IOBoatsComponent name={"快艇"} type={"快艇出"} />
+								<IOBoatsComponent name={"快艇"} type={"快艇进"} />
 							</CardProvider>
 						</div>
 					</div>
