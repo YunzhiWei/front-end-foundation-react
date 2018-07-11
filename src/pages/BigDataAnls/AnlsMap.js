@@ -21,8 +21,8 @@ function setting(start, end) {
 class AnlsMapComponent extends Component {
     render() {
         const option = echartsOption(this.props.bigDataAnlsData, 'AnlsMap');
-        const setting1 = setting(0, 1139);
-        const setting2 = setting(0, 89);        
+        const setting1 = setting(0, 786);
+        const setting2 = setting(0, 591);        
         return (
             <div style={{width: '100%', height: '100%', overflow: 'hidden'}}>
                 <ReactEcharts
