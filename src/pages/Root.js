@@ -50,7 +50,7 @@ class RootPage extends Component {
 						<p style={styles.p}>客流分析</p>
 					</li>
 					<li>
-						<a href="http://59.55.128.155:8000/xnh/">
+						<a href="http://59.55.128.156:8000/xnh/">
 							<img src={require('./images/GIS.jpg')} style={styles.img} />
 						</a>
 						<p style={styles.p}>三维地理信息系统</p>
