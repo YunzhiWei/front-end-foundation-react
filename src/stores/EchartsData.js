@@ -185,60 +185,60 @@ class EchartsData {
                 "realOut": 2
             }];
         var parking = [{
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }, {
-                "inUse": 87,
+                "inUse": 86,
                 "all": 556,
-                "realIn": 354,
-                "realOut": 331
+                "realIn": 154,
+                "realOut": 68
             }]
         this.parking.prevInUse = this.parking.inUse;
         this.parking.prevAll = this.parking.all;
@@ -408,7 +408,7 @@ class EchartsData {
     tickets(index) {
         var onlineTicket = [0, 266, 266, 266, 266, 266, 266, 266, 266, 266, 266];
         var offlineTicket = [0, 873, 873, 873, 873, 873, 873, 873, 873, 873, 873];
-        var error = [0, 1139, 1139, 1139, 1139, 1139, 1139, 1139, 1139, 1139, 1139]
+        var error = [0, 786, 786, 786, 786, 786, 786, 786, 786, 786, 786]
         let self = this;
         self.ticketsNum.prevOnline = self.ticketsNum.online;
         self.ticketsNum.prevOffline = self.ticketsNum.offline;
