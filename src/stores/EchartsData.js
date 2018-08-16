@@ -50,8 +50,8 @@ class EchartsData {
         online: 387,
         prevOffline: 873,
         offline: 873,
-        prevCheck: 1260,
-        check: 1260
+        prevCheck: 698,
+        check: 698
     }
     @observable weather = {
         yesterday: {
@@ -185,60 +185,60 @@ class EchartsData {
                 "realOut": 1
             }];
         var parking = [{
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }, {
-                "inUse": 37,
+                "inUse": 57,
                 "all": 556,
-                "realIn": 169,
-                "realOut": 132
+                "realIn": 89,
+                "realOut": 32
             }]
         this.parking.prevInUse = this.parking.inUse;
         this.parking.prevAll = this.parking.all;
@@ -408,7 +408,7 @@ class EchartsData {
     tickets(index) {
         var onlineTicket = [0, 387, 387, 387, 387, 387, 387, 387, 387, 387, 387];
         var offlineTicket = [0, 873, 873, 873, 873, 873, 873, 873, 873, 873, 873];
-        var error = [0, 1260, 1260, 1260, 1260, 1260, 1260, 1260, 1260, 1260, 1260]
+        var error = [0, 698, 698, 698, 698, 698, 698, 698, 698, 698, 698]
         let self = this;
         self.ticketsNum.prevOnline = self.ticketsNum.online;
         self.ticketsNum.prevOffline = self.ticketsNum.offline;

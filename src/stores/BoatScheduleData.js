@@ -253,42 +253,42 @@ class BoatScheduleData {
             type: 0,
             line: '主码头-圣集寺',
             stayStation: '圣集寺',
-            time: '14:20:43'
+            time: '08:35:43'
         }, {
             license: "赣仙游006",
             type: 0,
             id: 1111111112,
             line: '主码头-圣集寺',
             stayStation: '圣集寺',
-            time: '14:48:28'
+            time: '08:48:28'
         }, {
             license: "赣仙游083",
             type: 1,
             id: 1111111113,
             line: '主码头-圣集寺',
             stayStation: '圣集寺',
-            time: '14:38:39'
+            time: '08:54:39'
         }, {
             license: "赣仙游013",
             type: 0,
             id: 1111111114,
             line: '主码头-圣集寺',
             stayStation: '圣集寺',
-            time: '15:02:53'
+            time: '08:56:53'
         }, {
             license: "赣仙游010",
             type: 0,
             id: 1111111115,
             line: '主码头-圣集寺',
             stayStation: '圣集寺',
-            time: '15:18:25'
+            time: '09:18:25'
         }, {
             license: "赣仙游102",
             type: 1,
             id: 1111111116,
             line: '主码头-圣集寺',
             stayStation: '圣集寺',
-            time: '15:08:39'
+            time: '09:08:39'
         }],
         outputBoats: [{
             license: "赣仙游004",
@@ -296,7 +296,7 @@ class BoatScheduleData {
             type: 0,
             line: '圣集寺-龙凤苑',
             stayStation: '主码头',
-            time: '14:01:49',
+            time: '08:51:49',
             stayTime: 0
         }, {
             license: "赣仙游006",
@@ -304,7 +304,7 @@ class BoatScheduleData {
             type: 0,
             line: '圣集寺-龙凤苑',
             stayStation: '主码头',
-            time: '14:38:23',
+            time: '08:58:23',
             stayTime: 0
         }, {
             license: "赣仙游083",
@@ -312,7 +312,7 @@ class BoatScheduleData {
             type: 1,
             line: '圣集寺-龙凤苑',
             stayStation: '主码头',
-            time: '14:28:59',
+            time: '08:49:59',
             stayTime: 0.5
         }, {
             license: "赣仙游013",
@@ -320,7 +320,7 @@ class BoatScheduleData {
             type: 0,
             line: '圣集寺-龙凤苑',
             stayStation: '主码头',
-            time: '14:56:25',
+            time: '09:06:25',
             stayTime: 0.5
         }, {
             license: "赣仙游010",
@@ -328,7 +328,7 @@ class BoatScheduleData {
             type: 0,
             line: '圣集寺-龙凤苑',
             stayStation: '主码头',
-            time: '15:18:46',
+            time: '09:18:46',
             stayTime: 0
         }, {
             license: "赣仙游102",
@@ -336,7 +336,7 @@ class BoatScheduleData {
             type: 1,
             line: '圣集寺-龙凤苑',
             stayStation: '主码头',
-            time: '15:23:31',
+            time: '09:23:31',
             stayTime: 0
         }]
     }
