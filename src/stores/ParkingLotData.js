@@ -1,8 +1,32 @@
 import { observable } from 'mobx';
+import { inject, observer } from 'mobx-react'
 import axios from 'axios';
-import fetchJsonp from 'fetch-jsonp';
+import crypto from 'crypto';
+import config from '../config';
+
+const { hik: { addr, port, appkey, appsecret }, api } = config.common;
 
 class ParkingLotData {
+    @observable parking = {
+        prevInUse: 0,
+        inUse: 0,
+        prevAll: 0,
+        all: 0,
+        prevRealIn: 0,
+        prevRealOut: 0,
+        realIn: 0,
+        realOut: 0
+    }
+    @observable boating = {
+        prevInUse: 0,
+        inUse: 0,
+        prevAll: 0,
+        all: 0,
+        prevRealIn: 0,
+        prevRealOut: 0,
+        realIn: 0,
+        realOut: 0
+    }
     @observable _carsDistribution = {
         mapDataSeries: [{
             name: "2017",
@@ -246,6 +270,7 @@ class ParkingLotData {
             // i+=2;
         // }, 4000);
         self.updateIOCarsTime();
+        self.fetchParkingData();
     }
     updateIOCarsTime() {
         var arrIn = [8, 14, 15, 12, 8, 6, 5, 6, 4, 2, 2, 0];
@@ -254,6 +279,29 @@ class ParkingLotData {
             item.In = arrIn[i];
             item.Out = arrOut[i];
         })
+    }
+    async fetchParkingData() {
+
+        const uri = "/openapi/service/base/user/getDefaultUserUuid";
+        const time = new Date().getTime().toString();
+
+        const body = {
+            appkey: appkey,
+            time: time
+        };
+
+        const token = crypto.createHash('md5').update(uri + JSON.stringify(body) + appsecret).digest('hex');
+
+        const requestBody = {
+            url: `http://${addr}:${port}${uri}?token=${token}`,
+            body: body, 
+        }
+        const result = await axios({
+            method: 'POST', 
+            url: `http://${api.addr}:${api.port}${api.path}`, 
+            data: requestBody
+        });
+        console.log(result.data);
     }
     updateIOCars() {
        this._IOCars.inSumPrev = this._IOCars.inSum;

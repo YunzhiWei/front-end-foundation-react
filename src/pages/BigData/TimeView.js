@@ -25,9 +25,12 @@ class TimeViewComponent extends Component {
 		    	minute: addTime(date.getMinutes()),
 		    	second: addTime(date.getSeconds())
 		    })
-		    requestAnimationFrame(step);
+		    self.myReq = requestAnimationFrame(step);
 		}
-		requestAnimationFrame(step);
+		self.myReq = requestAnimationFrame(step);
+	}
+	componentWillUnmount() {
+	    cancelAnimationFrame(this.myReq)
 	}
 	render() {
 		return (

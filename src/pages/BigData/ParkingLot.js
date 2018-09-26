@@ -19,7 +19,7 @@ function setting(start, end) {
 	return setTemp;
 }
 
-@inject("echartsData") @observer
+@inject("echartsData") @inject("parkingLotData") @observer
 class ParkingLotComponent extends Component {
 	render() {
 		const { parking, boating } = this.props.echartsData;
