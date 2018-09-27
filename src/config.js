@@ -15,7 +15,7 @@ const config = {
 		baidu: {
 			ap: "10059654", 
 			ak: "sNMXxOABfRbtHccnLt0UhBUuAggl4pNA", 
-			transCrood: "http://api.map.baidu.com/geoconv/v1/"
+			transCrood: "api.map.baidu.com/geoconv/v1/"
 		}, 
 		hik: {
 			addr: "218.87.96.224", 
@@ -28,9 +28,9 @@ const config = {
 			getPlotStatus: "/openapi/service/pms/status/getPlotStatus"
 		}, 
 		api: {
-			addr: "localhost", 
-			port: "3000", 
-			path: "/test"
+			addr: "xvhm.yg-net.com", 
+			appid: "10000", 
+			key: "1b0b9d63-23f2-43bd-815f-8b63bd62d046"
 		}
 	}
 }

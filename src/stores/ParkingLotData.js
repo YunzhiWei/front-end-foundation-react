@@ -1,11 +1,14 @@
 import { observable } from 'mobx';
 import config from '../config';
 import HikApi from './HikApi';
-const { hik: { getPlotStatus } } = config.common;
+import { FetchYG } from '../Api';
+import { dateFormat } from '../Lib';
+const { hik: { getPlotStatus, getVehicleRecords, fetchVehicleRecordFuzzy } } = config.common;
 
 const hikApi = new HikApi();
 
 class ParkingLotData {
+    @observable plotList = []
     @observable parking = {
         prevInUse: 0,
         inUse: 0,
@@ -263,13 +266,14 @@ class ParkingLotData {
         var self = this;
         var i = 0;
         // setInterval(() => {
-            // self.updateIOCarsTime();
-            // self.updateIOCars();
-            // self.scrollContent(i);
-            // i+=2;
+        //     self.updateIOCarsTime();
+        //     self.updateIOCars();
+        //     self.scrollContent(i);
+        //     i+=2;
         // }, 4000);
-        self.updateIOCarsTime();
-        self.fetchParkingData();
+        this.updateIOCarsTime();
+        this.fetchPlotStatus();
+        this.fetchPassingCarsData();
     }
     updateIOCarsTime() {
         var arrIn = [8, 14, 15, 12, 8, 6, 5, 6, 4, 2, 2, 0];
@@ -279,7 +283,7 @@ class ParkingLotData {
             item.Out = arrOut[i];
         })
     }
-    async fetchParkingData() {
+    async fetchPlotStatus() {
         const res = await hikApi.FetchHik({
             uri: getPlotStatus, 
             body: {
@@ -287,7 +291,19 @@ class ParkingLotData {
                 pageSize: 1000,
             }
         })
-        console.log(res);
+        this.plotList = res.list
+    }
+    async fetchPassingCarsData() {
+        const res = await hikApi.FetchHik({
+            uri: getVehicleRecords, 
+            body: {
+                pageNo: 1,
+                pageSize: 1000,
+                startTime: new Date(`${dateFormat(new Date(), 'yyyy-MM-dd')} 00:00:00`).getTime(), 
+                endTime: new Date().getTime()
+            }
+        })
+        console.log(res.list);
     }
     updateIOCars() {
        this._IOCars.inSumPrev = this._IOCars.inSum;

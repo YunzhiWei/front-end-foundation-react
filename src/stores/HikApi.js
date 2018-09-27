@@ -2,6 +2,7 @@ import { observable, computed } from 'mobx';
 import axios from 'axios';
 import crypto from 'crypto';
 import config from '../config';
+import $ from 'jquery';
 const { hik: { addr, port, appkey, appsecret, getDefaultUserUuid }, api } = config.common;
 
 class HikApi {
@@ -20,23 +21,29 @@ class HikApi {
     const data = {
         appkey: appkey,
         time: time, 
-        opUserUuid: this.userUuid
+        opUserUuid: "05fb9e8cdfb511e78e7cc75bf57dc840"
     }
     Object.assign(data, body);
     const token = crypto.createHash('md5').update(uri + JSON.stringify(data) + appsecret).digest('hex');
     const requestBody = {
         url: `http://${addr}:${port}${uri}?token=${token}`,
-        body: data
+        body: JSON.stringify(data)
     }
     const result = await axios({
-        method: 'POST', 
-        url: `http://${api.addr}:${api.port}${api.path}`, 
-        data: requestBody
+        method: 'GET', 
+        url: `http://${api.addr}/OpenApi/CommonHandle`, 
+        params: {
+          key: api.key, 
+          appid: api.appid, 
+          url: `http://${addr}:${port}${uri}?token=${token}`, 
+          body: JSON.stringify(data)
+        }
     });
     if (result.data.errorCode) {
-      alert(`地址<${uri}>请求错误：${result.data.errorMessage}`);
+        alert(`地址<${uri}>请求错误：${result.data.errorMessage}`);
     }
-    return result.data.data;
+    console.log(JSON.parse(result.data));
+    return JSON.parse(result.data).data;
   }
 }
 
