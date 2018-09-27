@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { inject, observer } from 'mobx-react'
 import './BigData/css/bigdata.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -19,6 +20,7 @@ import ParkingChargeComponent from './BigData/ParkingCharge';
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import weiboData from './BigData/data/weibo.json';
 
+@inject("hikApi") @observer
 class BigData extends Component {
     render() {
  		return (

@@ -1,10 +1,9 @@
 import { observable } from 'mobx';
-import { inject, observer } from 'mobx-react'
-import axios from 'axios';
-import crypto from 'crypto';
 import config from '../config';
+import HikApi from './HikApi';
+const { hik: { getPlotStatus } } = config.common;
 
-const { hik: { addr, port, appkey, appsecret }, api } = config.common;
+const hikApi = new HikApi();
 
 class ParkingLotData {
     @observable parking = {
@@ -281,27 +280,14 @@ class ParkingLotData {
         })
     }
     async fetchParkingData() {
-
-        const uri = "/openapi/service/base/user/getDefaultUserUuid";
-        const time = new Date().getTime().toString();
-
-        const body = {
-            appkey: appkey,
-            time: time
-        };
-
-        const token = crypto.createHash('md5').update(uri + JSON.stringify(body) + appsecret).digest('hex');
-
-        const requestBody = {
-            url: `http://${addr}:${port}${uri}?token=${token}`,
-            body: body, 
-        }
-        const result = await axios({
-            method: 'POST', 
-            url: `http://${api.addr}:${api.port}${api.path}`, 
-            data: requestBody
-        });
-        console.log(result.data);
+        const res = await hikApi.FetchHik({
+            uri: getPlotStatus, 
+            body: {
+                pageNo: 1,
+                pageSize: 1000,
+            }
+        })
+        console.log(res);
     }
     updateIOCars() {
        this._IOCars.inSumPrev = this._IOCars.inSum;

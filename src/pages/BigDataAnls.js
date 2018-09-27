@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { inject, observer } from 'mobx-react'
 import './BigData/css/bigdata.css';
 import './BigDataAnls/css/bigdataAnls.css';
 
@@ -16,6 +17,7 @@ import CustomerTendComponent from './BigDataAnls/CustomerTend';
 
 import CardProvider from './mui/CardProvider';
 
+@inject("hikApi") @observer
 class BigDataAnls extends Component {
     render() {
    		return (

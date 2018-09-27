@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { inject, observer } from 'mobx-react'
 import './BigData/css/bigdata.css';
 import './ParkingLot/css/parking.css';
 
@@ -12,6 +13,7 @@ import StandingTimeComponent from './ParkingLot/StandingTime';
 import IOCarsComponent from './ParkingLot/IOCars';
 import IOCarsTimeComponent from './ParkingLot/IOCarsTime';
 
+@inject("hikApi") @observer
 class ParkingLot extends Component {
     render() {
    		return (
