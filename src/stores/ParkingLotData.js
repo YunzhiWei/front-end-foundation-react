@@ -1,10 +1,9 @@
 import { observable } from 'mobx';
 import config from '../config';
 import HikApi from './HikApi';
-import { FetchYG } from '../Api';
-import { dateFormat, carLicenceCity, deepClone } from '../Lib';
-const { hik: { getPlotStatus, getVehicleRecords, fetchVehicleRecordFuzzy } } = config.common;
+import { dateFormat, carLicenceCity, provinceName, deepClone, isEmpty } from '../Lib';
 
+const { hik: { getPlotStatus, getVehicleRecords, fetchVehicleRecordFuzzy } } = config.common;
 const hikApi = new HikApi();
 
 class ParkingLotData {
@@ -20,121 +19,14 @@ class ParkingLotData {
         prevRealOut: 0,
         realOut: 0
     }
-    @observable boating = {
-        prevInUse: 0,
-        inUse: 0,
-        prevAll: 0,
-        all: 0,
-        prevRealIn: 0,
-        realIn: 0,
-        prevRealOut: 0,
-        realOut: 0
-    }
     @observable _carsDistribution = {
         mapDataSeries: [{
             name: "2017",
-            data: [{
-                name: "南昌市",
-                value: 642
-            }, {
-                name: "九江市",
-                value: 82
-            }, {
-                name: "宜春市",
-                value: 715
-            }, {
-                name: "上饶市",
-                value: 29
-            }, {
-                name: "鹰潭市",
-                value: 7
-            }, {
-                name: "赣州市",
-                 value: 203
-            }, {
-                name: "吉安市",
-                value: 429
-            }, {
-                name: "萍乡市",
-                value: 554
-            }, {
-                name: "新余市",
-                value: 2232
-            }, {
-                name: "抚州市",
-                value: 201
-            }, {
-                name: "景德镇市",
-                value: 9
-            }]
+            data: []
         }],
         geoMapName: "江西",
     }
-    @observable _carsDistribution3 = [{
-        value: 3418,
-        name: '江西省'
-    }, {
-        value: 694,
-        name: '湖南省'
-    }, {
-        value: 276,
-        name: '上海市'
-    }, {
-        value: 146,
-        name: '福建省'
-    }, {
-        value: 129,
-        name: '江苏省'
-    }]
-    @observable _standingTime = [{
-        value: 5,
-        name: '≤0.5h', 
-        range: [0, 0.5]
-    }, {
-        value: 10,
-        name: '0.5~1.5h', 
-        range: [0.5, 1.5]
-    }, {
-        value: 14,
-        name: '1.5~2.5h', 
-        range: [1.5, 2.5]
-    }, {
-        value: 13,
-        name: '2.5~3.5h', 
-        range: [2.5, 3.5]
-    }, {
-        value: 34,
-        name: '3.5~4.5h', 
-        range: [3.5, 4.5]
-    }, {
-        value: 15,
-        name: '4.5~5.5h', 
-        range: [4.5, 5.5]
-    }, {
-        value: 22,
-        name: '5.5~6.5h', 
-        range: [5.5, 6.5]
-    }, {
-        value: 15,
-        name: '6.5~7.5h', 
-        range: [6.5, 7.5]
-    }, {
-        value: 9,
-        name: '7.5~8.5h', 
-        range: [7.5, 8.5]
-    }, {
-        value: 1,
-        name: '8.5~9.5h', 
-        range: [8.5, 9.5]
-    }, {
-        value: 0,
-        name: '9.5~10.5h', 
-        range: [9.5, 10.5]
-    }, {
-        value: 0,
-        name: '10.5~11.5h', 
-        range: [10.5, 11.5]
-    }]
+    @observable _carsDistribution3 = []
     @observable _IOCars = {
         inSumPrev: 0,
         inSum: 0,
@@ -143,75 +35,142 @@ class ParkingLotData {
         inputCars: [],
         outputCars: []
     }
-    @observable _IOCarsTime = [{
-        id: 0,
-        In: 0,
-        Out: 0
-    }, {
-        id: 1,
-        In: 0,
-        Out: 0
-    }, {
-        id: 2,
-        In: 0,
-        Out: 0
-    }, {
-        id: 3,
-        In: 0,
-        Out: 0
-    }, {
-        id: 4,
-        In: 0,
-        Out: 0
-    }, {
-        id: 5,
-        In: 0,
-        Out: 0
-    }, {
-        id: 6,
-        In: 0,
-        Out: 0
-    }, {
-        id: 7,
-        In: 0,
-        Out: 0
-    }, {
-        id: 8,
-        In: 0,
-        Out: 0
-    }, {
-        id: 9,
-        In: 0,
-        Out: 0
-    }, {
-        id: 10,
-        In: 0,
-        Out: 0
-    }, {
-        id: 11,
-        In: 0,
-        Out: 0
-    }]
+    @observable _IOCarsTime = []
+    @observable _standingTime = []
     constructor() {
-        var self = this;
-        var i = 0;
-        // setInterval(() => {
-        //     self.updateIOCarsTime();
-        //     self.updateIOCars();
-        //     self.scrollContent(i);
-        //     i+=2;
-        // }, 4000);
-        this.updateIOCarsTime();
+        const _this = this;
+        setInterval(() => {
+            _this.fetchPlotStatus();
+            _this.fetchPassingCarsData();
+            _this.toStatisticsVehicleOwnership();
+        }, 30000);
         this.fetchPlotStatus();
         this.fetchPassingCarsData();
+        this.toStatisticsVehicleOwnership();
     }
-    updateIOCarsTime() {
-        var arrIn = [8, 14, 15, 12, 8, 6, 5, 6, 4, 2, 2, 0];
-        var arrOut = [0, 1, 2, 2, 8, 7, 6, 22, 19, 4, 2, 2];
-        this._IOCarsTime.map((item, i) => {
-            item.In = arrIn[i];
-            item.Out = arrOut[i];
+    async toStatisticsVehicleOwnership() {
+        // 计数变量，用于获取数据的页码
+        let count = 0;
+        // 历史所有过车记录
+        let carsList = []
+        // 历史所有入车记录
+        let inputCars = [];
+        // 历史所有出车记录
+        let outputCars = [];
+        // 全国省份车辆归属地集合
+        let provinceCarsSet = {}
+        // 全省车辆归属地集合
+        let JiangxiCarsSet = {
+            ["南昌"]: 0, 
+            ["赣州"]: 0, 
+            ["宜春"]: 0, 
+            ["吉安"]: 0, 
+            ["上饶"]: 0, 
+            ["抚州"]: 0, 
+            ["九江"]: 0, 
+            ["景德镇"]: 0, 
+            ["萍乡"]: 0, 
+            ["新余"]: 0, 
+            ["鹰潭"]: 0
+        };
+        // 停留时长统计
+        let standingTime = [{
+            value: 0,
+            name: '≤0.5h', 
+            range: [0, 0.5]
+        }, {
+            value: 0,
+            name: '0.5~1.5h', 
+            range: [0.5, 1.5]
+        }, {
+            value: 0,
+            name: '1.5~2.5h', 
+            range: [1.5, 2.5]
+        }, {
+            value: 0,
+            name: '2.5~3.5h', 
+            range: [2.5, 3.5]
+        }, {
+            value: 0,
+            name: '3.5~4.5h', 
+            range: [3.5, 4.5]
+        }, {
+            value: 0,
+            name: '4.5~5.5h', 
+            range: [4.5, 5.5]
+        }, {
+            value: 0,
+            name: '5.5~6.5h', 
+            range: [5.5, 6.5]
+        }, {
+            value: 0,
+            name: '6.5~7.5h', 
+            range: [6.5, 7.5]
+        }, {
+            value: 0,
+            name: '7.5~8.5h', 
+            range: [7.5, 8.5]
+        }, {
+            value: 0,
+            name: '8.5~9.5h', 
+            range: [8.5, 9.5]
+        }, {
+            value: 0,
+            name: '9.5~10.5h', 
+            range: [9.5, 10.5]
+        }, {
+            value: 0,
+            name: '10.5~11.5h', 
+            range: [10.5, 11.5]
+        }];
+        // 循环获取历史过车记录
+        while (++count) {
+            let res = await hikApi.FetchHik({
+                uri: getVehicleRecords, 
+                body: {
+                    pageNo: count,
+                    pageSize: 1,
+                    startTime: new Date().getTime() - 1000*3600*24*365, 
+                    endTime: new Date().getTime()
+                }
+            })
+            if (count !== res.pageNo) break;
+            carsList = carsList.concat(res.list);
+        }
+        // 归类入车和出车记录
+        carsList.forEach(car => car.carOut ? outputCars.push(car) : inputCars.push(car));
+        // 根据出车记录进行车辆分析
+        outputCars.forEach((car) => {
+            let license = car.plateNo;
+            let province = provinceName[license.slice(0, 1)];
+            let city = carLicenceCity[license.slice(0, 2)];
+            let time = car.crossTime;
+            isEmpty(provinceCarsSet[province]) ? provinceCarsSet[province] = 1 : provinceCarsSet[province]++;
+            if (province === "江西") {
+                JiangxiCarsSet[city]++;
+            }
+            inputCars.forEach((hisCar, i) => {
+                if (hisCar.plateNo === car.plateNo) {
+                    let stayTime = (new Date(car.crossTime) - new Date(hisCar.crossTime))/1000/60/60;
+                    standingTime.forEach((time, j) => {
+                        if (time.range[0] < stayTime && time.range[1] > stayTime) {
+                            standingTime[j].value++;
+                        }
+                    })
+                }
+            })
         })
+        this._carsDistribution.mapDataSeries[0].name = dateFormat(new Date(), 'yyyy') - 1;
+        this._carsDistribution.mapDataSeries[0].data = Object.keys(JiangxiCarsSet).map((city) => ({
+            name: `${city}市`,
+            value: JiangxiCarsSet[city]
+        }))
+        this._carsDistribution3 = Object.keys(provinceCarsSet).map((province) => ({
+            name: province, 
+            value: provinceCarsSet[province]
+        }))
+        this._standingTime = standingTime;
+        
     }
     async fetchPlotStatus() {
         const isIncluded = (a,b) => !!b.filter((item) => ((item[0] <= a) && item[1] >= a)).length;
@@ -306,13 +265,63 @@ class ParkingLotData {
         let outSum = 0;
         let inputCars = [];
         let outputCars = [];
+        let IOCarsTime = {
+            ["08:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["09:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["10:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["11:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["12:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["13:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["14:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["15:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["16:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["17:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["18:00"]: {
+                In: 0,
+                Out: 0
+            }, 
+            ["19:00"]: {
+                In: 0,
+                Out: 0
+            }
+        }
         let res = await hikApi.FetchHik({
             uri: getVehicleRecords, 
             body: {
                 pageNo: 1,
                 pageSize: 1000,
-                // startTime: new Date(`${dateFormat(new Date(), 'yyyy-MM-dd')} 00:00:00`).getTime(), 
-                // endTime: new Date().getTime()
+                startTime: new Date(`${dateFormat(new Date(), 'yyyy-MM-dd')} 00:00:00`).getTime(), 
+                endTime: new Date().getTime()
             }
         })
         res.list.forEach((item) => {
@@ -331,6 +340,14 @@ class ParkingLotData {
                     });
                 }
                 outSum++;
+                let hour = item.crossTime.slice(11,13);
+                if (Number(hour) < 8) {
+                    IOCarsTime[`08:00`].Out++
+                } else if (Number(hour) > 19) {
+                    IOCarsTime[`19:00`].Out++
+                } else {
+                    IOCarsTime[`${hour}:00`].Out++
+                }
             } else {
                 outputCars.forEach((car, i) => {
                     if (car.hasGetStayTime) {
@@ -352,6 +369,14 @@ class ParkingLotData {
                     })
                 }
                 inSum++;
+                let hour = item.crossTime.slice(11,13);
+                if (Number(hour) < 8) {
+                    IOCarsTime[`08:00`].In++
+                } else if (Number(hour) > 19) {
+                    IOCarsTime[`19:00`].In++
+                } else {
+                    IOCarsTime[`${hour}:00`].In++
+                }
             }
         })
         this._IOCars.inSumPrev = this.parking.prevRealIn = inSumPrev;
@@ -360,6 +385,7 @@ class ParkingLotData {
         this._IOCars.outSum = this.parking.realOut = outSum;
         this._IOCars.inputCars = inputCars;
         this._IOCars.outputCars = outputCars;
+        this._IOCarsTime = IOCarsTime;
     }
 }
 

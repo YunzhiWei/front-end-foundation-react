@@ -6,6 +6,7 @@ function carsDistributionData(arg) {
     const {geoMapName, visualMin, visualMax, visualLabel, mapDataSeries} = arg;
     var series = [];
     var label;
+    var max = 0;
     mapDataSeries.map((item, i) => {
         label = {
             normal: {
@@ -23,6 +24,7 @@ function carsDistributionData(arg) {
         series[i].data = [];
         item.data.map((ele) => {
             series[i].data.push(ele);
+            max = ele.value > max ? ele.value : max;
         });
         series[i].name = item.name;
         series[i].type = "map";
@@ -47,7 +49,7 @@ function carsDistributionData(arg) {
         series: series
     }
     option.visualMap.min = 0;
-    option.visualMap.max = 800;
+    option.visualMap.max = max;
     return option;
 }
 
@@ -58,6 +60,7 @@ function carsDistribution2Data(arg) {
     var max;
     var maxs = [];
     var sum = 0;
+    if (!arg.length) return;
     arg.map((item) => {
         order.push(item);
         sum+=item.value;
@@ -292,9 +295,9 @@ function standingTimeData(arg) {
 
 // 车辆进出时间分量
 function IOCarsTimeData(arg) {
-    var dataIn = arg.map((item) => item.In);
-    var dataOut = arg.map((item) => item.Out);
-    var xData = ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00'];
+    var xData = Object.keys(arg);
+    var dataIn = xData.map((item) => arg[item].In);
+    var dataOut = xData.map((item) => arg[item].Out);
     var itemStyle = { normal: { label: { textStyle: { fontSize: 12 } } } };
     var markPointData = [{type : 'max', name: '最大值'},{type : 'min', name: '最小值'}];
     var markLineData = [{type : 'average', name : '平均值'}];

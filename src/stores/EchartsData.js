@@ -1,6 +1,7 @@
 import { observable } from 'mobx';
 import axios from 'axios';
 import fetchJsonp from 'fetch-jsonp';
+import { FetchYG } from '../Api';
 
 function aqiDataGenerate(now, oneDay, value){
     now = new Date(+now + oneDay);
@@ -25,26 +26,6 @@ function aqiData(){
 }
 
 class EchartsData {
-    // @observable parking = {
-    //     prevInUse: 0,
-    //     inUse: 0,
-    //     prevAll: 0,
-    //     all: 0,
-    //     prevRealIn: 0,
-    //     prevRealOut: 0,
-    //     realIn: 0,
-    //     realOut: 0
-    // }
-    // @observable boating = {
-    //     prevInUse: 0,
-    //     inUse: 0,
-    //     prevAll: 0,
-    //     all: 0,
-    //     prevRealIn: 0,
-    //     prevRealOut: 0,
-    //     realIn: 0,
-    //     realOut: 0
-    // }
     @observable ticketsNum = {
         prevOnline: 387,
         online: 387,
@@ -118,147 +99,14 @@ class EchartsData {
             // self.fetchParkingData(i);
             // self.fetchWeatherData();
             // self.fetchPM25();
-            self.tickets(i);
+            self.fetchTicketsNumber(i);
         }, 10000);
         // self.fetchParkingData(1);
-        self.tickets(0);
+        self.fetchTicketsNumber(0);
         self.fetchWeatherData();
         self.fetchPM25();
         self.fetchPassData();
     }
-    // fetchParkingData(index) {
-    //     let self = this;
-    //     var boating = [{
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }, {
-    //             "inUse": 3,
-    //             "all": 45,
-    //             "realIn": 4,
-    //             "realOut": 1
-    //         }];
-    //     var parking = [{
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }, {
-    //             "inUse": 57,
-    //             "all": 556,
-    //             "realIn": 89,
-    //             "realOut": 32
-    //         }]
-    //     this.parking.prevInUse = this.parking.inUse;
-    //     this.parking.prevAll = this.parking.all;
-    //     this.parking.prevRealIn = this.parking.realIn;
-    //     this.parking.prevRealOut = this.parking.realIn;
-    //     this.boating.prevInUse = this.boating.inUse;
-    //     this.boating.prevAll = this.boating.all;
-    //     this.boating.prevRealIn = this.boating.realIn;
-    //     this.boating.prevRealOut = this.boating.realIn;
-    //     // axios.get('http://www.zhuxiaoyi.com:300/parkingLot' + index).then(function(data){
-    //         self.parking.inUse = parking[index].inUse;
-    //         self.parking.all = parking[index].all;
-    //         self.parking.realIn = parking[index].realIn;
-    //         self.parking.realOut = parking[index].realOut;
-    //     // })
-    //     self.boating.inUse = boating[index].inUse;
-    //     self.boating.all = boating[index].all;
-    //     self.boating.realIn = boating[index].realIn;
-    //     self.boating.realOut = boating[index].realOut;
-    // }
     fetchWeatherData () {
         let self = this;
         let appKey = 27807;
@@ -405,7 +253,9 @@ class EchartsData {
             console.log(err);
         });
     }
-    tickets(index) {
+    async fetchTicketsNumber(index) {
+        let res = await FetchYG("/OpenApi/GetPassengerFlowStatistics");
+        console.log(res);
         var onlineTicket = [0, 387, 387, 387, 387, 387, 387, 387, 387, 387, 387];
         var offlineTicket = [0, 873, 873, 873, 873, 873, 873, 873, 873, 873, 873];
         var error = [0, 698, 698, 698, 698, 698, 698, 698, 698, 698, 698]

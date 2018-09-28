@@ -3,6 +3,16 @@ import axios from 'axios';
 import fetchJsonp from 'fetch-jsonp';
 
 class BoatScheduleData {
+    @observable boating = {
+        prevInUse: 0,
+        inUse: 0,
+        prevAll: 0,
+        all: 0,
+        prevRealIn: 0,
+        realIn: 0,
+        prevRealOut: 0,
+        realOut: 0
+    }
     @observable _fortyBoats = [{
             "name": "赣仙游004",
             "seats": "33",
