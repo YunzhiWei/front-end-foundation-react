@@ -13,7 +13,6 @@ class AdminPage extends Component {
 
   render() {
     const {match} = this.props;
-    console.log("Admin Page match: ", match);
 
     return(
       <div>

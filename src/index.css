@@ -1,5 +1,43 @@
-body {
+html,body {
   margin: 0;
   padding: 0;
+  width: 1920px;
+  height: 1080px;
   font-family: sans-serif;
+  background: transparent;
+  overflow: hidden;
+}
+html {
+  background-color: rgb(12, 22, 28);
+}
+.flipster {
+  position: relative;
+  height: 100%!important;
+  width: 100%;
+  overflow: visible;
+}
+.flipster ul.flip-items {
+  perspective: 1200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 480px!important;
+  height: 270px!important;
+  margin-top: -136px;
+  margin-left: -240px;
+}
+.flipster img {
+  opacity: .8;
+  margin-bottom: 20px;
+  transition: all .35s ease-in-out;
+}
+.flipster img:hover {
+  opacity: 1;
+  transform: scale(1.1, 1.1);
+  transition: all .35s ease-in-out;
+}
+#root,.App,.App>switch {
+  display: block;
+  width: 100%;
+  height: 100%;
 }

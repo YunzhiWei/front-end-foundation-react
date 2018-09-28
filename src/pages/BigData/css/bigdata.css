@@ -1,0 +1,93 @@
+@font-face { font-family: 'sa-digital-number'; src: url('fonts/sa-digital-number.eot'); }
+@font-face { font-family: 'sa-digital-number'; src: url('fonts/sa-digital-number.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'ZZGFSH'; src: url('fonts/造字工房尚黑（非商用）纤细体.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+[class^="icon-"], [class*=" icon-"] { font-family: 'sa-digital-number'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1;	/* Better Font Rendering =========== */ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.icon-minus:before { content: "\2d"; }
+.icon-zero:before { content: "\30"; }
+.icon-one:before { content: "\31"; }
+.icon-two:before { content: "\32"; }
+.icon-three:before { content: "\33"; }
+.icon-four:before { content: "\34"; }
+.icon-five:before { content: "\35"; }
+.icon-six:before { content: "\36"; }
+.icon-seven:before { content: "\37"; }
+.icon-eight:before { content: "\38"; }
+.icon-nine:before { content: "\39"; }
+.text-baoman { color: #ff4362; }
+.text-baohe { color: #fcc60c; }
+.text-kongxian { color: #49fed8; }
+.text-zhengchang { color: #48d8fd; }
+
+.echart-list { height: 100%; }
+/*大数据标题 start */
+.large-screen .bigdata_title { width: 80%; height: 100px; font-size: 0px; padding: 14px 0; margin: 0 auto; text-align: center; color: #48D8FD; position: relative; }
+.bigdata_title span { display: inline-block; font-size: 50px; }
+.bigdata_l { width: 30%; height: 70%; margin-top: 12px; float: left; background-position: center; background: url(../images/bigdata_l.png); background-repeat: no-repeat; background-size: 100% 100%; }
+.bigdata_r { width: 30%; height: 70%; margin-top: 12px; float: left; background-position: center; background: url(../images/bigdata_r.png); background-repeat: no-repeat; background-size: 100% 100%; }
+.bigdata_c { width: 40%; height: 100%; float: left; }
+/*大数据标题 end */
+/*大数据图表 start */
+.large-screen .bigdata_content { width: 100%; height: 980px; display: -ms-flexbox; display: flex; display: -webkit-flex; }
+.bigdata_content .c_content { height: 100%; width: 480px; display: -ms-flexbox; display: flex; display: -webkit-flex; -ms-flex-direction: column; flex-direction: column; padding: 0 12px; }
+.bigdata_content div.c_2 { width: 640px; }
+.bigdata_content div.c_3 { width: 320px; }
+.bigdata_content .c_content .cards { width: 100%; height: 335px; }
+.bigdata_content .c_content .cards:first-child { width: 100%; height: 238px; }
+/*大数据图表 end */
+
+#echarts-content1>div { float: left; }
+
+.cards .tickets_num { width: 50%; height: 100%; display: inline-block; padding-top: 18px; font-size: 18px; color: #fff; }
+.cards .tickets_num p { height: 45px; margin: 5px 0; text-align: right; }
+.cards .tickets_num p>span { float: left; position: relative; height: 45px; line-height: 45px; display: inline-block; color: rgba(12, 207, 253, .9); width: 40%; }
+.cards .tickets_num p>span:first-child { width: 50%; }
+.cards .tickets_num p>span:last-child { width: 10%; }
+.cards .tickets_num b { position: relative; top: -3px; color: rgba(30, 250, 225, .8); font-size: 26px; font-family: 'ZZGFSH'; /*text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);*/ margin-right: 8px; }
+
+.cards .parking_num { width: 40%; float: left; height: 100%; display: inline-table; font-size: 16px; color: #fff; }
+.cards .parking_num hr { margin: 5px 0; border-top: 2px solid rgba(12, 207, 253, .4); }
+.cards .parking_num p { height: 40px; margin: 5px 0; text-align: right; }
+.cards .parking_num p>span { float: left; position: relative; height: 40px; line-height: 40px; display: inline-block; color: rgba(12, 207, 253, .9); width: 40%; }
+.cards .parking_num p>span:first-child { width: 50%; text-align: left; padding-left: 5px; }
+.cards .parking_num p>span:last-child { width: 10%; }
+.cards .parking_num b { position: relative; top: -3px; color: rgba(30, 250, 225, .8); font-size: 26px; font-family: 'ZZGFSH'; /*text-shadow: 0px 0px 20px rgba(255, 255, 255, .5);*/ margin-right: 8px; }
+
+.time_view { font-family: 'ZZGFSH'; height: 238px; box-sizing: border-box; margin: 12px 0; padding: 35px 0; color: rgb(17, 227, 242); text-align: right; font-size: 32px; font-weight: 900; }
+.time_view .week { font-size: 40px }
+.time_view .hhmmss { font-size: 60px; }
+.time_view .hhmmss span { display: inline-table; text-align: center; width: 70px; }
+.time_view .hhmmss .split { width: 18px; animation: dot 4s ease-in-out infinite; }
+@keyframes dot {
+	0% { opacity: 1; }
+	50% { opacity: .4; }
+	100% { opacity: 1; }
+}
+
+.parking_charge>div { display: inline-block; height: 100%; border-radius: 40px; width: 385px; margin: 0 10px; padding: 40px; background: linear-gradient(to bottom, rgba(40, 66, 143, 1), rgba(40, 66, 143, .1) 70%, rgba(40, 66, 143, 0)); }
+.parking_charge p { text-align: center; margin: 100px auto; }
+.parking_charge .charge_title, .parking_charge .charge_subtitle, .parking_charge .charge_state { font-size: 58px; color: #48d8fd; }
+.parking_charge .charge_num { font-family: 'ZZGFSH'; font-weight: 900; font-size: 68px; margin-bottom: 180px; }
+.parking_charge .charge_state { }
+.parking_charge span { display: inline-block; box-sizing: content-box; height: 20px; line-height: 20px; width: 60%; padding: 2px 4px;	/*margin-top: 40px;*/ border-width: 2px; border-style: solid; border-radius: 6px; }
+.parking_charge .text-baoman span { border-color: #ff4362; color: #ff4362; }
+.parking_charge .text-kongxian span { border-color: #49fed8; color: #49fed8; }
+.parking_charge .text-baohe span { border-color: #fcc60c; color: #fcc60c; }
+.parking_charge .text-zhengchang span { border-color: #48d8fd; color: #48d8fd; }
+
+.bigdata_content .c_content .cards { position: relative; }
+.bigdata_content .c_content .cards a { position: absolute; z-index: 10; width: 430px; height: 190px; }
+.bigdata_content .c_content .cards a.h_half { height: 140px; }
+.bigdata_content .c_content .cards a.down { top: 180px; }
+
+div#tip{ position:absolute; width:25px; height:auto; border:1px solid #00CC66; font-size: 15px;}
+
+.bigdata_title a { color: #48D8FD; height: 100%; width: 100%; }
+.bigdata_title .glyphicon-chevron-left { font-size: 15px; }
+
+.comfort { display: -ms-inline-flexbox; display: inline-flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; -ms-flex-pack: center; justify-content: center; float: left; color: #fff; }
+.comfort p { width: 100%; margin: 10px 0; padding: 0 0 0 10px; border-radius: 5px; box-sizing: border-box; font-size: 16px; height: 36px; line-height: 36px; background: linear-gradient(to right, rgba(40, 66, 143, 1), rgba(40, 66, 143, .1) 70%, rgba(40, 66, 143, 0)); }
+.comfort p span { font-size: 20px; color: rgb(17, 227, 242); }
+.zhiban { width: 100%; height: 100%; display: -ms-inline-flexbox; display: inline-flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: center; align-items: center; -ms-flex-pack: center; justify-content: center; float: left; color: #fff; }
+.zhiban p { width: 100%; margin: 10px 0; padding: 0 0 0 10px; border-radius: 5px; box-sizing: border-box; font-size: 16px; height: 36px; line-height: 36px; background: linear-gradient(to right, rgba(40, 66, 143, 1), rgba(40, 66, 143, .1) 70%, rgba(40, 66, 143, 0)); }
+.zhiban p span:first-child { display: inline-block; width: 50%; text-align: right; }
+.zhiban p span:last-child { font-size: 20px; color: rgb(17, 227, 242); }

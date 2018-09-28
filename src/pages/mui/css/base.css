@@ -1,0 +1,55 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*  author : wanghao 2017-7-25 15:21:02   */
+
+/* 重置样式默认 开始 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,textarea,p,th,td{ margin:0; padding:0;}
+img{ display:block; border:none; vertical-align: middle; }/* display:block;  li>img  浮动时img下面的空白 */
+em,strong,i{font-style:normal; font-weight:normal;}
+li{list-style:none;}
+table { border-spacing:0;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;}
+h1{font-size:20px;}
+h2{font-size:18px;}
+h3{font-size:16px;}
+h4, h5, h6{font-size:14px;}
+input::-ms-clear{display:none;}/*IE10 输入时产生的小叉*/
+input,textarea,select,optgroup,option{font-size:12px; vertical-align: middle;} 
+
+/*table边框*/
+.table{ border-left:1px solid #ccc; border-top:1px solid #ccc; }
+.table th,.table td{ border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/* 自定类样式 开始 */
+html{color:#333;}
+body{font-family:"微软雅黑"; font-size:14px; }
+a{text-decoration:none; color:#333;}
+input{border:1px solid #999;}
+
+/*清浮动*/
+.clear:after {content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clear {zoom:1;}
+.fl {display:inline; float:left;}  /* display:inline; 双边距 方向相同 */
+.fr {display:inline; float:right;}
+
+/*定位*/
+.pa {position:absolute;}
+.pr {position:relative;}
+.pf {position:fixed; z-index:9999;}
+
+/*字体加粗*/
+.fb { font-weight:600; }
+
+/*盒模型表现*/
+.dis-none{display:none;}
+.dis-block{display:block;}
+.dis-inline{ display: inline; *display: inline; *zoom: 1; }
+
+/*文字排版*/
+.text-c{text-align:center;}
+.text-r{text-align:right;}
+.text-l{text-align:left;}
+
+/*鼠标手势*/
+.cur-p{cursor:pointer;}

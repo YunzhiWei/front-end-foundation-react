@@ -17,6 +17,7 @@ const BlockAreaDataArray = [
       }
     ],
     geoMapName: "江苏",
+    map: "jiangsu",
     visualMin: 1000,
     visualMax: 5000,
     visualLabel: ['最高','最低']
@@ -72,11 +73,14 @@ const BlockAreaDataArray = [
         ]
       }
     ],
-    geoMapName: "江西",
+    // geoMapName: "江西",
+    // map: "jiangxi",
     visualMin: 0,
     visualMax: 2500,
     visualLabel: ['高','低'],
   }
 ];
 
-export default BlockAreaDataArray;
+const map = BlockAreaDataArray.map((item)=>{ return item.map });
+
+module.exports = { BlockAreaDataArray, map };

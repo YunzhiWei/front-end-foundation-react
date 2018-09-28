@@ -4,7 +4,7 @@ import DevTools from 'mobx-react-devtools';
 
 import * as firebase from 'firebase';
 
-@inject("timer", "counter") @observer
+@inject("timer", "counter", "dynamicChartStore") @observer
 class AboutPage extends Component {
   constructor() {
     super();
@@ -17,7 +17,6 @@ class AboutPage extends Component {
     const rootRef = firebase.database().ref().child('react');
     const speedRef = rootRef.child('speed');
     speedRef.on('value', snap => {
-      console.log("sync up")
       this.setState({speed: snap.val()});
     });
   }
