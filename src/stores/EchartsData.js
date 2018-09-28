@@ -27,12 +27,14 @@ function aqiData(){
 
 class EchartsData {
     @observable ticketsNum = {
-        prevOnline: 387,
-        online: 387,
-        prevOffline: 873,
-        offline: 873,
-        prevCheck: 698,
-        check: 698
+        prevOnline: 0,
+        online: 0,
+        prevOffline: 0,
+        offline: 0,
+        prevCheck: 0,
+        check: 0, 
+        prevLeave: 0, 
+        leave: 0
     }
     @observable weather = {
         yesterday: {
@@ -85,27 +87,66 @@ class EchartsData {
         comfort: ''
     }
     constructor(){
-        var i = 1;
-        var change = false;
-        var self = this;
+        var _this = this;
         setInterval(function(){
-            i = i === 10 ? 1 : i+1;
-            if(new Date().getHours() === 0 && !change) {
-                self.fetchPassDataPush();
-                change = !change;
-            } else if (new Date().getHours() === 1 && change) {
-                change = !change;
+            _this.fetchWeatherData();
+            _this.fetchPM25();
+            _this.fetchTicketsNumber();
+            // _this.fetchPassData();
+        }, 30000);
+        this.fetchWeatherData();
+        this.fetchPM25();
+        this.fetchTicketsNumber();
+        this.fetchPassData();
+    }
+    fetchPassData() {
+        let self = this;
+        var passIn = [5, 1, 8, 74, 27, 28, 24, 33, 64, 6, 7, 25, 20, 6, 10, 0];
+        var passOut = [0, 5, 2, 53, 52, 52, 55, 75, 62, 7, 28, 45, 21, 16, 21, 0];
+        var month1 = [1,3,5,7,8,10,12];
+        var month2 = [4,6,9,11];
+        var month3 = 2;
+        function getDays(month, year) {
+            return month1.indexOf(month) + 1 ? 31 : month2.indexOf(month) + 1 ? 30 : month === month3 && year%4 === 0 ? 29 : 28 ;
+        }
+        function getDate(index) {
+            var year = new Date().getFullYear();
+            var month = new Date().getMonth() + 1;
+            var day = new Date().getDate() - index;
+            var preMonth = month - 1;
+            if(preMonth === 0) {
+                preMonth = month + 11;
+                year -= 1;
             }
-            // self.fetchParkingData(i);
-            // self.fetchWeatherData();
-            // self.fetchPM25();
-            self.fetchTicketsNumber(i);
-        }, 10000);
-        // self.fetchParkingData(1);
-        self.fetchTicketsNumber(0);
-        self.fetchWeatherData();
-        self.fetchPM25();
-        self.fetchPassData();
+            var preDay = getDays(preMonth, year);
+            if(day - 1 < 0) {
+                month = preMonth;
+                day = preDay + day;
+            }
+            return [month, day];
+        }
+        axios.get('http://www.zhuxiaoyi.com:302/data').then(function(data){
+            data.data.latest20.map((item, i) => {
+                self.pass.category.unshift(getDate(i + 1).join('-'));
+                self.pass.barData.push(item.sum);
+                self.pass.lineData.push(item.sum);
+            })
+        })
+    }
+    async fetchTicketsNumber(index) {
+        let res = await FetchYG("/OpenApi/GetPassengerFlowStatistics");
+        let leaveNumber = res.Data[0].sum;
+        let enterNumber = res.Data[1].sum;
+        this.ticketsNum = {
+            prevOnline: this.ticketsNum.online,
+            online: Math.floor(enterNumber*0.2),
+            prevOffline: this.ticketsNum.offline,
+            offline: Math.ceil(enterNumber*0.9),
+            prevCheck: this.ticketsNum.check,
+            check: enterNumber, 
+            prevLeave: this.ticketsNum.leave, 
+            leave: leaveNumber
+        }
     }
     fetchWeatherData () {
         let self = this;
@@ -194,40 +235,6 @@ class EchartsData {
         }
         for (let i in urlObj) fetchWeather(urlObj[i], i);
     }
-    fetchPassData() {
-        let self = this;
-        var passIn = [5, 1, 8, 74, 27, 28, 24, 33, 64, 6, 7, 25, 20, 6, 10, 0];
-        var passOut = [0, 5, 2, 53, 52, 52, 55, 75, 62, 7, 28, 45, 21, 16, 21, 0];
-        var month1 = [1,3,5,7,8,10,12];
-        var month2 = [4,6,9,11];
-        var month3 = 2;
-        function getDays(month, year) {
-            return month1.indexOf(month) + 1 ? 31 : month2.indexOf(month) + 1 ? 30 : month === month3 && year%4 === 0 ? 29 : 28 ;
-        }
-        function getDate(index) {
-            var year = new Date().getFullYear();
-            var month = new Date().getMonth() + 1;
-            var day = new Date().getDate() - index;
-            var preMonth = month - 1;
-            if(preMonth === 0) {
-                preMonth = month + 11;
-                year -= 1;
-            }
-            var preDay = getDays(preMonth, year);
-            if(day - 1 < 0) {
-                month = preMonth;
-                day = preDay + day;
-            }
-            return [month, day];
-        }
-        axios.get('http://www.zhuxiaoyi.com:302/data').then(function(data){
-            data.data.latest20.map((item, i) => {
-                self.pass.category.unshift(getDate(i + 1).join('-'));
-                self.pass.barData.push(item.sum);
-                self.pass.lineData.push(item.sum);
-            })
-        })
-    }
     fetchPM25() {
         let self = this;
         let appKey = 27807;
@@ -252,20 +259,6 @@ class EchartsData {
         }).catch(function(err) {
             console.log(err);
         });
-    }
-    async fetchTicketsNumber(index) {
-        let res = await FetchYG("/OpenApi/GetPassengerFlowStatistics");
-        console.log(res);
-        var onlineTicket = [0, 387, 387, 387, 387, 387, 387, 387, 387, 387, 387];
-        var offlineTicket = [0, 873, 873, 873, 873, 873, 873, 873, 873, 873, 873];
-        var error = [0, 698, 698, 698, 698, 698, 698, 698, 698, 698, 698]
-        let self = this;
-        self.ticketsNum.prevOnline = self.ticketsNum.online;
-        self.ticketsNum.prevOffline = self.ticketsNum.offline;
-        self.ticketsNum.prevCheck = self.ticketsNum.check;
-        self.ticketsNum.online = onlineTicket[index];
-        self.ticketsNum.offline = offlineTicket[index];
-        self.ticketsNum.check = error[index];
     }
 }
 

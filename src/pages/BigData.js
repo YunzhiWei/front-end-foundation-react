@@ -15,7 +15,7 @@ import ResUtilizationComponent from './BigData/ResUtilization';
 import WeatherComponent from './BigData/Weather';
 import TicketBusinessComponent from './BigData/TicketBusiness';
 import TimeViewComponent from './BigData/TimeView';
-import ParkingChargeComponent from './BigData/ParkingCharge';
+import OperatorOnDutyComponent from './BigData/OperatorOnDuty';
 
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import weiboData from './BigData/data/weibo.json';
@@ -44,7 +44,7 @@ class BigData extends Component {
                                 <ParkingLotComponent />
                             </CardProvider>
                             <CardProvider className="cards" title="景区当日值班信息概览" color="light-green">
-                                <ParkingChargeComponent />
+                                <OperatorOnDutyComponent />
                             </CardProvider>
                         </div>
                         <div className="c_content c_2">
