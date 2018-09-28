@@ -299,8 +299,8 @@ class ParkingLotData {
             body: {
                 pageNo: 1,
                 pageSize: 1000,
-                startTime: new Date(`${dateFormat(new Date(), 'yyyy-MM-dd')} 00:00:00`).getTime(), 
-                endTime: new Date().getTime()
+                // startTime: new Date(`${dateFormat(new Date(), 'yyyy-MM-dd')} 00:00:00`).getTime(), 
+                // endTime: new Date().getTime()
             }
         })
         console.log(res.list);
