@@ -931,7 +931,7 @@ function numOfPassData(arg) {
             }
         },
         xAxis: {
-            data: arg.category.map(function(item){ return item }),
+            data: arg.category.map(function(item){ return item.slice(5) }),
             boundaryGap: true,
             axisLine: {
                 lineStyle: {

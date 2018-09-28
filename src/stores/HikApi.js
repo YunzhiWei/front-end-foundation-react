@@ -42,7 +42,6 @@ class HikApi {
     if (result.data.errorCode) {
         alert(`地址<${uri}>请求错误：${result.data.errorMessage}`);
     }
-    console.log(JSON.parse(result.data));
     return JSON.parse(result.data).data;
   }
 }

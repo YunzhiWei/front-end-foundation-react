@@ -21,10 +21,10 @@ function setting(start, end) {
 @inject("echartsData") @observer
 class AnlsMapComponent extends Component {
     render() {
-        const { online, offline, check } = this.props.echartsData.ticketsNum;
+        const { prevCheck, check, prevLeave, leave } = this.props.echartsData.ticketsNum;
         const option = echartsOption(this.props.bigDataAnlsData, 'AnlsMap');
-        const setting1 = setting(0, online+offline);
-        const setting2 = setting(0, check);        
+        const setting1 = setting(prevCheck, check);
+        const setting2 = setting(prevCheck - prevLeave, check-leave);        
         return (
             <div style={{width: '100%', height: '100%', overflow: 'hidden'}}>
                 <ReactEcharts

@@ -92,17 +92,14 @@ class EchartsData {
             _this.fetchWeatherData();
             _this.fetchPM25();
             _this.fetchTicketsNumber();
-            // _this.fetchPassData();
+            _this.fetchPassData();
         }, 30000);
         this.fetchWeatherData();
         this.fetchPM25();
         this.fetchTicketsNumber();
         this.fetchPassData();
     }
-    fetchPassData() {
-        let self = this;
-        var passIn = [5, 1, 8, 74, 27, 28, 24, 33, 64, 6, 7, 25, 20, 6, 10, 0];
-        var passOut = [0, 5, 2, 53, 52, 52, 55, 75, 62, 7, 28, 45, 21, 16, 21, 0];
+    async fetchPassData() {
         var month1 = [1,3,5,7,8,10,12];
         var month2 = [4,6,9,11];
         var month3 = 2;
@@ -123,15 +120,30 @@ class EchartsData {
                 month = preMonth;
                 day = preDay + day;
             }
-            return [month, day];
+            if (month < 10) {
+                month = "0"+month;
+            }
+            if (day < 10) {
+                day = "0"+day;
+            }
+            return [year, month, day];
         }
-        axios.get('http://www.zhuxiaoyi.com:302/data').then(function(data){
-            data.data.latest20.map((item, i) => {
-                self.pass.category.unshift(getDate(i + 1).join('-'));
-                self.pass.barData.push(item.sum);
-                self.pass.lineData.push(item.sum);
-            })
+        let category = [];
+        let data = [];
+        let res = await FetchYG("/OpenApi/GetPassengerFlowStatisticsForDay");
+        for (let i = 0; i < 20; i++) {
+            category[i] = getDate(i).join('-');
+            data[i] = 0;
+        }
+        res.Data.forEach((item) => {
+            data[category.indexOf(item.date)] = item.sum;
         })
+        this.pass = {
+            category: category,
+            lineData: data,
+            barData: data,
+            dottedBase: new Date()
+        }
     }
     async fetchTicketsNumber(index) {
         let res = await FetchYG("/OpenApi/GetPassengerFlowStatistics");
