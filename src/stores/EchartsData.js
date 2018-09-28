@@ -25,26 +25,26 @@ function aqiData(){
 }
 
 class EchartsData {
-    @observable parking = {
-        prevInUse: 0,
-        inUse: 0,
-        prevAll: 0,
-        all: 0,
-        prevRealIn: 0,
-        prevRealOut: 0,
-        realIn: 0,
-        realOut: 0
-    }
-    @observable boating = {
-        prevInUse: 0,
-        inUse: 0,
-        prevAll: 0,
-        all: 0,
-        prevRealIn: 0,
-        prevRealOut: 0,
-        realIn: 0,
-        realOut: 0
-    }
+    // @observable parking = {
+    //     prevInUse: 0,
+    //     inUse: 0,
+    //     prevAll: 0,
+    //     all: 0,
+    //     prevRealIn: 0,
+    //     prevRealOut: 0,
+    //     realIn: 0,
+    //     realOut: 0
+    // }
+    // @observable boating = {
+    //     prevInUse: 0,
+    //     inUse: 0,
+    //     prevAll: 0,
+    //     all: 0,
+    //     prevRealIn: 0,
+    //     prevRealOut: 0,
+    //     realIn: 0,
+    //     realOut: 0
+    // }
     @observable ticketsNum = {
         prevOnline: 387,
         online: 387,
@@ -115,150 +115,150 @@ class EchartsData {
             } else if (new Date().getHours() === 1 && change) {
                 change = !change;
             }
-            self.fetchParkingData(i);
+            // self.fetchParkingData(i);
             // self.fetchWeatherData();
             // self.fetchPM25();
             self.tickets(i);
         }, 10000);
-        self.fetchParkingData(1);
+        // self.fetchParkingData(1);
         self.tickets(0);
         self.fetchWeatherData();
         self.fetchPM25();
         self.fetchPassData();
     }
-    fetchParkingData(index) {
-        let self = this;
-        var boating = [{
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }];
-        var parking = [{
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }]
-        this.parking.prevInUse = this.parking.inUse;
-        this.parking.prevAll = this.parking.all;
-        this.parking.prevRealIn = this.parking.realIn;
-        this.parking.prevRealOut = this.parking.realIn;
-        this.boating.prevInUse = this.boating.inUse;
-        this.boating.prevAll = this.boating.all;
-        this.boating.prevRealIn = this.boating.realIn;
-        this.boating.prevRealOut = this.boating.realIn;
-        // axios.get('http://www.zhuxiaoyi.com:300/parkingLot' + index).then(function(data){
-            self.parking.inUse = parking[index].inUse;
-            self.parking.all = parking[index].all;
-            self.parking.realIn = parking[index].realIn;
-            self.parking.realOut = parking[index].realOut;
-        // })
-        self.boating.inUse = boating[index].inUse;
-        self.boating.all = boating[index].all;
-        self.boating.realIn = boating[index].realIn;
-        self.boating.realOut = boating[index].realOut;
-    }
+    // fetchParkingData(index) {
+    //     let self = this;
+    //     var boating = [{
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }, {
+    //             "inUse": 3,
+    //             "all": 45,
+    //             "realIn": 4,
+    //             "realOut": 1
+    //         }];
+    //     var parking = [{
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }, {
+    //             "inUse": 57,
+    //             "all": 556,
+    //             "realIn": 89,
+    //             "realOut": 32
+    //         }]
+    //     this.parking.prevInUse = this.parking.inUse;
+    //     this.parking.prevAll = this.parking.all;
+    //     this.parking.prevRealIn = this.parking.realIn;
+    //     this.parking.prevRealOut = this.parking.realIn;
+    //     this.boating.prevInUse = this.boating.inUse;
+    //     this.boating.prevAll = this.boating.all;
+    //     this.boating.prevRealIn = this.boating.realIn;
+    //     this.boating.prevRealOut = this.boating.realIn;
+    //     // axios.get('http://www.zhuxiaoyi.com:300/parkingLot' + index).then(function(data){
+    //         self.parking.inUse = parking[index].inUse;
+    //         self.parking.all = parking[index].all;
+    //         self.parking.realIn = parking[index].realIn;
+    //         self.parking.realOut = parking[index].realOut;
+    //     // })
+    //     self.boating.inUse = boating[index].inUse;
+    //     self.boating.all = boating[index].all;
+    //     self.boating.realIn = boating[index].realIn;
+    //     self.boating.realOut = boating[index].realOut;
+    // }
     fetchWeatherData () {
         let self = this;
         let appKey = 27807;

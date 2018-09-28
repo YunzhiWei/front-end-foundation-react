@@ -22,7 +22,7 @@ function setting(start, end) {
 @inject("echartsData") @inject("parkingLotData") @observer
 class ParkingLotComponent extends Component {
 	render() {
-		const { parking, boating } = this.props.echartsData;
+		const { parking, boating } = this.props.parkingLotData;
 		const option = echartsOption({parking, boating}, 'ParkingLot');
 		var prevUsableParking = parking.prevAll - parking.prevInUse;
 		var usableParking = parking.all - parking.inUse;

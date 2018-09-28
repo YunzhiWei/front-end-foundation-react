@@ -2,21 +2,22 @@ import { observable } from 'mobx';
 import config from '../config';
 import HikApi from './HikApi';
 import { FetchYG } from '../Api';
-import { dateFormat } from '../Lib';
+import { dateFormat, carLicenceCity, deepClone } from '../Lib';
 const { hik: { getPlotStatus, getVehicleRecords, fetchVehicleRecordFuzzy } } = config.common;
 
 const hikApi = new HikApi();
 
 class ParkingLotData {
     @observable plotList = []
+    @observable heatmapSet = []
     @observable parking = {
         prevInUse: 0,
         inUse: 0,
         prevAll: 0,
         all: 0,
         prevRealIn: 0,
-        prevRealOut: 0,
         realIn: 0,
+        prevRealOut: 0,
         realOut: 0
     }
     @observable boating = {
@@ -25,8 +26,8 @@ class ParkingLotData {
         prevAll: 0,
         all: 0,
         prevRealIn: 0,
-        prevRealOut: 0,
         realIn: 0,
+        prevRealOut: 0,
         realOut: 0
     }
     @observable _carsDistribution = {
@@ -87,131 +88,60 @@ class ParkingLotData {
     }]
     @observable _standingTime = [{
         value: 5,
-        name: '≤0.5h'
+        name: '≤0.5h', 
+        range: [0, 0.5]
     }, {
         value: 10,
-        name: '0.5~1.5h'
+        name: '0.5~1.5h', 
+        range: [0.5, 1.5]
     }, {
         value: 14,
-        name: '1.5~2.5h'
+        name: '1.5~2.5h', 
+        range: [1.5, 2.5]
     }, {
         value: 13,
-        name: '2.5~3.5h'
+        name: '2.5~3.5h', 
+        range: [2.5, 3.5]
     }, {
         value: 34,
-        name: '3.5~4.5h'
+        name: '3.5~4.5h', 
+        range: [3.5, 4.5]
     }, {
         value: 15,
-        name: '4.5~5.5h'
+        name: '4.5~5.5h', 
+        range: [4.5, 5.5]
     }, {
         value: 22,
-        name: '5.5~6.5h'
+        name: '5.5~6.5h', 
+        range: [5.5, 6.5]
     }, {
         value: 15,
-        name: '6.5~7.5h'
+        name: '6.5~7.5h', 
+        range: [6.5, 7.5]
     }, {
         value: 9,
-        name: '7.5~8.5h'
+        name: '7.5~8.5h', 
+        range: [7.5, 8.5]
     }, {
         value: 1,
-        name: '8.5~9.5h'
+        name: '8.5~9.5h', 
+        range: [8.5, 9.5]
     }, {
         value: 0,
-        name: '9.5~10.5h'
+        name: '9.5~10.5h', 
+        range: [9.5, 10.5]
     }, {
         value: 0,
-        name: '10.5~11.5h'
+        name: '10.5~11.5h', 
+        range: [10.5, 11.5]
     }]
     @observable _IOCars = {
         inSumPrev: 0,
-        inSum: 169,
+        inSum: 0,
         outSumPrev: 0,
-        outSum: 132,
-        inputCars: [{
-            license: "赣K9U070",
-            id: 1111111111,
-            addr: '新余',
-            time: '09:13:19'
-        }, {
-            license: "赣K5J581",
-            id: 1111111112,
-            addr: '新余',
-            time: '09:15:36'
-        }, {
-            license: "赣M25590",
-            id: 1111111113,
-            addr: '南昌',
-            time: '09:16:44'
-        }, {
-            license: "赣KG7297",
-            id: 1111111114,
-            addr: '新余',
-            time: '09:19:01'
-        }, {
-            license: "赣KF6681",
-            id: 1111111115,
-            addr: '新余',
-            time: '09:23:59'
-        }, {
-            license: "赣CL2A59",
-            id: 1111111116,
-            addr: '宜春',
-            time: '09:26:46'
-        }, {
-            license: "赣A9U070",
-            id: 1111111117,
-            addr: '南昌',
-            time: '09:35:32'
-        }],
-        outputCars: [{
-            license: "赣KL6780",
-            id: 1111111111,
-            addr: '新余',
-            time: '09:08:59',
-            stayTime: 18
-        }, {
-            license: "赣KA5813",
-            id: 1111111112,
-            addr: '新余',
-            time: '09:12:32',
-            stayTime: 32
-        }, {
-            license: "赣K9381A",
-            id: 1111111113,
-            addr: '新余',
-            time: '09:16:34',
-            stayTime: 75
-        }, {
-            license: "赣A417C5",
-            id: 1111111114,
-            addr: '南昌',
-            time: '09:18:23',
-            stayTime: 67
-        }, {
-            license: "赣KM2380",
-            id: 1111111115,
-            addr: '新余',
-            time: '09:21:25',
-            stayTime: 73
-        }, {
-            license: "赣K89A01",
-            id: 1111111116,
-            addr: '新余',
-            time: '09:25:58',
-            stayTime: 49
-        }, {
-            license: "赣K94U81",
-            id: 1111111117,
-            addr: '新余',
-            time: '09:31:23',
-            stayTime: 81
-        }, {
-            license: "赣K5Z439",
-            id: 1111111118,
-            addr: '新余',
-            time: '09:34:11',
-            stayTime: 56
-        }]
+        outSum: 0,
+        inputCars: [],
+        outputCars: []
     }
     @observable _IOCarsTime = [{
         id: 0,
@@ -284,17 +214,99 @@ class ParkingLotData {
         })
     }
     async fetchPlotStatus() {
-        const res = await hikApi.FetchHik({
+        const isIncluded = (a,b) => !!b.filter((item) => ((item[0] <= a) && item[1] >= a)).length;
+        let inUse = 0;
+        // 热力图最大值
+        let max = 0;
+        // 停车场排序后的列表
+        let plotList = [];
+        // 停车场分类列表
+        let plotsObject = {
+            "F": [], 
+            "P": [], 
+            "V": []
+        }
+        // 停车场热力图集合
+        let heatmapSet = [{
+            name: "F-Part1", 
+            park: "F", 
+            coord: "500,400", 
+            include: [[1, 37], [68, 87]], 
+            value: 0
+        }, {
+            name: "F-Part2", 
+            park: "F", 
+            coord: "250,400", 
+            include: [[38, 67], [88, 139]], 
+            value: 0
+        }, {
+            name: "V-Part1", 
+            park: "V", 
+            coord: "440,200", 
+            include: [[1, 31], [42, 70]], 
+            value: 0
+        }, {
+            name: "V-Part2", 
+            park: "V", 
+            coord: "225,170", 
+            include: [[32, 41], [71, 113]], 
+            value: 0
+        }, {
+            name: "P-Part1", 
+            park: "P", 
+            coord: "790,230", 
+            include: [[1, 176], [272, 283]], 
+            value: 0
+        }, {
+            name: "P-Part2", 
+            park: "P", 
+            coord: "650,170", 
+            include: [[177, 271], [284, 333]], 
+            value: 0
+        }];
+        let response = await hikApi.FetchHik({
             uri: getPlotStatus, 
             body: {
                 pageNo: 1,
                 pageSize: 1000,
             }
+        });
+        response.list.forEach((item) => {
+            // 车牌
+            let plotNo = item.plotNo;
+            // 是否被占用
+            let status = item.status;
+            // 车位号类型
+            let park = plotNo.slice(0, 1).toLocaleUpperCase();
+            // 车位号数字
+            let parkNum = Number(plotNo.slice(1));
+            plotsObject[park].push(item);
+            heatmapSet.forEach((point, i) => {
+                if (point.park === park && isIncluded(parkNum, point.include) && !!status) {
+                    heatmapSet[i].value++;
+                    inUse++;
+                }
+            })
         })
-        this.plotList = res.list
+        Object.keys(plotsObject).forEach((item) => {
+            plotsObject[item].sort((a, b) => a.plotNo.slice(1) - b.plotNo.slice(1));
+            plotList = plotList.concat(plotsObject[item]);
+        })
+        this.plotList = plotList;
+        this.heatmapSet = heatmapSet;
+        this.parking.prevAll = this.parking.all;
+        this.parking.all = response.list.length;
+        this.parking.prevInUse = this.parking.inUse;
+        this.parking.inUse = inUse;
     }
     async fetchPassingCarsData() {
-        const res = await hikApi.FetchHik({
+        let inSumPrev = this._IOCars.outSum;
+        let inSum = 0;
+        let outSumPrev = this._IOCars.outSum;
+        let outSum = 0;
+        let inputCars = [];
+        let outputCars = [];
+        let res = await hikApi.FetchHik({
             uri: getVehicleRecords, 
             body: {
                 pageNo: 1,
@@ -303,42 +315,51 @@ class ParkingLotData {
                 // endTime: new Date().getTime()
             }
         })
-        console.log(res.list);
-    }
-    updateIOCars() {
-       this._IOCars.inSumPrev = this._IOCars.inSum;
-       this._IOCars.outSumPrev = this._IOCars.outSum;
-       this._IOCars.inSum += Math.floor(Math.random() * 10);
-       this._IOCars.outSum += Math.floor(Math.random() * 5);
-    }
-    scrollContent(i) {
-        this._IOCars.inputCars.map((item) => item.New = false);
-        this._IOCars.outputCars.map((item) => item.New = false);
-        this._IOCars.inputCars.shift();
-        this._IOCars.inputCars.shift();
-        this._IOCars.inputCars.push({
-            license: "赣K3A187",
-            id: 1111111117 + i,
-            addr: '新余',
-            time: '10:08:'+i,
-            New: true
-        }, {
-            license: "赣K55AE8",
-            id: 1111111117 + i+1,
-            addr: '新余',
-            time: '10:08:'+i,
-            New: true
-        });
-
-        this._IOCars.outputCars.shift();
-        this._IOCars.outputCars.push({
-            license: "赣K28B0A",
-            id: 1111111117 + i,
-            addr: '新余',
-            time: '20:08:'+i,
-            stayTime: 5.5+i,
-            New: true
-        });
+        res.list.forEach((item) => {
+            if (!!item.carOut) {
+                if (outputCars.length < 6) {
+                    let license = item.plateNo;
+                    let time = item.crossTime.slice(11);
+                    outputCars.push({
+                        license: license,
+                        id: license,
+                        addr: carLicenceCity[license.slice(0, 2)],
+                        crossTime: item.crossTime, 
+                        time: time,
+                        stayTime: 0,
+                        hasGetStayTime: false
+                    });
+                }
+                outSum++;
+            } else {
+                outputCars.forEach((car, i) => {
+                    if (car.hasGetStayTime) {
+                        return;
+                    } else if (item.plateNo === car.license) {
+                        outputCars[i].stayTime = Math.ceil((new Date(car.crossTime) - new Date(item.crossTime))/1000/60);
+                        outputCars[i].hasGetStayTime = true;
+                    }
+                })
+                if (inputCars.length < 6) {
+                    let license = item.plateNo;
+                    let time = item.crossTime.slice(11);
+                    inputCars.push({
+                        license: license,
+                        id: license,
+                        addr: carLicenceCity[license.slice(0, 2)],
+                        crossTime: item.crossTime, 
+                        time: time,
+                    })
+                }
+                inSum++;
+            }
+        })
+        this._IOCars.inSumPrev = this.parking.prevRealIn = inSumPrev;
+        this._IOCars.inSum = this.parking.realIn = inSum;
+        this._IOCars.outSumPrev = this.parking.prevRealOut = outSumPrev;
+        this._IOCars.outSum = this.parking.realOut = outSum;
+        this._IOCars.inputCars = inputCars;
+        this._IOCars.outputCars = outputCars;
     }
 }
 

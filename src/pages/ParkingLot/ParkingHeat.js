@@ -15,24 +15,14 @@ class ParkingHeatComponent extends Component {
             this.heatmapInstance = h337.create({
                 container: document.querySelectorAll('#heatmap')[0],
             });
+            this.forceUpdate();
         }
 
     }
     render() {
-        const { plotList } = this.props.parkingLotData;
         if(this.props.type === 'kuai') {
-            let plotsArray = [];
-            let plotsObject = {
-                "F": [], 
-                "P": [], 
-                "V": []
-            }
-            plotList.forEach((item) => plotsObject[item.plotNo.slice(0, 1).toLocaleUpperCase()].push(item))
-            Object.keys(plotsObject).forEach((item) => {
-                plotsObject[item].sort((a, b) => a.plotNo.slice(1) - b.plotNo.slice(1));
-                plotsArray = plotsArray.concat(plotsObject[item]);
-            })
-            let plotsGroups = plotsArray.reduce((prev, curr, i) => {
+            const { plotList } = this.props.parkingLotData;
+            let plotsGroups = plotList.reduce((prev, curr, i) => {
                 let groupId = Math.floor(i/100);
                 prev[groupId].push(curr)
                 return prev;
@@ -53,57 +43,9 @@ class ParkingHeatComponent extends Component {
                 </div>
             )
         } else {
-            const isIncluded = (a,b) => !!b.filter((item) => ((item[0] <= a) && item[1] >= a)).length;
+            const { heatmapSet } = this.props.parkingLotData;
             let max = 0;
-            let pointSet = [{
-                name: "F-Part1", 
-                park: "F", 
-                coord: "500,400", 
-                include: [[1, 37], [68, 87]], 
-                value: 0
-            }, {
-                name: "F-Part2", 
-                park: "F", 
-                coord: "250,400", 
-                include: [[38, 67], [88, 139]], 
-                value: 0
-            }, {
-                name: "V-Part1", 
-                park: "V", 
-                coord: "440,200", 
-                include: [[1, 31], [42, 70]], 
-                value: 0
-            }, {
-                name: "V-Part2", 
-                park: "V", 
-                coord: "225,170", 
-                include: [[32, 41], [71, 113]], 
-                value: 0
-            }, {
-                name: "P-Part1", 
-                park: "P", 
-                coord: "790,230", 
-                include: [[1, 176], [272, 283]], 
-                value: 0
-            }, {
-                name: "P-Part2", 
-                park: "P", 
-                coord: "650,170", 
-                include: [[177, 271], [284, 333]], 
-                value: 0
-            }]
-            plotList.forEach((item) => {
-                let plotNo = item.plotNo;
-                let status = item.status;
-                let park = plotNo.slice(0, 1).toLocaleUpperCase();
-                let parkNum = Number(plotNo.slice(1));
-                pointSet.forEach((point, i) => {
-                    if (point.park === park && isIncluded(parkNum, point.include) && !!status) {
-                        pointSet[i].value++;
-                    }
-                })
-            })
-            let pointCoordSet = pointSet.map((item) => {
+            let heatmapCoordSet = heatmapSet.map((item) => {
                 let [ x, y ] = item.coord.split(',');
                 max = item.value > max ? item.value : max
                 return {
@@ -115,7 +57,7 @@ class ParkingHeatComponent extends Component {
             if (this.heatmapInstance) {
                 this.heatmapInstance.setData({
                     max: max, 
-                    data: pointCoordSet
+                    data: heatmapCoordSet
                 });
             }
             return (
