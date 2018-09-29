@@ -924,7 +924,7 @@ function numOfPassData(arg) {
             bottom: 25
         },
         legend: {
-            data: ['增长趋势', '游客量'],
+            data: ['游客量'],
             textStyle: {
                 color: '#ccc',
                 fontSize: 16
@@ -962,7 +962,7 @@ function numOfPassData(arg) {
             }
         },
         series: [{
-            name: '增长趋势',
+            name: '客流量',
             type: 'line',
             smooth: true,
             showAllSymbol: true,

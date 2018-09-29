@@ -1,7 +1,7 @@
 import echarts from 'echarts';
 import geoCoordMap from '../BigData/data/geoCoordMap';
 
-function fortyBoatsData(arg) {
+function boatsListData(arg) {
     function createSeries() {
         var count = 0;
         var series = [];
@@ -15,7 +15,7 @@ function fortyBoatsData(arg) {
             series[i].data = [{
                 label: {
                     normal: {
-                        formatter: '{a}',
+                        formatter: (data) => data.seriesName.slice(-6),
                         position: 'center',
                         show: true,
                         textStyle: {
@@ -95,8 +95,8 @@ function fortyBoatsData(arg) {
 
 function echartsOption(data, name) {
     switch(name) {
-        case 'FortyBoats':
-            return fortyBoatsData(data);
+        case 'BoatsList':
+            return boatsListData(data);
         default :
             return;
     }

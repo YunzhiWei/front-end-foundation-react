@@ -1,10 +1,38 @@
-#boat-schedule .bigdata_content { height: 540px; }
-#boat-schedule .boat_top { height: 238px; margin: 12px 0; padding: 0 12px; }
-#boat-schedule .boat_top .cards { height: 238px; }
-#boat-schedule .c_center { width: 960px; height: 720px; padding: 0 12px; }
-#boat-schedule .c_content .cards:first-child { height: 334px; }
-.boat_top .title-box { display: none; }
-.boat_top .cards .content { height: 100%; }
-#boat-schedule .bigdata_content .c_center .boat-map { height: 696px; transition: all .25s cubic-bezier(0.4, 0, 0.2, 1); }
-#boat-schedule #IO-Cars .input, #boat-schedule #IO-Cars .output { height: calc(100% - 15px); }
-.jxjb { background: radial-gradient(circle at center, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, .2) 40%, rgba(255, 255, 255, .6) 45%, rgba(255, 255, 255, .8) 55%, rgba(255, 255, 255, .9) 70%, rgba(255, 255, 255, 95) 80%, rgba(255, 255, 255, 1) 100%); }
+#boat-schedule .bigdata_content {
+	height: 540px;
+}
+#boat-schedule .boat_top {
+	height: 238px;
+	margin: 12px 0;
+	padding: 0 12px;
+}
+#boat-schedule .boat_top .cards {
+	height: 238px;
+}
+#boat-schedule .c_center {
+	width: 960px;
+	height: 720px;
+	padding: 0 12px;
+}
+#boat-schedule .c_content .cards:first-child {
+	height: 334px;
+}
+.boat_top .title-box {
+	display: none;
+}
+.boat_top .cards .content {
+	height: 100%;
+}
+#boat-schedule .bigdata_content .c_center .boat-map {
+	height: 696px;
+	transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#boat-schedule #IO-Cars .input, #boat-schedule #IO-Cars .output {
+	height: calc(100% - 15px);
+}
+#boat-schedule span {
+	overflow: hidden;
+}
+.jxjb {
+	background: radial-gradient(circle at center, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, .2) 40%, rgba(255, 255, 255, .6) 45%, rgba(255, 255, 255, .8) 55%, rgba(255, 255, 255, .9) 70%, rgba(255, 255, 255, 95) 80%, rgba(255, 255, 255, 1) 100%);
+}

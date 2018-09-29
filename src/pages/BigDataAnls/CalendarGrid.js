@@ -6,7 +6,7 @@ import echartsOption from "../function/anlsFunc";
 @inject("bigDataAnlsData") @observer
 class CalendarGridComponent extends Component {
     render() {
-        const option = echartsOption(this.props.bigDataAnlsData, 'CalendarGrid');        
+        const option = echartsOption(this.props.bigDataAnlsData._calendarGridData, 'CalendarGrid');        
         return (
             <ReactEcharts
                 option={option}

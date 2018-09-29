@@ -28,7 +28,7 @@ class ParkingLotComponent extends Component {
 		var prevUsableParking = parking.prevAll - parking.prevInUse;
 		var usableParking = parking.all - parking.inUse;
 		var prevUsableBoating = boating.prevAll - boating.prevInUse;
-		var usableBoating = boating.all - boating.inUse;
+		var usableBoating = boating.all - boating.realOut;
 		const setting1 = setting(prevUsableParking, usableParking);
 		const setting2 = setting(parking.prevRealOut, parking.realOut);
 		const setting3 = setting(parking.prevRealIn, parking.realIn);

@@ -1,8 +1,8 @@
 import { observable } from 'mobx';
-import axios from 'axios';
-import fetchJsonp from 'fetch-jsonp';
+import { FetchYG } from '../Api';
 
 class BigDataAnlsData {
+	@observable _calendarGridData = {}
 	@observable _nationalRanking = [
 		[{
 			name: '湖南省',
@@ -69,6 +69,15 @@ class BigDataAnlsData {
 			value: 7409
 		}]
 	]
+	constructor(props) {
+		this.fetchThreeYearsVisitorsNumber();
+	}
+	async fetchThreeYearsVisitorsNumber() {
+		let dateSet = {};
+		let res = await FetchYG('/OpenApi/GetPassengerFlowStatisticsForYear');
+		res.Data.forEach((year) => year.statisticsinfos.forEach(({ date, value }) => dateSet[date] = value))
+		this._calendarGridData = dateSet;
+	}
 }
 
 export default BigDataAnlsData;
