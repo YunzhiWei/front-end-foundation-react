@@ -19,7 +19,7 @@ class BigDataAnlsData {
 		}, {
 			name: '湖北省',
 			value: 5678
-		}, ], [{
+		}], [{
 			name: '湖南省浏阳市',
 			value: 6708
 		}, {
