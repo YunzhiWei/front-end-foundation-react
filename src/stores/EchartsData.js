@@ -89,11 +89,13 @@ class EchartsData {
     constructor(){
         var _this = this;
         setInterval(function(){
-            _this.fetchWeatherData();
-            _this.fetchPM25();
             _this.fetchTicketsNumber();
             _this.fetchPassData();
         }, 30000);
+        setInterval(function () {
+            _this.fetchWeatherData();
+            _this.fetchPM25();
+        }, 1000*3600)
         this.fetchWeatherData();
         this.fetchPM25();
         this.fetchTicketsNumber();
