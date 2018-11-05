@@ -1,5 +1,10 @@
-export function dateFormat(date, fmt) {
-    date = new Date(date);
+export function dateFormat(u_date, u_fmt) {
+    let date = new Date(u_date);
+    let fmt = u_fmt;
+    if (date.toString() === "Invalid Date") {
+        date = new Date();
+        fmt = u_date;
+    }
     const o = {
         "M+": date.getMonth() + 1, //月份
         "d+": date.getDate(), //日

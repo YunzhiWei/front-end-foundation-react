@@ -129,14 +129,15 @@ class ParkingLotData {
                 uri: getVehicleRecords, 
                 body: {
                     pageNo: count,
-                    pageSize: 1,
-                    startTime: new Date().getTime() - 1000*3600*24*365, 
+                    pageSize: 1000,
+                    startTime: new Date().getTime() - 1000*3600*24*7, 
                     endTime: new Date().getTime()
                 }
             })
             if (count !== res.pageNo) break;
             carsList = carsList.concat(res.list);
         }
+        console.log(carsList);
         // 归类入车和出车记录
         carsList.forEach(car => car.carOut ? outputCars.push(car) : inputCars.push(car));
         // 根据出车记录进行车辆分析
@@ -169,6 +170,8 @@ class ParkingLotData {
             name: province, 
             value: provinceCarsSet[province]
         }))
+        console.log(this._carsDistribution);
+        console.log(this._carsDistribution3);
         this._standingTime = standingTime;
         
     }
@@ -320,11 +323,28 @@ class ParkingLotData {
             body: {
                 pageNo: 1,
                 pageSize: 1000,
-                startTime: new Date(`${dateFormat(new Date(), 'yyyy-MM-dd')} 00:00:00`).getTime(), 
+                startTime: new Date(dateFormat('yyyy-MM-dd') + ' 00:00:00').getTime(), 
                 endTime: new Date().getTime()
             }
         })
-        res.list.forEach((item) => {
+        let carsList = [];
+        let count = 0;
+        // 循环获取历史过车记录
+        while (++count) {
+            let res = await hikApi.FetchHik({
+                uri: getVehicleRecords, 
+                body: {
+                    pageNo: count,
+                    pageSize: 1000,
+                    startTime: new Date(dateFormat('yyyy-MM-dd') + ' 00:00:00').getTime(), 
+                    endTime: new Date().getTime()
+                }
+            })
+            if (count !== res.pageNo) break;
+            carsList = carsList.concat(res.list);
+        }
+        console.log(res);
+        carsList.forEach((item) => {
             if (!!item.carOut) {
                 if (outputCars.length < 6) {
                     let license = item.plateNo;

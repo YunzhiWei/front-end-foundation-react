@@ -21,7 +21,7 @@ class HikApi {
     const data = {
         appkey: appkey,
         time: time, 
-        opUserUuid: "05fb9e8cdfb511e78e7cc75bf57dc840"
+        opUserUuid: "f31e737cd68d11e8bd7397ad7822bcb8"
     }
     Object.assign(data, body);
     const token = crypto.createHash('md5').update(uri + JSON.stringify(data) + appsecret).digest('hex');

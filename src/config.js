@@ -20,8 +20,8 @@ const config = {
 		hik: {
 			addr: "218.87.96.224", 
 			port: "8700", 
-			appkey: "c3f7218c", 
-			appsecret: "0d497fa0d817466ba012a36fe61dde33", 
+			appkey: "4863F199", 
+			appsecret: "92C2FB1381E34f7398CB97439927FC4E", 
 			getDefaultUserUuid: "/openapi/service/base/user/getDefaultUserUuid", 
 			getVehicleRecords: "/openapi/service/pms/record/getVehicleRecords", 
 			fetchVehicleRecordFuzzy: "/openapi/service/pms/record/fetchVehicleRecordFuzzy", 

@@ -149,18 +149,33 @@ class EchartsData {
     }
     async fetchTicketsNumber(index) {
         let res = await FetchYG("/OpenApi/GetPassengerFlowStatistics");
-        let leaveNumber = res.Data[0].sum;
-        let enterNumber = res.Data[1].sum;
-        this.ticketsNum = {
-            prevOnline: this.ticketsNum.online,
-            online: Math.floor(enterNumber*0.2),
-            prevOffline: this.ticketsNum.offline,
-            offline: Math.ceil(enterNumber*0.9),
-            prevCheck: this.ticketsNum.check,
-            check: enterNumber, 
-            prevLeave: this.ticketsNum.leave, 
-            leave: leaveNumber
+        if (res.Data.length) {
+            let leaveNumber = res.Data[0].sum;
+            let enterNumber = res.Data[1].sum;
+            console.log(leaveNumber, enterNumber);
+            this.ticketsNum = {
+                prevOnline: this.ticketsNum.online,
+                online: Math.floor(enterNumber*0.2),
+                prevOffline: this.ticketsNum.offline,
+                offline: Math.ceil(enterNumber*0.9),
+                prevCheck: this.ticketsNum.check,
+                check: enterNumber, 
+                prevLeave: this.ticketsNum.leave, 
+                leave: leaveNumber
+            }
+        } else {
+            this.ticketsNum = {
+                prevOnline: this.ticketsNum.online,
+                online: 0,
+                prevOffline: this.ticketsNum.offline,
+                offline: 0,
+                prevCheck: this.ticketsNum.check,
+                check: 0, 
+                prevLeave: this.ticketsNum.leave, 
+                leave: 0
+            }
         }
+
     }
     fetchWeatherData () {
         let self = this;
