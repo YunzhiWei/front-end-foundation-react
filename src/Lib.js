@@ -81,6 +81,12 @@ export function deepClone(data) {
     return obj;
 }
 
+export const sleep = async (duration) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, duration);
+    });
+};
+
 export const provinceName = {
     ["无"]: "未知",
     ["冀"]: "河北",

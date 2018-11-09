@@ -41,3 +41,21 @@ html {
   width: 100%;
   height: 100%;
 }
+#home {
+  position: fixed;
+  display: block;
+  top: 25px;
+  left: -60px;
+  width: 70px;
+  padding: 10px;
+  border-right: 10px solid #48d8fd;
+  transition: all .25s ease-in-out;
+}
+#home:hover {
+  left: 0;
+  border-right: 0px solid transparent;
+  transition: all .25s ease-in-out;
+}
+#home img {
+  width: 100%;
+}
