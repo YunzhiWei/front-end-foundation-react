@@ -28,7 +28,7 @@ const config = {
 			getPlotStatus: "/openapi/service/pms/status/getPlotStatus"
 		}, 
 		api: {
-			addr: "xvhm.yg-net.com", 
+			addr: "xvhm.jxxnhjq.com", 
 			appid: "10000", 
 			key: "1b0b9d63-23f2-43bd-815f-8b63bd62d046"
 		}
