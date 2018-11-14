@@ -23,8 +23,15 @@ class AnlsMapComponent extends Component {
     render() {
         const { prevCheck, check, prevLeave, leave } = this.props.echartsData.ticketsNum;
         const option = echartsOption(this.props.bigDataAnlsData, 'AnlsMap');
+        let stay = check - leave;
+        let prevStay = prevCheck - preLveave;
+
+        if (stay < 0) {
+            stay = 0;
+            prevStay = 0;
+        }
         const setting1 = setting(prevCheck, check);
-        const setting2 = setting(prevCheck - prevLeave, check-leave);        
+        const setting2 = setting(prevStay, stay);        
         return (
             <div style={{width: '100%', height: '100%', overflow: 'hidden'}}>
                 <ReactEcharts
