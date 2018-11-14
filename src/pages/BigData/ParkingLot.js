@@ -44,8 +44,8 @@ class ParkingLotComponent extends Component {
 			    />
 			    <div className="parking_num">
 			        <p><span>可用车位：</span><span><b><CountUp className="account-balance" {...setting1} /></b></span><span>辆</span></p>
-			        <p><span>累计出场：</span><span><b><CountUp className="account-balance" {...setting2} /></b></span><span>辆</span></p>
-			        <p><span>累计入场：</span><span><b><CountUp className="account-balance" {...setting3} /></b></span><span>辆</span></p>
+			        <p><span>今日出场：</span><span><b><CountUp className="account-balance" {...setting2} /></b></span><span>辆</span></p>
+			        <p><span>今日入场：</span><span><b><CountUp className="account-balance" {...setting3} /></b></span><span>辆</span></p>
 			        <hr/>
 			        <p><span>可调船数：</span><span><b><CountUp className="account-balance" {...setting4} /></b></span><span>艘</span></p>
 			        <p><span>实时离港：</span><span><b><CountUp className="account-balance" {...setting5} /></b></span><span>艘</span></p>
