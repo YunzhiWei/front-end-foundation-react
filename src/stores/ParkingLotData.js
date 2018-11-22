@@ -163,7 +163,8 @@ class ParkingLotData {
             this._carsDistribution.mapDataSeries[0].data = (Object.keys(JiangxiCarsSet).map((city) => ({
                 name: `${city}市`,
                 value: JiangxiCarsSet[city]
-            })));
+            }))).sort((a, b) => a.value - b.value);
+            console.log(this._carsDistribution.mapDataSeries[0].data);
             this._carsDistribution3 = Object.keys(provinceCarsSet).map((province) => ({
                 name: province, 
                 value: provinceCarsSet[province]
