@@ -2,14 +2,10 @@ import { observable, computed } from 'mobx';
 import axios from 'axios';
 import crypto from 'crypto';
 import config from '../config';
-import $ from 'jquery';
 const { hik: { addr, port, appkey, appsecret, getDefaultUserUuid }, api } = config.common;
 
 class HikApi {
   @observable userUuid = ""
-  constructor() {
-
-  }
   @observable async FetchHik(request) {
     this.userUuid = await this.Fetch({ uri: getDefaultUserUuid });
     return await this.Fetch(request);

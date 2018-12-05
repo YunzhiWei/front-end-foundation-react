@@ -6,7 +6,7 @@ import config from '../config';
 const { baidu: { ak, transCrood } } = config.common;
 
 // 刷新间隔
-const interval = 30000
+const interval = 3000
 
 //定义一些常量
 const x_PI = 3.14159265358979324 * 3000.0 / 180.0;
@@ -157,6 +157,34 @@ class BoatScheduleData {
         this.fetchLineWay();
     }
     async updateIOBoats() {
+        const boats_setting = [
+            {"name":"赣仙游105","serial":"001546","id":"46590bdb7cc04a45b56dba7b72ad414a","origin":"001545"},
+            {"name":"赣仙游107","serial":"001548","id":"d5cd365be36a4aa7b3705c85b01a8f0b","origin":"001547"},
+            {"name":"赣仙游081","serial":"001554","id":"988d1f4f6f5c4d6dafa0fe580ec63891","origin":"001553"},
+            {"name":"赣仙游080","serial":"001558","id":"e9143fa1125b4124bfde075fbc98b9d1","origin":"001557"},
+            {"name":"赣仙游111","serial":"001568","id":"953378e8ec57497e8dd04993bab78cf1","origin":"001567"},
+            {"name":"赣仙游112","serial":"001570","id":"490e4e54c52046cdb574e6c599e4c420","origin":"001569"},
+            {"name":"赣仙游108","serial":"001575","id":"d38a6ea7e1ab4d73aba7757f8618c12b","origin":"001573"},
+            {"name":"赣仙游102","serial":"001577","id":"ae77a525adeb442087e785c0f4090c43","origin":"001576"},
+            {"name":"赣仙游082","serial":"001581","id":"9fb8324fa6144c359546266f13204ed2","origin":"001580"},
+            {"name":"赣仙游110","serial":"001583","id":"00851a04d2cc424f90a8bbfde07cd838","origin":"001582"},
+            {"name":"赣仙游113","serial":"001585","id":"ffd6adec8dfe4de4bd02d4b6b75510a3","origin":"001584"},
+            {"name":"赣仙游083","serial":"001588","id":"405c4a53c0aa46b28386b8f9562222e0","origin":"001587"},
+            {"name":"赣仙游103","serial":"001594","id":"6f2c16c255bf449493370e33adbdac14","origin":"001593"},
+            {"name":"赣仙游106","serial":"001596","id":"7857156a6ae2455b80150b321164ae12","origin":"001595"},
+            {"name":"织女号","serial":"001598","id":"58aaecad90d84fe9b58469caf61f1e1b","origin":"001597"},
+            {"name":"七夕号","serial":"001602","id":"d7b79f78dd7944939bf2a68048da86f1","origin":"001600"},
+            {"name":"牛郎号","serial":"001604","id":"47052aac038e4e5183fbcf6e39cebb4c","origin":"001603"},
+            {"name":"万年桥号","serial":"001609","id":"8e44883547794f818b8acf18d59ef48c","origin":"001607"},
+            {"name":"舞龙湖号","serial":"001618","id":"2286178182704f51b19688c370493901","origin":"001617"},
+            {"name":"赣仙游109","serial":"001624","id":"ceba2aa3e4e74544ac3e111641095e1f","origin":"001623"},
+            {"name":"鹊桥号","serial":"001630","id":"bc057e77aaaa4d3db62e15c8adee05b3","origin":"001629"},
+            {"name":"搜神号","serial":"001633","id":"8d0e697e41b94a54952f831284aefc5d","origin":"001632"},
+            {"name":"龙凤号","serial":"001635","id":"f033a234d59a46ce9dee8605c820abe7","origin":"001634"},
+            {"name":"七仙女号","serial":"001637","id":"d575905f63824e20a17cd99398519423","origin":"001636"},
+            {"name":"董永号","serial":"001643","id":"7d24043ca6384f4da4fd273fc6b21e86","origin":"001642"},
+            {"name":"羽仙号","serial":"001647","id":"b7ec2c3bf2f940d8b70455a63aa18374","origin":"001646"}
+        ]
         const boats = {
             ["游船"]: ["牛郎号", "织女号", "万年桥号", "七夕号", "羽仙号", "搜神号", "龙凤号", "鹊桥号", "董永号", "七仙女号", "舞龙湖号", "赣仙游017"], 
             ["快艇"]: ["赣仙游080", "赣仙游081", "赣仙游082", "赣仙游083", "赣仙游102", "赣仙游103", "赣仙游105", "赣仙游106", "赣仙游107", "赣仙游108", "赣仙游109", "赣仙游110", "赣仙游111", "赣仙游112", "赣仙游113"]
@@ -247,7 +275,7 @@ class BoatScheduleData {
             };
         })
 
-        console.log(boatsList);
+        // console.log(boatsList);
 
         boatsList.forEach((boat, i) => {
             boatsSum++;
