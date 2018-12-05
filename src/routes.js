@@ -7,8 +7,6 @@ import ParkingLot from './pages/ParkingLot';
 import BoatSchedule from './pages/BoatSchedule';
 import BigDataAnls from './pages/BigDataAnls';
 
-import './pages/pages.css';
-
 const Routes = () =>
   <switch>
     <Route exact path={"/"} component={RootPage} />
