@@ -74,8 +74,6 @@ class BoatScheduleData {
         let outputBoats = [];
         let boatPosition = [];
 
-
-
         // 获取船载GPS记录
         let boat_list = await (await fetch('http://218.87.96.224:21009/getGPSDatas')).json();
         let boat_usage_amount = (await (await fetch('http://218.87.96.224:21009/getBoatUsageAmount')).json()).sum;

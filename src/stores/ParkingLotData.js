@@ -38,11 +38,10 @@ class ParkingLotData {
     @observable _IOCarsTime = []
     @observable _standingTime = []
     constructor() {
-        const _this = this;
-        setInterval(() => {
+        setInterval((_this) => {
             _this.fetchPlotStatus();
             _this.fetchPassingCarsData();
-        }, 30000);
+        }, 3000, this);
         this.fetchPlotStatus();
         this.fetchPassingCarsData();
         this.toStatisticsVehicleOwnership();
@@ -133,32 +132,8 @@ class ParkingLotData {
                     startTime: new Date().getTime() - 1000*3600*24*7, 
                     endTime: new Date().getTime()
                 }
-            })
-            if (count !== res.pageNo) return;
-            carsList = carsList.concat(res.list);
-            // 归类入车和出车记录
-            carsList.forEach(car => car.carOut ? outputCars.push(car) : inputCars.push(car));
-            // 根据出车记录进行车辆分析
-            outputCars.forEach((car) => {
-                let license = car.plateNo;
-                let province = provinceName[license.slice(0, 1)];
-                let city = carLicenceCity[license.slice(0, 2)];
-                let time = car.crossTime;
-                isEmpty(provinceCarsSet[province]) ? provinceCarsSet[province] = 1 : provinceCarsSet[province]++;
-                if (province === "江西") {
-                    JiangxiCarsSet[city]++;
-                }
-                inputCars.forEach((hisCar, i) => {
-                    if (hisCar.plateNo === car.plateNo) {
-                        let stayTime = (new Date(car.crossTime) - new Date(hisCar.crossTime))/1000/60/60;
-                        standingTime.forEach((time, j) => {
-                            if (time.range[0] < stayTime && time.range[1] > stayTime) {
-                                standingTime[j].value++;
-                            }
-                        })
-                    }
-                })
             });
+<<<<<<< HEAD
             this._carsDistribution.mapDataSeries[0].name = dateFormat(new Date(), 'yyyy') - 1;
             this._carsDistribution.mapDataSeries[0].data = (Object.keys(JiangxiCarsSet).map((city) => ({
                 name: `${city}市`,
@@ -169,6 +144,49 @@ class ParkingLotData {
                 value: provinceCarsSet[province]
             }));
             this._standingTime = standingTime;
+=======
+            try {
+                if (count !== res.pageNo) return;
+                carsList = carsList.concat(res.list);
+                // 归类入车和出车记录
+                carsList.forEach(car => car.carOut ? outputCars.push(car) : inputCars.push(car));
+                // 根据出车记录进行车辆分析
+                outputCars.forEach((car) => {
+                    let license = car.plateNo;
+                    let province = provinceName[license.slice(0, 1)];
+                    let city = carLicenceCity[license.slice(0, 2)];
+                    let time = car.crossTime;
+                    isEmpty(provinceCarsSet[province]) ? provinceCarsSet[province] = 1 : provinceCarsSet[province]++;
+                    if (province === "江西") {
+                        JiangxiCarsSet[city]++;
+                    }
+                    inputCars.forEach((hisCar, i) => {
+                        if (hisCar.plateNo === car.plateNo) {
+                            let stayTime = (new Date(car.crossTime) - new Date(hisCar.crossTime))/1000/60/60;
+                            standingTime.forEach((time, j) => {
+                                if (time.range[0] < stayTime && time.range[1] > stayTime) {
+                                    standingTime[j].value++;
+                                }
+                            })
+                        }
+                    })
+                });
+                this._carsDistribution.mapDataSeries[0].name = dateFormat(new Date(), 'yyyy') - 1;
+                this._carsDistribution.mapDataSeries[0].data = (Object.keys(JiangxiCarsSet).map((city) => ({
+                    name: `${city}市`,
+                    value: JiangxiCarsSet[city]
+                })));
+                this._carsDistribution3 = Object.keys(provinceCarsSet).map((province) => ({
+                    name: province, 
+                    value: provinceCarsSet[province]
+                }));
+                this._standingTime = standingTime;
+            } catch(err) {
+                console.log("Catch An Error: ", err.message);
+                return;
+            }
+
+>>>>>>> 986c975515ef2f641c7fd2b8528ee82332961a9d
         }
     }
     async fetchPlotStatus() {
@@ -222,40 +240,44 @@ class ParkingLotData {
             include: [[177, 271], [284, 333]], 
             value: 0
         }];
-        let response = await hikApi.FetchHik({
-            uri: getPlotStatus, 
-            body: {
-                pageNo: 1,
-                pageSize: 1000,
-            }
-        });
-        response.list.forEach((item) => {
-            // 车牌
-            let plotNo = item.plotNo;
-            // 是否被占用
-            let status = item.status;
-            // 车位号类型
-            let park = plotNo.slice(0, 1).toLocaleUpperCase();
-            // 车位号数字
-            let parkNum = Number(plotNo.slice(1));
-            plotsObject[park].push(item);
-            heatmapSet.forEach((point, i) => {
-                if (point.park === park && isIncluded(parkNum, point.include) && !!status) {
-                    heatmapSet[i].value++;
-                    inUse++;
+        try{
+            let response = await hikApi.FetchHik({
+                uri: getPlotStatus, 
+                body: {
+                    pageNo: 1,
+                    pageSize: 1000,
                 }
+            });
+            response.list.forEach((item) => {
+                // 车牌
+                let plotNo = item.plotNo;
+                // 是否被占用
+                let status = item.status;
+                // 车位号类型
+                let park = plotNo.slice(0, 1).toLocaleUpperCase();
+                // 车位号数字
+                let parkNum = Number(plotNo.slice(1));
+                plotsObject[park].push(item);
+                heatmapSet.forEach((point, i) => {
+                    if (point.park === park && isIncluded(parkNum, point.include) && !!status) {
+                        heatmapSet[i].value++;
+                        inUse++;
+                    }
+                })
             })
-        })
-        Object.keys(plotsObject).forEach((item) => {
-            plotsObject[item].sort((a, b) => a.plotNo.slice(1) - b.plotNo.slice(1));
-            plotList = plotList.concat(plotsObject[item]);
-        })
-        this.plotList = plotList;
-        this.heatmapSet = heatmapSet;
-        this.parking.prevAll = this.parking.all;
-        this.parking.all = response.list.length;
-        this.parking.prevInUse = this.parking.inUse;
-        this.parking.inUse = inUse;
+            Object.keys(plotsObject).forEach((item) => {
+                plotsObject[item].sort((a, b) => a.plotNo.slice(1) - b.plotNo.slice(1));
+                plotList = plotList.concat(plotsObject[item]);
+            })
+            this.plotList = plotList;
+            this.heatmapSet = heatmapSet;
+            this.parking.prevAll = this.parking.all;
+            this.parking.all = response.list.length;
+            this.parking.prevInUse = this.parking.inUse;
+            this.parking.inUse = inUse;
+        } catch(err) {
+            console.log("Catch An Error: ", err.message);
+        }
     }
     async fetchPassingCarsData() {
         let inSumPrev = this._IOCars.outSum;
@@ -336,7 +358,12 @@ class ParkingLotData {
                     endTime: new Date().getTime()
                 }
             })
-            if (count !== res.pageNo) break;
+            try{
+                if (count !== res.pageNo) break;
+            } catch(err) {
+                console.error("Get An Error: ", err.message);
+                break;
+            }
             carsList = carsList.concat(res.list);
         }
         carsList.forEach((item) => {

@@ -28,18 +28,18 @@ class ParkingLot extends Component {
 					</div>
 					<div className="bigdata_content">
 						<div className="c_content c_1">
-							<CardProvider className="cards CarsDistri" title="景区客源地车辆统计（近一年）" color="light-green">
+							<CardProvider className="cards CarsDistri" title="近一周景区客源地车辆统计" color="light-green">
 								<CarsDistributionComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="景区车辆停留时间统计（平均）" color="light-green">
+							<CardProvider className="cards" title="近一周景区车辆停留时间统计" color="light-green">
 								<StandingTimeComponent />
 							</CardProvider>
 						</div>
 						<div className="c_content c_2 c_center">
-							<CardProvider className="cards ServiceCondition" title="景区停车场使用量热点图" color="light-green">
+							<CardProvider className="cards ServiceCondition" title="景区停车场实时使用量统计热点图" color="light-green">
 								<ParkingHeatComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="景区出入时间统计" color="light-green">
+							<CardProvider className="cards" title="景区停车场车辆实时出入时间统计" color="light-green">
 								<IOCarsTimeComponent />
 							</CardProvider>
 						</div>
@@ -47,7 +47,7 @@ class ParkingLot extends Component {
 							<CardProvider className="cards IOSummary" title="景区停车场实时进出场统计" color="light-green">
 								<IOCarsComponent />
 							</CardProvider>
-							<CardProvider className="cards ParkingHeat" title="景区停车场使用情况占位图" color="light-green">
+							<CardProvider className="cards ParkingHeat" title="景区停车场实时使用情况占位图" color="light-green">
 								<ParkingHeatComponent type={'kuai'} />
 							</CardProvider>
 						</div>

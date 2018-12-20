@@ -86,20 +86,27 @@ class EchartsData {
         comfortIndex: 0,
         comfort: ''
     }
+    @observable occupantDensity = []
     constructor(){
-        var _this = this;
-        setInterval(function(){
+        setInterval(function(_this){
             _this.fetchTicketsNumber();
             _this.fetchPassData();
-        }, 30000);
-        setInterval(function () {
+            _this.fetchOccupantDensity();
+        }, 3000, this);
+        setInterval(function (_this) {
             _this.fetchWeatherData();
             _this.fetchPM25();
-        }, 1000*3600)
+        }, 1000*3600, this)
         this.fetchWeatherData();
         this.fetchPM25();
         this.fetchTicketsNumber();
         this.fetchPassData();
+        this.fetchOccupantDensity();
+    }
+    async fetchOccupantDensity() {
+        let res = await FetchYG("/Service/GetQrScanData");
+        this.occupantDensity = res;
+        console.log(res);
     }
     async fetchPassData() {
         var month1 = [1,3,5,7,8,10,12];
