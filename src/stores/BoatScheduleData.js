@@ -6,7 +6,7 @@ import config from '../config';
 const { baidu: { ak, transCrood } } = config.common;
 
 // 刷新间隔
-const interval = 3000
+const interval = 1000
 
 //定义一些常量
 const x_PI = 3.14159265358979324 * 3000.0 / 180.0;

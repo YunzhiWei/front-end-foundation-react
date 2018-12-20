@@ -345,8 +345,6 @@ class ParkingLotData {
                     endTime: new Date().getTime()
                 }
             })
-            alert(JSON.stringify(res));
-            console.log(res);
             try{
                 if (count !== res.pageNo) break;
             } catch(err) {
