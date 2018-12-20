@@ -32,7 +32,7 @@ class ParkingLotComponent extends Component {
 		const setting1 = setting(prevUsableParking, usableParking);
 		const setting2 = setting(parking.prevRealOut, parking.realOut);
 		const setting3 = setting(parking.prevRealIn, parking.realIn);
-		const setting4 = setting(prevUsableBoating, usableBoating);
+		const setting4 = setting(boating.prevAll, boating.all);
 		const setting5 = setting(boating.prevRealOut, boating.realOut);
 		const setting6 = setting(boating.prevRealIn, boating.realIn);
 		return (
@@ -47,9 +47,9 @@ class ParkingLotComponent extends Component {
 			        <p><span>今日出场：</span><span><b><CountUp className="account-balance" {...setting2} /></b></span><span>辆</span></p>
 			        <p><span>今日入场：</span><span><b><CountUp className="account-balance" {...setting3} /></b></span><span>辆</span></p>
 			        <hr/>
-			        <p><span>可调船数：</span><span><b><CountUp className="account-balance" {...setting4} /></b></span><span>艘</span></p>
+			        <p><span>总游船数：</span><span><b><CountUp className="account-balance" {...setting4} /></b></span><span>艘</span></p>
 			        <p><span>实时离港：</span><span><b><CountUp className="account-balance" {...setting5} /></b></span><span>艘</span></p>
-			        <p><span>实时到港：</span><span><b><CountUp className="account-balance" {...setting6} /></b></span><span>艘</span></p>
+			        <p><span>实时在港：</span><span><b><CountUp className="account-balance" {...setting6} /></b></span><span>艘</span></p>
 			    </div>
 			</div>
 		);

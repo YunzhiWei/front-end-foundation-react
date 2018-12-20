@@ -152,7 +152,6 @@ class EchartsData {
         if (res.Data.length) {
             let leaveNumber = res.Data[0].sum;
             let enterNumber = res.Data[1].sum;
-            console.log(leaveNumber, enterNumber);
             this.ticketsNum = {
                 prevOnline: this.ticketsNum.online,
                 online: Math.floor(enterNumber*0.2),

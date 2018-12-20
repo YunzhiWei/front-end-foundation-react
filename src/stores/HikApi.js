@@ -6,15 +6,7 @@ import $ from 'jquery';
 const { hik: { addr, port, appkey, appsecret, getDefaultUserUuid }, api } = config.common;
 
 class HikApi {
-  @observable userUuid = ""
-  constructor() {
-
-  }
-  @observable async FetchHik(request) {
-    this.userUuid = await this.Fetch({ uri: getDefaultUserUuid });
-    return await this.Fetch(request);
-  }
-  async Fetch(request) {
+  async FetchHik(request) {
     if(!request) return;
     const { uri, body } = request;
     const time = new Date().getTime().toString();
@@ -31,10 +23,8 @@ class HikApi {
     }
     const result = await axios({
         method: 'GET', 
-        url: `http://${api.addr}/OpenApi/CommonHandle`, 
+        url: `http://218.87.96.224:21009/fetchParkinglotDatas`, 
         params: {
-          key: api.key, 
-          appid: api.appid, 
           url: `http://${addr}:${port}${uri}?token=${token}`, 
           body: JSON.stringify(data)
         }
@@ -42,7 +32,7 @@ class HikApi {
     if (result.data.errorCode) {
         alert(`地址<${uri}>请求错误：${result.data.errorMessage}`);
     }
-    return JSON.parse(result.data).data;
+    return result.data.data;
   }
 }
 

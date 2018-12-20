@@ -6,7 +6,8 @@ import echartsOption from "../function/boatFunc";
 @inject("boatScheduleData") @observer
 class BoatsListComponent extends Component {
     render() {
-        const option = echartsOption(this.props.boatScheduleData._boatsList, 'BoatsList');
+        const { _boatsList, _boatUsageAmount } = this.props.boatScheduleData;
+        const option = echartsOption({ _boatsList, _boatUsageAmount }, 'BoatsList');
 		return (
             <ReactEcharts 
                 option={option}

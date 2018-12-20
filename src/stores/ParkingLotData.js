@@ -164,7 +164,6 @@ class ParkingLotData {
                 name: `${city}市`,
                 value: JiangxiCarsSet[city]
             }))).sort((a, b) => a.value - b.value);
-            console.log(this._carsDistribution.mapDataSeries[0].data);
             this._carsDistribution3 = Object.keys(provinceCarsSet).map((province) => ({
                 name: province, 
                 value: provinceCarsSet[province]
@@ -340,10 +339,9 @@ class ParkingLotData {
             if (count !== res.pageNo) break;
             carsList = carsList.concat(res.list);
         }
-        console.log(res);
         carsList.forEach((item) => {
             if (!!item.carOut) {
-                if (outputCars.length < 6) {
+                if (outputCars.length < 30) {
                     let license = item.plateNo;
                     let time = item.crossTime.slice(11);
                     outputCars.push({
@@ -374,7 +372,7 @@ class ParkingLotData {
                         outputCars[i].hasGetStayTime = true;
                     }
                 })
-                if (inputCars.length < 6) {
+                if (inputCars.length < 30) {
                     let license = item.plateNo;
                     let time = item.crossTime.slice(11);
                     inputCars.push({

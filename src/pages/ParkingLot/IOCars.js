@@ -25,12 +25,12 @@ class IOCarsComponent extends Component {
                 <div className="input">
                     <p className="title">当日进车<b><CountUp className="account-balance" {...setting1} /></b>辆</p>
                     <p className="subtitle"><span className="col-lg-4">车牌号</span><span className="col-lg-4">归属地</span><span className="col-lg-4">进场时间</span></p>
-                    <div>{this.props.parkingLotData._IOCars.inputCars.slice(-6, this.props.parkingLotData._IOCars.inputCars.length).map((item, i) => <p key={item.id} className={`list ${item.New ? 'new' : ''}`}><span className="col-lg-4">{item.license}</span><span className="col-lg-4">{item.addr}</span><span className="col-lg-4">{item.time}</span></p>)}</div>
+                    <div>{this.props.parkingLotData._IOCars.inputCars.map((item, i) => <p key={item.id} className={`list ${item.New ? 'new' : ''}`}><span className="col-lg-4">{item.license}</span><span className="col-lg-4">{item.addr}</span><span className="col-lg-4">{item.time}</span></p>)}</div>
                 </div>
                 <div className="output">
                     <p className="title">当日出车<b><CountUp className="account-balance" {...setting2} /></b>辆</p>
                     <p className="subtitle"><span className="col-lg-4">车牌号</span><span className="col-lg-4">离场时间</span><span className="col-lg-4">停留时间</span></p>
-                    <div>{this.props.parkingLotData._IOCars.outputCars.slice(-6, this.props.parkingLotData._IOCars.outputCars.length).map((item, i) => <p key={item.id} className={`list ${item.New ? 'new' : ''}`} ><span className="col-lg-4">{item.license}</span><span className="col-lg-4">{item.time}</span><span className="col-lg-4">{item.stayTime} 分钟</span></p>)}</div>
+                    <div>{this.props.parkingLotData._IOCars.outputCars.map((item, i) => <p key={item.id} className={`list ${item.New ? 'new' : ''}`} ><span className="col-lg-4">{item.license}</span><span className="col-lg-4">{item.time}</span><span className="col-lg-4">{item.stayTime} 分钟</span></p>)}</div>
                 </div>
 		    </div>
         );

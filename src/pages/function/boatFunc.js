@@ -2,20 +2,21 @@ import echarts from 'echarts';
 import geoCoordMap from '../BigData/data/geoCoordMap';
 
 function boatsListData(arg) {
+    const { _boatsList, _boatUsageAmount } = arg;
     function createSeries() {
         var count = 0;
         var series = [];
         var position = [2.5, 25]
-        arg.map((item, i) => {
+        _boatsList.map((item, i) => {
             // 超过20个换行
             i === 20 ? position = [-97.5, 75] : '';
             series.push(Object.assign({},seriesTemp));
-            series[i].name = item.name;
+            series[i].name = item.device_name;
             series[i].center = [`${position[0] + count}%`, `${position[1]}%`];
             series[i].data = [{
                 label: {
                     normal: {
-                        formatter: (data) => data.seriesName.slice(-6),
+                        formatter: (data) => data.seriesName.slice(0, 6),
                         position: 'center',
                         show: true,
                         textStyle: {
@@ -43,8 +44,8 @@ function boatsListData(arg) {
                     }
                 },
             }]
-            series[i].data[0].value = item.usage * 100;
-            series[i].data[1].value = 100 - item.usage * 100;
+            series[i].data[0].value = (item.usage_amount/_boatUsageAmount) * 100;
+            series[i].data[1].value = 100 - (item.usage_amount/_boatUsageAmount) * 100;
             series[i].data[0].label.normal.textStyle.color = series[i].data[1].label.normal.textStyle.color = series[i].data[0].itemStyle.normal.color= series[i].data[0].itemStyle.normal.shadowColor = color;
             count += 5;
         })
