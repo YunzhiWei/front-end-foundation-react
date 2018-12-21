@@ -106,7 +106,6 @@ class EchartsData {
     async fetchOccupantDensity() {
         let res = await FetchYG("/Service/GetQrScanData");
         this.occupantDensity = res;
-        console.log(res);
     }
     async fetchPassData() {
         var month1 = [1,3,5,7,8,10,12];
@@ -262,7 +261,7 @@ class EchartsData {
                     })
                 }
             }).catch(function(err) {
-                console.log(err);
+                console.error(err);
             });
         }
         function findMin(compare) {
@@ -292,7 +291,7 @@ class EchartsData {
             })
             self.PM25.nowAqi = json.result.aqi;
         }).catch(function(err) {
-            console.log(err);
+            console.error(err);
         });
     }
 }

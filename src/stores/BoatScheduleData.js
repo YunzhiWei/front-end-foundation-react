@@ -57,26 +57,10 @@ class BoatScheduleData {
         this.fetchLineWay();
     }
     async updateIOBoats() {
-        // 所有船只统计
-        let boatsSum = 0;
-        // 各类船只总计
-        let sum = [0, 0];
-        // 各类船只出港统计
-        let outSum = [0, 0]
-        // 船只使用统计
-        let usageSum = JSON.parse(localStorage.getItem('boatsList') || "0")*1;
-
-
-        // 船只列表
-        const boatsList = JSON.parse(localStorage.getItem('boatsList') || "[]");
-        const boatsListPrev = JSON.parse(localStorage.getItem('boatsList') || "[]");
-        let inputBoats = [];
-        let outputBoats = [];
-        let boatPosition = [];
 
         // 获取船载GPS记录
-        let boat_list = await (await fetch('http://218.87.96.224:21009/getGPSDatas')).json();
-        let boat_usage_amount = (await (await fetch('http://218.87.96.224:21009/getBoatUsageAmount')).json()).sum;
+        let boat_list = await (await fetch('http://172.16.24.231:21009/getGPSDatas')).json();
+        let boat_usage_amount = (await (await fetch('http://172.16.24.231:21009/getBoatUsageAmount')).json()).sum;
 
         let [ boat_yc, boat_kt ] = boat_list.reduce((sum, boat) => {
             sum[boat.type*1] = sum[boat.type*1].concat([boat]);
@@ -128,10 +112,11 @@ class BoatScheduleData {
         this._IOBoats.kt_docking = boat_kt_docking;
         this._IOBoats.kt_leaving = boat_kt_leaving;
 
-        this._posMakers = boat_yc_leaving.concat(boat_kt_leaving).map((boat) => ({
+        this._posMakers = boat_list.filter((boat) => new Date().getTime() - new Date(boat.latest_time).getTime() <= 10*60*1000).map((boat) => ({
             text: boat.device_name, 
             location: boat.latest_location
         }));
+        this._IOBoats.kt_leaving;
         this._boatUsageAmount = boat_usage_amount;
 
     }

@@ -22,14 +22,14 @@ class HikApi {
     }
     const result = await axios({
         method: 'GET', 
-        url: `http://218.87.96.224:21009/fetchParkinglotDatas`, 
+        url: `http://172.16.24.231:21009/fetchParkinglotDatas`, 
         params: {
           url: `http://${addr}:${port}${uri}?token=${token}`, 
           body: JSON.stringify(data)
         }
     });
     if (result.data.errorCode) {
-        alert(`地址<${uri}>请求错误：${result.data.errorMessage}`);
+        console.info(`地址<${uri}>请求错误：${result.data.errorMessage}`);
     }
     return result.data.data;
   }

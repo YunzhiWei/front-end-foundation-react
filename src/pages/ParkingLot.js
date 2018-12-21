@@ -28,7 +28,7 @@ class ParkingLot extends Component {
 					</div>
 					<div className="bigdata_content">
 						<div className="c_content c_1">
-							<CardProvider className="cards CarsDistri" title="近一周景区客源地车辆统计" color="light-green">
+							<CardProvider className="cards CarsDistri" title="近一周景区客源地车辆统计（除本市）" color="light-green">
 								<CarsDistributionComponent />
 							</CardProvider>
 							<CardProvider className="cards" title="近一周景区车辆停留时间统计" color="light-green">

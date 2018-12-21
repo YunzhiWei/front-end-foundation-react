@@ -41,7 +41,7 @@ class ParkingLotData {
         setInterval((_this) => {
             _this.fetchPlotStatus();
             _this.fetchPassingCarsData();
-        }, 3000, this);
+        }, 30000, this);
         this.fetchPlotStatus();
         this.fetchPassingCarsData();
         this.toStatisticsVehicleOwnership();
@@ -133,16 +133,46 @@ class ParkingLotData {
                     endTime: new Date().getTime()
                 }
             });
-            this._carsDistribution.mapDataSeries[0].name = dateFormat(new Date(), 'yyyy') - 1;
-            this._carsDistribution.mapDataSeries[0].data = (Object.keys(JiangxiCarsSet).map((city) => ({
-                name: `${city}市`,
-                value: JiangxiCarsSet[city]
-            }))).sort((a, b) => a.value - b.value);
-            this._carsDistribution3 = Object.keys(provinceCarsSet).map((province) => ({
-                name: province, 
-                value: provinceCarsSet[province]
-            }));
-            this._standingTime = standingTime;
+            try {
+                if (count !== res.pageNo) return;
+                carsList = carsList.concat(res.list);
+                // 归类入车和出车记录
+                carsList.forEach(car => car.carOut ? outputCars.push(car) : inputCars.push(car));
+                // 根据出车记录进行车辆分析
+                outputCars.forEach((car) => {
+                    let license = car.plateNo;
+                    let province = provinceName[license.slice(0, 1)];
+                    let city = carLicenceCity[license.slice(0, 2)];
+                    let time = car.crossTime;
+                    isEmpty(provinceCarsSet[province]) ? provinceCarsSet[province] = 1 : provinceCarsSet[province]++;
+                    if (province === "江西") {
+                        JiangxiCarsSet[city]++;
+                    }
+                    inputCars.forEach((hisCar, i) => {
+                        if (hisCar.plateNo === car.plateNo) {
+                            let stayTime = (new Date(car.crossTime) - new Date(hisCar.crossTime))/1000/60/60;
+                            standingTime.forEach((time, j) => {
+                                if (time.range[0] < stayTime && time.range[1] > stayTime) {
+                                    standingTime[j].value++;
+                                }
+                            })
+                        }
+                    })
+                });
+                this._carsDistribution.mapDataSeries[0].name = dateFormat(new Date(), 'yyyy') - 1;
+                this._carsDistribution.mapDataSeries[0].data = Object.keys(JiangxiCarsSet).map((city) => ({
+                    name: `${city}市`,
+                    value: JiangxiCarsSet[city]
+                })).filter((item) => !!item.value).sort((a, b) => b.value - a.value);
+                this._carsDistribution3 = Object.keys(provinceCarsSet).map((province) => ({
+                    name: province, 
+                    value: provinceCarsSet[province]
+                }));
+                this._standingTime = standingTime;
+            } catch(err) {
+                console.error("Catch An Error: ", err.message);
+                return;
+            }
         }
     }
     async fetchPlotStatus() {
@@ -232,7 +262,7 @@ class ParkingLotData {
             this.parking.prevInUse = this.parking.inUse;
             this.parking.inUse = inUse;
         } catch(err) {
-            console.log("Catch An Error: ", err.message);
+            console.error("Catch An Error: ", err.message);
         }
     }
     async fetchPassingCarsData() {
