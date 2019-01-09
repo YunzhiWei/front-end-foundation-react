@@ -108,39 +108,32 @@ class EchartsData {
         this.occupantDensity = res;
     }
     async fetchPassData() {
-        var month1 = [1,3,5,7,8,10,12];
-        var month2 = [4,6,9,11];
-        var month3 = 2;
-        function getDays(month, year) {
-            return month1.indexOf(month) + 1 ? 31 : month2.indexOf(month) + 1 ? 30 : month === month3 && year%4 === 0 ? 29 : 28 ;
-        }
-        function getDate(index) {
-            var year = new Date().getFullYear();
-            var month = new Date().getMonth() + 1;
-            var day = new Date().getDate() - index;
-            var preMonth = month - 1;
-            if(preMonth === 0) {
-                preMonth = month + 11;
-                year -= 1;
+        function getBeforeDate(n) {
+            var n = n;
+            var d = new Date();
+            var year = d.getFullYear();
+            var mon = d.getMonth() + 1;
+            var day = d.getDate();
+            if(day <= n) {
+                if(mon > 1) {
+                    mon = mon - 1;
+                } else {
+                    year = year - 1;
+                    mon = 12;
+                }
             }
-            var preDay = getDays(preMonth, year);
-            if(day - 1 < 0) {
-                month = preMonth;
-                day = preDay + day;
-            }
-            if (month < 10) {
-                month = "0"+month;
-            }
-            if (day < 10) {
-                day = "0"+day;
-            }
-            return [year, month, day];
+            d.setDate(d.getDate() - n);
+            year = d.getFullYear();
+            mon = d.getMonth() + 1;
+            day = d.getDate();
+            let s = year + "-" + (mon < 10 ? ('0' + mon) : mon) + "-" + (day < 10 ? ('0' + day) : day);
+            return s;
         }
         let category = [];
         let data = [];
         let res = await FetchYG("/OpenApi/GetPassengerFlowStatisticsForDay");
         for (let i = 0; i < 20; i++) {
-            category[i] = getDate(i).join('-');
+            category[i] = getBeforeDate(i);
             data[i] = 0;
         }
         res.Data.forEach((item) => {
