@@ -42,7 +42,7 @@ class IOBoatsComponent extends Component {
                     <div className="input">
                         <p className="title">离港{this.props.name}<b><CountUp className="account-balance" {...setting2} /></b>艘</p>
                         <p className="subtitle"><span className="col-lg-3">名称</span><span className="col-lg-4">速度</span><span className="col-lg-2">始发</span><span className="col-lg-3">离港时间</span></p>
-                        <div className="IO-content">{yc_leaving.sort(toSortByLatestTime).map((item, i) => <p key={item.device_id} className={`list`}><span className="col-lg-3">{item.device_name}</span><span className="col-lg-4">{(item.speed/1000).toString().slice(0, 4)}km/h</span><span className="col-lg-2">{item.leaving_wharf}</span><span className="col-lg-3">{dateFormat(new Date(item.leaving_time), 'hh:mm:ss')}</span></p>)}
+                        <div className="IO-content">{yc_leaving.sort(toSortByLatestTime).map((item, i) => <p key={item.device_id} className={`list`}><span className="col-lg-3">{item.device_name}</span><span className="col-lg-4">{(item.speed/100000).toString().slice(0, 4)}km/h</span><span className="col-lg-2">{item.leaving_wharf}</span><span className="col-lg-3">{dateFormat(new Date(item.leaving_time), 'hh:mm:ss')}</span></p>)}
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@ class IOBoatsComponent extends Component {
                     <div className="input">
                         <p className="title">离港{this.props.name}<b><CountUp className="account-balance" {...setting4} /></b>艘</p>
                         <p className="subtitle"><span className="col-lg-3">名称</span><span className="col-lg-4">速度</span><span className="col-lg-2">始发</span><span className="col-lg-3">离港时间</span></p>
-                        <div className="IO-content">{kt_leaving.sort(toSortByLatestTime).map((item, i) => <p key={item.device_id} className={`list`}><span className="col-lg-3">{item.device_name}</span><span className="col-lg-4">{(item.speed/1000).toString().slice(0, 4)}km/h</span><span className="col-lg-2">{item.leaving_wharf}</span><span className="col-lg-3">{dateFormat(new Date(item.leaving_time), 'hh:mm:ss')}</span></p>)}
+                        <div className="IO-content">{kt_leaving.sort(toSortByLatestTime).map((item, i) => <p key={item.device_id} className={`list`}><span className="col-lg-3">{item.device_name}</span><span className="col-lg-4">{(item.speed/100000).toString().slice(0, 4)}km/h</span><span className="col-lg-2">{item.leaving_wharf}</span><span className="col-lg-3">{dateFormat(new Date(item.leaving_time), 'hh:mm:ss')}</span></p>)}
                         </div>
                     </div>
                 </div>
