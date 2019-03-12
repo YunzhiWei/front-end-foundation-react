@@ -1,7 +1,8 @@
 import { observable } from 'mobx';
 import axios from 'axios';
 import fetchJsonp from 'fetch-jsonp';
-import { FetchYG } from '../Api';
+import { FetchYG, FetchDY } from '../Api';
+import dateFormatter from '@hadesz/date-formatter';
 
 function aqiDataGenerate(now, oneDay, value){
     now = new Date(+now + oneDay);
@@ -108,72 +109,51 @@ class EchartsData {
         this.occupantDensity = res;
     }
     async fetchPassData() {
-        function getBeforeDate(n) {
-            var n = n;
-            var d = new Date();
-            var year = d.getFullYear();
-            var mon = d.getMonth() + 1;
-            var day = d.getDate();
-            if(day <= n) {
-                if(mon > 1) {
-                    mon = mon - 1;
-                } else {
-                    year = year - 1;
-                    mon = 12;
-                }
+        let res = await FetchDY(`YKZS&stdt=${dateFormatter((new Date() - 1000*3600*24*19), 'yyyy-MM-dd')}&ldti=${dateFormatter('yyyy-MM-dd')}`);
+        if (res.categories.length) {
+            this.pass = {
+                category: res.categories,
+                lineData: res.series[0].data,
+                barData: res.series[0].data,
+                dottedBase: new Date()
             }
-            d.setDate(d.getDate() - n);
-            year = d.getFullYear();
-            mon = d.getMonth() + 1;
-            day = d.getDate();
-            let s = year + "-" + (mon < 10 ? ('0' + mon) : mon) + "-" + (day < 10 ? ('0' + day) : day);
-            return s;
-        }
-        let category = [];
-        let data = [];
-        let res = await FetchYG("/OpenApi/GetPassengerFlowStatisticsForDay");
-        for (let i = 0; i < 20; i++) {
-            category[i] = getBeforeDate(i);
-            data[i] = 0;
-        }
-        res.Data.forEach((item) => {
-            data[category.indexOf(item.date)] = item.sum;
-        })
-        this.pass = {
-            category: category,
-            lineData: data,
-            barData: data,
-            dottedBase: new Date()
+        } else {
+            this.pass = {
+                category: [], 
+                lineData: [], 
+                barData: [], 
+                dottedBase: new Date()
+            }
         }
     }
     async fetchTicketsNumber(index) {
-        let res = await FetchYG("/OpenApi/GetPassengerFlowStatistics");
-        if (res.Data.length) {
-            let leaveNumber = res.Data[0].sum;
-            let enterNumber = res.Data[1].sum;
-            this.ticketsNum = {
-                prevOnline: this.ticketsNum.online,
-                online: Math.floor(enterNumber*0.2),
-                prevOffline: this.ticketsNum.offline,
-                offline: Math.ceil(enterNumber*0.9),
-                prevCheck: this.ticketsNum.check,
-                check: enterNumber, 
-                prevLeave: this.ticketsNum.leave, 
-                leave: leaveNumber
-            }
+        let hikRes = await FetchYG("/OpenApi/GetPassengerFlowStatistics");
+        let dyRes = await FetchDY("SPJP");
+        let checkin, online, offline, leave;
+        if (dyRes.categories.length) {
+            checkin = dyRes.series[0].data[3].value
+            online = dyRes.series[0].data[2].value;
+            offline = dyRes.series[0].data[1].value;
         } else {
-            this.ticketsNum = {
-                prevOnline: this.ticketsNum.online,
-                online: 0,
-                prevOffline: this.ticketsNum.offline,
-                offline: 0,
-                prevCheck: this.ticketsNum.check,
-                check: 0, 
-                prevLeave: this.ticketsNum.leave, 
-                leave: 0
-            }
+            checkin = 0;
+            online = 0;
+            offline = 0;
         }
-
+        if (hikRes.Data.length) {
+            leave = hikRes.Data[0].sum;
+        } else {
+            leave = 0;
+        }
+        this.ticketsNum = {
+            prevOnline: this.ticketsNum.online,
+            online: online,
+            prevOffline: this.ticketsNum.offline,
+            offline: offline,
+            prevCheck: this.ticketsNum.check,
+            check: checkin, 
+            prevLeave: this.ticketsNum.leave, 
+            leave: leave
+        }
     }
     fetchWeatherData () {
         let self = this;

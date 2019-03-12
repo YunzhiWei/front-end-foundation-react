@@ -22,7 +22,8 @@ function setting(start, end) {
 class AnlsMapComponent extends Component {
     render() {
         const { prevCheck, check, prevLeave, leave } = this.props.echartsData.ticketsNum;
-        const option = echartsOption(this.props.bigDataAnlsData, 'AnlsMap');
+        const { _nationalRanking } = this.props.bigDataAnlsData;
+        const option = echartsOption(_nationalRanking[1], 'AnlsMap');
         let stay = check - leave;
         let prevStay = prevCheck - prevLeave;
 

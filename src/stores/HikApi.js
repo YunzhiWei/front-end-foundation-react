@@ -17,7 +17,7 @@ class HikApi {
     Object.assign(data, body);
     const token = crypto.createHash('md5').update(uri + JSON.stringify(data) + appsecret).digest('hex');
     const requestBody = {
-        url: `http://${addr}:${port}${uri}?token=${token}`,
+        url: `${addr}:${port}${uri}?token=${token}`,
         body: JSON.stringify(data)
     }
     const result = await axios({

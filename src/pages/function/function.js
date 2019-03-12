@@ -187,7 +187,27 @@ function airportCoord(arg) {
 
 // 原LineAndHistogram
 function barLines(arg) {
-    const { yAxisConfig, xAxisData, seriesData } = arg;
+    let category = arg.map(item => item.name);
+    let data = arg.map(item => item.value);
+    let max = data.sort((a, b) => b - a)[0];
+    const yAxisConfig = [{
+        name: '数量/人',
+        min: 0,
+        max: max,
+        interval: Math.ceil(max/10), 
+        axisLabel: {
+            formatter: '{value}'
+        },
+        splitLine: {
+            show: false
+        }
+    }];
+    const xAxisData = category;
+    const seriesData = [{
+        name: '游客总数',
+        type: 'bar',
+        data: data
+    }]
 
     yAxisConfig.forEach((item) => {
         item.type = 'value';
@@ -1086,22 +1106,7 @@ function airQualityData(arg) {
 
 // 资源使用量
 function resUtilizationData(arg) {
-    var appusage_data = [{
-        name: "江苏",
-        value: 46
-    }, {
-        name: "福建",
-        value: 52
-    }, {
-        name: "上海",
-        value: 58
-    }, {
-        name: "湖南",
-        value: 62
-    }, {
-        name: "江西",
-        value: 140
-    }];
+    var appusage_data = arg.filter(item => !!item).slice(1, 6).reverse();
     const option = {
         tooltip: {
             trigger: "axis",

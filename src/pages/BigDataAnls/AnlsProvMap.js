@@ -10,7 +10,8 @@ import "echarts/map/js/province/jiangxi.js";
 @inject("bigDataAnlsData") @observer
 class AnlsProvMapComponent extends Component {
     render() {
-        const option = echartsOption(this.props.bigDataAnlsData, 'AnlsProvMap');    
+        const { _JXRanking } = this.props.bigDataAnlsData
+        const option = echartsOption(_JXRanking[0], 'AnlsProvMap');    
         return (
             <ReactEcharts
                 option={option}

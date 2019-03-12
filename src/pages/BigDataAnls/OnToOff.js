@@ -5,10 +5,11 @@ import ReactEcharts from '../lib';
 import { inject, observer } from 'mobx-react';
 import echartsOption from "../function/anlsFunc";
 
-@inject("bigDataAnlsData") @observer
+@inject("echartsData") @observer
 class OnToOffComponent extends Component {
     render() {
-        const option = echartsOption(this.props.bigDataAnlsData, 'OnToOff');   
+        const { ticketsNum } = this.props.echartsData;
+        const option = echartsOption(ticketsNum, 'OnToOff');   
         return (
             <ReactEcharts
                 option={option}

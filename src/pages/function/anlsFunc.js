@@ -100,68 +100,73 @@ function calendarGridData(arg) {
 
 // 地图分析
 function anlsMapData(arg) {
-	var BJData = [
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '浏阳',
-	        value: 6708
-	    }],
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '株洲',
-	        value: 5774
-	    }],
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '长沙',
-	        value: 4505
-	    }],
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '福州',
-	        value: 211
-	    }],
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '上海',
-	        value: 13900
-	    }],
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '苏州',
-	        value: 2375
-	    }],
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '武汉',
-	        value: 3371
-	    }],
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '南京',
-	        value: 418
-	    }],
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '杭州',
-	        value: 264
-	    }],
-	    [{
-	        name: '仙女湖'
-	    }, {
-	        name: '深圳',
-	        value: 169
-	    }]
-	];
+	let BJData = arg.map((item) => ([{
+		name: '仙女湖'
+	}, {
+		...item
+	}]))
+	// var BJData = [
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '浏阳',
+	//         value: 6708
+	//     }],
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '株洲',
+	//         value: 5774
+	//     }],
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '长沙',
+	//         value: 4505
+	//     }],
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '福州',
+	//         value: 211
+	//     }],
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '上海',
+	//         value: 13900
+	//     }],
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '苏州',
+	//         value: 2375
+	//     }],
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '武汉',
+	//         value: 3371
+	//     }],
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '南京',
+	//         value: 418
+	//     }],
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '杭州',
+	//         value: 264
+	//     }],
+	//     [{
+	//         name: '仙女湖'
+	//     }, {
+	//         name: '深圳',
+	//         value: 169
+	//     }]
+	// ];
 
 	var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
 	var train = 'path://M67.335,33.596L67.335,33.596c-0.002-1.39-1.153-3.183-3.328-4.218h-9.096v-2.07h5.371 c-4.939-2.07-11.199-4.141-14.89-4.141H19.72v12.421v5.176h38.373c4.033,0,8.457-1.035,9.142-5.176h-0.027 c0.076-0.367,0.129-0.751,0.129-1.165L67.335,33.596L67.335,33.596z M27.999,30.413h-3.105v-4.141h3.105V30.413z M35.245,30.413 h-3.104v-4.141h3.104V30.413z M42.491,30.413h-3.104v-4.141h3.104V30.413z M49.736,30.413h-3.104v-4.141h3.104V30.413z  M14.544,40.764c1.143,0,2.07-0.927,2.07-2.07V35.59V25.237c0-1.145-0.928-2.07-2.07-2.07H-9.265c-1.143,0-2.068,0.926-2.068,2.07 v10.351v3.105c0,1.144,0.926,2.07,2.068,2.07H14.544L14.544,40.764z M8.333,26.272h3.105v4.141H8.333V26.272z M1.087,26.272h3.105 v4.141H1.087V26.272z M-6.159,26.272h3.105v4.141h-3.105V26.272z M-9.265,41.798h69.352v1.035H-9.265V41.798z';
@@ -171,12 +176,12 @@ function anlsMapData(arg) {
 	    var res = [];
 	    for (var i = 0; i < data.length; i++) {
 	        var dataItem = data[i];
-	        var fromCoord = geoCoordMap[dataItem[1].name];
+	        var fromCoord = geoCoordMap[dataItem[1].name.replace(/[省市县区镇]/g, '')];
 	        var toCoord = geoCoordMap[dataItem[0].name];
 	        if (fromCoord && toCoord) {
 	            res.push({
 	                fromName: dataItem[0].name,
-	                toName: dataItem[1].name,
+	                toName: dataItem[1].name.replace(/[省市县区镇]/g, ''),
 	                coords: [fromCoord, toCoord]
 	            });
 	        }
@@ -289,11 +294,16 @@ function anlsMapData(arg) {
 	            }
 	        },
 	        data: item[1].map(function(dataItem) {
-	            return {
-	                name: dataItem[1].name,
-	                value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
-	            };
-	        })
+				let coord = geoCoordMap[dataItem[1].name.replace(/[省市县区镇]/g, '')]
+				if (!coord) {
+					return null;
+				} else {
+					return {
+					    name: dataItem[1].name,
+						value: coord.concat([dataItem[1].value])
+					};
+				}
+			}).filter(item => !!item)
 	    });
 	});
 
@@ -448,31 +458,11 @@ function anlsMapData(arg) {
 
 // 省级地图分析
 function anlsProvMapData(arg) {
-	var geodata = [{
-	    name: '南昌市',
-	    value: geoCoordMap['南昌']
-	}, {
-	    name: '宜春市',
-	    value: geoCoordMap['宜春']
-	}, {
-	    name: '萍乡市',
-	    value: geoCoordMap['萍乡']
-	}, {
-	    name: '吉安市',
-	    value: geoCoordMap['吉安']
-	}, {
-	    name: '新余市',
-	    value: geoCoordMap['新余']
-	}, {
-	    name: '赣州市',
-	    value: geoCoordMap['赣州']
-	}, {
-	    name: '抚州市',
-	    value: geoCoordMap['抚州']
-	}, {
-	    name: '九江市',
-	    value: geoCoordMap['九江']
-	}, ];
+	let geodata = arg.map(item => ({
+		name: item.name,
+		value: geoCoordMap[item.name.replace('地区', '市').replace(/[省市县区]/g, '')]
+	}))
+	console.log(geodata);
 	var geodata1 = [{
 	    name: '仙女湖',
 	    value: geoCoordMap['仙女湖']
@@ -569,6 +559,10 @@ function anlsProvMapData(arg) {
 
 // 男女比例
 function maleToFemaleData(arg) {
+	let { male, female } = arg;
+	let total = male + female;
+	let maleRate = (male / total * 100).toFixed(2);
+	let femaleRate = (female / total * 100).toFixed(2);
     const option = {
     	color: ['#5ab1ef', '#a9ADF3'],
 	    tooltip : {
@@ -594,8 +588,8 @@ function maleToFemaleData(arg) {
             	}
             },
             data:[
-                {value:63.77, name:'男'},
-                {value:36.23, name:'女'},
+				{ value: maleRate, name: '男' },
+				{ value: femaleRate, name: '女' },
             ]
         }]
 	};
@@ -603,7 +597,7 @@ function maleToFemaleData(arg) {
 }
 
 // 景区团散比
-function indvToGroupData(argument) {
+function indvToGroupData(arg) {
 	const option = {
 	    color: ['#83D560', '#AF89D6', '#a9ADF3'],
 	    tooltip: {
@@ -653,10 +647,10 @@ function indvToGroupData(argument) {
 	            },
 
 	            data: [{
-	                value: 1778.2,
+					value: arg.individual,
 	                name: '散客'
 	            }, {
-	                value: 7218,
+					value: arg.group,
 	                name: '团客'
 	            }]
 	        }, {
@@ -681,11 +675,11 @@ function indvToGroupData(argument) {
 	            },
 
 	            data: [{
-	                value: 1778.2,
-	                name: '散客'
+					value: arg.individual,
+					name: '散客'
 	            }, {
-	                value: 7218,
-	                name: '团客'
+					value: arg.group,
+					name: '团客'
 	            }]
 	        }
 	    ]
@@ -695,7 +689,10 @@ function indvToGroupData(argument) {
 
 // 线上线下比
 function onToOffData(arg) {
-	var tips = 88.97;
+	let { online, offline } = arg;
+	let total = online + offline;
+	let onlineRate = (online / total * 100).toFixed(2);
+	let offlineRate = (offline / total * 100).toFixed(2);
 	const option = {
 	    tooltip: {
             trigger: 'item',
@@ -727,8 +724,8 @@ function onToOffData(arg) {
                 }
 	        },
 	        data: [{
-	        	name: "线上占比 19.03%",
-		        value: 100 - tips,
+	        	name: `线上占比 ${onlineRate}%`,
+				value: online,
 		        itemStyle: {
 		            normal: {
 		                color: '#fb358a',
@@ -737,8 +734,8 @@ function onToOffData(arg) {
 		            }
 		        }
 		    }, {
-		    	name: "线下占比 80.97%",
-		        value: tips,
+		    	name: `线下占比 ${offlineRate}7%`,
+				value: offline,
 		        itemStyle: {
 		            normal: {
 		                shadowBlur: 10,
@@ -753,6 +750,7 @@ function onToOffData(arg) {
 
 // 年龄分布
 function ageDistributionData(arg) {
+	let { categories, data } = arg;
 	const option = {
 	    color: ['#3398DB'],
 	    tooltip : {
@@ -773,7 +771,7 @@ function ageDistributionData(arg) {
 	    xAxis : [
 	        {
 	            type : 'category',
-	            data : ['<9岁', '10-19岁', '20-29岁', '30-39岁', '40-49岁', '50-59岁', '60-69岁', '70-79岁', '>80岁'],
+				data: categories.filter(item => !!item),
 	            axisTick: {
 	                alignWithLabel: true
 	            },
@@ -802,7 +800,7 @@ function ageDistributionData(arg) {
 	            name:'年龄分布',
 	            type:'bar',
 	            barWidth: '40%',
-	            data:[14915, 23712, 36202, 90562, 76352, 21935, 11926, 5949, 395]
+	            data:data.filter(item => !!item)
 	        },
 	        
 	    ],
@@ -917,7 +915,7 @@ function customerTendData(arg) {
 				type:'line',
 				smooth:true,
 			    symbolSize:2,
-				data: arg.slice(1, 8).reverse(),
+				data: arg.slice(-7),
 				label: {
 					normal: {
 						show: true,
