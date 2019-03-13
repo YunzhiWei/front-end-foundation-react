@@ -24,7 +24,7 @@ class HikApi {
         method: 'GET', 
         url: `http://172.16.24.231:21009/fetchParkinglotDatas`, 
         params: {
-          url: `http://${addr}:${port}${uri}?token=${token}`, 
+          url: `${addr}:${port}${uri}?token=${token}`, 
           body: JSON.stringify(data)
         }
     });
