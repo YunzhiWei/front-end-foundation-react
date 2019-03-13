@@ -359,9 +359,45 @@ function dynamicChart(arg) {
 
 // 雷达图
 function radarChart(arg) {
-    var dataReal = [[20, 14, 60, 2, 0, 0, 0]];
-    var dataPre = [[26, 17, 61, 4, 0, 0, 0]];
-    var dataYes = [[24, 15, 67, 5, 0, 0, 0]];
+    let indicator = [];
+    let data = [];
+    try {
+        if (!arg.length) throw ('No Data');
+        let total = 0;
+        arg.forEach(item => total += item.Num);
+        arg.sort((a, b) => b.Name.length - a.Name.length).forEach(item => {
+            indicator.push({
+                name: item.Name,
+                max: 1
+            });
+            data.push((item.Num / total).toFixed(2)*1);
+        })
+    } catch(err) {
+        console.error(err.message);
+        data = [0, 0, 0, 0, 0, 0, 0];
+        indicator = [{
+            name: '民俗风情园',
+            max: 1
+        }, {
+            name: '圣集寺',
+            max: 1
+        }, {
+            name: '爱情岛',
+            max: 1
+        }, {
+            name: '龙凤苑',
+            max: 1
+        }, {
+            name: '桃花岛',
+            max: 1
+        }, {
+            name: '龙王岛',
+            max: 1
+        }, {
+            name: '名人岛',
+            max: 1
+        }];
+    }
 
     var lineStyle = {
         normal: {
@@ -373,7 +409,7 @@ function radarChart(arg) {
     const option = {
         legend: {
             bottom: 5,
-            data: ['实时', '昨日', '前日'],
+            data: ['实时'],
             itemGap: 5,
             textStyle: {
                 color: '#87baf8',
@@ -382,15 +418,7 @@ function radarChart(arg) {
             // selectedMode: 'single'
         },
         radar: {
-            indicator: [
-                {name: '民俗文化园', max: 100},
-                {name: '圣集寺', max: 100},
-                {name: '爱情岛', max: 100},
-                {name: '龙凤苑', max: 100},
-                {name: '桃花岛', max: 100},
-                {name: '龙王岛', max: 100},
-                {name: '名人岛', max: 100}
-            ],
+            indicator: indicator,
             shape: 'circle',
             splitNumber: 5,
             radius: '50%',
@@ -419,65 +447,31 @@ function radarChart(arg) {
                 }
             }
         },
-        series: [
-            {
-                name: '实时',
-                type: 'radar',
-                lineStyle: lineStyle,
-                data: dataReal,
-                symbol: 'none',
-                itemStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [
-                                {offset: 0, color: '#14c8d4'},
-                                {offset: 1, color: '#43eec6'}
-                            ]
-                        )
-                    }
-                },
-                areaStyle: {
-                    normal: {
-                        opacity: 0.1
-                    }
+        series: [{
+            name: '实时',
+            type: 'radar',
+            lineStyle: lineStyle,
+            data: [data],
+            symbol: 'none',
+            itemStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(
+                        0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#14c8d4'
+                        }, {
+                            offset: 1,
+                            color: '#43eec6'
+                        }]
+                    )
                 }
             },
-            {
-                name: '昨日',
-                type: 'radar',
-                lineStyle: lineStyle,
-                data: dataYes,
-                symbol: 'none',
-                itemStyle: {
-                    normal: {
-                        color: '#B3E4A1'
-                    }
-                },
-                areaStyle: {
-                    normal: {
-                        opacity: 0.05
-                    }
-                }
-            },
-            {
-                name: '前日',
-                type: 'radar',
-                lineStyle: lineStyle,
-                data: dataPre,
-                symbol: 'none',
-                itemStyle: {
-                    normal: {
-                        color: 'rgb(238, 197, 102)'
-                    }
-                },
-                areaStyle: {
-                    normal: {
-                        opacity: 0.05
-                    }
+            areaStyle: {
+                normal: {
+                    opacity: 0.1
                 }
             }
-        ]
+        }]
     };
     return option;
 }
