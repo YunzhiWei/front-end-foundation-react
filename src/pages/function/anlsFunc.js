@@ -462,7 +462,6 @@ function anlsProvMapData(arg) {
 		name: item.name,
 		value: geoCoordMap[item.name.replace('地区', '市').replace(/[省市县区]/g, '')]
 	}))
-	console.log(geodata);
 	var geodata1 = [{
 	    name: '仙女湖',
 	    value: geoCoordMap['仙女湖']

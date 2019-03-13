@@ -33,10 +33,10 @@ const config = {
 			key: "1b0b9d63-23f2-43bd-815f-8b63bd62d046"
 		}, 
 		dingyou: {
-			addr: "http://localhost", 
-			port: "1009", 
+			addr: "http://172.16.24.231", 
+			port: "21009", 
 			apiUrl: "/api/dingyou"
-		} 
+		}
 	}
 }
 
