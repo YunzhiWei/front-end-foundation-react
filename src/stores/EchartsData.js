@@ -93,7 +93,7 @@ class EchartsData {
             _this.fetchTicketsNumber();
             _this.fetchPassData();
             _this.fetchOccupantDensity();
-        }, 3000, this);
+        }, 20000, this);
         setInterval(function (_this) {
             _this.fetchWeatherData();
             _this.fetchPM25();

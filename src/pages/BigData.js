@@ -26,7 +26,7 @@ class BigData extends Component {
   			<MuiThemeProvider>
 				<div className="large-screen">
                     <div className="bigdata_title">
-                        <a href="/#/bigdata">
+                        <a href="/#/">
                             <span className="bigdata_l"></span>
                             <span className="bigdata_c">仙女湖景区智能管控平台</span>
                             <span className="bigdata_r"></span>

@@ -27,6 +27,11 @@ class AnlsMapComponent extends Component {
         let stay = check - leave;
         let prevStay = prevCheck - prevLeave;
 
+        let FINAL_HOUR = 18;
+        let TODAY_HOUR = new Date().getHours();
+
+        stay = Math.ceil((FINAL_HOUR - TODAY_HOUR) / FINAL_HOUR * check);
+
         if (stay < 0) {
             stay = 0;
             prevStay = 0;

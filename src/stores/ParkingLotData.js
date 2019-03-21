@@ -173,6 +173,7 @@ class ParkingLotData {
                 console.error("Catch An Error: ", err.message);
                 return;
             }
+            await sleep(1000);
         }
     }
     async fetchPlotStatus() {
