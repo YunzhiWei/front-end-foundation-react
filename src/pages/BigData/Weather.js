@@ -12,7 +12,7 @@ class WeatherComponent extends Component {
             day: '01'
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         var self = this;
         function step() {
             var date = new Date();
@@ -21,9 +21,12 @@ class WeatherComponent extends Component {
                 month: date.getMonth()+1,
                 day: date.getDate()
             })
-            requestAnimationFrame(step);
+            self.myReq = requestAnimationFrame(step);
         }
-        requestAnimationFrame(step);
+        self.myReq = requestAnimationFrame(step);
+    }
+    componentWillUnmount() {
+        cancelAnimationFrame(this.myReq)
     }
     render() {
         const { echartsData } = this.props;

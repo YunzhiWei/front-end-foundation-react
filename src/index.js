@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { Provider } from 'mobx-react';
 import { HashRouter as Router } from 'react-router-dom';
-
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import { Provider } from 'mobx-react';
 
 import stores from './stores';
+
+import App from './App';
+import './index.css';
 
 ReactDOM.render(
   <Provider {...stores}>
@@ -19,4 +17,3 @@ ReactDOM.render(
   ,
   document.getElementById('root')
 );
-registerServiceWorker();

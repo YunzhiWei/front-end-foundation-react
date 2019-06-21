@@ -25,13 +25,13 @@ class RankingComponent extends Component {
             <div className="rank" style={{width: '100%', height: '100%'}}>
                 <div className="rank_l">
                     <p className="rank_l_tit">{title_l}</p>
-                    {ranking[0].map((item, i) => <p key={i}><b>{i+1}</b><span className="rank_name">{item.name}</span><span>{item.value}</span></p>) }
+                    {ranking[0].slice(0, 5).map((item, i) => <p key={i}><b>{i+1}</b><span className="rank_name">{item.name.slice(0, 7)}</span><span>{item.value}</span></p>) }
                 </div>
                 <div className="rank_r">
                     <p className="rank_r_tit">{title_r}</p>
-                    {ranking[1].map((item, i) => {
+                    {ranking[1].slice(0, 5).map((item, i) => {
                         var width = (item.value/ranking[1][0].value).toFixed(3)*100;
-                        return <p key={i}><span className="col-lg-4">{item.name}</span><b className="col-lg-6"><i style={{width: `${width}%`}}></i></b><span className="col-lg-2">{item.value}</span></p> 
+                        return <p key={i}><span className="col-lg-4">{item.name.slice(0, 7)}</span><b className="col-lg-6"><i style={{width: `${width}%`}}></i></b><span className="col-lg-2">{item.value}</span></p> 
                     })}
                 </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { inject, observer } from 'mobx-react'
 import './BigData/css/bigdata.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -14,7 +15,7 @@ import ResUtilizationComponent from './BigData/ResUtilization';
 import WeatherComponent from './BigData/Weather';
 import TicketBusinessComponent from './BigData/TicketBusiness';
 import TimeViewComponent from './BigData/TimeView';
-import ParkingChargeComponent from './BigData/ParkingCharge';
+import OperatorOnDutyComponent from './BigData/OperatorOnDuty';
 
 import BarLinesDataArray from './BigData/data/ChartExampleBarLines';
 import weiboData from './BigData/data/weibo.json';
@@ -25,7 +26,7 @@ class BigData extends Component {
   			<MuiThemeProvider>
 				<div className="large-screen">
                     <div className="bigdata_title">
-                        <a href="/">
+                        <a href="/#/">
                             <span className="bigdata_l"></span>
                             <span className="bigdata_c">仙女湖景区智能管控平台</span>
                             <span className="bigdata_r"></span>
@@ -43,7 +44,7 @@ class BigData extends Component {
                                 <ParkingLotComponent />
                             </CardProvider>
                             <CardProvider className="cards" title="景区当日值班信息概览" color="light-green">
-                                <ParkingChargeComponent />
+                                <OperatorOnDutyComponent />
                             </CardProvider>
                         </div>
                         <div className="c_content c_2">

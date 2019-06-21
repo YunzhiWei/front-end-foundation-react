@@ -1,6 +1,8 @@
 import { observable } from 'mobx';
 import axios from 'axios';
 import fetchJsonp from 'fetch-jsonp';
+import { FetchYG, FetchDY } from '../Api';
+import dateFormatter from '@hadesz/date-formatter';
 
 function aqiDataGenerate(now, oneDay, value){
     now = new Date(+now + oneDay);
@@ -25,33 +27,15 @@ function aqiData(){
 }
 
 class EchartsData {
-    @observable parking = {
-        prevInUse: 0,
-        inUse: 0,
-        prevAll: 0,
-        all: 0,
-        prevRealIn: 0,
-        prevRealOut: 0,
-        realIn: 0,
-        realOut: 0
-    }
-    @observable boating = {
-        prevInUse: 0,
-        inUse: 0,
-        prevAll: 0,
-        all: 0,
-        prevRealIn: 0,
-        prevRealOut: 0,
-        realIn: 0,
-        realOut: 0
-    }
     @observable ticketsNum = {
-        prevOnline: 387,
-        online: 387,
-        prevOffline: 873,
-        offline: 873,
-        prevCheck: 698,
-        check: 698
+        prevOnline: 0,
+        online: 0,
+        prevOffline: 0,
+        offline: 0,
+        prevCheck: 0,
+        check: 0, 
+        prevLeave: 0, 
+        leave: 0
     }
     @observable weather = {
         yesterday: {
@@ -103,161 +87,73 @@ class EchartsData {
         comfortIndex: 0,
         comfort: ''
     }
+    @observable occupantDensity = []
     constructor(){
-        var i = 1;
-        var change = false;
-        var self = this;
-        setInterval(function(){
-            i = i === 10 ? 1 : i+1;
-            if(new Date().getHours() === 0 && !change) {
-                self.fetchPassDataPush();
-                change = !change;
-            } else if (new Date().getHours() === 1 && change) {
-                change = !change;
-            }
-            self.fetchParkingData(i);
-            // self.fetchWeatherData();
-            // self.fetchPM25();
-            self.tickets(i);
-        }, 10000);
-        self.fetchParkingData(1);
-        self.tickets(0);
-        self.fetchWeatherData();
-        self.fetchPM25();
-        self.fetchPassData();
+        setInterval(function(_this){
+            _this.fetchTicketsNumber();
+            _this.fetchPassData();
+            _this.fetchOccupantDensity();
+        }, 20000, this);
+        setInterval(function (_this) {
+            _this.fetchWeatherData();
+            _this.fetchPM25();
+        }, 1000*3600, this)
+        this.fetchWeatherData();
+        this.fetchPM25();
+        this.fetchTicketsNumber();
+        this.fetchPassData();
+        this.fetchOccupantDensity();
     }
-    fetchParkingData(index) {
-        let self = this;
-        var boating = [{
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }, {
-                "inUse": 3,
-                "all": 45,
-                "realIn": 4,
-                "realOut": 1
-            }];
-        var parking = [{
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }, {
-                "inUse": 57,
-                "all": 556,
-                "realIn": 89,
-                "realOut": 32
-            }]
-        this.parking.prevInUse = this.parking.inUse;
-        this.parking.prevAll = this.parking.all;
-        this.parking.prevRealIn = this.parking.realIn;
-        this.parking.prevRealOut = this.parking.realIn;
-        this.boating.prevInUse = this.boating.inUse;
-        this.boating.prevAll = this.boating.all;
-        this.boating.prevRealIn = this.boating.realIn;
-        this.boating.prevRealOut = this.boating.realIn;
-        // axios.get('http://www.zhuxiaoyi.com:300/parkingLot' + index).then(function(data){
-            self.parking.inUse = parking[index].inUse;
-            self.parking.all = parking[index].all;
-            self.parking.realIn = parking[index].realIn;
-            self.parking.realOut = parking[index].realOut;
-        // })
-        self.boating.inUse = boating[index].inUse;
-        self.boating.all = boating[index].all;
-        self.boating.realIn = boating[index].realIn;
-        self.boating.realOut = boating[index].realOut;
+    async fetchOccupantDensity() {
+        let res = await FetchYG("/Service/GetQrScanData");
+        this.occupantDensity = res;
+    }
+    async fetchPassData() {
+        let res = await FetchDY(`YKZS&stdt=${dateFormatter((new Date() - 1000*3600*24*19), 'yyyy-MM-dd')}&ldti=${dateFormatter('yyyy-MM-dd')}`);
+        if (res.categories.length) {
+            this.pass = {
+                category: res.categories,
+                lineData: res.series[0].data,
+                barData: res.series[0].data,
+                dottedBase: new Date()
+            }
+        } else {
+            this.pass = {
+                category: [], 
+                lineData: [], 
+                barData: [], 
+                dottedBase: new Date()
+            }
+        }
+    }
+    async fetchTicketsNumber(index) {
+        let hikRes = await FetchYG("/OpenApi/GetPassengerFlowStatistics");
+        let dyRes = await FetchDY("SPJP");
+        let checkin, online, offline, leave;
+        if (dyRes.categories.length) {
+            checkin = dyRes.series[0].data[3].value
+            online = dyRes.series[0].data[2].value;
+            offline = dyRes.series[0].data[1].value;
+        } else {
+            checkin = 0;
+            online = 0;
+            offline = 0;
+        }
+        if (hikRes.Data.length) {
+            leave = hikRes.Data[0].sum;
+        } else {
+            leave = 0;
+        }
+        this.ticketsNum = {
+            prevOnline: this.ticketsNum.online,
+            online: online,
+            prevOffline: this.ticketsNum.offline,
+            offline: offline,
+            prevCheck: this.ticketsNum.check,
+            check: checkin, 
+            prevLeave: this.ticketsNum.leave, 
+            leave: leave
+        }
     }
     fetchWeatherData () {
         let self = this;
@@ -338,47 +234,13 @@ class EchartsData {
                     })
                 }
             }).catch(function(err) {
-                console.log(err);
+                console.error(err);
             });
         }
         function findMin(compare) {
             self.weather['min'] = compare < self.weather['min'] ? compare : self.weather['min']
         }
         for (let i in urlObj) fetchWeather(urlObj[i], i);
-    }
-    fetchPassData() {
-        let self = this;
-        var passIn = [5, 1, 8, 74, 27, 28, 24, 33, 64, 6, 7, 25, 20, 6, 10, 0];
-        var passOut = [0, 5, 2, 53, 52, 52, 55, 75, 62, 7, 28, 45, 21, 16, 21, 0];
-        var month1 = [1,3,5,7,8,10,12];
-        var month2 = [4,6,9,11];
-        var month3 = 2;
-        function getDays(month, year) {
-            return month1.indexOf(month) + 1 ? 31 : month2.indexOf(month) + 1 ? 30 : month === month3 && year%4 === 0 ? 29 : 28 ;
-        }
-        function getDate(index) {
-            var year = new Date().getFullYear();
-            var month = new Date().getMonth() + 1;
-            var day = new Date().getDate() - index;
-            var preMonth = month - 1;
-            if(preMonth === 0) {
-                preMonth = month + 11;
-                year -= 1;
-            }
-            var preDay = getDays(preMonth, year);
-            if(day - 1 < 0) {
-                month = preMonth;
-                day = preDay + day;
-            }
-            return [month, day];
-        }
-        axios.get('http://www.zhuxiaoyi.com:302/data').then(function(data){
-            data.data.latest20.map((item, i) => {
-                self.pass.category.unshift(getDate(i + 1).join('-'));
-                self.pass.barData.push(item.sum);
-                self.pass.lineData.push(item.sum);
-            })
-        })
     }
     fetchPM25() {
         let self = this;
@@ -402,20 +264,8 @@ class EchartsData {
             })
             self.PM25.nowAqi = json.result.aqi;
         }).catch(function(err) {
-            console.log(err);
+            console.error(err);
         });
-    }
-    tickets(index) {
-        var onlineTicket = [0, 387, 387, 387, 387, 387, 387, 387, 387, 387, 387];
-        var offlineTicket = [0, 873, 873, 873, 873, 873, 873, 873, 873, 873, 873];
-        var error = [0, 698, 698, 698, 698, 698, 698, 698, 698, 698, 698]
-        let self = this;
-        self.ticketsNum.prevOnline = self.ticketsNum.online;
-        self.ticketsNum.prevOffline = self.ticketsNum.offline;
-        self.ticketsNum.prevCheck = self.ticketsNum.check;
-        self.ticketsNum.online = onlineTicket[index];
-        self.ticketsNum.offline = offlineTicket[index];
-        self.ticketsNum.check = error[index];
     }
 }
 

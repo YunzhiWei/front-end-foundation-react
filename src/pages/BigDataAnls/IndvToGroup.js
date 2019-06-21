@@ -8,7 +8,8 @@ import echartsOption from "../function/anlsFunc";
 @inject("bigDataAnlsData") @observer
 class IndvToGroupComponent extends Component {
     render() {
-        const option = echartsOption(this.props.bigDataAnlsData, 'IndvToGroup');    
+        const { _individualToGroup } = this.props.bigDataAnlsData;
+        const option = echartsOption(_individualToGroup, 'IndvToGroup');    
         return (
             <ReactEcharts
                 option={option}

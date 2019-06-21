@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { inject, observer } from 'mobx-react'
 import './BigData/css/bigdata.css';
 import './BigDataAnls/css/bigdataAnls.css';
 
@@ -16,13 +17,14 @@ import CustomerTendComponent from './BigDataAnls/CustomerTend';
 
 import CardProvider from './mui/CardProvider';
 
+@inject("hikApi") @observer
 class BigDataAnls extends Component {
     render() {
    		return (
    			<MuiThemeProvider>
 				<div id="bigdata-anls" className="large-screen">
 					<div className="bigdata_title">
-						<a href="/">
+						<a href="/#/bigdata">
 							<span className="bigdata_l"></span>
 							<span className="bigdata_c">仙女湖景区大数据分析</span>
 							<span className="bigdata_r"></span>
@@ -36,7 +38,7 @@ class BigDataAnls extends Component {
 							<CardProvider className="cards c_cube" title="景区全国游客分布" color="light-green">
 								<AnlsMapComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="全国客源统计排名（近一年）" color="light-green">
+							<CardProvider className="cards" title="近一年全国客源统计排名" color="light-green">
 								<RankingComponent choose="china" />
 							</CardProvider>
 						</div>
@@ -44,24 +46,24 @@ class BigDataAnls extends Component {
 							<CardProvider className="cards c_cube" title="景区省内游客分布" color="light-green">
 								<AnlsProvMapComponent />
 							</CardProvider>
-							<CardProvider className="cards" title="省内客源统计排名（近一年）" color="light-green">
+							<CardProvider className="cards" title="近一年省内客源统计排名" color="light-green">
 								<RankingComponent choose="jiangxi" />
 							</CardProvider>
 						</div>
 						<div className="c_content c_4">
-							<CardProvider className="cards half first margin_right" title="景区门票线上线下占比（近一年）" color="light-green">
+							<CardProvider className="cards half first margin_right" title="景区票务渠道占比" color="light-green">
 								<OnToOffComponent/>
 							</CardProvider>
-							<CardProvider className="cards half first" title="景区游客年龄分布（近一年）" color="light-green">
+							<CardProvider className="cards half first" title="景区游客年龄分布" color="light-green">
 								<AgeDistributionComponent/>
 							</CardProvider>
-							<CardProvider className="cards half margin_right" title="景区团散客比例（近一年）" color="light-green">
+							<CardProvider className="cards half margin_right" title="景区游客团散比" color="light-green">
 								<IndvToGroupComponent/>
 							</CardProvider>
-							<CardProvider className="cards half" title="景区男女比例（近一年）" color="light-green">
+							<CardProvider className="cards half" title="景区游客男女比" color="light-green">
 								<MaleToFemaleComponent/>
 							</CardProvider>
-							<CardProvider className="cards" title="景区游客数量趋势（近七日）" color="light-green">
+							<CardProvider className="cards" title="近一周景区游客数量趋势" color="light-green">
 								<CustomerTendComponent/>
 							</CardProvider>
 						</div>

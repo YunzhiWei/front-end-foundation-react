@@ -8,7 +8,8 @@ import echartsOption from "../function/anlsFunc";
 @inject("bigDataAnlsData") @observer
 class MaleToFemaleComponent extends Component {
     render() {
-        const option = echartsOption(this.props.bigDataAnlsData, 'MaleToFemale');    
+        const { _maleToFemale } = this.props.bigDataAnlsData;
+        const option = echartsOption(_maleToFemale, 'MaleToFemale');    
         return (
             <ReactEcharts
                 option={option}

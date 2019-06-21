@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import ReactEcharts from '../lib';
+import { inject, observer } from 'mobx-react'
 import echartsOption from '../function/function';
 
+@inject("echartsData") @observer
 class RadarChart extends Component {
     render() {
-        const option = echartsOption(this.props.radarData, 'RadarChart');
+        const { occupantDensity } = this.props.echartsData;
+        const option = echartsOption(occupantDensity, 'RadarChart');
         return (
             <ReactEcharts
               option={option}

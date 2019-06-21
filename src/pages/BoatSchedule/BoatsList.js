@@ -4,9 +4,10 @@ import { inject, observer } from 'mobx-react';
 import echartsOption from "../function/boatFunc";
 
 @inject("boatScheduleData") @observer
-class FortyBoatsComponent extends Component {
+class BoatsListComponent extends Component {
     render() {
-        const option = echartsOption(this.props.boatScheduleData._fortyBoats, 'FortyBoats');
+        const { _boatsList, _boatUsageAmount } = this.props.boatScheduleData;
+        const option = echartsOption({ _boatsList, _boatUsageAmount }, 'BoatsList');
 		return (
             <ReactEcharts 
                 option={option}
@@ -17,4 +18,4 @@ class FortyBoatsComponent extends Component {
 	}
 }
 
-export default FortyBoatsComponent;
+export default BoatsListComponent;

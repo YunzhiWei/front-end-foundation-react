@@ -6,9 +6,9 @@
 #parking-lot .ServiceCondition { height: 598px; }
 #IO-Cars { background-color: rgba(26, 26, 143, 0.15); width: 100%; height: 100%; }
 #IO-Cars .input, #IO-Cars .output { font-size: 16px; width: 100%; height: calc(50% - 8px); margin: 8px 0; overflow: hidden; }
-#IO-Cars .input> div, #IO-Cars .output> div { position: relative; overflow: hidden; height: calc(100% - 80px); transition: all .25s ease-in-out; margin-top: 5px; display: -ms-flexbox; display: flex; -ms-flex-direction: column; flex-direction: column; -ms-flex-align: start; align-items: flex-start; }
+#IO-Cars .input> div, #IO-Cars .output> div { width: 104%; position: relative; overflow: auto; height: calc(100% - 80px); transition: all .25s ease-in-out; margin-top: 5px; }
 #IO-Cars .input p, #IO-Cars .output p { display: block; width: 100%; text-align: center; color: #FFF; display: -ms-flexbox; display: flex; -ms-flex-pack: justify; justify-content: space-between; -ms-flex-align: center; align-items: center; }
-#IO-Cars .input p span, #IO-Cars .output p span { float: none; padding: 0 5px; text-align: center; color: #48d8fd;	/*font-weight: bold;*/ }
+#IO-Cars .input p span, #IO-Cars .output p span { float: none; padding: 0 5px; text-align: center; color: #48d8fd; }
 #IO-Cars .input p.title, #IO-Cars .output p.title { display: inline-block; color: #48d8fd; font-weight: bold; }
 #IO-Cars .input .title span, #IO-Cars .output .title span { font-family: "ZZGFSH"; font-size: 26px; margin: 0 12px; color: #fff; }
 #IO-Cars .input .subtitle, #IO-Cars .output .subtitle { height: 25px; }
@@ -19,21 +19,25 @@
 	from { top: 132px; }
 	to { top: 0; }
 }
-
 #parking_cube { width: 100%; height: 100%; overflow: hidden; color: #fff; }
-#father { width: 400%; height: 100%; overflow: hidden; }
-.zong { width: 100%; height: 100%; -webkit-animation: change 60s linear infinite; }
+#father { width: 600%; height: 100%; overflow: hidden; }
+.zong { width: 100%; height: 100%; animation: change 30s linear infinite; animation-direction: alternate; }
 .zong:hover { animation-play-state: paused; }
-.son { width: 25%; height: 100%; float: left; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
-#parking_cube .zong .son span { display: block; width: 8%; height: 30%; margin: 0 1%; color: #fff; background-color: #0BCBD5; text-align: center; padding: 8% 0; box-sizing: border-box; border-radius: 6%; }
+.son { width: 16.66%; height: 100%; float: left; }
+#parking_cube .zong .son span { float: left; display: inline-block; width: calc(10% - 4px); height: calc(10% - 4px); line-height: 1.5; margin: 2px; color: #fff; background-color: #0BCBD5; text-align: center; box-sizing: border-box; border-radius: 6%; }
 #parking_cube .zong .son span.red { background-color: red; }
 @keyframes change {
 	0% { margin-left: 0; }
-	30% { margin-left: 0; }
-	33% { margin-left: -25%; }
-	63% { margin-left: -25%; }
-	66% { margin-left: -50%; }
-	97% { margin-left: -50%; }
-	100% { margin-left: -75%; }
+	16.67% { margin-left: 0; }
+	19.67% { margin-left: -16.67%; }
+	33.34% { margin-left: -16.67%; }
+	36.34% { margin-left: -33.34%; }
+	50.01% { margin-left: -33.34%; }
+	53.0% { margin-left: -50.01%; }
+	66.68% { margin-left: -50.01%; }
+	69.68% { margin-left: -66.68%; }
+	83.33% { margin-left: -66.68%; }
+	86.33% { margin-left: -83.33%; }
+	100% { margin-left: -83.33%; }
 }
 

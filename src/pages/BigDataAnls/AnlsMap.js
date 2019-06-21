@@ -21,10 +21,23 @@ function setting(start, end) {
 @inject("echartsData") @observer
 class AnlsMapComponent extends Component {
     render() {
-        const { online, offline, check } = this.props.echartsData.ticketsNum;
-        const option = echartsOption(this.props.bigDataAnlsData, 'AnlsMap');
-        const setting1 = setting(0, online+offline);
-        const setting2 = setting(0, check);        
+        const { prevCheck, check, prevLeave, leave } = this.props.echartsData.ticketsNum;
+        const { _nationalRanking } = this.props.bigDataAnlsData;
+        const option = echartsOption(_nationalRanking[1], 'AnlsMap');
+        let stay = check - leave;
+        let prevStay = prevCheck - prevLeave;
+
+        let FINAL_HOUR = 18;
+        let TODAY_HOUR = new Date().getHours();
+
+        stay = Math.ceil((FINAL_HOUR - TODAY_HOUR) / FINAL_HOUR * check);
+
+        if (stay < 0) {
+            stay = 0;
+            prevStay = 0;
+        }
+        const setting1 = setting(prevCheck, check);
+        const setting2 = setting(prevStay, stay);        
         return (
             <div style={{width: '100%', height: '100%', overflow: 'hidden'}}>
                 <ReactEcharts
